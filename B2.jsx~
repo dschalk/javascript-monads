@@ -2045,9 +2045,13 @@ THEOREM: Array monads conform to the monad left identity law.
           <br /><br />
 <p> Binding the composit function produces the same result as sequentially binding the two individual functions.  </p>
 <p> THEOREM: Array monads conform to the monad associativity law.  </p>
-<br /><br /><br />
+<h2>TodoList</h2>
+<br />
 
-  </div>
+
+<br /><br />
+
+        </div>
 </div>
     )}
   };

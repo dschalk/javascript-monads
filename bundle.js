@@ -756,364 +756,14 @@
 	var m2 = new Monad(3);
 	var m4 = new Monad(1);
 
-	var MA = new MonadArray([['find a clean mug', true], ['make coffee', false]]);
-
-	var completed = function completed() {
-	  return MA.x.filter(function (y) {
-	    return y[1];
-	  }).length;
-	};
-
-	var styles = _mobservable2['default'].observable({
-	  style3: { backgroundcolor: 'green', textalign: 'left', bordercolor: 'lightblue', outline: 0,
-	    color: 'black', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 0, fontSize: 22 },
-	  style2: { backgroundColor: '#000', textalign: 'left', borderColor: 'darkred', outline: 0,
-	    color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 20 },
-	  style1: { backgroundColor: 'blue', textalign: 'left', borderColor: 'lightblue', outline: 0,
-	    color: 'yellow', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 20 },
-	  style4: { backgroundColor: '#000', textalign: 'left', borderColor: 'darkred', outline: 0,
-	    color: 'lightblue', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 0, fontSize: 22 },
-	  0: false,
-	  1: false,
-	  2: false,
-	  3: false,
-	  4: false,
-	  5: false,
-	  6: false,
-	  7: false,
-	  8: false,
-	  9: false,
-	  10: false,
-	  11: false,
-	  12: false,
-	  13: false,
-	  14: false,
-	  15: false,
-	  16: false,
-	  17: false,
-	  18: false,
-	  19: false,
-	  20: false,
-	  21: false,
-	  22: false,
-	  23: false,
-	  24: false,
-	  25: false,
-	  26: false,
-	  27: false,
-	  28: false,
-	  29: false,
-	  39: false,
-	  49: false,
-	  color0: function color0() {
-	    var b = this[0];return b ? this.style1 : this.style2;
-	  },
-	  color1: function color1() {
-	    var b = this[1];return b ? this.style1 : this.style2;
-	  },
-	  color2: function color2() {
-	    var b = this[2];return b ? this.style1 : this.style2;
-	  },
-	  color3: function color3() {
-	    var b = this[3];return b ? this.style1 : this.style2;
-	  },
-	  color4: function color4() {
-	    var b = this[4];return b ? this.style1 : this.style2;
-	  },
-	  color5: function color5() {
-	    var b = this[5];return b ? this.style1 : this.style2;
-	  },
-	  color6: function color6() {
-	    var b = this[6];return b ? this.style1 : this.style2;
-	  },
-	  color7: function color7() {
-	    var b = this[7];return b ? this.style1 : this.style2;
-	  },
-	  color8: function color8() {
-	    var b = this[8];return b ? this.style1 : this.style2;
-	  },
-	  color9: function color9() {
-	    var b = this[9];return b ? this.style1 : this.style2;
-	  },
-	  color10: function color10() {
-	    var b = this[10];return b ? this.style1 : this.style2;
-	  },
-	  color11: function color11() {
-	    var b = this[11];return b ? this.style1 : this.style2;
-	  },
-	  color12: function color12() {
-	    var b = this[12];return b ? this.style1 : this.style2;
-	  },
-	  color13: function color13() {
-	    var b = this[13];return b ? this.style1 : this.style2;
-	  },
-	  color14: function color14() {
-	    var b = this[14];return b ? this.style1 : this.style2;
-	  },
-	  color15: function color15() {
-	    var b = this[15];return b ? this.style1 : this.style2;
-	  },
-	  color16: function color16() {
-	    var b = this[16];return b ? this.style1 : this.style2;
-	  },
-	  color17: function color17() {
-	    var b = this[17];return b ? this.style1 : this.style2;
-	  },
-	  color18: function color18() {
-	    var b = this[18];return b ? this.style1 : this.style2;
-	  },
-	  color19: function color19() {
-	    var b = this[19];return b ? this.style1 : this.style2;
-	  },
-	  color20: function color20() {
-	    var b = this[20];return b ? this.style1 : this.style2;
-	  },
-	  color21: function color21() {
-	    var b = this[21];return b ? this.style1 : this.style2;
-	  },
-	  color22: function color22() {
-	    var b = this[22];return b ? this.style1 : this.style2;
-	  },
-	  color23: function color23() {
-	    var b = this[23];return b ? this.style1 : this.style2;
-	  },
-	  color24: function color24() {
-	    var b = this[24];return b ? this.style1 : this.style2;
-	  },
-	  color25: function color25() {
-	    var b = this[25];return b ? this.style1 : this.style2;
-	  },
-	  color26: function color26() {
-	    var b = this[26];return b ? this.style1 : this.style2;
-	  },
-	  color27: function color27() {
-	    var b = this[27];return b ? this.style1 : this.style2;
-	  },
-	  color28: function color28() {
-	    var b = this[28];return b ? this.style1 : this.style2;
-	  },
-	  color29: function color29() {
-	    var b = this[29];return b ? this.style1 : this.style2;
-	  },
-	  color39: function color39() {
-	    var b = this[39];return b ? this.style3 : this.style4;
-	  },
-	  color49: function color49() {
-	    var b = this[49];return b ? this.style3 : this.style4;
-	  }
-	});
-
-	var M2 = new MonadObject(styles.style1);
-	console.log(M2.x);
-
-	var styleM = function styleM(mon, x, y, z) {
-	  return mon.ret({ backgroundColor: x, textAlign: 'left', borderColor: y, outline: 0,
-	    color: z, borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 20 });
-	};
-
-	var style1 = function style1(x, y, z) {
-	  return { backgroundcolor: x, textalign: 'left', bordercolor: y, outline: 0,
-	    color: z, borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 20 };
-	};
-
-	var style2 = function style2(x, y, z) {
-	  return { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkblue', outline: 0,
-	    color: 'red', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 27 };
-	};
-
-	var addTask = function addTask(mon, t) {
-	  mon.x.push([t, false]);
-	  var j = mon.x.length - 1;
-	  if (mon.x[j][0] === null) {
-	    mon.x.splice(j, 1);
-	  }
-	  return mon;
-	};
-
-	var removeTask = function removeTask(mon, t) {
-	  var l = mon.x.length;
-	  var k = undefined;
-	  for (k = 0; k < l; k += 1) {
-	    var task = mon.x[k][0];
-	    if (mon.x[k][0] === t) {
-	      mon.x.splice(k, 1);
-	      return mon;
-	    }
-	  }
-	  mon.x.push(['Error in removeTask']);
-	  return mon;
-	};
-
-	var toggleComplete = function toggleComplete(mon, t) {
-	  var l = mon.x.length;
-	  var k = undefined;
-	  for (k = 0; k < l; k += 1) {
-	    if (mon.x[k][0] === t) {
-	      mon.x[k][1] = !mon.x[k][1];
-	    }
-	  }
-	  return mon;
-	};
-
-	var displayTodos = function displayTodos() {
-	  var ar = [];
-	  var l = MA.x.length;
-
-	  var _loop = function (k) {
-	    ar.push(_react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(
-	        'div',
-	        { style: { fontSize: 28, color: 'lightblue' } },
-	        ' ',
-	        MA.x[k][0],
-	        ' '
-	      ),
-	      _react2['default'].createElement(
-	        'button',
-	        { style: styles['color' + k],
-
-	          onClick: function () {
-	            MA.fmap(removeTask, MA.x[k][0]);
-	          },
-	          onMouseEnter: function () {
-	            styles[k] = true;
-	          },
-	          onMouseLeave: function () {
-	            styles[k] = false;
-	          } },
-	        'remove'
-	      ),
-	      _react2['default'].createElement(
-	        'button',
-	        { style: styles['color' + (k + 9)],
-	          onClick: function () {
-	            MA.x[k][0] = prompt('Todo:', 'Take a walk');
-	          },
-	          onMouseEnter: function () {
-	            styles[k + 9] = true;
-	          },
-	          onMouseLeave: function () {
-	            styles[k + 9] = false;
-	          } },
-	        'edit'
-	      ),
-	      _react2['default'].createElement(
-	        'button',
-	        { style: styles['color' + (k + 18)],
-	          onClick: function () {
-	            MA.fmap(toggleComplete, MA.x[k][0]);
-	          },
-	          onMouseEnter: function () {
-	            styles[k + 18] = true;
-	          },
-	          onMouseLeave: function () {
-	            styles[k + 18] = false;
-	          } },
-	        'completed:  ',
-	        _react2['default'].createElement('input', { type: 'checkbox', checked: MA.x[k][1],
-	          style: { width: 18, height: 18 } })
-	      ),
-	      _react2['default'].createElement('br', null),
-	      _react2['default'].createElement('br', null)
-	    ));
-	  };
-
-	  for (var k = 0; k < l; k += 1) {
-	    _loop(k);
-	  }
-	  ar.push(_react2['default'].createElement(
-	    'button',
-	    { style: styles['color39'],
-	      onClick: function () {
-	        var t = prompt('New task: ', 'smell the roses');
-	        styles[39] = false;
-	        MA.fmap(addTask, t);
-	      },
-	      onMouseEnter: function () {
-	        styles[39] = true;
-	      },
-	      onMouseLeave: function () {
-	        styles[39] = false;
-	      } },
-	    'new todo'
-	  ));
-	  ar.push(_react2['default'].createElement(
-	    'div',
-	    { style: { color: 'lawngreen', fontSize: 24 } },
-	    ' ',
-	    completed(),
-	    ' of ',
-	    l,
-	    ' completed. '
-	  ));
-	  return ar;
-	};
-
-	var Display = (function (_React$Component2) {
-	  _inherits(Display, _React$Component2);
-
-	  function Display() {
-	    _classCallCheck(this, _Display);
-
-	    _get(Object.getPrototypeOf(_Display.prototype), 'constructor', this).apply(this, arguments);
-	  }
-
-	  _createClass(Display, [{
-	    key: 'render',
-	    value: function render() {
-	      var display = displayTodos();
-	      return _react2['default'].createElement(
-	        'div',
-	        null,
-	        ' ',
-	        display,
-	        ' '
-	      );
-	    }
-	  }]);
-
-	  var _Display = Display;
-	  Display = (0, _mobservableReact.observer)(Display) || Display;
-	  return Display;
-	})(_react2['default'].Component);
-
-	;
-
-	var data = _mobservable2['default'].observable({
-
-	  obDouble: function obDouble(x, mon) {
-	    for (var o in x) {
-	      mon.x[o] = x[o] + x[o];
-	    }
-	    return mon;
-	  },
-
-	  obTripple: function obTripple(x, mon) {
-	    for (var c in x) {
-	      mon.x[c] = 3 * x[c];
-	    }
-	    return mon;
-	  },
-
-	  obCube: function obCube(x, mon) {
-	    for (var o in x) {
-	      mon.x[o] = x[o] * x[o] * x[o];
-	    }
-	    return mon;
-	  }
-
-	});
-
 	// var worker = new Worker('helper.js');
 	// worker.postMessage(t);
 
 	// let ma4 = new MonadArray([10,20,30]);
 	// let source = Stream(ma4);
 
-	var B2 = (function (_React$Component3) {
-	  _inherits(B2, _React$Component3);
+	var B2 = (function (_React$Component2) {
+	  _inherits(B2, _React$Component2);
 
 	  function B2(props) {
 	    var _this = this;
@@ -1224,6 +874,27 @@
 	      var w = mon.x;
 	      var z = mon2.x;
 	      mon.ret(z + w);
+	      return mon;
+	    };
+
+	    this.obDouble = function (x, mon) {
+	      for (var o in x) {
+	        mon.x[o] = x[o] + x[o];
+	      }
+	      return mon;
+	    };
+
+	    this.obTripple = function (x, mon) {
+	      for (var c in x) {
+	        mon.x[c] = 3 * x[c];
+	      }
+	      return mon;
+	    };
+
+	    this.obCube = function (x, mon) {
+	      for (var o in x) {
+	        mon.x[o] = x[o] * x[o] * x[o];
+	      }
 	      return mon;
 	    };
 
@@ -1478,7 +1149,6 @@
 
 	    this.render = function () {
 	      var mM1 = _this.mM1;
-	      var M2 = _this.M2;
 	      var m2 = _this.m2;
 	      var m3 = _this.m3;
 	      var m4 = _this.m4;
@@ -1693,7 +1363,6 @@
 	            { style: { textAlign: 'center' } },
 	            'Mobservable Monads'
 	          ),
-	          _react2['default'].createElement(Display, null),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
@@ -2194,9 +1863,6 @@
 	              },
 	              onMouseLeave: function () {
 	                return _this.cF2();
-	              },
-	              onMouseLeave: function () {
-	                mouse[37] = '#000', mouse[370] = 'darkred', mouse[38] = 'burlywood';
 	              }
 	            },
 	            _react2['default'].createElement(Component9, null)
@@ -2309,7 +1975,7 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'The left identity law is "ret(a).bnd(f) = f(a)". "m.ret(v) gives m the value \'v\' by definition, so the value of \'m.ret(42)\' is \'42\'. The following demonstration tests whether ".bnd(m.ret)" changes the value of \'m\'.  '
+	            'The left identity law is "ret(a).bnd(f) = f(a)". "m.ret(v)" gives m the value \'v\' by definition, so the value of \'m.ret(42)\' is \'42\'. The following demonstration tests whether ".bnd(m.ret)" changes the value of \'m\'.  '
 	          ),
 	          _react2['default'].createElement(
 	            'button',
@@ -2340,6 +2006,9 @@
 	          _react2['default'].createElement(
 	            'button',
 	            { style: _this.bool4 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                _this.double(21, m2);
+	              },
 	              onMouseEnter: function () {
 	                return _this.cT4();
 	              },
@@ -2362,7 +2031,7 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'The right identity law is "m.bnd(ret) = m". The right column demonstrates that executing ".bnd(m.ret)" leaves monad \'m\'  unchanged.  To show that m is still viable, we assign its value to \'m2\' and give m3 the value "Success!".   '
+	            'The right identity law is "m.bnd(ret) = m". The right column demonstrates that executing ".bnd(m.ret)" leaves monad \'m\'  unchanged.  To show that \'m\' is still viable, we assign its value to \'m2\' and give m3 the value "Success!".   '
 	          ),
 	          _react2['default'].createElement(
 	            'button',
@@ -2396,7 +2065,7 @@
 	                return _this.cF2();
 	              }
 	            },
-	            ' Click to reset m.'
+	            ' Click to reset \'m\'.'
 	          ),
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement('br', null),
@@ -2486,13 +2155,16 @@
 	                return _this.cF2();
 	              }
 	            },
-	            ' Click to re-set m.'
+	            ' Click to re-set \'m\'.'
 	          ),
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
 	            { style: _this.bool3 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                m.bnd(_this.reset_2);
+	              },
 	              onMouseEnter: function () {
 	                return _this.cT3();
 	              },
@@ -2507,6 +2179,9 @@
 	          _react2['default'].createElement(
 	            'button',
 	            { style: _this.bool4 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                m.bnd(_this.reset_3);
+	              },
 	              onMouseEnter: function () {
 	                return _this.cT4();
 	              },
@@ -2575,6 +2250,9 @@
 	          _react2['default'].createElement(
 	            'button',
 	            { style: _this.bool3 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                m2.ret('World');
+	              },
 	              onMouseEnter: function () {
 	                return _this.cT3();
 	              },
@@ -2903,10 +2581,6 @@
 	    this.mM4 = new M(3);
 	    this.mous = colorObject;
 	    this.fibData = fibData;
-	    this.data = data;
-	    this.obDouble = data.obDouble;
-	    this.obTripple = data.obTripple;
-	    this.obCube = data.obCube;
 	    this.m = m;
 	    this.m2 = m2;
 	    this.m4 = m4;
@@ -2930,9 +2604,6 @@
 	      return _this.ax();
 	    };
 	    this.b = this.bx();
-	    this.M2 = M2;
-	    this.pending = 0;
-	    this.completed = completed;
 	    this.style2 = { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
 	      color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
 	      marginLeft: 12, fontSize: 22 };

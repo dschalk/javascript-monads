@@ -1,0 +1,14 @@
+
+originalProps: Object
+code: "class Monad {↵ constructor(z) {↵↵ this.x = mobservable.makeReactive(z);↵↵ this.bnd = (func, ...args) => {↵ return func(this.x(), ...args);↵ };↵↵ this.ret = a => {↵ this.x(a);↵ return this;↵ };↵ }↵};"
+language: "javascript"
+__proto__: Object
+
+
+
+"class MonadObject {  constructor(ob) {    this.x = mobservable.makeReactive(ob);    this.bnd = (func, ...args) => {      return func(this.x, ...args);    };    this.ret = w => {      Object.assign(this.x, w);      return this;    }  }}"
+
+
+
+"class MonadObject {  constructor(ob) {    this.x = mobservable.makeReactive(ob);    this.bnd = (func, ...args) => {      return func(this.x, ...args);    };    this.ret = w => {      Object.assign(this.x, w);      return this;    }  }}"
+

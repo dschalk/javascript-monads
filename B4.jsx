@@ -387,13 +387,13 @@ var ComponentJackpotB = React.createClass({
         {`
       onClick={() => mM1
         .bnd(ran)
-        .bnd(branch, this.mM5
-          .bnd(this.ran).bnd(a => this.mM6
-                        .bnd(this.ran)
-                        .bnd(b => this.mM7
-                          .bnd(this.ran)
-                          .bnd(c => this.mM8
-                            .bnd(this.ch,a,b,c)     
+        .bnd(branch, mM5
+          .bnd(ran).bnd(a => mM6
+                        .bnd(ran)
+                        .bnd(b => mM7
+                          .bnd(ran)
+                          .bnd(c => mM8
+                            .bnd(this.ch,a,b,c)
                           ) ) )  )
         .bnd(ran)
         .bnd(x => mM2
@@ -402,11 +402,11 @@ var ComponentJackpotB = React.createClass({
             .bnd(ran)
             .bnd(z => mM4
               .bnd(this.ch,x,y,z)
-              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))    
+              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))      
               .bnd(mM10.ret)
               .bnd(this.jackpot)
               .bnd(refresh)    ) ) )   }
-        `}
+             `}
         </Markdown>
       </div>
     );
@@ -633,6 +633,12 @@ class B4 extends React.Component {
     return mon;
   }
 
+  branchT = (x,mon,a) => {
+    setTimeout(function() {
+      return mon;
+    },1500  )
+  }
+
   rand = (a,b) => {
       return Math.floor(Math.random() * (a - b)) + b;
   }
@@ -838,12 +844,12 @@ class B4 extends React.Component {
   <button style={this.bool2 ? this.style1 : this.style2 } 
     onClick={() => mM1
       .bnd(ran)
-      .bnd(branch, this.mM5
-        .bnd(this.ran).bnd(a => this.mM6
-                      .bnd(this.ran)
-                      .bnd(b => this.mM7
-                        .bnd(this.ran)
-                        .bnd(c => this.mM8
+      .bnd(branch, mM5
+        .bnd(ran).bnd(a => mM6
+                      .bnd(ran)
+                      .bnd(b => mM7
+                        .bnd(ran)
+                        .bnd(c => mM8
                           .bnd(this.ch,a,b,c)
                         ) ) )  )
       .bnd(ran)

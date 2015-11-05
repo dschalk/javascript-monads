@@ -26,28 +26,21 @@ var ComponentPrimitive = React.createClass({
       <div style={{fontSize: 18, color: '#00FFFF' }} >
         <Markdown>
         {`
-			class Monad {
-				constructor(z) {
-		
-				  this.x = z;
-		
-				  this.bnd = (func, ...args) => {
-				    return func(this.x, this, ...args);
-				  };
-		
-				  this.fmap = (func, ...args) => {
-				    this.x = func(this.x, ...args);
-				    return this;
-				  }
-		
-				  this.id = () => {return this};
-		
-				  this.ret = a => {
-				    this.x = a;
-				    return this;
-				  };
-				}
-			};
+      class Monad {
+        constructor(z) {
+
+          this.x = z;
+
+          this.bnd = (func, ...args) => {
+            return func(this.x, this, ...args);
+          };
+
+          this.ret = a => {
+            this.x = a;
+            return this;
+          };
+        }
+      };
         `}
         </Markdown>
       </div>
@@ -469,20 +462,13 @@ class B4 extends React.Component {
 
   class Monad {
     constructor(z) {
-  
+
       this.x = z;
-  
+
       this.bnd = (func, ...args) => {
         return func(this.x, this, ...args);
       };
-  
-      this.fmap = (func, ...args) => {
-        this.x = func(this.x, ...args);
-        return this;
-      }
-  
-      this.id = () => {return this};
-  
+
       this.ret = a => {
         this.x = a;
         return this;

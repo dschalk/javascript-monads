@@ -13,13 +13,6 @@ class Monad {
       return func(this.x, this, ...args);
     };
 
-    this.fmap = (func, ...args) => {
-      this.x = func(this.x, ...args);
-      return this;
-    }
-
-    this.id = () => {return this};
-
     this.ret = a => {
       this.x = a;
       return this;

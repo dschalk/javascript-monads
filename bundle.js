@@ -102,7 +102,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n\t\t\tclass Monad {\n\t\t\t\tconstructor(z) {\n\t\t\n\t\t\t\t  this.x = z;\n\t\t\n\t\t\t\t  this.bnd = (func, ...args) => {\n\t\t\t\t    return func(this.x, this, ...args);\n\t\t\t\t  };\n\t\t\n\t\t\t\t  this.fmap = (func, ...args) => {\n\t\t\t\t    this.x = func(this.x, ...args);\n\t\t\t\t    return this;\n\t\t\t\t  }\n\t\t\n\t\t\t\t  this.id = () => {return this};\n\t\t\n\t\t\t\t  this.ret = a => {\n\t\t\t\t    this.x = a;\n\t\t\t\t    return this;\n\t\t\t\t  };\n\t\t\t\t}\n\t\t\t};\n        '
+	        '\n      class Monad {\n        constructor(z) {\n\n          this.x = z;\n\n          this.bnd = (func, ...args) => {\n            return func(this.x, this, ...args);\n          };\n\n          this.ret = a => {\n            this.x = a;\n            return this;\n          };\n        }\n      };\n        '
 	      )
 	    );
 	  }
@@ -1043,19 +1043,6 @@
 	        }
 
 	        return func.apply(undefined, [_this2.x, _this2].concat(args));
-	      };
-
-	      this.fmap = function (func) {
-	        for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-	          args[_key2 - 1] = arguments[_key2];
-	        }
-
-	        _this2.x = func.apply(undefined, [_this2.x].concat(args));
-	        return _this2;
-	      };
-
-	      this.id = function () {
-	        return _this2;
 	      };
 
 	      this.ret = function (a) {

@@ -197,12 +197,12 @@ var ComponentLambdaA = React.createClass({
       <div style={{fontSize: 18, color: '#00FFFF' }} >
         <Markdown>
         {`
-			onClick={() => mM1
+			onClick={() => {mM1
 				.ret(3)
-				.bnd(x => mM2.ret(2)		
+				.bnd(x => {mM2.ret(2)		
 					.bnd(cube)
 					.bnd(add,x)
-					.bnd(refresh)) }
+					.bnd(refresh)}) }}
         `}
         </Markdown>
       </div>
@@ -217,18 +217,19 @@ var ComponentLambdaB = React.createClass({
       <div style={{fontSize: 18, color: '#00FFFF' }} >
         <Markdown>
         {`
-      onClick={() => {mM1
-     	.ret(3)
-     	.bnd(x => mM2
-     		.ret(2)
-     		.bnd(square)
-         .bnd(y => mM3
-         	.ret(50)
-         	.bnd(double)
-           .bnd(mult,(x+y))
-           .bnd(() => mM4.ret(0))
-           .bnd(add,(x*x + y*y))
-     			.bnd(refresh)  ) ) }}    
+		 onClick={() => {mM1
+			.ret(3)
+			.bnd(x => {mM2
+				.ret(2)
+				.bnd(square)
+				.bnd(y => {mM3
+					.ret(50)
+					.bnd(double)
+				  .bnd(mult,(x+y))
+				  .bnd(mM4
+          .ret(0)
+				  .bnd(add,(x*x + y*y))
+					.bnd(refresh) ) }) }) }}		
         `}
         </Markdown>
       </div>
@@ -245,10 +246,10 @@ var ComponentLambdaC = React.createClass({
         {`
 			onClick={() => {mM1
 				.ret(3)
-				.bnd(x => mM2.ret(2)		
+				.bnd(x => {mM2.ret(2)		
 					.bnd(cube)
 					.bnd(add,x)
-					.bnd(refresh)) }}
+					.bnd(refresh)}) }}
         `}
         </Markdown>
       </div>
@@ -263,12 +264,12 @@ var ComponentLambdaD = React.createClass({
       <div style={{fontSize: 18, color: '#00FFFF' }} >
         <Markdown>
         {`
-			onClick={() => mM1
+			onClick={() => {mM1
 				.ret(3)
-				.bnd(x => mM2.ret(2)		
+				.bnd(x => {mM2.ret(2)		
 					.bnd(cube)
 					.bnd(add,x)
-					.bnd(refresh)) }
+					.bnd(refresh)}) }}
         `}
         </Markdown>
       </div>
@@ -327,15 +328,15 @@ var ComponentChanceE = React.createClass({
       <div style={{fontSize: 18, color: '#00FFFF' }} >
         <Markdown>
         {`
-    onClick={() => mM1
+    onClick={() => {mM1
       .bnd(ran)
-      .bnd(x => mM2
+      .bnd(x => {mM2
         .bnd(ran)
-        .bnd(y => mM3
+        .bnd(y => {mM3
           .bnd(ran)
-          .bnd(z => mM4
+          .bnd(z => {mM4
             .bnd(this.ch,x,y,z)
-            .bnd(refresh)  ) ) )   }}
+            .bnd(refresh)  }) }) })   }}
         `}
         </Markdown>
       </div>
@@ -392,27 +393,27 @@ var ComponentJackpotB = React.createClass({
       <div style={{fontSize: 18, color: '#00FFFF' }} >
         <Markdown>
         {`
-      onClick={() => mM1
+      onClick={() => {mM1
         .bnd(ran)
         .bnd(branch, this.mM5
-          .bnd(this.ran).bnd(a => this.mM6
+          .bnd(this.ran).bnd(a => {this.mM6
                         .bnd(this.ran)
-                        .bnd(b => this.mM7
+                        .bnd(b => {this.mM7
                           .bnd(this.ran)
-                          .bnd(c => this.mM8
+                          .bnd(c => {this.mM8
                             .bnd(this.ch,a,b,c)     
-                          ) ) )  )
+                          }) }) })  )
         .bnd(ran)
-        .bnd(x => mM2
+        .bnd(x => {mM2
           .bnd(ran)
-          .bnd(y => mM3
+          .bnd(y => {mM3
             .bnd(ran)
-            .bnd(z => mM4
+            .bnd(z => {mM4
               .bnd(this.ch,x,y,z)
               .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))    
               .bnd(mM10.ret)
               .bnd(this.jackpot)
-              .bnd(refresh)    ) ) )   }
+              .bnd(refresh)    }) }) })   }}
         `}
         </Markdown>
       </div>
@@ -664,14 +665,14 @@ class B4 extends React.Component {
     this.mM2.ret(b);
     this.mM3.ret(c);
     if (a === b && a===c) {
-      this.mM4.ret('Winner! Three of a kind');
+      mon.ret('Winner! Three of a kind');
       return mon;
     }
     if (a === b || a ===c || b ===c) {
-      this.mM4.ret('Pair. Try for three');
+      mon.ret('Pair. Try for three');
       return mon;
     }
-    this.mM4.ret('Zilch. Don\'t give up now.');
+    mon.ret('Zilch. Don\'t give up now.');
     return mon;
   }
 
@@ -747,7 +748,7 @@ class B4 extends React.Component {
 <h2 style={{textAlign: 'center'}} >Javascript Monads</h2>
 <p>The monads in this demonstration are instances of the following class: </p>
 <ComponentPrimitive />
-<p>Monads can be instantiated with entities of any Javascript type, and the type of a monad's value can change. I won't go into detail about the category of monads. Its morphisms are accomplished by the monad methods "bnd" and "ret" in combination with functions such as those presented below. I'll only demonstrate, without formal proof, that "ret" is the left and right identity, and that the commutative property holds for chains of 'bnd' computations; i.e., the order of evaluation of monads in a chain does not affect the final result.</p>
+<p>I won't go into detail about the category of monads. Its morphisms are accomplished with the monad methods "bnd" and "ret" in combination with functions such as those presented below. I'll only demonstrate, without formal proof, that "ret" is the left and right identity, and that the commutative property holds for chains of 'bnd' computations; i.e., the order of evaluation of monads in a chain does not affect the final result.</p>
 <p> First, let's see how these monads work. Trivially, they can provide a format for organizing code, as the following example demonstates. Here's the function "chance":</p>
 
 <ComponentChanceA />
@@ -789,13 +790,13 @@ class B4 extends React.Component {
       </button>
 <p>We gave mM1 the value "3" and added "4" to it. Next, we show how a monad can pass its value down the line for a later computation. mM1 get the value "3", mM2 gets the value "2", which is cubed to give "8", and finally, mM2 gets the value 3 + 8 = 11. </p>
       <button style={this.bool4 ? this.style1 : this.style2 } 
-   onClick={() => mM1
+   onClick={() => {mM1
 .ret(3)
-.bnd(x => mM2
+.bnd(x => {mM2
 	.ret(2)
 	.bnd(cube)
 	.bnd(add,x)
-	.bnd(refresh) ) }
+	.bnd(refresh) }) }}
 
    onMouseEnter={ () => this.cT4() }
    onMouseLeave={ () => this.cF4() }
@@ -805,18 +806,19 @@ class B4 extends React.Component {
 <p>Play around with monads and, lo and behold, the lambda calculus appears out of the mist! </p>
 <p>In the next example, x = 3, y = 4, and the final computation is x*x + y*y = 25. Along the way, mM3 is assigned the value "50", which is doubled and multiplied times x + y, giving a result of 700.  </p>
       <button style={this.bool5 ? this.style1 : this.style2 } 
- onClick={() => mM1
+ onClick={() => {mM1
 	.ret(3)
-	.bnd(x => mM2
+	.bnd(x => {mM2
 		.ret(2)
 		.bnd(square)
-    .bnd(y => mM3
+    .bnd(y => {mM3
     	.ret(50)
     	.bnd(double)
       .bnd(mult,(x+y))
-      .bnd(() => mM4.ret(0))
+      .bnd(mM4
+      .ret(0)
       .bnd(add,(x*x + y*y))
-			.bnd(refresh)  ) ) }
+			.bnd(refresh) ) }) }) }}
 		 onMouseEnter={ () => this.cT5() }
 		 onMouseLeave={ () => this.cF5() }
         >
@@ -829,15 +831,15 @@ class B4 extends React.Component {
     <ComponentRandom />
       <p> With these functions, we can implement "chance" as a single chain of monads. Click the code below to see it in action. </p>
   <button style={this.bool1 ? this.style1 : this.style2 } 
-    onClick={() => mM1
+    onClick={() => {mM1
       .bnd(ran)
-      .bnd(x => mM2
+      .bnd(x => {mM2
         .bnd(ran)
-        .bnd(y => mM3
+        .bnd(y => {mM3
           .bnd(ran)
-          .bnd(z => mM4
+          .bnd(z => {mM4
             .bnd(this.ch,x,y,z)
-            .bnd(refresh)  ) ) )   }
+            .bnd(refresh)  }) }) })   }}
    onMouseEnter={ () => this.cT1() }
    onMouseLeave={ () => this.cF1() }
         >
@@ -850,27 +852,27 @@ class B4 extends React.Component {
         <ComponentJackpotA />
         <p>We'll use "branch" to run chance in two separate groups of monads. We'll assign the array of all six randomly generated numbers to monads mM9 and mM10, and then mM10 will use its "bnd" method to call "jackpot". The "random" numbers are either 1, 2, 3,or 4, so there are 4 to the power of 6 (4,096) possible arrays. Only four of those are jackpot arrays, so the probability of hitting the jackpot on each turn is approximately 1/1000.   </p>
   <button style={this.bool2 ? this.style1 : this.style2 } 
-    onClick={() => mM1
+    onClick={() => {mM1
       .bnd(ran)
       .bnd(branch, this.mM5
-        .bnd(this.ran).bnd(a => this.mM6
+        .bnd(this.ran).bnd(a => {this.mM6
                       .bnd(this.ran)
-                      .bnd(b => this.mM7
+                      .bnd(b => {this.mM7
                         .bnd(this.ran)
-                        .bnd(c => this.mM8
+                        .bnd(c => {this.mM8
                           .bnd(this.ch,a,b,c)
-                        ) ) )  )
+                        }) }) })  )
       .bnd(ran)
-      .bnd(x => mM2
+      .bnd(x => {mM2
         .bnd(ran)
-        .bnd(y => mM3
+        .bnd(y => {mM3
           .bnd(ran)
-          .bnd(z => mM4
+          .bnd(z => {mM4
             .bnd(this.ch,x,y,z)
             .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))
             .bnd(mM10.ret)
             .bnd(this.jackpot)
-            .bnd(refresh)    ) ) )   }
+            .bnd(refresh)    }) }) })   }}
    onMouseEnter={ () => this.cT2() }
    onMouseLeave={ () => this.cF2() }
         >

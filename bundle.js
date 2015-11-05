@@ -102,7 +102,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n\t\t\tclass M_Primitive {\n\t\t\t\tconstructor(z) {\n\t\t\n\t\t\t\t  this.x = z;\n\t\t\n\t\t\t\t  this.bnd = (func, ...args) => {\n\t\t\t\t    return func(this.x, this, ...args);\n\t\t\t\t  };\n\t\t\n\t\t\t\t  this.fmap = (func, ...args) => {\n\t\t\t\t    this.x = func(this.x, ...args);\n\t\t\t\t    return this;\n\t\t\t\t  }\n\t\t\n\t\t\t\t  this.id = () => {return this};\n\t\t\n\t\t\t\t  this.ret = a => {\n\t\t\t\t    this.x = a;\n\t\t\t\t    return this;\n\t\t\t\t  };\n\t\t\t\t}\n\t\t\t};\n        '
+	        '\n\t\t\tclass Monad {\n\t\t\t\tconstructor(z) {\n\t\t\n\t\t\t\t  this.x = z;\n\t\t\n\t\t\t\t  this.bnd = (func, ...args) => {\n\t\t\t\t    return func(this.x, this, ...args);\n\t\t\t\t  };\n\t\t\n\t\t\t\t  this.fmap = (func, ...args) => {\n\t\t\t\t    this.x = func(this.x, ...args);\n\t\t\t\t    return this;\n\t\t\t\t  }\n\t\t\n\t\t\t\t  this.id = () => {return this};\n\t\t\n\t\t\t\t  this.ret = a => {\n\t\t\t\t    this.x = a;\n\t\t\t\t    return this;\n\t\t\t\t  };\n\t\t\t\t}\n\t\t\t};\n        '
 	      )
 	    );
 	  }
@@ -204,7 +204,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n\t\t\tonClick={() => {mM1\n\t\t\t\t.ret(3)\n\t\t\t\t.bnd(x => {mM2.ret(2)\t\t\n\t\t\t\t\t.bnd(cube)\n\t\t\t\t\t.bnd(add,x)\n\t\t\t\t\t.bnd(refresh)}) }}\n        '
+	        '\n\t\t\tonClick={() => mM1\n\t\t\t\t.ret(3)\n\t\t\t\t.bnd(x => mM2.ret(2)\t\t\n\t\t\t\t\t.bnd(cube)\n\t\t\t\t\t.bnd(add,x)\n\t\t\t\t\t.bnd(refresh)) }\n        '
 	      )
 	    );
 	  }
@@ -221,7 +221,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n\t\t onClick={() => {mM1\n\t\t\t.ret(3)\n\t\t\t.bnd(x => {mM2\n\t\t\t\t.ret(2)\n\t\t\t\t.bnd(square)\n\t\t\t\t.bnd(y => {mM3\n\t\t\t\t\t.ret(50)\n\t\t\t\t\t.bnd(double)\n\t\t\t\t  .bnd(mult,(x+y))\n\t\t\t\t  .bnd(mM4\n          .ret(0)\n\t\t\t\t  .bnd(add,(x*x + y*y))\n\t\t\t\t\t.bnd(refresh) ) }) }) }}\t\t\n        '
+	        '\n      onClick={() => {mM1\n     \t.ret(3)\n     \t.bnd(x => mM2\n     \t\t.ret(2)\n     \t\t.bnd(square)\n         .bnd(y => mM3\n         \t.ret(50)\n         \t.bnd(double)\n           .bnd(mult,(x+y))\n           .bnd(() => mM4.ret(0))\n           .bnd(add,(x*x + y*y))\n     \t\t\t.bnd(refresh)  ) ) }}    \n        '
 	      )
 	    );
 	  }
@@ -238,7 +238,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n\t\t\tonClick={() => {mM1\n\t\t\t\t.ret(3)\n\t\t\t\t.bnd(x => {mM2.ret(2)\t\t\n\t\t\t\t\t.bnd(cube)\n\t\t\t\t\t.bnd(add,x)\n\t\t\t\t\t.bnd(refresh)}) }}\n        '
+	        '\n\t\t\tonClick={() => {mM1\n\t\t\t\t.ret(3)\n\t\t\t\t.bnd(x => mM2.ret(2)\t\t\n\t\t\t\t\t.bnd(cube)\n\t\t\t\t\t.bnd(add,x)\n\t\t\t\t\t.bnd(refresh)) }}\n        '
 	      )
 	    );
 	  }
@@ -255,7 +255,160 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n\t\t\tonClick={() => {mM1\n\t\t\t\t.ret(3)\n\t\t\t\t.bnd(x => {mM2.ret(2)\t\t\n\t\t\t\t\t.bnd(cube)\n\t\t\t\t\t.bnd(add,x)\n\t\t\t\t\t.bnd(refresh)}) }}\n        '
+	        '\n\t\t\tonClick={() => mM1\n\t\t\t\t.ret(3)\n\t\t\t\t.bnd(x => mM2.ret(2)\t\t\n\t\t\t\t\t.bnd(cube)\n\t\t\t\t\t.bnd(add,x)\n\t\t\t\t\t.bnd(refresh)) }\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentRandom = _react2['default'].createClass({
+	  displayName: 'ComponentRandom',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      ran = (x,mon) => {\n        mon.ret(Math.floor(Math.random() * (-4) + 5));     \n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentChanceD = _react2['default'].createClass({
+	  displayName: 'ComponentChanceD',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      ch = (x,mon,a,b,c) => {\n        if (a === b && a===c) {\n          mon.ret(\'Winner! Three of a kind\');     \n          return mon;\n        }\n        if (a === b || a ===c || b ===c) {\n          mon.ret(\'Pair. Try for three\');\n          return mon;\n        }\n        mon.ret(\'Zilch. Don\'t give up now.\');\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentChanceE = _react2['default'].createClass({
+	  displayName: 'ComponentChanceE',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n    onClick={() => mM1\n      .bnd(ran)\n      .bnd(x => mM2\n        .bnd(ran)\n        .bnd(y => mM3\n          .bnd(ran)\n          .bnd(z => mM4\n            .bnd(this.ch,x,y,z)\n            .bnd(refresh)  ) ) )   }}\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentBranchA = _react2['default'].createClass({
+	  displayName: 'ComponentBranchA',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n       branch = (x,mon,a) => {     \n         return mon;\n       }\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentJackpotA = _react2['default'].createClass({
+	  displayName: 'ComponentJackpotA',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n       jackpot = (x,mon) => {\n         let k = 1;\n         for (k;k<5;k+=1) {\n           if (x === [k,k,k,k,k,k]) {\n             this.mM10.ret("Jackpot!");\n             return mon;\n           }\n         }\n         this.mM10.ret("No jackpot this time");    \n         return mon;\n       }\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentJackpotB = _react2['default'].createClass({
+	  displayName: 'ComponentJackpotB',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      onClick={() => mM1\n        .bnd(ran)\n        .bnd(branch, this.mM5\n          .bnd(this.ran).bnd(a => this.mM6\n                        .bnd(this.ran)\n                        .bnd(b => this.mM7\n                          .bnd(this.ran)\n                          .bnd(c => this.mM8\n                            .bnd(this.ch,a,b,c)     \n                          ) ) )  )\n        .bnd(ran)\n        .bnd(x => mM2\n          .bnd(ran)\n          .bnd(y => mM3\n            .bnd(ran)\n            .bnd(z => mM4\n              .bnd(this.ch,x,y,z)\n              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))    \n              .bnd(mM10.ret)\n              .bnd(this.jackpot)\n              .bnd(refresh)    ) ) )   }\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentDummyD = _react2['default'].createClass({
+	  displayName: 'ComponentDummyD',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentDummyE = _react2['default'].createClass({
+	  displayName: 'ComponentDummyE',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentDummyF = _react2['default'].createClass({
+	  displayName: 'ComponentDummyF',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n        '
 	      )
 	    );
 	  }
@@ -347,6 +500,24 @@
 	      return;
 	    };
 
+	    this.cT5 = function () {
+	      var self = _this;
+	      _this.bool5 = true;
+	      setTimeout(function () {
+	        self.forceUpdate();
+	      }, 8);
+	      return;
+	    };
+
+	    this.cF5 = function () {
+	      var self = _this;
+	      _this.bool5 = false;
+	      setTimeout(function () {
+	        self.forceUpdate();
+	      }, 8);
+	      return;
+	    };
+
 	    this.refresh = function (x, mon) {
 	      _this.forceUpdate.apply(_this);
 	      return mon;
@@ -382,8 +553,21 @@
 	      return mon;
 	    };
 
+	    this.fnc = function (a, b) {
+	      return a.b;
+	    };
+
+	    this.branch = function (x, mon, a) {
+	      return mon;
+	    };
+
 	    this.rand = function (a, b) {
 	      return Math.floor(Math.random() * (a - b)) + b;
+	    };
+
+	    this.ran = function (x, mon) {
+	      mon.ret(Math.floor(Math.random() * -4 + 5));
+	      return mon;
 	    };
 
 	    this.chance = function (x, mon) {
@@ -405,11 +589,44 @@
 	      return mon;
 	    };
 
+	    this.ch = function (x, mon, a, b, c) {
+	      if (a === b && a === c) {
+	        mon.ret('Winner! Three of a kind');
+	        return mon;
+	      }
+	      if (a === b || a === c || b === c) {
+	        mon.ret('Pair. Try for three');
+	        return mon;
+	      }
+	      mon.ret('Zilch. Don\'t give up now.');
+	      return mon;
+	    };
+
+	    this.jackpot = function (x, mon) {
+	      var k = 1;
+	      for (k; k < 5; k += 1) {
+	        if (x === [k, k, k, k, k, k]) {
+	          _this.mM10.ret("Jackpot!");
+	          return mon;
+	        }
+	      }
+	      _this.mM10.ret("No jackpot this time");
+	      return mon;
+	    };
+
 	    this.render = function () {
+	      console.log(_this.mM8);
+	      console.log(_this.mM8.x);
 	      var mM1 = _this.mM1;
 	      var mM2 = _this.mM2;
 	      var mM3 = _this.mM3;
 	      var mM4 = _this.mM4;
+	      var mM5 = _this.mM5;
+	      var mM6 = _this.mM6;
+	      var mM7 = _this.mM7;
+	      var mM8 = _this.mM8;
+	      var mM9 = _this.mM9;
+	      var mM10 = _this.mM10;
 	      var refresh = _this.refresh;
 	      var square = _this.square;
 	      var cube = _this.cube;
@@ -417,6 +634,8 @@
 	      var tripple = _this.tripple;
 	      var add = _this.add;
 	      var mult = _this.mult;
+	      var ran = _this.ran;
+	      var branch = _this.branch;
 	      return _react2['default'].createElement(
 	        'div',
 	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 22 } },
@@ -476,6 +695,86 @@
 	            ' '
 	          ),
 	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM5: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this.style3 },
+	              mM5.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM6: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this.style3 },
+	              mM6.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM7: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this.style3 },
+	              mM7.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM8: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this.style3 },
+	              mM8.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM9: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this.style3 },
+	              mM9.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM10: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this.style3 },
+	              mM10.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
 	          _react2['default'].createElement('br', null)
 	        ),
 	        _react2['default'].createElement('br', null),
@@ -491,18 +790,18 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'First, let\'s take a look at monads in the category of primitive value monads. Then we\'ll look at monads whose values are objects and monads whose values are arrays. Here is the definition of the primitive value monad:  '
+	            'The monads in this demonstration are instances of the following class: '
 	          ),
 	          _react2['default'].createElement(ComponentPrimitive, null),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'I\'m going to postpone any discussion of precisely what sorts of categories and morphisms are involved here. I\'ll only demonstrate, without formal proof, that "ret" is the left and right identity, and that the commutative property holds; i.e., how computations are grouped in a chain of computations does not affect the result.'
+	            'Monads can be instantiated with entities of any Javascript type, and the type of a monad\'s value can change. I won\'t go into detail about the category of monads. Its morphisms are accomplished by the monad methods "bnd" and "ret" in combination with functions such as those presented below. I\'ll only demonstrate, without formal proof, that "ret" is the left and right identity, and that the commutative property holds for chains of \'bnd\' computations; i.e., the order of evaluation of monads in a chain does not affect the final result.'
 	          ),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            ' Let\'s see how these monads work. They can provide a format for organizing code, as the following example demonstates. Here\'s the function "chance":'
+	            ' First, let\'s see how these monads work. Trivially, they can provide a format for organizing code, as the following example demonstates. Here\'s the function "chance":'
 	          ),
 	          _react2['default'].createElement(ComponentChanceA, null),
 	          _react2['default'].createElement(
@@ -548,7 +847,7 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'These are the functions we are using to demonstrate primitive monads:'
+	            'These are some of the functions we are using to demonstrate primitive monads:'
 	          ),
 	          _react2['default'].createElement(ComponentMorphismsA, null),
 	          _react2['default'].createElement(
@@ -558,15 +857,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool2 ? _this.style1 : _this.style2,
+	            { style: _this.bool3 ? _this.style1 : _this.style2,
 	              onClick: function () {
 	                mM1.ret(3).bnd(add, 4).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT2();
+	                return _this.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF2();
+	                return _this.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentAddA, null)
@@ -578,18 +877,18 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool2 ? _this.style1 : _this.style2,
+	            { style: _this.bool4 ? _this.style1 : _this.style2,
 	              onClick: function () {
-	                mM1.ret(3).bnd(function (x) {
-	                  mM2.ret(2).bnd(cube).bnd(add, x).bnd(refresh);
+	                return mM1.ret(3).bnd(function (x) {
+	                  return mM2.ret(2).bnd(cube).bnd(add, x).bnd(refresh);
 	                });
 	              },
 
 	              onMouseEnter: function () {
-	                return _this.cT2();
+	                return _this.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF2();
+	                return _this.cF4();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentLambdaA, null)
@@ -597,7 +896,7 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'We play around with monads and, lo and behold, the lambda calculus appears! '
+	            'Play around with monads and, lo and behold, the lambda calculus appears out of the mist! '
 	          ),
 	          _react2['default'].createElement(
 	            'p',
@@ -606,11 +905,114 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
+	            { style: _this.bool5 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                return mM1.ret(3).bnd(function (x) {
+	                  return mM2.ret(2).bnd(square).bnd(function (y) {
+	                    return mM3.ret(50).bnd(double).bnd(mult, x + y).bnd(function () {
+	                      return mM4.ret(0);
+	                    }).bnd(add, x * x + y * y).bnd(refresh);
+	                  });
+	                });
+	              },
+	              onMouseEnter: function () {
+	                return _this.cT5();
+	              },
+	              onMouseLeave: function () {
+	                return _this.cF5();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentLambdaB, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Now we will use "ch()", a modification of "chance()" used in the first example. Here is the code: '
+	          ),
+	          _react2['default'].createElement(ComponentChanceD, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'And here is the code for "ran()": '
+	          ),
+	          _react2['default'].createElement(ComponentRandom, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            ' With these functions, we can implement "chance" as a single chain of monads. Click the code below to see it in action. '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this.bool1 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                return mM1.bnd(ran).bnd(function (x) {
+	                  return mM2.bnd(ran).bnd(function (y) {
+	                    return mM3.bnd(ran).bnd(function (z) {
+	                      return mM4.bnd(_this.ch, x, y, z).bnd(refresh);
+	                    });
+	                  });
+	                });
+	              },
+	              onMouseEnter: function () {
+	                return _this.cT1();
+	              },
+	              onMouseLeave: function () {
+	                return _this.cF1();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentChanceE, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'The functional algorithm works, and I think most people would find it more esthetically pleasing than the first imperitive example. It would be interesting to know which of these two algorithms is more efficient in the browsers. If anyone wants to volunteer to run some benchmark tests, just raise an issue  or make a pull request at ',
+	            _react2['default'].createElement(
+	              'a',
+	              { href: 'https://github.com/dschalk/javascript-monads', style: { color: 'green' } },
+	              'https://github.com/dschalk/javascript-monads'
+	            ),
+	            ' or ',
+	            _react2['default'].createElement(
+	              'a',
+	              { href: 'https://github.com/dschalk/mobservable-monads', style: { color: 'green' } },
+	              'https://github.com/dschalk/mobservable-monads.'
+	            ),
+	            ' '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Branching is facilitated by the function "branch()", defined as follows:  '
+	          ),
+	          _react2['default'].createElement(ComponentBranchA, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'For the next demonstration, we use the function "jackpot". It\'s arguments are an array and a monad. We will call it with the "bnd" method of a monad whose value is an array. Here is "jackpot":  '
+	          ),
+	          _react2['default'].createElement(ComponentJackpotA, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'We\'ll use "branch" to run chance in two separate groups of monads. We\'ll assign the array of all six randomly generated numbers to monads mM9 and mM10, and then mM10 will use its "bnd" method to call "jackpot". The "random" numbers are either 1, 2, 3,or 4, so there are 4 to the power of 6 (4,096) possible arrays. Only four of those are jackpot arrays, so the probability of hitting the jackpot on each turn is approximately 1/1000.   '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
 	            { style: _this.bool2 ? _this.style1 : _this.style2,
 	              onClick: function () {
-	                mM1.ret(3).bnd(function (x) {
-	                  mM2.ret(2).bnd(square).bnd(function (y) {
-	                    mM3.ret(50).bnd(double).bnd(mult, x + y).bnd(mM4.ret(0).bnd(add, x * x + y * y).bnd(refresh));
+	                return mM1.bnd(ran).bnd(branch, _this.mM5.bnd(_this.ran).bnd(function (a) {
+	                  return _this.mM6.bnd(_this.ran).bnd(function (b) {
+	                    return _this.mM7.bnd(_this.ran).bnd(function (c) {
+	                      return _this.mM8.bnd(_this.ch, a, b, c);
+	                    });
+	                  });
+	                })).bnd(ran).bnd(function (x) {
+	                  return mM2.bnd(ran).bnd(function (y) {
+	                    return mM3.bnd(ran).bnd(function (z) {
+	                      return mM4.bnd(_this.ch, x, y, z).bnd(function () {
+	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
+	                      }).bnd(mM10.ret).bnd(_this.jackpot).bnd(refresh);
+	                    });
 	                  });
 	                });
 	              },
@@ -621,22 +1023,17 @@
 	                return _this.cF2();
 	              }
 	            },
-	            _react2['default'].createElement(ComponentLambdaB, null)
+	            _react2['default'].createElement(ComponentJackpotB, null)
 	          ),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement('br', null)
+	          _react2['default'].createElement('div', { style: { height: 500 } })
 	        )
 	      );
 	    };
 
-	    var M_Primitive = function M_Primitive(z) {
+	    var Monad = function Monad(z) {
 	      var _this2 = this;
 
-	      _classCallCheck(this, M_Primitive);
+	      _classCallCheck(this, Monad);
 
 	      this.x = z;
 
@@ -669,80 +1066,16 @@
 
 	    ;
 
-	    var M_Object = function M_Object(ob) {
-	      var _this3 = this;
-
-	      _classCallCheck(this, M_Object);
-
-	      this.x = ob;
-
-	      this.bnd = function (func) {
-	        for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-	          args[_key3 - 1] = arguments[_key3];
-	        }
-
-	        return func.apply(undefined, [_this3.x, _this3].concat(args));
-	      };
-
-	      this.fmap = function (func) {
-	        for (var _len4 = arguments.length, args = Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
-	          args[_key4 - 1] = arguments[_key4];
-	        }
-
-	        _this3.x = func.apply(undefined, [_this3.x].concat(args));
-	        return _this3;
-	      };
-
-	      this.id = function () {
-	        return _this3;
-	      };
-
-	      this.ret = function (w) {
-	        Object.assign(_this3.x, w);
-	        return _this3;
-	      };
-	    };
-
-	    var M_Array = function M_Array(z) {
-	      var _this4 = this;
-
-	      _classCallCheck(this, M_Array);
-
-	      this.x = z;
-
-	      this.bnd = function (func) {
-	        for (var _len5 = arguments.length, args = Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
-	          args[_key5 - 1] = arguments[_key5];
-	        }
-
-	        return func.apply(undefined, [_this4.x, _this4].concat(args));
-	      };
-
-	      this.fmap = function (func) {
-	        for (var _len6 = arguments.length, args = Array(_len6 > 1 ? _len6 - 1 : 0), _key6 = 1; _key6 < _len6; _key6++) {
-	          args[_key6 - 1] = arguments[_key6];
-	        }
-
-	        _this4.x = func.apply(undefined, [_this4.x].concat(args));
-	        return _this4;
-	      };
-
-	      this.id = function () {
-	        return _this4;
-	      };
-
-	      this.ret = function (a) {
-	        _this4.x.replace(a);
-	        return _this4;
-	      };
-	    };
-
-	    ;
-
-	    this.mM1 = new M_Primitive(0);
-	    this.mM2 = new M_Primitive(0);
-	    this.mM3 = new M_Primitive(0);
-	    this.mM4 = new M_Primitive(0);
+	    this.mM1 = new Monad(0);
+	    this.mM2 = new Monad(0);
+	    this.mM3 = new Monad(0);
+	    this.mM4 = new Monad(0);
+	    this.mM5 = new Monad(0);
+	    this.mM6 = new Monad(0);
+	    this.mM7 = new Monad(0);
+	    this.mM8 = new Monad(0);
+	    this.mM9 = new Monad(0);
+	    this.mM10 = new Monad(0);
 	    this.style2 = { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
 	      color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
 	      marginLeft: 12, fontSize: 22 };
@@ -753,6 +1086,7 @@
 	    this.bool2 = false;
 	    this.bool3 = false;
 	    this.bool4 = false;
+	    this.bool5 = false;
 	  }
 
 	  return B4;

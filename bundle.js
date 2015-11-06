@@ -98,7 +98,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -115,7 +115,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -132,7 +132,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -149,7 +149,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -166,7 +166,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -183,7 +183,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -200,7 +200,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -217,7 +217,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -234,7 +234,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -251,7 +251,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -268,7 +268,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -285,7 +285,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -302,7 +302,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -319,7 +319,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -336,7 +336,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -353,28 +353,28 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      onClick={() => mM1\n        .bnd(ran)\n        .bnd(branch, this.mM5\n          .bnd(this.ran).bnd(a => this.mM6\n                        .bnd(this.ran)\n                        .bnd(b => this.mM7\n                          .bnd(this.ran)\n                          .bnd(c => this.mM8\n                            .bnd(this.ch,a,b,c)     \n                          ) ) )  )\n        .bnd(ran)\n        .bnd(x => mM2\n          .bnd(ran)\n          .bnd(y => mM3\n            .bnd(ran)\n            .bnd(z => mM4\n              .bnd(this.ch,x,y,z)\n              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))    \n              .bnd(mM10.ret)\n              .bnd(this.jackpot)\n              .bnd(refresh)    ) ) )   }\n        '
+	        '\n      onClick={() => mM1\n        .bnd(ran)\n        .bnd(branch, mM5\n          .bnd(ran).bnd(a => mM6\n                        .bnd(ran)\n                        .bnd(b => mM7\n                          .bnd(ran)\n                          .bnd(c => mM8\n                            .bnd(this.ch,a,b,c)\n                          ) ) )  )\n        .bnd(ran)\n        .bnd(x => mM2\n          .bnd(ran)\n          .bnd(y => mM3\n            .bnd(ran)\n            .bnd(z => mM4\n              .bnd(this.ch,x,y,z)\n              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))      \n              .bnd(mM10.ret)\n              .bnd(this.jackpot)\n              .bnd(refresh)    ) ) )   }\n             '
 	      )
 	    );
 	  }
 
 	});
 
-	var ComponentDummyD = _react2['default'].createClass({
-	  displayName: 'ComponentDummyD',
+	var ComponentHypotenuse = _react2['default'].createClass({
+	  displayName: 'ComponentHypotenuse',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n      onClick={() => mM1\n        .bnd(branch, mM5\n        .ret(0).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)\n        .bnd(a => { setTimeout(function() {\n                   mM5.ret("a*a + b*b =")\n                  .bnd(() => mM6.ret(mM1.x)\n                  .bnd(a => mM7\n                    .ret(mM2.x)\n                    .bnd(b => mM8\n                      .ret([a*a,"+",b*b,"=", a*a+b*b])\n                      .bnd(() => mM10.ret(Math.sqrt(mM8.x[4]))    \n                        .bnd(() => mM9.ret("hypotenuse:")\n                        .bnd(refresh) ))))) },900 ) }))\n        .bnd(ran)\n        .bnd(x => mM2\n          .bnd(ran)\n          .bnd(y => mM3\n            .bnd(ran)\n            .bnd(z => mM4\n              .bnd(this.ch,x,y,z)\n              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))\n              .bnd(mM10.ret)\n              .bnd(this.jackpot)\n              .bnd(refresh) ))) }\n        '
 	      )
 	    );
 	  }
@@ -387,7 +387,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -404,7 +404,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 22, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -559,6 +559,12 @@
 
 	    this.branch = function (x, mon, a) {
 	      return mon;
+	    };
+
+	    this.branchT = function (x, mon, a) {
+	      setTimeout(function () {
+	        return mon;
+	      }, 1500);
 	    };
 
 	    this.rand = function (a, b) {
@@ -781,7 +787,7 @@
 	        _react2['default'].createElement('br', null),
 	        _react2['default'].createElement(
 	          'div',
-	          { style: { width: '65%', textAlign: 'left', marginLeft: 40, marginRight: 40, fontSize: 20 } },
+	          { style: { width: '65%', textAlign: 'left', marginLeft: 40, marginRight: 40, fontSize: 24 } },
 	          _react2['default'].createElement(
 	            'h2',
 	            { style: { textAlign: 'center' } },
@@ -1000,10 +1006,10 @@
 	            'button',
 	            { style: _this.bool2 ? _this.style1 : _this.style2,
 	              onClick: function () {
-	                return mM1.bnd(ran).bnd(branch, _this.mM5.bnd(_this.ran).bnd(function (a) {
-	                  return _this.mM6.bnd(_this.ran).bnd(function (b) {
-	                    return _this.mM7.bnd(_this.ran).bnd(function (c) {
-	                      return _this.mM8.bnd(_this.ch, a, b, c);
+	                return mM1.bnd(ran).bnd(branch, mM5.bnd(ran).bnd(function (a) {
+	                  return mM6.bnd(ran).bnd(function (b) {
+	                    return mM7.bnd(ran).bnd(function (c) {
+	                      return mM8.bnd(_this.ch, a, b, c);
 	                    });
 	                  });
 	                })).bnd(ran).bnd(function (x) {
@@ -1024,6 +1030,64 @@
 	              }
 	            },
 	            _react2['default'].createElement(ComponentJackpotB, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'And here the branch displays the square root of the sum of the squares of the first two random numbers:  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this.bool3 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                return mM1.bnd(branch, mM5.ret(0).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(function (a) {
+	                  setTimeout(function () {
+	                    mM5.ret("a*a + b*b =").bnd(function () {
+	                      return mM6.ret(mM1.x).bnd(function (a) {
+	                        return mM7.ret(mM2.x).bnd(function (b) {
+	                          return mM8.ret([a * a, "+", b * b, "=", a * a + b * b]).bnd(function () {
+	                            return mM10.ret(Math.sqrt(mM8.x[4])).bnd(function () {
+	                              return mM9.ret("hypotenuse:").bnd(refresh);
+	                            });
+	                          });
+	                        });
+	                      });
+	                    });
+	                  }, 900);
+	                })).bnd(ran).bnd(function (x) {
+	                  return mM2.bnd(ran).bnd(function (y) {
+	                    return mM3.bnd(ran).bnd(function (z) {
+	                      return mM4.bnd(_this.ch, x, y, z).bnd(function () {
+	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
+	                      }).bnd(mM10.ret).bnd(_this.jackpot).bnd(refresh);
+	                    });
+	                  });
+	                });
+	              },
+	              onMouseEnter: function () {
+	                return _this.cT3();
+	              },
+	              onMouseLeave: function () {
+	                return _this.cF3();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentHypotenuse, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            ' If you organizes an application with instances of Monad, please tell me about it. I am going to look into the feasibility of feeding websocket data into a monad and having it send instructions down branches in accordance with the message prefixes. The ',
+	            _react2['default'].createElement(
+	              'a',
+	              { href: 'http://schalk.net', style: { color: 'green' } },
+	              'game of Score'
+	            ),
+	            ' seems like a good candida1te.'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            ' Is this fun, or what? '
 	          ),
 	          _react2['default'].createElement('div', { style: { height: 500 } })
 	        )

@@ -23,7 +23,7 @@ var ComponentBlank = React.createClass({
 var ComponentPrimitive = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
       class Monad {
@@ -52,7 +52,7 @@ var ComponentPrimitive = React.createClass({
 var ComponentChanceA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
 			chance = (x,mon) => {
@@ -84,7 +84,7 @@ var ComponentChanceA = React.createClass({
 var ComponentChanceB = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
 onClick={() => {mM1
@@ -101,7 +101,7 @@ onClick={() => {mM1
 var ComponentRet = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
 		 onClick={() => {mM1	
@@ -124,7 +124,7 @@ var ComponentRet = React.createClass({
 var ComponentMorphismsA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
 			refresh = (x,mon) => {
@@ -172,7 +172,7 @@ var ComponentMorphismsA = React.createClass({
 var ComponentAddA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
 onClick={() => {mM1.ret(3).bnd(add,4).bnd(refresh)  }}
@@ -187,7 +187,7 @@ onClick={() => {mM1.ret(3).bnd(add,4).bnd(refresh)  }}
 var ComponentLambdaA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
 			onClick={() => mM1
@@ -207,7 +207,7 @@ var ComponentLambdaA = React.createClass({
 var ComponentLambdaB = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
       onClick={() => {mM1
@@ -233,7 +233,7 @@ var ComponentLambdaB = React.createClass({
 var ComponentLambdaC = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
 			onClick={() => {mM1
@@ -253,7 +253,7 @@ var ComponentLambdaC = React.createClass({
 var ComponentLambdaD = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
 			onClick={() => mM1
@@ -273,7 +273,7 @@ var ComponentLambdaD = React.createClass({
 var ComponentRandom = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
       ran = (x,mon) => {
@@ -291,7 +291,7 @@ var ComponentRandom = React.createClass({
 var ComponentChanceD = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
       ch = (x,mon,a,b,c) => {
@@ -317,7 +317,7 @@ var ComponentChanceD = React.createClass({
 var ComponentChanceE = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
     onClick={() => mM1
@@ -340,7 +340,7 @@ var ComponentChanceE = React.createClass({
 var ComponentBranchA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
        branch = (x,mon,a) => {     
@@ -357,7 +357,7 @@ var ComponentBranchA = React.createClass({
 var ComponentJackpotA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
        jackpot = (x,mon) => {
@@ -382,7 +382,7 @@ var ComponentJackpotA = React.createClass({
 var ComponentJackpotB = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
       onClick={() => mM1
@@ -414,12 +414,36 @@ var ComponentJackpotB = React.createClass({
 
 });
 
-var ComponentDummyD = React.createClass({
+var ComponentHypotenuse = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
+      onClick={() => mM1
+        .bnd(branch, mM5
+        .ret(0).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)
+        .bnd(a => { setTimeout(function() {
+                   mM5.ret("a*a + b*b =")
+                  .bnd(() => mM6.ret(mM1.x)
+                  .bnd(a => mM7
+                    .ret(mM2.x)
+                    .bnd(b => mM8
+                      .ret([a*a,"+",b*b,"=", a*a+b*b])
+                      .bnd(() => mM10.ret(Math.sqrt(mM8.x[4]))    
+                        .bnd(() => mM9.ret("hypotenuse:")
+                        .bnd(refresh) ))))) },900 ) }))
+        .bnd(ran)
+        .bnd(x => mM2
+          .bnd(ran)
+          .bnd(y => mM3
+            .bnd(ran)
+            .bnd(z => mM4
+              .bnd(this.ch,x,y,z)
+              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))
+              .bnd(mM10.ret)
+              .bnd(this.jackpot)
+              .bnd(refresh) ))) }
         `}
         </Markdown>
       </div>
@@ -431,7 +455,7 @@ var ComponentDummyD = React.createClass({
 var ComponentDummyE = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
         `}
@@ -445,7 +469,7 @@ var ComponentDummyE = React.createClass({
 var ComponentDummyF = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
         `}
@@ -734,7 +758,7 @@ class B4 extends React.Component {
  </div>
       <br /><br /> 
 
-  <div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: 40, fontSize: 20 }} >
+  <div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: 40, fontSize: 24 }} >
 
 <h2 style={{textAlign: 'center'}} >Javascript Monads</h2>
 <p>The monads in this demonstration are instances of the following class: </p>
@@ -868,12 +892,44 @@ class B4 extends React.Component {
         >
         <ComponentJackpotB />
    </button>
+   <p>And here the branch displays the square root of the sum of the squares of the first two random numbers:  </p>
 
+  <button style={this.bool3 ? this.style1 : this.style2 } 
+    onClick={() => mM1
+      .bnd(branch, mM5
+      .ret(0).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)
+      .bnd(a => { setTimeout(function() {
+                 mM5.ret("a*a + b*b =")
+                .bnd(() => mM6.ret(mM1.x)
+                .bnd(a => mM7
+                  .ret(mM2.x)
+                  .bnd(b => mM8
+                    .ret([a*a,"+",b*b,"=", a*a+b*b])
+                    .bnd(() => mM10.ret(Math.sqrt(mM8.x[4]))
+                      .bnd(() => mM9.ret("hypotenuse:")
+                      .bnd(refresh) ))))) },900 ) }))
+      .bnd(ran)
+      .bnd(x => mM2
+        .bnd(ran)
+        .bnd(y => mM3
+          .bnd(ran)
+          .bnd(z => mM4
+            .bnd(this.ch,x,y,z)
+            .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))
+            .bnd(mM10.ret)
+            .bnd(this.jackpot)
+            .bnd(refresh) ))) }
+   onMouseEnter={ () => this.cT3() }
+   onMouseLeave={ () => this.cF3() }
+        >
+        <ComponentHypotenuse />
+   </button>
 
+   <p> If you organizes an application with instances of Monad, please tell me about it. I am going to look into the feasibility of feeding websocket data into a monad and having it send instructions down branches in accordance with the message prefixes. The <a href="http://schalk.net" style={{color: 'green' }}>game of Score</a> seems like a good candida1te.</p>
+   
+   <p> Is this fun, or what? </p>
 
-   <div style={{height:500}}></div>
-
-
+   <div style={{height:500}} />
 
 
 </div>
@@ -882,25 +938,6 @@ class B4 extends React.Component {
 }
 }
 render(<B4 key='B4' />, document.getElementById('divSix'));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

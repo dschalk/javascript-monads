@@ -1089,6 +1089,98 @@
 	            null,
 	            ' Is this fun, or what? '
 	          ),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'h2',
+	            null,
+	            'The Category of Monads'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'The Monad constructor will accept a value of any type or degree of complexity. Monad instances can exchange their values for any other values, most simply by using the ret method. bnd can accept any function that maps a value to a monad. '
+	          ),
+	          _react2['default'].createElement(
+	            'h3',
+	            null,
+	            'THEOREM: All possible monads form a category whose morphisms are bnd in combination with all functions that map values to monads. '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Here are some facts about these monads:'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '(1) For any monad m and value v, m.ret(v) maps v to m, giving m the value v. Since m.ret maps values to monads, m.ret is a valid argument for its own or any other monad\'s bnd method. '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '(2) m.bnd(m.ret) = m  Proof: By definition, m.bnd(m.ret) = m.ret(m.x, this ...args). Since bnd uses only the first argument, the equation is equivalent to m.ret(m.x). By definition, m.ret(m.x) assigns the value m.x to m.x and returns m. So m.bnd(m.ret) returns m unchanged, which is what we set out to prove. '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '(3) m.bnd(f).bnd(g) = m.bnd(a => f(a).bnd(g)) for all monads m and functions f which map values to monads, where a is the original value of m. We can prove this by showing that both sides of the equation return g(f(a).x). f is not supplied with any supplemental arguments, so m.bnd(f) = f(m.x). Now we have (f(m.x)).bnd(g) By the definition of bnd, (f(m.x)).bnd(g) = g(f(m.x)) since bnd had only one argument. Remember, for any monad m, if m.bnd takes only one argument it has to be a function, and by the definition of bnd, that function takes is given only one argument, the value of m. So when there are no extra arguments, m.bnd(f) = f(m.x). That is why (f(m.x)).bnd(g) = g(f(m.x)). This completes the first half of the proof. In the right side of the equation, the monad f(a) calls bnd(g), resulting (again by the definition of bnd) in a monad being returned with a value of g((a).x). Proof complete. Here are a couple of demonstrations:  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this.bool4 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                return mM1.bnd(mM1.ret).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this.cT4();
+	              },
+	              onMouseLeave: function () {
+	                return _this.cF4();
+	              }
+	            },
+	            'mM1.bnd(mM1.ret)'
+	          ),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this.bool5 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                return mM2.bnd(add, 2).bnd(cube).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this.cT5();
+	              },
+	              onMouseLeave: function () {
+	                return _this.cF5();
+	              }
+	            },
+	            'mM2.bnd(add, 2).bnd(cube)'
+	          ),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this.bool1 ? _this.style1 : _this.style2,
+	              onClick: function () {
+	                return mM3.bnd(function (a) {
+	                  return add(a, mM3, 2).bnd(cube);
+	                }).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this.cT1();
+	              },
+	              onMouseLeave: function () {
+	                return _this.cF1();
+	              }
+	            },
+	            'mM3.bnd(a => add(a, mM3, 2).bnd(cube,mM3))'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'When add was an argument of bnd, it was provided with the calling monad\'s value and "this", which was the calling monad. Since bnd didn\'t provide these arguments, we did. add is defined as a function of three arguments. Notice we didn\'t have to specify the value of a. bnd saw to it that mM3\'s value was assigned to a. The point is that the order of evaluation of links in a monad chain does not matter. In the example, we called bnd on f and used the result to call bnd on g, then we called bnd on the composit function and got the same answer, as expected.'
+	          ),
 	          _react2['default'].createElement('div', { style: { height: 500 } })
 	        )
 	      );

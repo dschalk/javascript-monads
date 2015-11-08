@@ -519,11 +519,11 @@ complexity. Monad instances can exchange their values for any other
 values, most simply by using the ret method. bnd can accept any function
 that maps a value to a monad.
 
-### DEFINITION: Monad is the union of the set of all possible instances of the class Monad with the set of all functions that map values to monads.
+### DEFINITION: Monad is the union of the set of all possible instances of the class Monad with the set of all functions of the form (x,mon) => {...; return mon} where x is a value and mon is a monad.
 
-### THEOREM: The mappings of the set Monad onto itself by bnd(f) for all functions f in Monad, along with ret, is a mathematical monad.
+### THEOREM: The mappings of the set Monad onto itself by bnd(f) for all functions f in Monad, along with the monad method ret, form a mathematical monad.
 
-I will assume that the theorem is proven, and I will call instances of the class Monad "monads", in the discussion which follows. Remember, "A rose by any other name smells as sweet". This project is about creating Javascript applications, and certainly not about advancing the frontiers of mathematics. Seeing these monads adhere to the monad laws provides reassurance that they are flexible and reliable, so there will be some discussion of the monad laws but first, let's see them in action.  
+For purposes of this discussion, I will assume that the theorem is proven, and I will call instances of the class Monad "monads". Remember, "A rose by any other name smells as sweet". This project is about creating Javascript applications, and certainly not about advancing the frontiers of mathematics. Seeing these monads adhere to the monad laws provides reassurance that they are flexible and reliable, so I will include some examples demonstrating the monad laws. But first, let's see some monads in action.  
 
 Examples:
 
@@ -666,6 +666,9 @@ class B4 extends React.Component {
     this.bool3 = false;
     this.bool4 = false;
     this.bool5 = false;
+    this.test = (x) => {
+      return (new Monad(x + 1000));
+    }
 }
 
   style3 = {backgroundColor: '#000', textAlign: 'left', borderColor: 'darkblue', outline: 0,
@@ -883,6 +886,7 @@ class B4 extends React.Component {
     let mult = this.mult;
     let ran = this.ran;
     let branch = this.branch;
+    let test = this.test;
     return(
       <div style={{ backgroundColor: '#000', height: '100%' , width: '100%', color: '#FFE4C4', fontSize: 22 }}>
         <br /><br />

@@ -452,7 +452,137 @@ var ComponentHypotenuse = React.createClass({
 
 });
 
-var ComponentDummyE = React.createClass({
+var ComponentCube = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+       cube = (x,mon) => {     
+         mon.ret(x*x*x);
+         return mon;
+       };
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+
+});
+
+var ComponentBnd = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      this.bnd = (func, ...args) => {
+        return func(this.x, this, ...args);    
+      };
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+
+});
+
+var ComponentAdd = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      add = (x,mon,y) => {    
+        mon.ret(x + y);
+        return mon;
+      }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+
+});
+
+var ComponentDiscussion = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: 'burlywood' }} >
+        <Markdown>
+        {`
+The Category of Monads
+----------------------
+
+The Monad constructor will accept a value of any type or degree of
+complexity. Monad instances can exchange their values for any other
+values, most simply by using the ret method. bnd can accept any function
+that maps a value to a monad.
+
+### DEFINITION: Monad is the union of the set of all possible instances of the class Monad with the set of all functions that map values to monads.
+
+### THEOREM: The mappings of the set Monad onto itself by bnd(f) for all functions f in Monad, along with ret, is a mathematical monad.
+
+I will assume that the theorem is proven, and I will call instances of the class Monad "monads", in the discussion which follows. Remember, "A rose by any other name smells as sweet". This project is about creating Javascript applications, and certainly not about advancing the frontiers of mathematics. Seeing these monads adhere to the monad laws provides reassurance that they are flexible and reliable, so there will be some discussion of the monad laws but first, let's see them in action.  
+
+Examples:
+
+cube is defined as 
+
+cube = (x,mon) => {
+  mon.ret(x\\*x\\*x);
+  return mon;
+};
+
+It maps x -> x\\*x\\*x -> m, where m has the value, x\\*x\\*x. cube is a member of the Monad category 
+because it maps values to monads. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). No extra arguments were provided to bnd, so cube ignores the trailing arguments. Therefore, cube(this.x, this, x, mon  ...args) is essentially cube(this.x, this). m is returned with its former value cubed.
+
+add is defined as:
+
+add = (x,mon,y) => {
+  mon.ret(x + y);
+  return mon;
+}
+
+It takes two values, x and y, and a monad mon as asarguments, returning 
+m with a value of x + y. Since it maps values to monads, it too is 
+a member of the category Monad. By the definition of bnd, 
+monad.bnd(add,7) = add(monad.x, monad, 7), which returns m with a
+value of a new value of m.x = m.x + y.
+
+Here are some facts about these monads:
+
+(1) By the definition of ret, we know that for any monad m and value v,
+m.ret(v) maps v to m, giving m the value v. Since m.ret maps values to
+monads, m.ret is a valid argument for its own or any other monad's bnd
+method. It is a member of the category Monad.
+
+(2) m.bnd(m.ret) = m Proof: By definition, m.bnd(m.ret) = m.ret(m.x,
+this ...args). Since bnd uses only the first argument, the equation is
+equivalent to m.bnd(m.ret) = m.ret(m.x). By definition, m.ret(m.x)
+assigns the value m.x to m and returns m. But m.x already was the value
+of m, So m.bnd(m.ret) returns m unchanged, which is what we set out to
+prove.
+
+(3) m.bnd(f).bnd(g) = m.bnd(a =&gt; f(a).bnd(g)) for all monads m and
+functions f in the category Monad, where a is the original value of m.
+We can prove this by showing that both sides of the equation return
+g(f(a).x). f is not supplied with any supplemental arguments, so
+m.bnd(f) = f(m.x) = f(a). Now we have m.bnd(f).bnd(g) = (f(a)).bnd(g) By
+the definition of bnd, (f(a)).bnd(g) = g(f(a).x) since bnd had only one
+argument. This completes the first half of the proof. In the right side
+of the equation, the monad f(a) calls bnd(g). By the definition of bnd,
+f(a).bnd(g) = g(f(a).x) and the proof complete. Here are a couple of
+demonstrations:
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+
+});
+
+var DummyC = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 22, color: '#00FFFF' }} >
@@ -466,7 +596,7 @@ var ComponentDummyE = React.createClass({
 
 });
 
-var ComponentDummyF = React.createClass({
+var DummyD = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 22, color: '#00FFFF' }} >
@@ -479,6 +609,21 @@ var ComponentDummyF = React.createClass({
   }
 
 });
+
+var DummyE = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+
+});
+
 
 class B4 extends React.Component {
   constructor(props) {
@@ -928,15 +1073,8 @@ class B4 extends React.Component {
    <p> If you organizes an application with instances of Monad, please tell me about it. I am going to look into the feasibility of feeding websocket data into a monad and having it send instructions down branches in accordance with the message prefixes. The <a href="http://schalk.net" style={{color: 'green' }}>game of Score</a> seems like a good candida1te.</p>
    
    <p> Is this fun, or what? </p>
+   <ComponentDiscussion />
 <br />
-<h2>The Category of Monads</h2>
-<p>The Monad constructor will accept a value of any type or degree of complexity. Monad instances can exchange their values for any other values, most simply by using the ret method. bnd can accept any function that maps a value to a monad. </p>
-<h3>THEOREM: All possible monads form a category whose morphisms are bnd in combination with all functions that map values to monads. </h3>
-<p>Here are some facts about these monads:</p>
-<p>(1) For any monad m and value v, m.ret(v) maps v to m, giving m the value v. Since m.ret maps values to monads, m.ret is a valid argument for its own or any other monad's bnd method. </p>
-<p>(2) m.bnd(m.ret) = m  Proof: By definition, m.bnd(m.ret) = m.ret(m.x, this ...args). Since bnd uses only the first argument, the equation is equivalent to m.bnd(m.ret) = m.ret(m.x). By definition, m.ret(m.x) assigns the value m.x to m.x and returns m. So m.bnd(m.ret) returns m unchanged, which is what we set out to prove. </p>
-<p>(3) m.bnd(f).bnd(g) = m.bnd(a => f(a).bnd(g)) for all monads m and functions f which map values to monads, where a is the original value of m. We can prove this by showing that both sides of the equation return g(f(a).x). f is not supplied with any supplemental arguments, so m.bnd(f) = f(m.x) = f(a). Now we have (f(m.x)).bnd(g) By the definition of bnd, (f(m.x)).bnd(g) = g(f(m.x)) since bnd had only one argument. Remember, for any monad m, if m.bnd takes only one argument it has to be a function, and by the definition of bnd, that function takes only one argument, the value of m, which is m.x. So when there are no extra arguments, m.bnd(f) = f(m.x) = f(a). That is why (f(a)).bnd(g) = g(f(a).x). This completes the first half of the proof. In the right side of the equation, the monad f(a) calls bnd(g), resulting (again by the definition of bnd) in a monad being returned with a value of g(f(a).x). Proof complete. Here are a couple of demonstrations:  </p>
-
   <button style={this.bool4 ? this.style1 : this.style2 } 
     onClick={() => mM1.bnd(mM1.ret).bnd(refresh)   }
    onMouseEnter={ () => this.cT4() }
@@ -964,21 +1102,6 @@ class B4 extends React.Component {
    </button>
 
 <p>When add was an argument of bnd, it was provided with the calling monad's value and "this", which was the calling monad. Since bnd didn't provide these arguments, we did. add is defined as a function of three arguments. Notice we didn't have to specify the value of a. bnd saw to it that mM3's value was assigned to a. The point is that the order of evaluation of links in a monad chain does not matter. In the example, we called bnd on f and used the result to call bnd on g, then we called bnd on the composit function and got the same answer, as expected.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

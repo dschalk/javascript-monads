@@ -381,8 +381,76 @@
 
 	});
 
-	var ComponentDummyE = _react2['default'].createClass({
-	  displayName: 'ComponentDummyE',
+	var ComponentCube = _react2['default'].createClass({
+	  displayName: 'ComponentCube',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n       cube = (x,mon) => {     \n         mon.ret(x*x*x);\n         return mon;\n       };\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentBnd = _react2['default'].createClass({
+	  displayName: 'ComponentBnd',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      this.bnd = (func, ...args) => {\n        return func(this.x, this, ...args);    \n      };\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentAdd = _react2['default'].createClass({
+	  displayName: 'ComponentAdd',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      add = (x,mon,y) => {    \n        mon.ret(x + y);\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var ComponentDiscussion = _react2['default'].createClass({
+	  displayName: 'ComponentDiscussion',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: 'burlywood' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\nThe Category of Monads\n----------------------\n\nThe Monad constructor will accept a value of any type or degree of\ncomplexity. Monad instances can exchange their values for any other\nvalues, most simply by using the ret method. bnd can accept any function\nthat maps a value to a monad.\n\n### DEFINITION: Monad is the union of the set of all possible instances of the class Monad with the set of all functions that map values to monads.\n\n### THEOREM: The mappings of the set Monad onto itself by bnd(f) for all functions f in Monad, along with ret, is a mathematical monad.\n\nI will assume that the theorem is proven, and I will call instances of the class Monad "monads", in the discussion which follows. Remember, "A rose by any other name smells as sweet". This project is about creating Javascript applications, and certainly not about advancing the frontiers of mathematics. Seeing these monads adhere to the monad laws provides reassurance that they are flexible and reliable, so there will be some discussion of the monad laws but first, let\'s see them in action.  \n\nExamples:\n\ncube is defined as \n\ncube = (x,mon) => {\n  mon.ret(x\\*x\\*x);\n  return mon;\n};\n\nIt maps x -> x\\*x\\*x -> m, where m has the value, x\\*x\\*x. cube is a member of the Monad category \nbecause it maps values to monads. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). No extra arguments were provided to bnd, so cube ignores the trailing arguments. Therefore, cube(this.x, this, x, mon  ...args) is essentially cube(this.x, this). m is returned with its former value cubed.\n\nadd is defined as:\n\nadd = (x,mon,y) => {\n  mon.ret(x + y);\n  return mon;\n}\n\nIt takes two values, x and y, and a monad mon as asarguments, returning \nm with a value of x + y. Since it maps values to monads, it too is \na member of the category Monad. By the definition of bnd, \nmonad.bnd(add,7) = add(monad.x, monad, 7), which returns m with a\nvalue of a new value of m.x = m.x + y.\n\nHere are some facts about these monads:\n\n(1) By the definition of ret, we know that for any monad m and value v,\nm.ret(v) maps v to m, giving m the value v. Since m.ret maps values to\nmonads, m.ret is a valid argument for its own or any other monad\'s bnd\nmethod. It is a member of the category Monad.\n\n(2) m.bnd(m.ret) = m Proof: By definition, m.bnd(m.ret) = m.ret(m.x,\nthis ...args). Since bnd uses only the first argument, the equation is\nequivalent to m.bnd(m.ret) = m.ret(m.x). By definition, m.ret(m.x)\nassigns the value m.x to m and returns m. But m.x already was the value\nof m, So m.bnd(m.ret) returns m unchanged, which is what we set out to\nprove.\n\n(3) m.bnd(f).bnd(g) = m.bnd(a =&gt; f(a).bnd(g)) for all monads m and\nfunctions f in the category Monad, where a is the original value of m.\nWe can prove this by showing that both sides of the equation return\ng(f(a).x). f is not supplied with any supplemental arguments, so\nm.bnd(f) = f(m.x) = f(a). Now we have m.bnd(f).bnd(g) = (f(a)).bnd(g) By\nthe definition of bnd, (f(a)).bnd(g) = g(f(a).x) since bnd had only one\nargument. This completes the first half of the proof. In the right side\nof the equation, the monad f(a) calls bnd(g). By the definition of bnd,\nf(a).bnd(g) = g(f(a).x) and the proof complete. Here are a couple of\ndemonstrations:\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var DummyC = _react2['default'].createClass({
+	  displayName: 'DummyC',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -398,8 +466,25 @@
 
 	});
 
-	var ComponentDummyF = _react2['default'].createClass({
-	  displayName: 'ComponentDummyF',
+	var DummyD = _react2['default'].createClass({
+	  displayName: 'DummyD',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n        '
+	      )
+	    );
+	  }
+
+	});
+
+	var DummyE = _react2['default'].createClass({
+	  displayName: 'DummyE',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -1089,42 +1174,8 @@
 	            null,
 	            ' Is this fun, or what? '
 	          ),
+	          _react2['default'].createElement(ComponentDiscussion, null),
 	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'h2',
-	            null,
-	            'The Category of Monads'
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'The Monad constructor will accept a value of any type or degree of complexity. Monad instances can exchange their values for any other values, most simply by using the ret method. bnd can accept any function that maps a value to a monad. '
-	          ),
-	          _react2['default'].createElement(
-	            'h3',
-	            null,
-	            'THEOREM: All possible monads form a category whose morphisms are bnd in combination with all functions that map values to monads. '
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'Here are some facts about these monads:'
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            '(1) For any monad m and value v, m.ret(v) maps v to m, giving m the value v. Since m.ret maps values to monads, m.ret is a valid argument for its own or any other monad\'s bnd method. '
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            '(2) m.bnd(m.ret) = m  Proof: By definition, m.bnd(m.ret) = m.ret(m.x, this ...args). Since bnd uses only the first argument, the equation is equivalent to m.bnd(m.ret) = m.ret(m.x). By definition, m.ret(m.x) assigns the value m.x to m.x and returns m. So m.bnd(m.ret) returns m unchanged, which is what we set out to prove. '
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            '(3) m.bnd(f).bnd(g) = m.bnd(a => f(a).bnd(g)) for all monads m and functions f which map values to monads, where a is the original value of m. We can prove this by showing that both sides of the equation return g(f(a).x). f is not supplied with any supplemental arguments, so m.bnd(f) = f(m.x) = f(a). Now we have (f(m.x)).bnd(g) By the definition of bnd, (f(m.x)).bnd(g) = g(f(m.x)) since bnd had only one argument. Remember, for any monad m, if m.bnd takes only one argument it has to be a function, and by the definition of bnd, that function takes only one argument, the value of m, which is m.x. So when there are no extra arguments, m.bnd(f) = f(m.x) = f(a). That is why (f(a)).bnd(g) = g(f(a).x). This completes the first half of the proof. In the right side of the equation, the monad f(a) calls bnd(g), resulting (again by the definition of bnd) in a monad being returned with a value of g(f(a).x). Proof complete. Here are a couple of demonstrations:  '
-	          ),
 	          _react2['default'].createElement(
 	            'button',
 	            { style: _this.bool4 ? _this.style1 : _this.style2,

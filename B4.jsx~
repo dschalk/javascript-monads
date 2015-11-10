@@ -511,19 +511,15 @@ var ComponentDiscussion = React.createClass({
       <div style={{fontSize: 22, color: 'burlywood' }} >
         <Markdown>
         {`
-The Category of Monads
+Some Observations About Monads
 ----------------------
 
-The Monad constructor will accept a value of any type or degree of
+  First, I want to point out that I haven't proven that these creations are monads in the Category Theory sense. The functions mapping values to monads can have all sorts of side effects, so I would begin a proof by looking only at the functions that do nothing other than map values to monads. I don't plan to go down that road any time soon, but  I will show that "ret" is the left and right identity on monads, and that the order of evaluation of segments in chains does not affect the result. Those are the Haskell monad laws, and it is reassuring to see that they apply here. 
+
+  The Monad constructor will accept a value of any type and of any degree of
 complexity. Monad instances can exchange their values for any other
-values, most simply by using the ret method. bnd can accept any function
-that maps a value to a monad.
+values, most simply by using the ret method. We will be looking at functions of the form (v,m) => { ... ; return mon; }, where v can be any Javascript value and m can be any monad. These work as stand-alone functions, and they also work as arguments for the monad method 'bnd', which ignores v and m, substituting its value and itsself for them. 
 
-### DEFINITION: Monad is the union of the set of all possible instances of the class Monad with the set of all functions of the form (x,mon) => {...; return mon} where x is a value and mon is a monad.
-
-### THEOREM: The mappings of the set Monad onto itself by bnd(f) for all functions f in Monad, along with the monad method ret, form a mathematical monad.
-
-For purposes of this discussion, I will assume that the theorem is proven, and I will call instances of the class Monad "monads". Remember, "A rose by any other name smells as sweet". This project is about creating Javascript applications, and certainly not about advancing the frontiers of mathematics. Seeing these monads adhere to the monad laws provides reassurance that they are flexible and reliable, so I will include some examples demonstrating the monad laws. But first, let's see some monads in action.  
 
 Examples:
 
@@ -534,8 +530,7 @@ cube = (x,mon) => {
   return mon;
 };
 
-It maps x -> x\\*x\\*x -> m, where m has the value, x\\*x\\*x. cube is a member of the Monad category 
-because it maps values to monads. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). No extra arguments were provided to bnd, so cube ignores the trailing arguments. Therefore, cube(this.x, this, x, mon  ...args) is essentially cube(this.x, this). m is returned with its former value cubed.
+It maps x -> x\\*x\\*x -> m, where m has the new value x\\*x\\*x. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). No extra arguments were provided to bnd, so cube ignores the trailing arguments. Therefore, cube(this.x, this, x, mon  ...args) is essentially cube(this.x, this). m is returned with its former value cubed.
 
 add is defined as:
 
@@ -545,17 +540,15 @@ add = (x,mon,y) => {
 }
 
 It takes two values, x and y, and a monad mon as asarguments, returning 
-m with a value of x + y. Since it maps values to monads, it too is 
-a member of the category Monad. By the definition of bnd, 
-monad.bnd(add,7) = add(monad.x, monad, 7), which returns m with a
-value of a new value of m.x = m.x + y.
+m with a value of x + y. By the definition of bnd, monad.bnd(add,7) = add(monad.x, monad, 7), which returns m with a
+new value of m.x + y.
 
 Here are some facts about these monads:
 
 (1) By the definition of ret, we know that for any monad m and value v,
 m.ret(v) maps v to m, giving m the value v. Since m.ret maps values to
 monads, m.ret is a valid argument for its own or any other monad's bnd
-method. It is a member of the category Monad.
+method. 
 
 (2) m.bnd(m.ret) = m Proof: By definition, m.bnd(m.ret) = m.ret(m.x,
 this ...args). Since bnd uses only the first argument, the equation is
@@ -564,10 +557,8 @@ assigns the value m.x to m and returns m. But m.x already was the value
 of m, So m.bnd(m.ret) returns m unchanged, which is what we set out to
 prove.
 
-(3) m.bnd(f).bnd(g) = m.bnd(a =&gt; f(a).bnd(g)) for all monads m and
-functions f in the category Monad, where a is the original value of m.
-We can prove this by showing that both sides of the equation return
-g(f(a).x). f is not supplied with any supplemental arguments, so
+(3) m.bnd(f).bnd(g) = m.bnd(a => f(a).bnd(g)), where a is the original value of m.
+We can prove this by showing that both sides of the equation return g(f(a).x). f is not supplied with any supplemental arguments, so
 m.bnd(f) = f(m.x) = f(a). Now we have m.bnd(f).bnd(g) = (f(a)).bnd(g) By
 the definition of bnd, (f(a)).bnd(g) = g(f(a).x) since bnd had only one
 argument. This completes the first half of the proof. In the right side
@@ -582,12 +573,25 @@ demonstrations:
 
 });
 
-var DummyC = React.createClass({
+var Bench1 = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
+      bench = () => {
+        let self = this;
+        let k = 0;
+        let j = 0;
+        let d1 = new Date();
+        for (k; k<100000; k++) {
+          this.mM1 = new Monad(k);
+        }
+        this.resBench = ((new Date()) - d1);    
+        setTimeout( function() {
+          self.forceUpdate();
+        },12 )
+      }
         `}
         </Markdown>
       </div>
@@ -596,12 +600,25 @@ var DummyC = React.createClass({
 
 });
 
-var DummyD = React.createClass({
+var Bench2 = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
+      bench2 = () => {
+        let self = this;
+        let k = 0;
+        let j = 0;
+        let d1 = new Date();
+        for (k; k<100000; k++) {
+          this.mM2.ret(k);
+        }
+        this.resBench2 = ((new Date()) - d1);
+        setTimeout( function() {
+          self.forceUpdate();
+        },12 )
+      }
         `}
         </Markdown>
       </div>
@@ -624,11 +641,6 @@ var DummyE = React.createClass({
 
 });
 
-
-class B4 extends React.Component {
-  constructor(props) {
-    super(props);
-
   class Monad {
     constructor(z) {
 
@@ -645,30 +657,38 @@ class B4 extends React.Component {
     }
   };
 
-    this.mM1 = new Monad(0);
-    this.mM2 = new Monad(0);
-    this.mM3 = new Monad(0);
-    this.mM4 = new Monad(0);
-    this.mM5 = new Monad(0);
-    this.mM6 = new Monad(0);
-    this.mM7 = new Monad(0);
-    this.mM8 = new Monad(0);
-    this.mM9 = new Monad(0);
-    this.mM10 = new Monad(0);
-    this.style2 = {backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
-    color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
-    marginLeft: 12, fontSize: 22 };
-    this.style1 = {backgroundColor: 'blue', textAlign: 'left', borderColor: 'lightblue', outline: 0,
-    color: 'yellow', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
-    marginLeft: 12, fontSize: 22 };
-    this.bool1 = false;
-    this.bool2 = false;
-    this.bool3 = false;
-    this.bool4 = false;
-    this.bool5 = false;
-    this.test = (x) => {
-      return (new Monad(x + 1000));
-    }
+
+class B4 extends React.Component {
+  constructor(props) {
+    super(props);
+
+  this.M = a => new Monad(a);
+  this.mM1 = this.M(0);
+  this.mM2 = this.M(0);
+  this.mM3 = this.M(0);
+  this.mM4 = this.M(0);
+  this.mM5 = this.M(0);
+  this.mM6 = this.M(0);
+  this.mM7 = this.M(0);
+  this.mM8 = this.M(0);
+  this.mM9 = this.M(0);
+  this.mM10 = this.M(0);
+  this.style2 = {backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
+  color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
+  marginLeft: 12, fontSize: 22 };
+  this.style1 = {backgroundColor: 'blue', textAlign: 'left', borderColor: 'lightblue', outline: 0,
+  color: 'yellow', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
+  marginLeft: 12, fontSize: 22 };
+  this.bool1 = false;
+  this.bool2 = false;
+  this.bool3 = false;
+  this.bool4 = false;
+  this.bool5 = false;
+  this.test = (x) => {
+    return (new Monad(x + 1000));
+  }
+  this.resBench = 888;
+  this.resBench2 = 888;
 }
 
   style3 = {backgroundColor: '#000', textAlign: 'left', borderColor: 'darkblue', outline: 0,
@@ -864,9 +884,35 @@ class B4 extends React.Component {
     return mon;
   }
 
+  bench = () => {
+    let self = this;
+    let k = 0;
+    let j = 0;
+    let d1 = new Date();
+    for (k; k<1000000; k++) {
+      this.mM1 = new Monad(k);
+    }
+    this.resBench = ((new Date()) - d1);
+    setTimeout( function() {
+      self.forceUpdate();
+    },12 )
+  }
+
+  bench2 = () => {
+    let self = this;
+    let k = 0;
+    let j = 0;
+    let d1 = new Date();
+    for (k; k<1000000; k++) {
+      this.mM2.ret(k);
+    }
+    this.resBench2 = ((new Date()) - d1);
+    setTimeout( function() {
+      self.forceUpdate();
+    },12 )
+  }
+
     render = () => {
-      console.log(this.mM8);
-      console.log(this.mM8.x);
     let mM1 = this.mM1;
     let mM2 = this.mM2;
     let mM3 = this.mM3;
@@ -907,7 +953,7 @@ class B4 extends React.Component {
  </div>
       <br /><br /> 
 
-  <div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: 40, fontSize: 24 }} >
+<div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: 40, fontSize: 24 }} >
 
 <h2 style={{textAlign: 'center'}} >Javascript Monads</h2>
 <p>The monads in this demonstration are instances of the following class: </p>
@@ -1105,19 +1151,30 @@ class B4 extends React.Component {
     mM3.bnd(a => add(a, mM3, 2).bnd(cube,mM3)) 
    </button>
 
-<br /><br />
-  <button style={this.bool1 ? this.style1 : this.style2 } 
-    onClick={() => mM3.bnd(test).bnd(refresh) }
-   onMouseEnter={ () => this.cT1() }
-   onMouseLeave={ () => this.cF1() }
-        >
-    mM3.bnd(test).bnd(refresh) 
-   </button>
-
-
 <p>When add was an argument of bnd, it was provided with the calling monad's value and "this", which was the calling monad. Since bnd didn't provide these arguments, we did. add is defined as a function of three arguments. Notice we didn't have to specify the value of a. bnd saw to it that mM3's value was assigned to a. The point is that the order of evaluation of links in a monad chain does not matter. In the example, we called bnd on f and used the result to call bnd on g, then we called bnd on the composit function and got the same answer, as expected.</p>
 
-
+<p>  </p>
+<h2>Comparing Elapsed Times For Changing Monad Values</h2>
+<h2>Create a new instance 1,000,000 times: <span style={{color: 'lightblue' }} >  {this.resBench} </span> ms</h2>
+<p>  </p>
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+   onClick={() => {this.bench()}  }
+   onMouseEnter={ () => this.cT2() }
+   onMouseLeave={ () => this.cF2() }
+        >
+        <Bench1 />
+      </button>
+<p>  </p>
+<h2 >Re-use a monad 1,000,000 times:<span style={{color: 'lightblue' }} >  {this.resBench2} </span> ms</h2>
+<p>  </p>
+      <button style={this.bool3 ? this.style1 : this.style2 } 
+   onClick={() => {this.bench2()}  }
+   onMouseEnter={ () => this.cT3() }
+   onMouseLeave={ () => this.cF3() }
+        >
+        <Bench2 />
+      </button>
+<p>On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn't significantly affect performance in applications involving monad chaining without loops. Loops would ordinarily work on values, and not the monads where the values would eventually be incorporated.</p>
 
    <div style={{height:500}} />
 

@@ -62,9 +62,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var _react = __webpack_require__(2);
 
@@ -442,15 +442,15 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\nThe Category of Monads\n----------------------\n\nThe Monad constructor will accept a value of any type or degree of\ncomplexity. Monad instances can exchange their values for any other\nvalues, most simply by using the ret method. bnd can accept any function\nthat maps a value to a monad.\n\n### DEFINITION: Monad is the union of the set of all possible instances of the class Monad with the set of all functions of the form (x,mon) => {...; return mon} where x is a value and mon is a monad.\n\n### THEOREM: The mappings of the set Monad onto itself by bnd(f) for all functions f in Monad, along with the monad method ret, form a mathematical monad.\n\nFor purposes of this discussion, I will assume that the theorem is proven, and I will call instances of the class Monad "monads". Remember, "A rose by any other name smells as sweet". This project is about creating Javascript applications, and certainly not about advancing the frontiers of mathematics. Seeing these monads adhere to the monad laws provides reassurance that they are flexible and reliable, so I will include some examples demonstrating the monad laws. But first, let\'s see some monads in action.  \n\nExamples:\n\ncube is defined as \n\ncube = (x,mon) => {\n  mon.ret(x\\*x\\*x);\n  return mon;\n};\n\nIt maps x -> x\\*x\\*x -> m, where m has the value, x\\*x\\*x. cube is a member of the Monad category \nbecause it maps values to monads. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). No extra arguments were provided to bnd, so cube ignores the trailing arguments. Therefore, cube(this.x, this, x, mon  ...args) is essentially cube(this.x, this). m is returned with its former value cubed.\n\nadd is defined as:\n\nadd = (x,mon,y) => {\n  mon.ret(x + y);\n  return mon;\n}\n\nIt takes two values, x and y, and a monad mon as asarguments, returning \nm with a value of x + y. Since it maps values to monads, it too is \na member of the category Monad. By the definition of bnd, \nmonad.bnd(add,7) = add(monad.x, monad, 7), which returns m with a\nvalue of a new value of m.x = m.x + y.\n\nHere are some facts about these monads:\n\n(1) By the definition of ret, we know that for any monad m and value v,\nm.ret(v) maps v to m, giving m the value v. Since m.ret maps values to\nmonads, m.ret is a valid argument for its own or any other monad\'s bnd\nmethod. It is a member of the category Monad.\n\n(2) m.bnd(m.ret) = m Proof: By definition, m.bnd(m.ret) = m.ret(m.x,\nthis ...args). Since bnd uses only the first argument, the equation is\nequivalent to m.bnd(m.ret) = m.ret(m.x). By definition, m.ret(m.x)\nassigns the value m.x to m and returns m. But m.x already was the value\nof m, So m.bnd(m.ret) returns m unchanged, which is what we set out to\nprove.\n\n(3) m.bnd(f).bnd(g) = m.bnd(a =&gt; f(a).bnd(g)) for all monads m and\nfunctions f in the category Monad, where a is the original value of m.\nWe can prove this by showing that both sides of the equation return\ng(f(a).x). f is not supplied with any supplemental arguments, so\nm.bnd(f) = f(m.x) = f(a). Now we have m.bnd(f).bnd(g) = (f(a)).bnd(g) By\nthe definition of bnd, (f(a)).bnd(g) = g(f(a).x) since bnd had only one\nargument. This completes the first half of the proof. In the right side\nof the equation, the monad f(a) calls bnd(g). By the definition of bnd,\nf(a).bnd(g) = g(f(a).x) and the proof complete. Here are a couple of\ndemonstrations:\n        '
+	        '\nSome Observations About Monads\n----------------------\n\n  First, I want to point out that I haven\'t proven that these creations are monads in the Category Theory sense. The functions mapping values to monads can have all sorts of side effects, so I would begin a proof by looking only at the functions that do nothing other than map values to monads. I don\'t plan to go down that road any time soon, but  I will show that "ret" is the left and right identity on monads, and that the order of evaluation of segments in chains does not affect the result. Those are the Haskell monad laws, and it is reassuring to see that they apply here. \n\n  The Monad constructor will accept a value of any type and of any degree of\ncomplexity. Monad instances can exchange their values for any other\nvalues, most simply by using the ret method. We will be looking at functions of the form (v,m) => { ... ; return mon; }, where v can be any Javascript value and m can be any monad. These work as stand-alone functions, and they also work as arguments for the monad method \'bnd\', which ignores v and m, substituting its value and itsself for them. \n\n\nExamples:\n\ncube is defined as \n\ncube = (x,mon) => {\n  mon.ret(x\\*x\\*x);\n  return mon;\n};\n\nIt maps x -> x\\*x\\*x -> m, where m has the new value x\\*x\\*x. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). No extra arguments were provided to bnd, so cube ignores the trailing arguments. Therefore, cube(this.x, this, x, mon  ...args) is essentially cube(this.x, this), which returns m with its former value cubed.\n\nadd is defined as:\n\nadd = (x,mon,y) => {\n  mon.ret(x + y);\n  return mon;\n}\n\nIt takes two values, x and y, and a monad mon as asarguments, returning \nm with a value of x + y. By the definition of bnd, monad.bnd(add,7) = add(monad.x, monad, 7), which returns m with a\nnew value of m.x + y.\n\nHere are some facts about these monads:\n\n(1) By the definition of ret, we know that for any monad m and value v,\nm.ret(v) maps v to m, giving m the value v. Since m.ret maps values to\nmonads, m.ret is a valid argument for its own or any other monad\'s bnd\nmethod. \n\n(2) m.bnd(m.ret) = m Proof: By definition, m.bnd(m.ret) = m.ret(m.x,\nthis ...args). Since bnd uses only the first argument, the equation is\nequivalent to m.bnd(m.ret) = m.ret(m.x). By definition, m.ret(m.x)\nassigns the value m.x to m and returns m. But m.x already was the value\nof m, So m.bnd(m.ret) returns m unchanged, which is what we set out to\nprove.\n\n(3) m.bnd(f).bnd(g) = m.bnd(a => f(a).bnd(g)), where a is the original value of m.\nWe can prove this by showing that both sides of the equation return g(f(a).x). f is not supplied with any supplemental arguments, so\nm.bnd(f) = f(m.x) = f(a). Now we have m.bnd(f).bnd(g) = (f(a)).bnd(g) By\nthe definition of bnd, (f(a)).bnd(g) = g(f(a).x) since bnd had only one\nargument. This completes the first half of the proof. In the right side\nof the equation, the monad f(a) calls bnd(g). By the definition of bnd,\nf(a).bnd(g) = g(f(a).x) and the proof complete. Here are a couple of\ndemonstrations:\n        '
 	      )
 	    );
 	  }
 
 	});
 
-	var DummyC = _react2['default'].createClass({
-	  displayName: 'DummyC',
+	var Bench1 = _react2['default'].createClass({
+	  displayName: 'Bench1',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -459,15 +459,15 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n      bench = () => {\n        let self = this;\n        let k = 0;\n        let j = 0;\n        let d1 = new Date();\n        for (k; k<100000; k++) {\n          this.mM1 = new Monad(k);\n        }\n        this.resBench = ((new Date()) - d1);    \n        setTimeout( function() {\n          self.forceUpdate();\n        },12 )\n      }\n        '
 	      )
 	    );
 	  }
 
 	});
 
-	var DummyD = _react2['default'].createClass({
-	  displayName: 'DummyD',
+	var Bench2 = _react2['default'].createClass({
+	  displayName: 'Bench2',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -476,7 +476,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n      bench2 = () => {\n        let self = this;\n        let k = 0;\n        let j = 0;\n        let d1 = new Date();\n        for (k; k<100000; k++) {\n          this.mM2.ret(k);\n        }\n        this.resBench2 = ((new Date()) - d1);\n        setTimeout( function() {\n          self.forceUpdate();\n        },12 )\n      }\n        '
 	      )
 	    );
 	  }
@@ -500,11 +500,34 @@
 
 	});
 
+	var Monad = function Monad(z) {
+	  var _this = this;
+
+	  _classCallCheck(this, Monad);
+
+	  this.x = z;
+
+	  this.bnd = function (func) {
+	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	      args[_key - 1] = arguments[_key];
+	    }
+
+	    return func.apply(undefined, [_this.x, _this].concat(args));
+	  };
+
+	  this.ret = function (a) {
+	    _this.x = a;
+	    return _this;
+	  };
+	};
+
+	;
+
 	var B4 = (function (_React$Component) {
 	  _inherits(B4, _React$Component);
 
 	  function B4(props) {
-	    var _this = this;
+	    var _this2 = this;
 
 	    _classCallCheck(this, B4);
 
@@ -514,8 +537,8 @@
 	      color: 'red', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 27 };
 
 	    this.cT1 = function () {
-	      var self = _this;
-	      _this.bool1 = true;
+	      var self = _this2;
+	      _this2.bool1 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -523,8 +546,8 @@
 	    };
 
 	    this.cF1 = function () {
-	      var self = _this;
-	      _this.bool1 = false;
+	      var self = _this2;
+	      _this2.bool1 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -532,8 +555,8 @@
 	    };
 
 	    this.cT2 = function () {
-	      var self = _this;
-	      _this.bool2 = true;
+	      var self = _this2;
+	      _this2.bool2 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -541,8 +564,8 @@
 	    };
 
 	    this.cF2 = function () {
-	      var self = _this;
-	      _this.bool2 = false;
+	      var self = _this2;
+	      _this2.bool2 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -550,8 +573,8 @@
 	    };
 
 	    this.cT3 = function () {
-	      var self = _this;
-	      _this.bool3 = true;
+	      var self = _this2;
+	      _this2.bool3 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -559,8 +582,8 @@
 	    };
 
 	    this.cF3 = function () {
-	      var self = _this;
-	      _this.bool3 = false;
+	      var self = _this2;
+	      _this2.bool3 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -568,8 +591,8 @@
 	    };
 
 	    this.cT4 = function () {
-	      var self = _this;
-	      _this.bool4 = true;
+	      var self = _this2;
+	      _this2.bool4 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -577,8 +600,8 @@
 	    };
 
 	    this.cF4 = function () {
-	      var self = _this;
-	      _this.bool4 = false;
+	      var self = _this2;
+	      _this2.bool4 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -586,8 +609,8 @@
 	    };
 
 	    this.cT5 = function () {
-	      var self = _this;
-	      _this.bool5 = true;
+	      var self = _this2;
+	      _this2.bool5 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -595,8 +618,8 @@
 	    };
 
 	    this.cF5 = function () {
-	      var self = _this;
-	      _this.bool5 = false;
+	      var self = _this2;
+	      _this2.bool5 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -604,7 +627,7 @@
 	    };
 
 	    this.refresh = function (x, mon) {
-	      _this.forceUpdate.apply(_this);
+	      _this2.forceUpdate.apply(_this2);
 	      return mon;
 	    };
 
@@ -662,21 +685,21 @@
 	    };
 
 	    this.chance = function (x, mon) {
-	      var a = _this.rand(1, 5);
-	      var b = _this.rand(1, 5);
-	      var c = _this.rand(1, 5);
-	      _this.mM1.ret(a);
-	      _this.mM2.ret(b);
-	      _this.mM3.ret(c);
+	      var a = _this2.rand(1, 5);
+	      var b = _this2.rand(1, 5);
+	      var c = _this2.rand(1, 5);
+	      _this2.mM1.ret(a);
+	      _this2.mM2.ret(b);
+	      _this2.mM3.ret(c);
 	      if (a === b && a === c) {
-	        _this.mM4.ret('Winner! Three of a kind');
+	        _this2.mM4.ret('Winner! Three of a kind');
 	        return mon;
 	      }
 	      if (a === b || a === c || b === c) {
-	        _this.mM4.ret('Pair. Try for three');
+	        _this2.mM4.ret('Pair. Try for three');
 	        return mon;
 	      }
-	      _this.mM4.ret('Zilch. Don\'t give up now.');
+	      _this2.mM4.ret('Zilch. Don\'t give up now.');
 	      return mon;
 	    };
 
@@ -697,37 +720,63 @@
 	      var k = 1;
 	      for (k; k < 5; k += 1) {
 	        if (x === [k, k, k, k, k, k]) {
-	          _this.mM10.ret("Jackpot!");
+	          _this2.mM10.ret("Jackpot!");
 	          return mon;
 	        }
 	      }
-	      _this.mM10.ret("No jackpot this time");
+	      _this2.mM10.ret("No jackpot this time");
 	      return mon;
 	    };
 
+	    this.bench = function () {
+	      var self = _this2;
+	      var k = 0;
+	      var j = 0;
+	      var d1 = new Date();
+	      for (k; k < 1000000; k++) {
+	        _this2.mM1 = new Monad(k);
+	      }
+	      _this2.resBench = new Date() - d1;
+	      setTimeout(function () {
+	        self.forceUpdate();
+	      }, 12);
+	    };
+
+	    this.bench2 = function () {
+	      var self = _this2;
+	      var k = 0;
+	      var j = 0;
+	      var d1 = new Date();
+	      for (k; k < 1000000; k++) {
+	        _this2.mM2.ret(k);
+	      }
+	      _this2.resBench2 = new Date() - d1;
+	      setTimeout(function () {
+	        self.forceUpdate();
+	      }, 12);
+	    };
+
 	    this.render = function () {
-	      console.log(_this.mM8);
-	      console.log(_this.mM8.x);
-	      var mM1 = _this.mM1;
-	      var mM2 = _this.mM2;
-	      var mM3 = _this.mM3;
-	      var mM4 = _this.mM4;
-	      var mM5 = _this.mM5;
-	      var mM6 = _this.mM6;
-	      var mM7 = _this.mM7;
-	      var mM8 = _this.mM8;
-	      var mM9 = _this.mM9;
-	      var mM10 = _this.mM10;
-	      var refresh = _this.refresh;
-	      var square = _this.square;
-	      var cube = _this.cube;
-	      var double = _this.double;
-	      var tripple = _this.tripple;
-	      var add = _this.add;
-	      var mult = _this.mult;
-	      var ran = _this.ran;
-	      var branch = _this.branch;
-	      var test = _this.test;
+	      var mM1 = _this2.mM1;
+	      var mM2 = _this2.mM2;
+	      var mM3 = _this2.mM3;
+	      var mM4 = _this2.mM4;
+	      var mM5 = _this2.mM5;
+	      var mM6 = _this2.mM6;
+	      var mM7 = _this2.mM7;
+	      var mM8 = _this2.mM8;
+	      var mM9 = _this2.mM9;
+	      var mM10 = _this2.mM10;
+	      var refresh = _this2.refresh;
+	      var square = _this2.square;
+	      var cube = _this2.cube;
+	      var double = _this2.double;
+	      var tripple = _this2.tripple;
+	      var add = _this2.add;
+	      var mult = _this2.mult;
+	      var ran = _this2.ran;
+	      var branch = _this2.branch;
+	      var test = _this2.test;
 	      return _react2['default'].createElement(
 	        'div',
 	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 22 } },
@@ -742,7 +791,7 @@
 	            ' Monad mM1: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM1.x
 	            ),
 	            ' '
@@ -755,7 +804,7 @@
 	            ' Monad mM2: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM2.x
 	            ),
 	            ' '
@@ -768,7 +817,7 @@
 	            ' Monad mM3: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM3.x
 	            ),
 	            ' '
@@ -781,7 +830,7 @@
 	            ' Monad mM4: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM4.x
 	            ),
 	            ' '
@@ -795,7 +844,7 @@
 	            ' Monad mM5: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM5.x
 	            ),
 	            ' '
@@ -808,7 +857,7 @@
 	            ' Monad mM6: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM6.x
 	            ),
 	            ' '
@@ -821,7 +870,7 @@
 	            ' Monad mM7: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM7.x
 	            ),
 	            ' '
@@ -834,7 +883,7 @@
 	            ' Monad mM8: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM8.x
 	            ),
 	            ' '
@@ -848,7 +897,7 @@
 	            ' Monad mM9: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM9.x
 	            ),
 	            ' '
@@ -861,7 +910,7 @@
 	            ' Monad mM10: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this.style3 },
+	              { style: _this2.style3 },
 	              mM10.x
 	            ),
 	            ' '
@@ -903,15 +952,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool1 ? _this.style1 : _this.style2,
+	            { style: _this2.bool1 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
-	                mM1.bnd(_this.chance).bnd(refresh);
+	                mM1.bnd(_this2.chance).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT1();
+	                return _this2.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF1();
+	                return _this2.cF1();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentChanceB, null)
@@ -923,15 +972,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool2 ? _this.style1 : _this.style2,
+	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                mM1.ret(2).bnd(mM2.ret).bnd(square).bnd(mM3.ret).bnd(square).bnd(mM4.ret).bnd(square).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT2();
+	                return _this2.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF2();
+	                return _this2.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentRet, null)
@@ -949,15 +998,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool3 ? _this.style1 : _this.style2,
+	            { style: _this2.bool3 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                mM1.ret(3).bnd(add, 4).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT3();
+	                return _this2.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF3();
+	                return _this2.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentAddA, null)
@@ -969,7 +1018,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool4 ? _this.style1 : _this.style2,
+	            { style: _this2.bool4 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                return mM1.ret(3).bnd(function (x) {
 	                  return mM2.ret(2).bnd(cube).bnd(add, x).bnd(refresh);
@@ -977,10 +1026,10 @@
 	              },
 
 	              onMouseEnter: function () {
-	                return _this.cT4();
+	                return _this2.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF4();
+	                return _this2.cF4();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentLambdaA, null)
@@ -997,7 +1046,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool5 ? _this.style1 : _this.style2,
+	            { style: _this2.bool5 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                return mM1.ret(3).bnd(function (x) {
 	                  return mM2.ret(2).bnd(square).bnd(function (y) {
@@ -1008,10 +1057,10 @@
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT5();
+	                return _this2.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF5();
+	                return _this2.cF5();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentLambdaB, null)
@@ -1035,21 +1084,21 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool1 ? _this.style1 : _this.style2,
+	            { style: _this2.bool1 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                return mM1.bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this.ch, x, y, z).bnd(refresh);
+	                      return mM4.bnd(_this2.ch, x, y, z).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT1();
+	                return _this2.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF1();
+	                return _this2.cF1();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentChanceE, null)
@@ -1090,29 +1139,29 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool2 ? _this.style1 : _this.style2,
+	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                return mM1.bnd(ran).bnd(branch, mM5.bnd(ran).bnd(function (a) {
 	                  return mM6.bnd(ran).bnd(function (b) {
 	                    return mM7.bnd(ran).bnd(function (c) {
-	                      return mM8.bnd(_this.ch, a, b, c);
+	                      return mM8.bnd(_this2.ch, a, b, c);
 	                    });
 	                  });
 	                })).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this.ch, x, y, z).bnd(function () {
+	                      return mM4.bnd(_this2.ch, x, y, z).bnd(function () {
 	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
-	                      }).bnd(mM10.ret).bnd(_this.jackpot).bnd(refresh);
+	                      }).bnd(mM10.ret).bnd(_this2.jackpot).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT2();
+	                return _this2.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF2();
+	                return _this2.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentJackpotB, null)
@@ -1124,7 +1173,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool3 ? _this.style1 : _this.style2,
+	            { style: _this2.bool3 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                return mM1.bnd(branch, mM5.ret(0).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(function (a) {
 	                  setTimeout(function () {
@@ -1143,18 +1192,18 @@
 	                })).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this.ch, x, y, z).bnd(function () {
+	                      return mM4.bnd(_this2.ch, x, y, z).bnd(function () {
 	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
-	                      }).bnd(mM10.ret).bnd(_this.jackpot).bnd(refresh);
+	                      }).bnd(mM10.ret).bnd(_this2.jackpot).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT3();
+	                return _this2.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF3();
+	                return _this2.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentHypotenuse, null)
@@ -1179,15 +1228,15 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool4 ? _this.style1 : _this.style2,
+	            { style: _this2.bool4 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                return mM1.bnd(mM1.ret).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT4();
+	                return _this2.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF4();
+	                return _this2.cF4();
 	              }
 	            },
 	            'mM1.bnd(mM1.ret)'
@@ -1196,15 +1245,15 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool5 ? _this.style1 : _this.style2,
+	            { style: _this2.bool5 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                return mM2.bnd(add, 2).bnd(cube).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT5();
+	                return _this2.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF5();
+	                return _this2.cF5();
 	              }
 	            },
 	            'mM2.bnd(add, 2).bnd(cube)'
@@ -1213,17 +1262,17 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this.bool1 ? _this.style1 : _this.style2,
+	            { style: _this2.bool1 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                return mM3.bnd(function (a) {
 	                  return add(a, mM3, 2).bnd(cube);
 	                }).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this.cT1();
+	                return _this2.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this.cF1();
+	                return _this2.cF1();
 	              }
 	            },
 	            'mM3.bnd(a => add(a, mM3, 2).bnd(cube,mM3))'
@@ -1233,44 +1282,110 @@
 	            null,
 	            'When add was an argument of bnd, it was provided with the calling monad\'s value and "this", which was the calling monad. Since bnd didn\'t provide these arguments, we did. add is defined as a function of three arguments. Notice we didn\'t have to specify the value of a. bnd saw to it that mM3\'s value was assigned to a. The point is that the order of evaluation of links in a monad chain does not matter. In the example, we called bnd on f and used the result to call bnd on g, then we called bnd on the composit function and got the same answer, as expected.'
 	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '  '
+	          ),
+	          _react2['default'].createElement(
+	            'h2',
+	            null,
+	            'Comparing Elapsed Times For Changing Monad Values'
+	          ),
+	          _react2['default'].createElement(
+	            'h2',
+	            null,
+	            'Create a new instance 1,000,000 times: ',
+	            _react2['default'].createElement(
+	              'span',
+	              { style: { color: 'lightblue' } },
+	              '  ',
+	              _this2.resBench,
+	              ' '
+	            ),
+	            ' ms'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	              onClick: function () {
+	                _this2.bench();
+	              },
+	              onMouseEnter: function () {
+	                return _this2.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this2.cF2();
+	              }
+	            },
+	            _react2['default'].createElement(Bench1, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '  '
+	          ),
+	          _react2['default'].createElement(
+	            'h2',
+	            null,
+	            'Re-use a monad 1,000,000 times:',
+	            _react2['default'].createElement(
+	              'span',
+	              { style: { color: 'lightblue' } },
+	              '  ',
+	              _this2.resBench2,
+	              ' '
+	            ),
+	            ' ms'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this2.bool3 ? _this2.style1 : _this2.style2,
+	              onClick: function () {
+	                _this2.bench2();
+	              },
+	              onMouseEnter: function () {
+	                return _this2.cT3();
+	              },
+	              onMouseLeave: function () {
+	                return _this2.cF3();
+	              }
+	            },
+	            _react2['default'].createElement(Bench2, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn\'t significantly affect performance in applications involving monad chaining without loops. Loops would ordinarily work on values, and not the monads where the values would eventually be incorporated.'
+	          ),
 	          _react2['default'].createElement('div', { style: { height: 500 } })
 	        )
 	      );
 	    };
 
-	    var Monad = function Monad(z) {
-	      var _this2 = this;
-
-	      _classCallCheck(this, Monad);
-
-	      this.x = z;
-
-	      this.bnd = function (func) {
-	        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	          args[_key - 1] = arguments[_key];
-	        }
-
-	        return func.apply(undefined, [_this2.x, _this2].concat(args));
-	      };
-
-	      this.ret = function (a) {
-	        _this2.x = a;
-	        return _this2;
-	      };
+	    this.M = function (a) {
+	      return new Monad(a);
 	    };
-
-	    ;
-
-	    this.mM1 = new Monad(0);
-	    this.mM2 = new Monad(0);
-	    this.mM3 = new Monad(0);
-	    this.mM4 = new Monad(0);
-	    this.mM5 = new Monad(0);
-	    this.mM6 = new Monad(0);
-	    this.mM7 = new Monad(0);
-	    this.mM8 = new Monad(0);
-	    this.mM9 = new Monad(0);
-	    this.mM10 = new Monad(0);
+	    this.mM1 = this.M(0);
+	    this.mM2 = this.M(0);
+	    this.mM3 = this.M(0);
+	    this.mM4 = this.M(0);
+	    this.mM5 = this.M(0);
+	    this.mM6 = this.M(0);
+	    this.mM7 = this.M(0);
+	    this.mM8 = this.M(0);
+	    this.mM9 = this.M(0);
+	    this.mM10 = this.M(0);
 	    this.style2 = { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
 	      color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
 	      marginLeft: 12, fontSize: 22 };
@@ -1285,6 +1400,8 @@
 	    this.test = function (x) {
 	      return new Monad(x + 1000);
 	    };
+	    this.resBench = 888;
+	    this.resBench2 = 888;
 	  }
 
 	  return B4;

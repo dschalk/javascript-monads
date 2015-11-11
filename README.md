@@ -123,7 +123,8 @@ cube = (x,mon) => {
   return mon;
 };
 
-It maps x -> x\\*x\\*x -> m, where m has the new value x\\*x\\*x. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). No extra arguments were provided to bnd, so cube ignores the trailing arguments. Therefore, cube(this.x, this, x, mon  ...args) is essentially cube(this.x, this), which returns m with its former value cubed.
+
+It maps x -> x\\*x\\*x -> m, where m has the new value x\\*x\\*x. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). cube takes two argumens, so cube(this.x, this, x, mon  ...args) is, for all practical purposes, the same thing as cube(this.x, this). Therefore, when cube is called with bnd, the calling monad's value gets cubed if it is a number and becomes 'NAN' otherwise.
 
 add is defined as:
 

@@ -53,12 +53,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -85,15 +84,15 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n\n        '
+	        '\n        '
 	      )
 	    );
 	  }
 
 	});
 
-	var ComponentPrimitive = _react2['default'].createClass({
-	  displayName: 'ComponentPrimitive',
+	var ComponentMonad = _react2['default'].createClass({
+	  displayName: 'ComponentMonad',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -102,7 +101,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      class Monad {\n        constructor(z) {\n\n          this.x = z;\n\n          this.bnd = (func, ...args) => {\n            return func(this.x, this, ...args);\n          };\n\n          this.ret = a => {\n            this.x = a;\n            return this;\n          };\n        }\n      };\n        '
+	        '\n      class Monad {\n        constructor(z) {\n    \n          this.x = z;\n    \n          this.bnd = (func, ...args) => {\n            return func(this.x, this, ...args);\n          };\n    \n          this.ret = a => {\n            this.x = a;\n            return this;\n          };\n    \n          this.fmap = (f, mon = this, ...args) => {      \n            let v = mon.x;\n            let v2 = f(v, ...args);\n            mon.ret(v2);\n            return mon;\n          };\n        }\n      };\n        '
 	      )
 	    );
 	  }
@@ -463,7 +462,6 @@
 	      )
 	    );
 	  }
-
 	});
 
 	var Bench2 = _react2['default'].createClass({
@@ -480,7 +478,6 @@
 	      )
 	    );
 	  }
-
 	});
 
 	var DummyE = _react2['default'].createClass({
@@ -497,7 +494,86 @@
 	      )
 	    );
 	  }
+	});
 
+	var ComponentAdd = _react2['default'].createClass({
+	  displayName: 'ComponentAdd',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      add = (x,mon,y) => {    \n        mon.ret(x + y);\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentFmap = _react2['default'].createClass({
+	  displayName: 'ComponentFmap',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      let fmap = (f,mon, ...args) => {    \n        let v = mon.x;\n        mon.ret(f(v, ...args));\n        return mon;\n      }\n    \n      let bnd = (f,mon, ...args) => {\n        f(mon.x,mon, ...args);\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentFmap2 = _react2['default'].createClass({
+	  displayName: 'ComponentFmap2',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      cu = x => x*x*x;\n    \n      ad = (a,b) => a + b;\n\n      add = (x,mon,y) => {       \n        mon.ret(x + y);\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentBlankr4 = _react2['default'].createClass({
+	  displayName: 'ComponentBlankr4',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      add = (x,mon,y) => {    \n        mon.ret(x + y);\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentBlank5 = _react2['default'].createClass({
+	  displayName: 'ComponentBlank5',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      add = (x,mon,y) => {    \n        mon.ret(x + y);\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
 	});
 
 	var Monad = function Monad(z) {
@@ -519,9 +595,45 @@
 	    _this.x = a;
 	    return _this;
 	  };
+
+	  this.fmap = function (f) {
+	    for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	      args[_key2 - 2] = arguments[_key2];
+	    }
+
+	    var mon = arguments.length <= 1 || arguments[1] === undefined ? _this : arguments[1];
+
+	    var v = mon.x;
+	    var v2 = f.apply(undefined, [v].concat(args));
+	    mon.ret(v2);
+	    return mon;
+	  };
 	};
 
 	;
+
+	var fmap = function fmap(f, mon) {
+	  for (var _len3 = arguments.length, args = Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
+	    args[_key3 - 2] = arguments[_key3];
+	  }
+
+	  var v = mon.x;
+	  mon.ret(f.apply(undefined, [v].concat(args)));
+	  return mon;
+	};
+
+	var join = function join(m) {
+	  return m.x;
+	};
+
+	var bnd = function bnd(f, mon) {
+	  for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+	    args[_key4 - 2] = arguments[_key4];
+	  }
+
+	  f.apply(undefined, [mon.x, mon].concat(args));
+	  return mon;
+	};
 
 	var B4 = (function (_React$Component) {
 	  _inherits(B4, _React$Component);
@@ -756,6 +868,14 @@
 	      }, 12);
 	    };
 
+	    this.cu = function (x) {
+	      return x * x * x;
+	    };
+
+	    this.ad = function (a, b) {
+	      return a + b;
+	    };
+
 	    this.render = function () {
 	      var mM1 = _this2.mM1;
 	      var mM2 = _this2.mM2;
@@ -767,6 +887,8 @@
 	      var mM8 = _this2.mM8;
 	      var mM9 = _this2.mM9;
 	      var mM10 = _this2.mM10;
+	      var cu = _this2.cu;
+	      var ad = _this2.ad;
 	      var refresh = _this2.refresh;
 	      var square = _this2.square;
 	      var cube = _this2.cube;
@@ -933,7 +1055,7 @@
 	            null,
 	            'The monads in this demonstration are instances of the following class: '
 	          ),
-	          _react2['default'].createElement(ComponentPrimitive, null),
+	          _react2['default'].createElement(ComponentMonad, null),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
@@ -1366,7 +1488,137 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn\'t significantly affect performance in applications involving monad chaining without loops. Loops would ordinarily work on values, and not the monads where the values would eventually be incorporated.'
+	            'On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn\'t significantly affect performance in applications involving monad chaining without loops. Besides, loops would ordinarily work on values, and not the monads where the values would eventually be incorporated. Chrome on my machine is more loaded with features down than Firefox, so not much can be learned from the comparrison. It is interesting that Firefox computed subsequent runs much faster than the first.'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'This repository also provides bnd and fmap functions similar to the bnd and fmap monad methods. They are defined as follows: '
+	          ),
+	          _react2['default'].createElement(ComponentFmap, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Here is bnd in action:'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	              onClick: function () {
+	                bnd(add, mM1, 5).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this2.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this2.cF2();
+	              }
+	            },
+	            'bnd(add,mM2,5).bnd(refresh)'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '   '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            ' Next, we run the fmap function twice. '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	              onClick: function () {
+	                fmap(ad, mM2, 3);
+	                fmap(cu, mM2).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this2.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this2.cF2();
+	              }
+	            },
+	            'fmap(ad,mM2,3)',
+	            _react2['default'].createElement('br', null),
+	            'fmap(cu,mM2).bnd(refresh);'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'cu, ad, and add are defined as follows: '
+	          ),
+	          _react2['default'].createElement(ComponentFmap2, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'The fmap functions were run independently and sequentially. fmap(ad.mM1,3) updated mM1 in time or fmap(cu.mM1) to update it, but if we had used a time-consuming function instead of ad, the second call to fmap might have used the value of mM1 before three was added. Using the monad method fmap doesn\'t help. If the first fmap computation was still in progress, no monad would be available for the call to fmap and an error would result. Things like callbacks, promises, or iterators can guarantee execution in a specified order. But the fmap method can be useful in chains.  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	              onClick: function () {
+	                fmap(ad, mM3, 3).fmap(cu, mM3).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this2.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this2.cF2();
+	              }
+	            },
+	            'fmap(ad,mM3,3)',
+	            _react2['default'].createElement('br', null),
+	            '.fmap(cu).bnd(refresh);'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'The only difference is the addition of a dot in front of the second call to fmap, and since the fmap method uses the calling method\'s value by default, we were able to write ".fmap(cu)" instead of ".fmap(cu,mM3)". Here is another example: '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	              onClick: function () {
+	                mM4.fmap(ad, mM5, 5).fmap(ad, mM6, 3).fmap(cu).fmap(ad, mM5, 1).fmap(cu).fmap(ad, mM4, mM6.x + 1000).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this2.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this2.cF2();
+	              }
+	            },
+	            'mM4.fmap(ad,mM5,5) ',
+	            _react2['default'].createElement('br', null),
+	            '.fmap(ad,mM6,3) ',
+	            _react2['default'].createElement('br', null),
+	            '.fmap(cu) ',
+	            _react2['default'].createElement('br', null),
+	            '.fmap(ad,mM5,1) ',
+	            _react2['default'].createElement('br', null),
+	            '.fmap(cu) ',
+	            _react2['default'].createElement('br', null),
+	            '.fmap(ad,mM4,(mM6.x + 1000)) ',
+	            _react2['default'].createElement('br', null),
+	            '.bnd(refresh) ',
+	            _react2['default'].createElement('br', null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'mM4 gets the ball rolling and is immediately abandoned. Its value does not change until the end of the chain. 3 is added to mM6\'s value and that value gets cubed. Then mM6 is abandoned and attention shifts to mM5 whose value gets incremented by 1 and then cubed. Finally, mM4 gets mM6\'s value, incremented by 1000. '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Creating branches with fmap is simpler than using "branch" with the bnd method. '
 	          ),
 	          _react2['default'].createElement('div', { style: { height: 500 } })
 	        )

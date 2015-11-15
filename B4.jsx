@@ -1,5 +1,4 @@
 'use strict'
-
 import React from 'react';
 import {render} from 'react-dom';
 var Markdown = require('react-remarkable');
@@ -11,7 +10,6 @@ var ComponentBlank = React.createClass({
       <div style={{fontSize: 20, color: '#FFD700', backgroundColor: '#0000ff' }} >
         <Markdown>
         {`
-
         `}
         </Markdown>
       </div>
@@ -20,7 +18,7 @@ var ComponentBlank = React.createClass({
 
 });
 
-var ComponentPrimitive = React.createClass({
+var ComponentMonad = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 22, color: '#00FFFF' }} >
@@ -28,16 +26,23 @@ var ComponentPrimitive = React.createClass({
         {`
       class Monad {
         constructor(z) {
-
+    
           this.x = z;
-
+    
           this.bnd = (func, ...args) => {
             return func(this.x, this, ...args);
           };
-
+    
           this.ret = a => {
             this.x = a;
             return this;
+          };
+    
+          this.fmap = (f, mon = this, ...args) => {      
+            let v = mon.x;
+            let v2 = f(v, ...args);
+            mon.ret(v2);
+            return mon;
           };
         }
       };
@@ -597,7 +602,6 @@ var Bench1 = React.createClass({
       </div>
     );
   }
-
 });
 
 var Bench2 = React.createClass({
@@ -624,7 +628,6 @@ var Bench2 = React.createClass({
       </div>
     );
   }
-
 });
 
 var DummyE = React.createClass({
@@ -638,8 +641,103 @@ var DummyE = React.createClass({
       </div>
     );
   }
-
 });
+
+var ComponentAdd = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      add = (x,mon,y) => {    
+        mon.ret(x + y);
+        return mon;
+      }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+});
+
+var ComponentFmap = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      let fmap = (f,mon, ...args) => {    
+        let v = mon.x;
+        mon.ret(f(v, ...args));
+        return mon;
+      }
+    
+      let bnd = (f,mon, ...args) => {
+        f(mon.x,mon, ...args);
+        return mon;
+      }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentFmap2 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      cu = x => x*x*x;
+    
+      ad = (a,b) => a + b;
+
+      add = (x,mon,y) => {       
+        mon.ret(x + y);
+        return mon;
+      }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentBlankr4 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      add = (x,mon,y) => {    
+        mon.ret(x + y);
+        return mon;
+      }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentBlank5 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      add = (x,mon,y) => {    
+        mon.ret(x + y);
+        return mon;
+      }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
 
   class Monad {
     constructor(z) {
@@ -654,9 +752,28 @@ var DummyE = React.createClass({
         this.x = a;
         return this;
       };
+
+      this.fmap = (f, mon = this, ...args) => {
+        let v = mon.x;
+        let v2 = f(v, ...args);
+        mon.ret(v2);
+        return mon;
+      };
     }
   };
 
+  let fmap = (f,mon, ...args) => {
+    let v = mon.x;
+    mon.ret(f(v, ...args));
+    return mon;
+  }
+
+  let join = m => m.x;
+
+  let bnd = (f,mon, ...args) => {
+    f(mon.x,mon, ...args);
+    return mon;
+  }
 
 class B4 extends React.Component {
   constructor(props) {
@@ -912,6 +1029,9 @@ class B4 extends React.Component {
     },12 )
   }
 
+  cu = x => x*x*x;
+  ad = (a,b) => a + b;
+
     render = () => {
     let mM1 = this.mM1;
     let mM2 = this.mM2;
@@ -923,6 +1043,8 @@ class B4 extends React.Component {
     let mM8 = this.mM8;
     let mM9 = this.mM9;
     let mM10 = this.mM10;
+    let cu = this.cu;
+    let ad = this.ad;
     let refresh = this.refresh;
     let square = this.square;
     let cube = this.cube;
@@ -957,7 +1079,7 @@ class B4 extends React.Component {
 
 <h2 style={{textAlign: 'center'}} >Javascript Monads</h2>
 <p>The monads in this demonstration are instances of the following class: </p>
-<ComponentPrimitive />
+<ComponentMonad />
 <p>Monads can be instantiated with entities of any Javascript type, and the type of a monad's value can change. I won't go into detail about the category of monads. Its morphisms are accomplished by the monad methods "bnd" and "ret" in combination with functions such as those presented below. I'll only demonstrate, without formal proof, that "ret" is the left and right identity, and that the commutative property holds for chains of 'bnd' computations; i.e., the order of evaluation of monads in a chain does not affect the final result.</p>
 <p> First, let's see how these monads work. Trivially, they can provide a format for organizing code, as the following example demonstates. Here's the function "chance":</p>
 
@@ -1174,11 +1296,73 @@ class B4 extends React.Component {
         >
         <Bench2 />
       </button>
-<p>On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn't significantly affect performance in applications involving monad chaining without loops. Loops would ordinarily work on values, and not the monads where the values would eventually be incorporated.</p>
+<p>On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn't significantly affect performance in applications involving monad chaining without loops. Besides, loops would ordinarily work on values, and not the monads where the values would eventually be incorporated. Chrome on my machine is more loaded with features down than Firefox, so not much can be learned from the comparrison. It is interesting that Firefox computed subsequent runs much faster than the first.</p>
+<p>This repository also provides bnd and fmap functions similar to the bnd and fmap monad methods. They are defined as follows: </p>
+<ComponentFmap />
+<p>Here is bnd in action:</p>
 
-   <div style={{height:500}} />
+<p>  </p>
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+   onClick={() => {bnd(add,mM1,5).bnd(refresh) }}  
+   onMouseEnter={ () => this.cT2() }
+   onMouseLeave={ () => this.cF2() }
+        >
+   bnd(add,mM2,5).bnd(refresh)  
+      </button>
+      <p>   </p>
+<p> Next, we run the fmap function twice. </p>
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+   onClick={() => {
+     fmap(ad,mM2,3)
+     fmap(cu,mM2).bnd(refresh);
+        } }
+   onMouseEnter={ () => this.cT2() }
+   onMouseLeave={ () => this.cF2() }
+        >
+     fmap(ad,mM2,3)<br />
+     fmap(cu,mM2).bnd(refresh);
+      </button>
+<p>cu, ad, and add are defined as follows: </p>
+<ComponentFmap2 />
+<p>The fmap functions were run independently and sequentially. fmap(ad.mM1,3) updated mM1 in time or fmap(cu.mM1) to update it, but if we had used a time-consuming function instead of ad, the second call to fmap might have used the value of mM1 before three was added. Using the monad method fmap doesn't help. If the first fmap computation was still in progress, no monad would be available for the call to fmap and an error would result. Things like callbacks, promises, or iterators can guarantee execution in a specified order. But the fmap method can be useful in chains.  </p>
 
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+   onClick={() => {
+     fmap(ad,mM3,3)
+     .fmap(cu,mM3).bnd(refresh);
+        } }
+   onMouseEnter={ () => this.cT2() }
+   onMouseLeave={ () => this.cF2() }
+        >
+     fmap(ad,mM3,3)<br />
+     .fmap(cu).bnd(refresh);
+      </button>
+<p>The only difference is the addition of a dot in front of the second call to fmap, and since the fmap method uses the calling method's value by default, we were able to write ".fmap(cu)" instead of ".fmap(cu,mM3)". Here is another example: </p>
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+   onClick={() => {
+     mM4.fmap(ad,mM5,5)
+     .fmap(ad,mM6,3)
+     .fmap(cu)
+     .fmap(ad,mM5,1)
+     .fmap(cu)
+     .fmap(ad,mM4,(mM6.x + 1000))
+     .bnd(refresh)
+        } }
+   onMouseEnter={ () => this.cT2() }
+   onMouseLeave={ () => this.cF2() }
+        >
+     mM4.fmap(ad,mM5,5) <br />
+     .fmap(ad,mM6,3) <br />
+     .fmap(cu) <br />
+     .fmap(ad,mM5,1) <br />
+     .fmap(cu) <br />
+     .fmap(ad,mM4,(mM6.x + 1000)) <br />
+     .bnd(refresh) <br />
+      </button>
+<p>mM4 gets the ball rolling and is immediately abandoned. Its value does not change until the end of the chain. 3 is added to mM6's value and that value gets cubed. Then mM6 is abandoned and attention shifts to mM5 whose value gets incremented by 1 and then cubed. Finally, mM4 gets mM6's value, incremented by 1000. </p>
+<p>Creating branches with fmap is simpler than using "branch" with the bnd method. </p> 
 
+<div style={{height:500}} />
 </div>
 </div>
 )

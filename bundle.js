@@ -1558,19 +1558,39 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'The fmap functions were run independently and sequentially. fmap(ad.mM1,3) updated mM1 in time or fmap(cu.mM1) to update it, but if we had used a time-consuming function instead of ad, the second call to fmap might have used the value of mM1 before three was added. Using the monad method fmap doesn\'t help. If the first fmap computation was still in progress, no monad would be available for the call to fmap and an error would result. Things like callbacks, promises, or iterators can guarantee execution in a specified order. But the fmap method can be useful in chains.  '
+	            'The fmap functions were run independently and sequentially. fmap(ad.mM1,3) updated mM1 in time or fmap(cu.mM1) to update it, but if we had used a time-consuming function instead of ad, the second call to fmap might have used the value of mM1 before three was added. Using the monad method fmap doesn\'t help. If the first fmap computation was still in progress, no monad would be available for the call to fmap and an error would result. Things like callbacks, promises, or iterators can guarantee execution in a specified order. But the fmap method can be useful in chains. You should click the reset button before running the following examples. '
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	            { style: _this2.bool3 ? _this2.style1 : _this2.style2,
+	              onClick: function () {
+	                mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this2.cT3();
+	              },
+	              onMouseLeave: function () {
+	                return _this2.cF3();
+	              }
+	            },
+	            'REFRESH'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '   '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this2.bool4 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                fmap(ad, mM3, 3).fmap(cu, mM3).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT2();
+	                return _this2.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF2();
+	                return _this2.cF4();
 	              }
 	            },
 	            'fmap(ad,mM3,3)',
@@ -1584,15 +1604,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	            { style: _this2.bool5 ? _this2.style1 : _this2.style2,
 	              onClick: function () {
 	                mM4.fmap(ad, mM5, 5).fmap(ad, mM6, 3).fmap(cu).fmap(ad, mM5, 1).fmap(cu).fmap(ad, mM4, mM6.x + 1000).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT2();
+	                return _this2.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF2();
+	                return _this2.cF5();
 	              }
 	            },
 	            'mM4.fmap(ad,mM5,5) ',

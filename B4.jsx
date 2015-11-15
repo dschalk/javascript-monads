@@ -1324,21 +1324,32 @@ class B4 extends React.Component {
       </button>
 <p>cu, ad, and add are defined as follows: </p>
 <ComponentFmap2 />
-<p>The fmap functions were run independently and sequentially. fmap(ad.mM1,3) updated mM1 in time or fmap(cu.mM1) to update it, but if we had used a time-consuming function instead of ad, the second call to fmap might have used the value of mM1 before three was added. Using the monad method fmap doesn't help. If the first fmap computation was still in progress, no monad would be available for the call to fmap and an error would result. Things like callbacks, promises, or iterators can guarantee execution in a specified order. But the fmap method can be useful in chains.  </p>
+<p>The fmap functions were run independently and sequentially. fmap(ad.mM1,3) updated mM1 in time or fmap(cu.mM1) to update it, but if we had used a time-consuming function instead of ad, the second call to fmap might have used the value of mM1 before three was added. Using the monad method fmap doesn't help. If the first fmap computation was still in progress, no monad would be available for the call to fmap and an error would result. Things like callbacks, promises, or iterators can guarantee execution in a specified order. But the fmap method can be useful in chains. You should click the reset button before running the following examples. </p>
 
-      <button style={this.bool2 ? this.style1 : this.style2 } 
+      <button style={this.bool3 ? this.style1 : this.style2 } 
+   onClick={() => {
+     mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh)
+        } }
+   onMouseEnter={ () => this.cT3() }
+   onMouseLeave={ () => this.cF3() }
+        >
+        REFRESH
+      </button>
+
+<p>   </p>
+      <button style={this.bool4 ? this.style1 : this.style2 } 
    onClick={() => {
      fmap(ad,mM3,3)
      .fmap(cu,mM3).bnd(refresh);
         } }
-   onMouseEnter={ () => this.cT2() }
-   onMouseLeave={ () => this.cF2() }
+   onMouseEnter={ () => this.cT4() }
+   onMouseLeave={ () => this.cF4() }
         >
      fmap(ad,mM3,3)<br />
      .fmap(cu).bnd(refresh);
       </button>
 <p>The only difference is the addition of a dot in front of the second call to fmap, and since the fmap method uses the calling method's value by default, we were able to write ".fmap(cu)" instead of ".fmap(cu,mM3)". Here is another example: </p>
-      <button style={this.bool2 ? this.style1 : this.style2 } 
+      <button style={this.bool5 ? this.style1 : this.style2 } 
    onClick={() => {
      mM4.fmap(ad,mM5,5)
      .fmap(ad,mM6,3)
@@ -1348,8 +1359,8 @@ class B4 extends React.Component {
      .fmap(ad,mM4,(mM6.x + 1000))
      .bnd(refresh)
         } }
-   onMouseEnter={ () => this.cT2() }
-   onMouseLeave={ () => this.cF2() }
+   onMouseEnter={ () => this.cT5() }
+   onMouseLeave={ () => this.cF5() }
         >
      mM4.fmap(ad,mM5,5) <br />
      .fmap(ad,mM6,3) <br />

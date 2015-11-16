@@ -4,21 +4,27 @@ Originally, I used the excellent Mobservable package to make the browser interfa
 
 The code pertaining to monads, along with explanations and running examples, can be found at [http://transcendent.ninja](http://transcendent.ninja). Here is the class that generates the monad instances:
 ```Javascript
-class Monad {
-  constructor(z) {
+  class Monad {
+    constructor(z) {
 
-    this.x = z;
+      this.x = z;
 
-    this.bnd = (func, ...args) => {
-      return func(this.x, this, ...args);
-    };
+      this.bnd = (func, ...args) => {
+        return func(this.x, this, ...args);
+      };
 
-    this.ret = a => {
-      this.x = a;
-      return this;
-    };
-  }
-};
+      this.ret = a => {
+        this.x = a;
+        return this;
+      };
+
+      this.fmap = (f, mon = this, ...args) => {      
+        mon.ret( f(mon.x, ...args ));
+        return mon;
+
+      };
+    }
+  };
 ```
 Here are some of some of the functions which are used by the "bnd" method in the examples:
 ```Javascript

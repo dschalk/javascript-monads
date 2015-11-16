@@ -593,7 +593,6 @@ var Bench1 = React.createClass({
         }
         this.resBench = ((new Date()) - d1);    
         setTimeout( function() {
-          self.forceUpdate();
         },12 )
       }
         `}
@@ -619,7 +618,6 @@ var Bench2 = React.createClass({
         }
         this.resBench2 = ((new Date()) - d1);
         setTimeout( function() {
-          self.forceUpdate();
         },12 )
       }
         `}
@@ -629,12 +627,34 @@ var Bench2 = React.createClass({
   }
 });
 
-var DummyE = React.createClass({
+var ComponentFmap1 = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
+      onClick={
+        () => mM1.bnd(ran)
+        .fmap(id,mM5)
+          .bnd(ran).bnd(a => mM6
+                        .bnd(ran)
+                        .bnd(b => mM7
+                          .bnd(ran)
+                          .bnd(c => mM8
+                            .bnd(this.ch,a,b,c)
+                          ) ) )  
+        .fmap(id,mM1)
+        .bnd(ran)
+        .bnd(x => mM2
+          .bnd(ran)
+          .bnd(y => mM3
+            .bnd(ran)
+            .bnd(z => mM4
+              .bnd(this.ch,x,y,z)
+              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))     
+              .bnd(mM10.ret)
+              .bnd(this.jackpot)
+              .bnd(refresh)    ) ) )   }
         `}
         </Markdown>
       </div>
@@ -975,6 +995,8 @@ class B4 extends React.Component {
   }
 
   ch = (x,mon,a,b,c) => {
+    console.log('In ch', a, b, c);
+    console.log(mon);
     if (a === b && a===c) {
       mon.ret('Winner! Three of a kind');
       return mon;
@@ -1029,6 +1051,7 @@ class B4 extends React.Component {
 
   cu = x => x*x*x;
   ad = (a,b) => a + b;
+  id = x => x;
 
     render = () => {
     let mM1 = this.mM1;
@@ -1043,6 +1066,7 @@ class B4 extends React.Component {
     let mM10 = this.mM10;
     let cu = this.cu;
     let ad = this.ad;
+    let id = this.id;
     let refresh = this.refresh;
     let square = this.square;
     let cube = this.cube;
@@ -1207,6 +1231,36 @@ class B4 extends React.Component {
         >
         <ComponentJackpotB />
    </button>
+   <p>In the next example, "fmap(id,mM5)" starts a new branch and "fmap(id,mM1" switches back to the beginning of the tree, mM1. "id" is defined as "id = x => x".  Click to see the code in action: </p>
+  <button style={this.bool5 ? this.style1 : this.style2 } 
+    onClick={
+      () => mM1.bnd(ran)
+      .fmap(id,mM5)
+        .bnd(ran).bnd(a => mM6
+                      .bnd(ran)
+                      .bnd(b => mM7
+                        .bnd(ran)
+                        .bnd(c => mM8
+                          .bnd(this.ch,a,b,c)
+                        ) ) )  
+      .fmap(id,mM1)
+      .bnd(ran)
+      .bnd(x => mM2
+        .bnd(ran)
+        .bnd(y => mM3
+          .bnd(ran)
+          .bnd(z => mM4
+            .bnd(this.ch,x,y,z)
+            .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))
+            .bnd(mM10.ret)
+            .bnd(this.jackpot)
+            .bnd(refresh)    ) ) )   }
+ 
+   onMouseEnter={ () => this.cT5() }
+   onMouseLeave={ () => this.cF5() }
+        >
+        <ComponentFmap1 />
+   </button>
    <p>And here the branch displays the square root of the sum of the squares of the first two random numbers:  </p>
 
   <button style={this.bool3 ? this.style1 : this.style2 } 
@@ -1222,7 +1276,7 @@ class B4 extends React.Component {
                     .ret([a*a,"+",b*b,"=", a*a+b*b])
                     .bnd(() => mM10.ret(Math.sqrt(mM8.x[4]))
                       .bnd(() => mM9.ret("hypotenuse:")
-                      .bnd(refresh) ))))) },900 ) }))
+                      .bnd(refresh) ))))) },300 ) }))
       .bnd(ran)
       .bnd(x => mM2
         .bnd(ran)
@@ -1368,8 +1422,8 @@ class B4 extends React.Component {
      .fmap(ad,mM4,(mM6.x + 1000)) <br />
      .bnd(refresh) <br />
       </button>
-<p>mM4 gets the ball rolling and is immediately abandoned. Its value does not change until the end of the chain. 3 is added to mM6's value and that value gets cubed. Then mM6 is abandoned and attention shifts to mM5 whose value gets incremented by 1 and then cubed. Finally, mM4 gets mM6's value, incremented by 1000. </p>
-<p>Creating branches with fmap is simpler than using "branch" with the bnd method. </p> 
+<p>mM4 gets the ball rolling by adding 5 to the value of mM5. At that point, mM5 takes control and mM4 remains abaandoned until the end of the chain where it it takes the value of mM6 (mM6.x) and adds 1000. In the second line, control is handed over to mM6 which gets its value increased by 3 and then cubed in line '3'. In line 4, mM5's value is incremented by 1 and cubed. Finally, mM4 gets mM6's value and inceases it by 1000. </p>
+<p>Creating and updating branches with fmap is simple, but sometimes we will need better control over the order of execution. In the previous example, we are confident that lines '2' and '3' have been executed (updating mM6) before line '6' where mM4 takes the value of mM6 and adds 1000 to it. If lines '2' and '3' had involved websocket messages, an ajax call, or interaction with a database, line '6' would likely have been executed using the original value of mM6. Promises could make sure line '6' get executed after lines '2' and '3'.</p> 
 
 <div style={{height:500}} />
 </div>

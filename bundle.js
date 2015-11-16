@@ -458,7 +458,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      bench = () => {\n        let self = this;\n        let k = 0;\n        let j = 0;\n        let d1 = new Date();\n        for (k; k<100000; k++) {\n          this.mM1 = new Monad(k);\n        }\n        this.resBench = ((new Date()) - d1);    \n        setTimeout( function() {\n          self.forceUpdate();\n        },12 )\n      }\n        '
+	        '\n      bench = () => {\n        let self = this;\n        let k = 0;\n        let j = 0;\n        let d1 = new Date();\n        for (k; k<100000; k++) {\n          this.mM1 = new Monad(k);\n        }\n        this.resBench = ((new Date()) - d1);    \n        setTimeout( function() {\n        },12 )\n      }\n        '
 	      )
 	    );
 	  }
@@ -474,14 +474,14 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      bench2 = () => {\n        let self = this;\n        let k = 0;\n        let j = 0;\n        let d1 = new Date();\n        for (k; k<100000; k++) {\n          this.mM2.ret(k);\n        }\n        this.resBench2 = ((new Date()) - d1);\n        setTimeout( function() {\n          self.forceUpdate();\n        },12 )\n      }\n        '
+	        '\n      bench2 = () => {\n        let self = this;\n        let k = 0;\n        let j = 0;\n        let d1 = new Date();\n        for (k; k<100000; k++) {\n          this.mM2.ret(k);\n        }\n        this.resBench2 = ((new Date()) - d1);\n        setTimeout( function() {\n        },12 )\n      }\n        '
 	      )
 	    );
 	  }
 	});
 
-	var DummyE = _react2['default'].createClass({
-	  displayName: 'DummyE',
+	var ComponentFmap1 = _react2['default'].createClass({
+	  displayName: 'ComponentFmap1',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -490,7 +490,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n      onClick={\n        () => mM1.bnd(ran)\n        .fmap(id,mM5)\n          .bnd(ran).bnd(a => mM6\n                        .bnd(ran)\n                        .bnd(b => mM7\n                          .bnd(ran)\n                          .bnd(c => mM8\n                            .bnd(this.ch,a,b,c)\n                          ) ) )  \n        .fmap(id,mM1)\n        .bnd(ran)\n        .bnd(x => mM2\n          .bnd(ran)\n          .bnd(y => mM3\n            .bnd(ran)\n            .bnd(z => mM4\n              .bnd(this.ch,x,y,z)\n              .bnd(() => mM9.ret([x,y,z,mM5.x,mM6.x,mM7.x]))     \n              .bnd(mM10.ret)\n              .bnd(this.jackpot)\n              .bnd(refresh)    ) ) )   }\n        '
 	      )
 	    );
 	  }
@@ -814,6 +814,8 @@
 	    };
 
 	    this.ch = function (x, mon, a, b, c) {
+	      console.log('In ch', a, b, c);
+	      console.log(mon);
 	      if (a === b && a === c) {
 	        mon.ret('Winner! Three of a kind');
 	        return mon;
@@ -874,6 +876,10 @@
 	      return a + b;
 	    };
 
+	    this.id = function (x) {
+	      return x;
+	    };
+
 	    this.render = function () {
 	      var mM1 = _this2.mM1;
 	      var mM2 = _this2.mM2;
@@ -887,6 +893,7 @@
 	      var mM10 = _this2.mM10;
 	      var cu = _this2.cu;
 	      var ad = _this2.ad;
+	      var id = _this2.id;
 	      var refresh = _this2.refresh;
 	      var square = _this2.square;
 	      var cube = _this2.cube;
@@ -1289,6 +1296,41 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
+	            'In the next example, "fmap(id,mM5)" starts a new branch and "fmap(id,mM1" switches back to the beginning of the tree, mM1. "id" is defined as "id = x => x".  Click to see the code in action: '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this2.bool5 ? _this2.style1 : _this2.style2,
+	              onClick: function () {
+	                return mM1.bnd(ran).fmap(id, mM5).bnd(ran).bnd(function (a) {
+	                  return mM6.bnd(ran).bnd(function (b) {
+	                    return mM7.bnd(ran).bnd(function (c) {
+	                      return mM8.bnd(_this2.ch, a, b, c);
+	                    });
+	                  });
+	                }).fmap(id, mM1).bnd(ran).bnd(function (x) {
+	                  return mM2.bnd(ran).bnd(function (y) {
+	                    return mM3.bnd(ran).bnd(function (z) {
+	                      return mM4.bnd(_this2.ch, x, y, z).bnd(function () {
+	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
+	                      }).bnd(mM10.ret).bnd(_this2.jackpot).bnd(refresh);
+	                    });
+	                  });
+	                });
+	              },
+
+	              onMouseEnter: function () {
+	                return _this2.cT5();
+	              },
+	              onMouseLeave: function () {
+	                return _this2.cF5();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentFmap1, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
 	            'And here the branch displays the square root of the sum of the squares of the first two random numbers:  '
 	          ),
 	          _react2['default'].createElement(
@@ -1308,7 +1350,7 @@
 	                        });
 	                      });
 	                    });
-	                  }, 900);
+	                  }, 300);
 	                })).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
@@ -1631,12 +1673,12 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'mM4 gets the ball rolling and is immediately abandoned. Its value does not change until the end of the chain. 3 is added to mM6\'s value and that value gets cubed. Then mM6 is abandoned and attention shifts to mM5 whose value gets incremented by 1 and then cubed. Finally, mM4 gets mM6\'s value, incremented by 1000. '
+	            'mM4 gets the ball rolling by adding 5 to the value of mM5. At that point, mM5 takes control and mM4 remains abaandoned until the end of the chain where it it takes the value of mM6 (mM6.x) and adds 1000. In the second line, control is handed over to mM6 which gets its value increased by 3 and then cubed in line \'3\'. In line 4, mM5\'s value is incremented by 1 and cubed. Finally, mM4 gets mM6\'s value and inceases it by 1000. '
 	          ),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'Creating branches with fmap is simpler than using "branch" with the bnd method. '
+	            'Creating and updating branches with fmap is simple, but sometimes we will need better control over the order of execution. In the previous example, we are confident that lines \'2\' and \'3\' have been executed (updating mM6) before line \'6\' where mM4 takes the value of mM6 and adds 1000 to it. If lines \'2\' and \'3\' had involved websocket messages, an ajax call, or interaction with a database, line \'6\' would likely have been executed using the original value of mM6. Promises could make sure line \'6\' get executed after lines \'2\' and \'3\'.'
 	          ),
 	          _react2['default'].createElement('div', { style: { height: 500 } })
 	        )

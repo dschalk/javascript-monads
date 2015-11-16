@@ -101,7 +101,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      class Monad {\n        constructor(z) {\n    \n          this.x = z;\n    \n          this.bnd = (func, ...args) => {\n            return func(this.x, this, ...args);\n          };\n    \n          this.ret = a => {\n            this.x = a;\n            return this;\n          };\n    \n          this.fmap = (f, mon = this, ...args) => {      \n            let v = mon.x;\n            let v2 = f(v, ...args);\n            mon.ret(v2);\n            return mon;\n          };\n        }\n      };\n        '
+	        '\n      class Monad {\n        constructor(z) {\n    \n          this.x = z;\n    \n          this.bnd = (func, ...args) => {\n            return func(this.x, this, ...args);\n          };\n    \n          this.ret = a => {\n            this.x = a;\n            return this;\n          };\n    \n          this.fmap = (f, mon = this, ...args) => {      \n            mon.ret( f(mon.x, ...args );\n            return mon;\n          };\n\n        }\n      };\n        '
 	      )
 	    );
 	  }
@@ -603,9 +603,7 @@
 
 	    var mon = arguments.length <= 1 || arguments[1] === undefined ? _this : arguments[1];
 
-	    var v = mon.x;
-	    var v2 = f.apply(undefined, [v].concat(args));
-	    mon.ret(v2);
+	    mon.ret(f.apply(undefined, [mon.x].concat(args)));
 	    return mon;
 	  };
 	};
@@ -784,7 +782,7 @@
 	    this.branchT = function (x, mon, a) {
 	      setTimeout(function () {
 	        return mon;
-	      }, 1500);
+	      }, 500);
 	    };
 
 	    this.rand = function (a, b) {

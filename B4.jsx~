@@ -39,11 +39,10 @@ var ComponentMonad = React.createClass({
           };
     
           this.fmap = (f, mon = this, ...args) => {      
-            let v = mon.x;
-            let v2 = f(v, ...args);
-            mon.ret(v2);
+            mon.ret( f(mon.x, ...args );
             return mon;
           };
+
         }
       };
         `}
@@ -753,11 +752,10 @@ var ComponentBlank5 = React.createClass({
         return this;
       };
 
-      this.fmap = (f, mon = this, ...args) => {
-        let v = mon.x;
-        let v2 = f(v, ...args);
-        mon.ret(v2);
+      this.fmap = (f, mon = this, ...args) => {      
+        mon.ret( f(mon.x, ...args );
         return mon;
+
       };
     }
   };
@@ -945,7 +943,7 @@ class B4 extends React.Component {
   branchT = (x,mon,a) => {
     setTimeout(function() {
       return mon;
-    },1500  )
+    },500  )
   }
 
   rand = (a,b) => {
@@ -1328,7 +1326,7 @@ class B4 extends React.Component {
 
       <button style={this.bool3 ? this.style1 : this.style2 } 
    onClick={() => {
-     mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret)
+     mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh)
         } }
    onMouseEnter={ () => this.cT3() }
    onMouseLeave={ () => this.cF3() }

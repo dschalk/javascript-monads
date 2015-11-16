@@ -39,11 +39,10 @@ var ComponentMonad = React.createClass({
           };
     
           this.fmap = (f, mon = this, ...args) => {      
-            let v = mon.x;
-            let v2 = f(v, ...args);
-            mon.ret(v2);
+            mon.ret( f(mon.x, ...args );
             return mon;
           };
+
         }
       };
         `}
@@ -753,11 +752,10 @@ var ComponentBlank5 = React.createClass({
         return this;
       };
 
-      this.fmap = (f, mon = this, ...args) => {
-        let v = mon.x;
-        let v2 = f(v, ...args);
-        mon.ret(v2);
+      this.fmap = (f, mon = this, ...args) => {      
+        mon.ret( f(mon.x, ...args ));
         return mon;
+
       };
     }
   };
@@ -945,7 +943,7 @@ class B4 extends React.Component {
   branchT = (x,mon,a) => {
     setTimeout(function() {
       return mon;
-    },1500  )
+    },500  )
   }
 
   rand = (a,b) => {

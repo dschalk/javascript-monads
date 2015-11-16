@@ -163,5 +163,7 @@ m.bnd(f) = f(m.x) = f(a). Now we have m.bnd(f).bnd(g) = (f(a)).bnd(g) By
 the definition of bnd, (f(a)).bnd(g) = g(f(a).x) since bnd had only one
 argument. This completes the first half of the proof. In the right side
 of the equation, the monad f(a) calls bnd(g). By the definition of bnd,
-f(a).bnd(g) = g(f(a).x) and the proof complete. Here are a couple of
-demonstrations:
+f(a).bnd(g) = g(f(a).x) and the proof complete. Here are some demonstrations, 
+including demonstrations of the fmap method, and the global functions fmap and bnd: 
+
+http://transcendent.ninja

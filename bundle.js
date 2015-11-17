@@ -57,7 +57,7 @@
 	  value: true
 	});
 
-	var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x3, _x4, _x5) { var _again = true; _function: while (_again) { var object = _x3, property = _x4, receiver = _x5; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x3 = parent; _x4 = property; _x5 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -169,7 +169,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n\t\t\trefresh = (x,mon) => {\n\t\t\t\tthis.forceUpdate.apply(this);\t\t\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\tdouble = (x,mon) => {\n\t\t\t\tmon.ret(x+x);\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\tsquare = (x,mon) => {\n\t\t\t\tmon.ret(x*x);\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\ttripple = (x,mon) => {\n\t\t\t\tmon.ret(x+x+x);\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\tcube = (x,mon) => {\n\t\t\t\tmon.ret(x*x*x);\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\tadd = (x,mon,y) => {\n\t\t\t\tmon.ret(x + y);\n\t\t\t\treturn mon;\n\t\t\t}\n\n\t\t\tmult = (x,mon,y) => {\n\t\t\t\tmon.ret(x * y);\n\t\t\t\treturn mon;\n  }\n        '
+	        '\n\t\t\trefresh = (x,mon) => {\n\t\t\t\tthis.forceUpdate.apply(this);\t\t\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\tdoub = (x,mon) => {\n\t\t\t\tmon.ret(x+x);\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\tsquare = (x,mon) => {\n\t\t\t\tmon.ret(x*x);\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\ttripple = (x,mon) => {\n\t\t\t\tmon.ret(x+x+x);\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\tcube = (x,mon) => {\n\t\t\t\tmon.ret(x*x*x);\n\t\t\t\treturn mon;\n\t\t\t};\n\n\t\t\tadd = (x,mon,y) => {\n\t\t\t\tmon.ret(x + y);\n\t\t\t\treturn mon;\n\t\t\t}\n\n\t\t\tmult = (x,mon,y) => {\n\t\t\t\tmon.ret(x * y);\n\t\t\t\treturn mon;\n  }\n        '
 	      )
 	    );
 	  }
@@ -220,7 +220,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      onClick={() => {mM1\n     \t.ret(3)\n     \t.bnd(x => mM2\n     \t\t.ret(2)\n     \t\t.bnd(square)\n         .bnd(y => mM3\n         \t.ret(50)\n         \t.bnd(double)\n           .bnd(mult,(x+y))\n           .bnd(() => mM4.ret(0))\n           .bnd(add,(x*x + y*y))\n     \t\t\t.bnd(refresh)  ) ) }}    \n        '
+	        '\n      onClick={() => {mM1\n     \t.ret(3)\n     \t.bnd(x => mM2\n     \t\t.ret(2)\n     \t\t.bnd(square)\n         .bnd(y => mM3\n         \t.ret(50)\n         \t.bnd(doub)\n           .bnd(mult,(x+y))\n           .bnd(() => mM4.ret(0))\n           .bnd(add,(x*x + y*y))\n     \t\t\t.bnd(refresh)  ) ) }}    \n        '
 	      )
 	    );
 	  }
@@ -458,7 +458,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      bench = () => {\n        let self = this;\n        let k = 0;\n        let j = 0;\n        let d1 = new Date();\n        for (k; k<100000; k++) {\n          this.mM1 = new Monad(k);\n        }\n        this.resBench = ((new Date()) - d1);    \n        setTimeout( function() {\n        },12 )\n      }\n        '
+	        '\n      bench = (x,mon) => {\n        let self = this;\n        let k = 0;\n        let j = 0;\n        let d1 = new Date();\n        for (k; k<1000000; k++) {\n          this.mM1 = new Monad(k);     \n        }\n        mon.ret((new Date()) - d1);\n        return mon;\n  }\n        '
 	      )
 	    );
 	  }
@@ -544,8 +544,8 @@
 	  }
 	});
 
-	var ComponentBlankr4 = _react2['default'].createClass({
-	  displayName: 'ComponentBlankr4',
+	var ComponentBench3 = _react2['default'].createClass({
+	  displayName: 'ComponentBench3',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -554,14 +554,14 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      add = (x,mon,y) => {    \n        mon.ret(x + y);\n        return mon;\n      }\n        '
+	        '\n      onClick={() => {mM2\n           .bnd(bench)\n           .bnd(mM3.ret)\n           .bnd(bench)\n           .bnd(mM4.ret)     \n           .bnd(bench)\n           .bnd(mM5.ret)\n           .bnd(bench)\n           .bnd(mM6.ret)\n           .bnd(bench)\n           .bnd(refresh)\n       } }\n        '
 	      )
 	    );
 	  }
 	});
 
-	var ComponentBlank5 = _react2['default'].createClass({
-	  displayName: 'ComponentBlank5',
+	var ComponentBench4 = _react2['default'].createClass({
+	  displayName: 'ComponentBench4',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -570,7 +570,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      add = (x,mon,y) => {    \n        mon.ret(x + y);\n        return mon;\n      }\n        '
+	        '\n      onClick={() => {mM2\n       .bnd(bench)\n       .bnd(a => mM3\n         .bnd(bench)\n         .bnd(b => mM4\n           .bnd(bench)\n           .bnd(c => mM5\n             .bnd(bench)\n             .bnd(d => mM6\n               .bnd(bench)\n               .bnd(e => mM7\n                 .ret((a+b+c+d+e)/5)\n                 .bnd(refresh) )))))     \n      }}\n        '
 	      )
 	    );
 	  }
@@ -610,9 +610,73 @@
 
 	;
 
+	var MFLAG = false;
+
+	var MonadSeq = function MonadSeq(z) {
+	  var _this2 = this;
+
+	  _classCallCheck(this, MonadSeq);
+
+	  this.x = z;
+
+	  this.bnd = function (func) {
+	    for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+	      args[_key3 - 1] = arguments[_key3];
+	    }
+
+	    var self = _this2;
+	    (function retry() {
+	      if (MFLAG === false) {
+	        MFLAG = true;
+	        console.log('Hello from bnd ', MFLAG);
+	        return func.apply(undefined, [self.x, self].concat(args));
+	      } else {
+	        setTimeout(function () {
+	          console.log('bnd retry');
+	          retry();
+	        }, 64);
+	      }
+	    })();
+	    MFLAG = false;
+	    return _this2;
+	  };
+
+	  this.fmap = function (f) {
+	    for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+	      args[_key4 - 2] = arguments[_key4];
+	    }
+
+	    var mon = arguments.length <= 1 || arguments[1] === undefined ? _this2 : arguments[1];
+
+	    var self = _this2;
+	    (function retry() {
+	      if (MFLAG === false) {
+	        console.log('Hello from fmap');
+	        console.log(mon);
+	        MFLAG = true;
+	        mon.ret(f.apply(undefined, [mon.x].concat(args)));
+	      } else {
+	        setTimeout(function () {
+	          console.log('fmap retry');
+	          retry();
+	        }, 64);
+	      }
+	    })();
+	    MFLAG = false;
+	    return mon;
+	  };
+
+	  this.ret = function (a) {
+	    _this2.x = a;
+	    return _this2;
+	  };
+	};
+
+	;
+
 	var fmap = function fmap(f, mon) {
-	  for (var _len3 = arguments.length, args = Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
-	    args[_key3 - 2] = arguments[_key3];
+	  for (var _len5 = arguments.length, args = Array(_len5 > 2 ? _len5 - 2 : 0), _key5 = 2; _key5 < _len5; _key5++) {
+	    args[_key5 - 2] = arguments[_key5];
 	  }
 
 	  var v = mon.x;
@@ -625,8 +689,8 @@
 	};
 
 	var bnd = function bnd(f, mon) {
-	  for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
-	    args[_key4 - 2] = arguments[_key4];
+	  for (var _len6 = arguments.length, args = Array(_len6 > 2 ? _len6 - 2 : 0), _key6 = 2; _key6 < _len6; _key6++) {
+	    args[_key6 - 2] = arguments[_key6];
 	  }
 
 	  f.apply(undefined, [mon.x, mon].concat(args));
@@ -637,7 +701,7 @@
 	  _inherits(B4, _React$Component);
 
 	  function B4(props) {
-	    var _this2 = this;
+	    var _this3 = this;
 
 	    _classCallCheck(this, B4);
 
@@ -647,8 +711,8 @@
 	      color: 'red', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 27 };
 
 	    this.cT1 = function () {
-	      var self = _this2;
-	      _this2.bool1 = true;
+	      var self = _this3;
+	      _this3.bool1 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -656,8 +720,8 @@
 	    };
 
 	    this.cF1 = function () {
-	      var self = _this2;
-	      _this2.bool1 = false;
+	      var self = _this3;
+	      _this3.bool1 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -665,8 +729,8 @@
 	    };
 
 	    this.cT2 = function () {
-	      var self = _this2;
-	      _this2.bool2 = true;
+	      var self = _this3;
+	      _this3.bool2 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -674,8 +738,8 @@
 	    };
 
 	    this.cF2 = function () {
-	      var self = _this2;
-	      _this2.bool2 = false;
+	      var self = _this3;
+	      _this3.bool2 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -683,8 +747,8 @@
 	    };
 
 	    this.cT3 = function () {
-	      var self = _this2;
-	      _this2.bool3 = true;
+	      var self = _this3;
+	      _this3.bool3 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -692,8 +756,8 @@
 	    };
 
 	    this.cF3 = function () {
-	      var self = _this2;
-	      _this2.bool3 = false;
+	      var self = _this3;
+	      _this3.bool3 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -701,8 +765,8 @@
 	    };
 
 	    this.cT4 = function () {
-	      var self = _this2;
-	      _this2.bool4 = true;
+	      var self = _this3;
+	      _this3.bool4 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -710,8 +774,8 @@
 	    };
 
 	    this.cF4 = function () {
-	      var self = _this2;
-	      _this2.bool4 = false;
+	      var self = _this3;
+	      _this3.bool4 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -719,8 +783,8 @@
 	    };
 
 	    this.cT5 = function () {
-	      var self = _this2;
-	      _this2.bool5 = true;
+	      var self = _this3;
+	      _this3.bool5 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -728,8 +792,8 @@
 	    };
 
 	    this.cF5 = function () {
-	      var self = _this2;
-	      _this2.bool5 = false;
+	      var self = _this3;
+	      _this3.bool5 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -737,11 +801,11 @@
 	    };
 
 	    this.refresh = function (x, mon) {
-	      _this2.forceUpdate.apply(_this2);
+	      _this3.forceUpdate.apply(_this3);
 	      return mon;
 	    };
 
-	    this.double = function (x, mon) {
+	    this.doub = function (x, mon) {
 	      mon.ret(x + x);
 	      return mon;
 	    };
@@ -795,27 +859,25 @@
 	    };
 
 	    this.chance = function (x, mon) {
-	      var a = _this2.rand(1, 5);
-	      var b = _this2.rand(1, 5);
-	      var c = _this2.rand(1, 5);
-	      _this2.mM1.ret(a);
-	      _this2.mM2.ret(b);
-	      _this2.mM3.ret(c);
+	      var a = _this3.rand(1, 5);
+	      var b = _this3.rand(1, 5);
+	      var c = _this3.rand(1, 5);
+	      _this3.mM1.ret(a);
+	      _this3.mM2.ret(b);
+	      _this3.mM3.ret(c);
 	      if (a === b && a === c) {
-	        _this2.mM4.ret('Winner! Three of a kind');
+	        _this3.mM4.ret('Winner! Three of a kind');
 	        return mon;
 	      }
 	      if (a === b || a === c || b === c) {
-	        _this2.mM4.ret('Pair. Try for three');
+	        _this3.mM4.ret('Pair. Try for three');
 	        return mon;
 	      }
-	      _this2.mM4.ret('Zilch. Don\'t give up now.');
+	      _this3.mM4.ret('Zilch. Don\'t give up now.');
 	      return mon;
 	    };
 
 	    this.ch = function (x, mon, a, b, c) {
-	      console.log('In ch', a, b, c);
-	      console.log(mon);
 	      if (a === b && a === c) {
 	        mon.ret('Winner! Three of a kind');
 	        return mon;
@@ -832,37 +894,35 @@
 	      var k = 1;
 	      for (k; k < 5; k += 1) {
 	        if (x === [k, k, k, k, k, k]) {
-	          _this2.mM10.ret("Jackpot!");
+	          _this3.mM10.ret("Jackpot!");
 	          return mon;
 	        }
 	      }
-	      _this2.mM10.ret("No jackpot this time");
+	      _this3.mM10.ret("No jackpot this time");
 	      return mon;
 	    };
 
-	    this.bench = function () {
-	      var self = _this2;
+	    this.bench = function (x, mon) {
+	      var self = _this3;
 	      var k = 0;
 	      var j = 0;
 	      var d1 = new Date();
 	      for (k; k < 1000000; k++) {
-	        _this2.mM1 = new Monad(k);
+	        _this3.mM1 = new Monad(k);
 	      }
-	      _this2.resBench = new Date() - d1;
-	      setTimeout(function () {
-	        self.forceUpdate();
-	      }, 12);
+	      mon.ret(new Date() - d1);
+	      return mon;
 	    };
 
 	    this.bench2 = function () {
-	      var self = _this2;
+	      var self = _this3;
 	      var k = 0;
 	      var j = 0;
 	      var d1 = new Date();
 	      for (k; k < 1000000; k++) {
-	        _this2.mM2.ret(k);
+	        _this3.mM2.ret(k);
 	      }
-	      _this2.resBench2 = new Date() - d1;
+	      _this3.resBench2 = new Date() - d1;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 12);
@@ -870,6 +930,10 @@
 
 	    this.cu = function (x) {
 	      return x * x * x;
+	    };
+
+	    this.du = function (x) {
+	      return x * x;
 	    };
 
 	    this.ad = function (a, b) {
@@ -880,30 +944,54 @@
 	      return x;
 	    };
 
+	    this.test5 = function (m) {
+	      var x = m.x;
+	      m.ret(x + 3).bnd(_this3.add, 1).bnd(_this3.mMS2.ret).bnd(_this3.add, 1).bnd(_this3.doub);
+	    };
+
+	    this.test6 = function () {
+	      _this3.mMS1.ret(3).fmap(_this3.ad, _this3.mMS2, _this3.mMS1.x).fmap(_this3.du).fmap(_this3.ad, _this3.mM1, _this3.mMS1.x).fmap(_this3.cu).fmap(_this3.id, _this3.mMS3).bnd(_this3.add, _this3.mMS2.x + 1000);
+	    };
+
+	    this.pause = function (x, mon, t) {
+	      setTimeout(function () {
+	        return mon;
+	      }, t);
+	    };
+
 	    this.render = function () {
-	      var mM1 = _this2.mM1;
-	      var mM2 = _this2.mM2;
-	      var mM3 = _this2.mM3;
-	      var mM4 = _this2.mM4;
-	      var mM5 = _this2.mM5;
-	      var mM6 = _this2.mM6;
-	      var mM7 = _this2.mM7;
-	      var mM8 = _this2.mM8;
-	      var mM9 = _this2.mM9;
-	      var mM10 = _this2.mM10;
-	      var cu = _this2.cu;
-	      var ad = _this2.ad;
-	      var id = _this2.id;
-	      var refresh = _this2.refresh;
-	      var square = _this2.square;
-	      var cube = _this2.cube;
-	      var double = _this2.double;
-	      var tripple = _this2.tripple;
-	      var add = _this2.add;
-	      var mult = _this2.mult;
-	      var ran = _this2.ran;
-	      var branch = _this2.branch;
-	      var test = _this2.test;
+	      var mM1 = _this3.mM1;
+	      var mM2 = _this3.mM2;
+	      var mM3 = _this3.mM3;
+	      var mM4 = _this3.mM4;
+	      var mM5 = _this3.mM5;
+	      var mM6 = _this3.mM6;
+	      var mM7 = _this3.mM7;
+	      var mM8 = _this3.mM8;
+	      var mM9 = _this3.mM9;
+	      var mMS1 = _this3.mMS1;
+	      var mMS2 = _this3.mMS2;
+	      var mMS3 = _this3.mMS3;
+	      var mMS4 = _this3.mMS4;
+	      var mMS5 = _this3.mMS5;
+	      var mMS6 = _this3.mMS6;
+	      var mM10 = _this3.mM10;
+	      var cu = _this3.cu;
+	      var ad = _this3.ad;
+	      var id = _this3.id;
+	      var du = _this3.du;
+	      var bench = _this3.bench;
+	      var resBench = _this3.resBench;
+	      var refresh = _this3.refresh;
+	      var square = _this3.square;
+	      var cube = _this3.cube;
+	      var doub = _this3.doub;
+	      var tripple = _this3.tripple;
+	      var add = _this3.add;
+	      var mult = _this3.mult;
+	      var ran = _this3.ran;
+	      var branch = _this3.branch;
+	      var test = _this3.test;
 	      return _react2['default'].createElement(
 	        'div',
 	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 22 } },
@@ -918,7 +1006,7 @@
 	            ' Monad mM1: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM1.x
 	            ),
 	            ' '
@@ -931,7 +1019,7 @@
 	            ' Monad mM2: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM2.x
 	            ),
 	            ' '
@@ -944,7 +1032,7 @@
 	            ' Monad mM3: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM3.x
 	            ),
 	            ' '
@@ -957,7 +1045,7 @@
 	            ' Monad mM4: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM4.x
 	            ),
 	            ' '
@@ -971,7 +1059,7 @@
 	            ' Monad mM5: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM5.x
 	            ),
 	            ' '
@@ -984,7 +1072,7 @@
 	            ' Monad mM6: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM6.x
 	            ),
 	            ' '
@@ -997,7 +1085,7 @@
 	            ' Monad mM7: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM7.x
 	            ),
 	            ' '
@@ -1010,7 +1098,7 @@
 	            ' Monad mM8: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM8.x
 	            ),
 	            ' '
@@ -1024,7 +1112,7 @@
 	            ' Monad mM9: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM9.x
 	            ),
 	            ' '
@@ -1037,8 +1125,61 @@
 	            ' Monad mM10: ',
 	            _react2['default'].createElement(
 	              'button',
-	              { style: _this2.style3 },
+	              { style: _this3.style3 },
 	              mM10.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS1: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this3.style3 },
+	              mMS1.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS2: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this3.style3 },
+	              mMS2.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS3: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this3.style3 },
+	              mMS3.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS4: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this3.style3 },
+	              mMS4.x
 	            ),
 	            ' '
 	          ),
@@ -1079,15 +1220,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool1 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool1 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
-	                mM1.bnd(_this2.chance).bnd(refresh);
+	                mM1.bnd(_this3.chance).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT1();
+	                return _this3.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF1();
+	                return _this3.cF1();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentChanceB, null)
@@ -1099,15 +1240,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                mM1.ret(2).bnd(mM2.ret).bnd(square).bnd(mM3.ret).bnd(square).bnd(mM4.ret).bnd(square).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT2();
+	                return _this3.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF2();
+	                return _this3.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentRet, null)
@@ -1125,15 +1266,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool3 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool3 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                mM1.ret(3).bnd(add, 4).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT3();
+	                return _this3.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF3();
+	                return _this3.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentAddA, null)
@@ -1145,7 +1286,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool4 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool4 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM1.ret(3).bnd(function (x) {
 	                  return mM2.ret(2).bnd(cube).bnd(add, x).bnd(refresh);
@@ -1153,10 +1294,10 @@
 	              },
 
 	              onMouseEnter: function () {
-	                return _this2.cT4();
+	                return _this3.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF4();
+	                return _this3.cF4();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentLambdaA, null)
@@ -1173,21 +1314,21 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool5 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM1.ret(3).bnd(function (x) {
 	                  return mM2.ret(2).bnd(square).bnd(function (y) {
-	                    return mM3.ret(50).bnd(double).bnd(mult, x + y).bnd(function () {
+	                    return mM3.ret(50).bnd(doub).bnd(mult, x + y).bnd(function () {
 	                      return mM4.ret(0);
 	                    }).bnd(add, x * x + y * y).bnd(refresh);
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT5();
+	                return _this3.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF5();
+	                return _this3.cF5();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentLambdaB, null)
@@ -1211,21 +1352,21 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool1 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool1 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM1.bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this2.ch, x, y, z).bnd(refresh);
+	                      return mM4.bnd(_this3.ch, x, y, z).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT1();
+	                return _this3.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF1();
+	                return _this3.cF1();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentChanceE, null)
@@ -1266,29 +1407,29 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM1.bnd(ran).bnd(branch, mM5.bnd(ran).bnd(function (a) {
 	                  return mM6.bnd(ran).bnd(function (b) {
 	                    return mM7.bnd(ran).bnd(function (c) {
-	                      return mM8.bnd(_this2.ch, a, b, c);
+	                      return mM8.bnd(_this3.ch, a, b, c);
 	                    });
 	                  });
 	                })).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this2.ch, x, y, z).bnd(function () {
+	                      return mM4.bnd(_this3.ch, x, y, z).bnd(function () {
 	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
-	                      }).bnd(mM10.ret).bnd(_this2.jackpot).bnd(refresh);
+	                      }).bnd(mM10.ret).bnd(_this3.jackpot).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT2();
+	                return _this3.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF2();
+	                return _this3.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentJackpotB, null)
@@ -1300,30 +1441,30 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool5 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM1.bnd(ran).fmap(id, mM5).bnd(ran).bnd(function (a) {
 	                  return mM6.bnd(ran).bnd(function (b) {
 	                    return mM7.bnd(ran).bnd(function (c) {
-	                      return mM8.bnd(_this2.ch, a, b, c);
+	                      return mM8.bnd(_this3.ch, a, b, c);
 	                    });
 	                  });
 	                }).fmap(id, mM1).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this2.ch, x, y, z).bnd(function () {
+	                      return mM4.bnd(_this3.ch, x, y, z).bnd(function () {
 	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
-	                      }).bnd(mM10.ret).bnd(_this2.jackpot).bnd(refresh);
+	                      }).bnd(mM10.ret).bnd(_this3.jackpot).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 
 	              onMouseEnter: function () {
-	                return _this2.cT5();
+	                return _this3.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF5();
+	                return _this3.cF5();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentFmap1, null)
@@ -1335,7 +1476,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool3 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool3 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM1.bnd(branch, mM5.ret(0).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(function (a) {
 	                  setTimeout(function () {
@@ -1354,18 +1495,18 @@
 	                })).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this2.ch, x, y, z).bnd(function () {
+	                      return mM4.bnd(_this3.ch, x, y, z).bnd(function () {
 	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
-	                      }).bnd(mM10.ret).bnd(_this2.jackpot).bnd(refresh);
+	                      }).bnd(mM10.ret).bnd(_this3.jackpot).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT3();
+	                return _this3.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF3();
+	                return _this3.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentHypotenuse, null)
@@ -1390,15 +1531,15 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool4 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool4 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM1.bnd(mM1.ret).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT4();
+	                return _this3.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF4();
+	                return _this3.cF4();
 	              }
 	            },
 	            'mM1.bnd(mM1.ret)'
@@ -1407,15 +1548,15 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool5 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM2.bnd(add, 2).bnd(cube).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT5();
+	                return _this3.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF5();
+	                return _this3.cF5();
 	              }
 	            },
 	            'mM2.bnd(add, 2).bnd(cube)'
@@ -1424,17 +1565,17 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool1 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool1 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                return mM3.bnd(function (a) {
 	                  return add(a, mM3, 2).bnd(cube);
 	                }).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT1();
+	                return _this3.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF1();
+	                return _this3.cF1();
 	              }
 	            },
 	            'mM3.bnd(a => add(a, mM3, 2).bnd(cube,mM3))'
@@ -1455,37 +1596,60 @@
 	            'Comparing Elapsed Times For Changing Monad Values'
 	          ),
 	          _react2['default'].createElement(
-	            'h2',
+	            'p',
 	            null,
-	            'Create a new instance 1,000,000 times: ',
-	            _react2['default'].createElement(
-	              'span',
-	              { style: { color: 'lightblue' } },
-	              '  ',
-	              _this2.resBench,
-	              ' '
-	            ),
-	            ' ms'
+	            'Next, we compare the time it takes to create one million new monads with the time it takes to update the value of a monad a million times. Here is the first function we use, called "bench":  '
+	          ),
+	          _react2['default'].createElement(Bench1, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Click below to run bench five times. The results in microseconds appear on the right after several seconds.  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
+	              onClick: function () {
+	                mM2.bnd(bench).bnd(mM3.ret).bnd(bench).bnd(mM4.ret).bnd(bench).bnd(mM5.ret).bnd(bench).bnd(mM6.ret).bnd(bench).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this3.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this3.cF2();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentBench3, null)
 	          ),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            '  '
+	            'Each subsequent call to bench waited for the previous call to finish. There was no need for promises or iterators. Next, we will run bench five times again only this time we also compute the average. The average will be in monad mM7.   '
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
-	                _this2.bench();
+	                mM2.bnd(bench).bnd(function (a) {
+	                  return mM3.bnd(bench).bnd(function (b) {
+	                    return mM4.bnd(bench).bnd(function (c) {
+	                      return mM5.bnd(bench).bnd(function (d) {
+	                        return mM6.bnd(bench).bnd(function (e) {
+	                          return mM7.ret((a + b + c + d + e) / 5).bnd(refresh);
+	                        });
+	                      });
+	                    });
+	                  });
+	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT2();
+	                return _this3.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF2();
+	                return _this3.cF2();
 	              }
 	            },
-	            _react2['default'].createElement(Bench1, null)
+	            _react2['default'].createElement(ComponentBench4, null)
 	          ),
 	          _react2['default'].createElement(
 	            'p',
@@ -1500,7 +1664,7 @@
 	              'span',
 	              { style: { color: 'lightblue' } },
 	              '  ',
-	              _this2.resBench2,
+	              _this3.resBench2,
 	              ' '
 	            ),
 	            ' ms'
@@ -1512,15 +1676,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool3 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool3 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
-	                _this2.bench2();
+	                _this3.bench2();
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT3();
+	                return _this3.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF3();
+	                return _this3.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(Bench2, null)
@@ -1548,15 +1712,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                bnd(add, mM1, 5).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT2();
+	                return _this3.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF2();
+	                return _this3.cF2();
 	              }
 	            },
 	            'bnd(add,mM2,5).bnd(refresh)'
@@ -1573,16 +1737,16 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool2 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                fmap(ad, mM2, 3);
 	                fmap(cu, mM2).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT2();
+	                return _this3.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF2();
+	                return _this3.cF2();
 	              }
 	            },
 	            'fmap(ad,mM2,3)',
@@ -1596,21 +1760,16 @@
 	          ),
 	          _react2['default'].createElement(ComponentFmap2, null),
 	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'The fmap functions were run independently and sequentially. fmap(ad.mM1,3) updated mM1 in time or fmap(cu.mM1) to update it, but if we had used a time-consuming function instead of ad, the second call to fmap might have used the value of mM1 before three was added. Using the monad method fmap doesn\'t help. If the first fmap computation was still in progress, no monad would be available for the call to fmap and an error would result. Things like callbacks, promises, or iterators can guarantee execution in a specified order. But the fmap method can be useful in chains. You should click the reset button before running the following examples. '
-	          ),
-	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool3 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool3 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT3();
+	                return _this3.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF3();
+	                return _this3.cF3();
 	              }
 	            },
 	            'REFRESH'
@@ -1622,15 +1781,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool4 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool4 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                fmap(ad, mM3, 3).fmap(cu, mM3).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT4();
+	                return _this3.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF4();
+	                return _this3.cF4();
 	              }
 	            },
 	            'fmap(ad,mM3,3)',
@@ -1644,15 +1803,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this2.bool5 ? _this2.style1 : _this2.style2,
+	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
 	                mM4.fmap(ad, mM5, 5).fmap(ad, mM6, 3).fmap(cu).fmap(ad, mM5, 1).fmap(cu).fmap(ad, mM4, mM6.x + 1000).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this2.cT5();
+	                return _this3.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this2.cF5();
+	                return _this3.cF5();
 	              }
 	            },
 	            'mM4.fmap(ad,mM5,5) ',
@@ -1688,6 +1847,10 @@
 	    this.M = function (a) {
 	      return new Monad(a);
 	    };
+	    this.MS = function (a) {
+	      return new MonadSeq(a);
+	    };
+	    this.MFLAG = MFLAG;
 	    this.mM1 = this.M(0);
 	    this.mM2 = this.M(0);
 	    this.mM3 = this.M(0);
@@ -1698,6 +1861,12 @@
 	    this.mM8 = this.M(0);
 	    this.mM9 = this.M(0);
 	    this.mM10 = this.M(0);
+	    this.mMS1 = this.MS(0);
+	    this.mMS2 = this.MS(0);
+	    this.mMS3 = this.MS(0);
+	    this.mMS4 = this.MS(0);
+	    this.mMS5 = this.MS(0);
+	    this.mMS6 = this.MS(0);
 	    this.style2 = { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
 	      color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
 	      marginLeft: 12, fontSize: 22 };

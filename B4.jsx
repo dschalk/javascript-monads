@@ -774,6 +774,182 @@ var ComponentBench4 = React.createClass({
   }
 })
 
+var ComponentMonadSeq = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+       class MonadSeq {
+         constructor(z,g) {
+     
+           this.x = z;
+           this.id = g;
+     
+           this.flag = false;
+     
+           this.bnd = (func, ...args) => {
+             let self = this;
+             let fun = func;
+             (function retry(func, ...args) {
+               if (self.flag === false) {
+                 console.log('Hello from bnd ', self.id, self.x, self.flag);      
+                 return fun(self.x, self, ...args);
+               }
+               if (self.flag === true) {
+                 setTimeout( function() {
+                   console.log('bnd retry', self.id, self.x, self.flag);
+                   retry(fun, ...args); 
+                 },200  ); 
+               }
+             })();
+             console.log('Now leaving bnd ', self.id, self.x, self.flag);
+             return this;
+           }
+     
+           this.fmap = (f, mon = this, ...args) => {      
+             let self = this;
+             (function retry() {
+               if (MFLAG === false) {
+                 console.log('Hello from fmap');
+                 console.log(mon);
+                 MFLAG = true;
+                 mon.ret(f(mon.x,  ...args));
+               } else {
+                 setTimeout( function() {
+                   console.log('fmap retry');
+                   retry(); 
+                 },100  ); 
+               }
+             })();
+             MFLAG = false;
+             return mon;
+           }
+     
+           this.ret = a => {
+             let self = this;
+             (function retry() {
+               if (self.flag === false) {
+                 console.log('Hello from ret ', self.id, self.x, self.flag);
+                 self.x = a;
+               } else {
+                 setTimeout( function() {
+                   console.log('ret retry',self.id, self.x, self.flag);
+                   retry(); 
+                 },100  ); 
+               }
+             })();
+             console.log('Now leaving ret ', self.id, self.x, self.flag);
+             return this;
+           }
+         }
+       };
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentMonadSeq2 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      block = (x,mon,mon2) => {
+        mon2.flag = true;
+        return mon;
+      }
+    
+      release = (x,mon,mon2) => {
+        mon2.flag = false;
+        return mon;
+      }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentMonadSeq3 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+     onClick={() => mMS1
+      .ret('one')
+      .bnd(refresh)
+      .bnd((a) => setTimeout(function() {
+      mM1.bnd(block,mMS1)
+      mMS2.ret('two')
+      .bnd(refresh)
+      .bnd(b => { setTimeout(function() {
+      mMS3.ret('three')
+      .bnd(refresh)
+      .bnd(c => { setTimeout(function() {
+      mMS4.ret('four')
+      .bnd(() => {mM1.bnd(block,mMS2).bnd(block,mMS3).bnd(() => mMS1
+              .ret('First pass complete')
+              .bnd(refresh)).bnd(() => {setTimeout(function() {
+              mMS2.ret('First')
+              .bnd(refresh)
+              .bnd(a => {setTimeout(function() {
+                mMS3.ret('Second')
+              .bnd(refresh)
+              .bnd(b => {setTimeout(function() {
+                mMS4.ret('Third')
+              .bnd(refresh)
+              .bnd(c => {setTimeout(function() {
+                mMS5.ret('Fourth')
+              .bnd(refresh)
+              .bnd(d => {setTimeout(function() {
+                mMS6.ret('Done').bnd(() => mMS1.ret('Second pass complete'))    
+              .bnd(refresh)
+              },1000 )})
+              },1000 )})
+              },1000 )})
+              },1000 )})
+              },1000 )})
+              })
+      .bnd(refresh)
+      .bnd(d => { setTimeout(function() {
+      mMS5.ret('five')
+      .bnd(refresh)
+      .bnd(e => { setTimeout(function() {
+      mM1.bnd(release,mMS1)
+      mM1.bnd(release,mMS2)
+      mM1.bnd(release,mMS3)
+      mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
+      .bnd(refresh)
+      },1000 )})
+      },1000 )})
+      },1000 )})
+      },1000 )})
+      },1000 ))
+        }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentDummy14 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 22, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
 
   class Monad {
     constructor(z) {
@@ -799,27 +975,31 @@ var ComponentBench4 = React.createClass({
    
   var MFLAG = false;
 
+    
   class MonadSeq {
-    constructor(z) {
+    constructor(z,g) {
 
       this.x = z;
+      this.id = g;
 
+      this.flag = false;
 
       this.bnd = (func, ...args) => {
         let self = this;
-        (function retry() {
-          if (MFLAG === false) {
-            MFLAG = true;
-            console.log('Hello from bnd ', MFLAG);
-            return func(self.x, self, ...args);
-          } else {
+        let fun = func;
+        (function retry(func, ...args) {
+          if (self.flag === false) {
+            console.log('Hello from bnd ', self.id, self.x, self.flag);
+            return fun(self.x, self, ...args);
+          }
+          if (self.flag === true) {
             setTimeout( function() {
-              console.log('bnd retry');
-              retry(); 
-            },64  ); 
+              console.log('bnd retry', self.id, self.x, self.flag);
+              retry(fun, ...args); 
+            },200  ); 
           }
         })();
-        MFLAG = false;
+        console.log('Now leaving bnd ', self.id, self.x, self.flag);
         return this;
       }
 
@@ -835,17 +1015,30 @@ var ComponentBench4 = React.createClass({
             setTimeout( function() {
               console.log('fmap retry');
               retry(); 
-            },64  ); 
+            },100  ); 
           }
         })();
         MFLAG = false;
         return mon;
       }
 
+
       this.ret = a => {
-        this.x = a;
+        let self = this;
+        (function retry() {
+          if (self.flag === false) {
+            console.log('Hello from ret ', self.id, self.x, self.flag);
+            self.x = a;
+          } else {
+            setTimeout( function() {
+              console.log('ret retry',self.id, self.x, self.flag);
+              retry(); 
+            },100  ); 
+          }
+        })();
+        console.log('Now leaving ret ', self.id, self.x, self.flag);
         return this;
-      };
+      }
     }
   };
 
@@ -867,7 +1060,7 @@ class B4 extends React.Component {
     super(props);
 
   this.M = a => new Monad(a);
-  this.MS = a => new MonadSeq(a);
+  this.MS = (a,b)  => new MonadSeq(a,b);
   this.MFLAG = MFLAG;
   this.mM1 = this.M(0);
   this.mM2 = this.M(0);
@@ -879,12 +1072,12 @@ class B4 extends React.Component {
   this.mM8 = this.M(0);
   this.mM9 = this.M(0);
   this.mM10 = this.M(0);
-  this.mMS1 = this.MS(0);
-  this.mMS2 = this.MS(0);
-  this.mMS3 = this.MS(0);
-  this.mMS4 = this.MS(0);
-  this.mMS5 = this.MS(0);
-  this.mMS6 = this.MS(0);
+  this.mMS1 = this.MS(0,'mMS1');
+  this.mMS2 = this.MS(0,'mMS2');
+  this.mMS3 = this.MS(0,'mMS3');
+  this.mMS4 = this.MS(0,'mMS4');
+  this.mMS5 = this.MS(0,'mMS5');
+  this.mMS6 = this.MS(0,'mMS6');
   this.style2 = {backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
   color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
   marginLeft: 12, fontSize: 22 };
@@ -1031,6 +1224,11 @@ class B4 extends React.Component {
     return mon;
   }
 
+  log = (x,mon,y) => {
+    console.log(y);
+    return mon;
+  }
+
   fnc = (a,b) => a.b;
 
   branch = (x,mon,a) => {
@@ -1123,9 +1321,23 @@ class B4 extends React.Component {
   }
 
   cu = x => x*x*x;
+  sq = x => x*x;
   du = x => x*x;
   ad = (a,b) => a + b;
   id = x => x;
+  lo = x => console.log(x);
+
+  block = (x,mon,mon2) => {
+    mon2.flag = true;
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$',mon2.id,mon2.x,mon2.flag);
+    return mon;
+  }
+
+  release = (x,mon,mon2) => {
+    mon2.flag = false;
+    console.log('***************************',mon2.id,mon2.x,mon2.flag);
+    return mon;
+  }
 
   test5 = m => {
     let x = m.x;
@@ -1138,13 +1350,32 @@ class B4 extends React.Component {
     .fmap(this.cu).fmap(this.id,this.mMS3).bnd(this.add,this.mMS2.x + 1000);
   }
 
-  pause = (x,mon,t) => {
-    setTimeout(function() {
-      return mon;
-    },t  )
-  }      
+// function delay(time) {
+delay = (x,mon) => {
+    return new Promise( function(resolve,reject){
+        setTimeout( resolve, 2000 );
+    } );
+}
+
+
+
+
+/*
+.then( function STEP3(){
+    console.log( "step 3 (after another 2000ms)" );
+} )
+.then( function STEP4(){
+    console.log( "step 4 (next Job)" );
+    return delay( 2000 );
+} )
+.then( function STEP5(){
+    console.log( "step 5 (after another 2000ms)" );
+} )
+*/
+
 
  render = () => {
+   console.log(this.mMS1.id, this.mMS1.flag);
     let mM1 = this.mM1;
     let mM2 = this.mM2;
     let mM3 = this.mM3;
@@ -1162,9 +1393,11 @@ class B4 extends React.Component {
     let mMS6 = this.mMS6;
     let mM10 = this.mM10;
     let cu = this.cu;
+    let sq = this.sq;
     let ad = this.ad;
     let id = this.id;
     let du = this.du;
+    let lo = this.lo;
     let bench = this.bench;
     let resBench = this.resBench;
     let refresh = this.refresh;
@@ -1177,11 +1410,15 @@ class B4 extends React.Component {
     let ran = this.ran;
     let branch = this.branch;
     let test = this.test;
+    let delay = this.delay;
+    let log = this.log;
+    let block = this.block;
+    let release = this.release;
     return(
       <div style={{ backgroundColor: '#000', height: '100%' , width: '100%', color: '#FFE4C4', fontSize: 22 }}>
         <br /><br />
 
-<div style={{ width: '30%', fontSize: 22, position: 'fixed', top: 200, right: 5}}  >
+<div style={{ width: '30%', fontSize: 22, position: 'fixed', top: 20, right: 5}}  >
    <span> Monad mM1: <button  style={this.style3} >{mM1.x}</button> </span> <br />
    <span> Monad mM2: <button  style={this.style3} >{mM2.x}</button> </span> <br />
    <span> Monad mM3: <button  style={this.style3} >{mM3.x}</button> </span> <br />
@@ -1199,6 +1436,8 @@ class B4 extends React.Component {
    <span> Monad mMS2: <button  style={this.style3} >{mMS2.x}</button> </span> <br />
    <span> Monad mMS3: <button  style={this.style3} >{mMS3.x}</button> </span> <br />
    <span> Monad mMS4: <button  style={this.style3} >{mMS4.x}</button> </span> <br />
+   <span> Monad mMS5: <button  style={this.style3} >{mMS5.x}</button> </span> <br />
+   <span> Monad mMS6: <button  style={this.style3} >{mMS6.x}</button> </span> <br />
  </div>
       <br /><br /> 
 
@@ -1247,10 +1486,10 @@ class B4 extends React.Component {
 <ComponentAddA />
       </button>
 <p>We gave mM1 the value "3" and added "4" to it. Next, we show how a monad can pass its value down the line for a later computation. mM1 get the value "3", mM2 gets the value "2", which is cubed to give "8", and finally, mM2 gets the value 3 + 8 = 11. </p>
-      <button style={this.bool4 ? this.style1 : this.style2 } 
-   onClick={() => mM1
-.ret(3)
-.bnd(x => mM2
+<button style={this.bool4 ? this.style1 : this.style2 } 
+  onClick={() => mM1
+    .ret(3)
+    .bnd(x => mM2
 	.ret(2)
 	.bnd(cube)
 	.bnd(add,x)
@@ -1259,8 +1498,8 @@ class B4 extends React.Component {
    onMouseEnter={ () => this.cT4() }
    onMouseLeave={ () => this.cF4() }
         >
-<ComponentLambdaA />
-      </button>
+  <ComponentLambdaA />
+</button>
 <p>Play around with monads and, lo and behold, the lambda calculus appears out of the mist! </p>
 <p>In the next example, x = 3, y = 4, and the final computation is x*x + y*y = 25. Along the way, mM3 is assigned the value "50", which is doubled and multiplied times x + y, giving a result of 700.  </p>
       <button style={this.bool5 ? this.style1 : this.style2 } 
@@ -1338,7 +1577,8 @@ class B4 extends React.Component {
    <p>In the next example, "fmap(id,mM5)" starts a new branch and "fmap(id,mM1" switches back to the beginning of the tree, mM1. "id" is defined as "id = x => x".  Click to see the code in action: </p>
   <button style={this.bool5 ? this.style1 : this.style2 } 
     onClick={
-      () => mM1.bnd(ran)
+      () => mM1i
+      .bnd(ran)
       .fmap(id,mM5)
         .bnd(ran).bnd(a => mM6
                       .bnd(ran)
@@ -1398,7 +1638,7 @@ class B4 extends React.Component {
         <ComponentHypotenuse />
    </button>
 
-   <p> If you organizes an application with instances of Monad, please tell me about it. I am going to look into the feasibility of feeding websocket data into a monad and having it send instructions down branches in accordance with the message prefixes. The <a href="http://schalk.net" style={{color: 'green' }}>game of Score</a> seems like a good candida1te.</p>
+   <p></p>
    
    <p> Is this fun, or what? </p>
    <ComponentDiscussion />
@@ -1549,7 +1789,7 @@ class B4 extends React.Component {
    onMouseEnter={ () => this.cT5() }
    onMouseLeave={ () => this.cF5() }
         >
-     mM4.fmap(ad,mM5,5) <br />
+     mM4.fmap(ad0,mM5,5) <br />
      .fmap(ad,mM6,3) <br />
      .fmap(cu) <br />
      .fmap(ad,mM5,1) <br />
@@ -1558,8 +1798,70 @@ class B4 extends React.Component {
      .bnd(refresh) <br />
       </button>
 <p>mM4 gets the ball rolling by adding 5 to the value of mM5. At that point, mM5 takes control and mM4 remains abaandoned until the end of the chain where it it takes the value of mM6 (mM6.x) and adds 1000. In the second line, control is handed over to mM6 which gets its value increased by 3 and then cubed in line '3'. In line 4, mM5's value is incremented by 1 and cubed. Finally, mM4 gets mM6's value and inceases it by 1000. </p>
-<p>Creating and updating branches with fmap is simple, but sometimes we will need better control over the order of execution. In the previous example, we are confident that lines '2' and '3' have been executed (updating mM6) before line '6' where mM4 takes the value of mM6 and adds 1000 to it. If lines '2' and '3' had involved websocket messages, an ajax call, or interaction with a database, line '6' would likely have been executed using the original value of mM6. Promises could make sure line '6' get executed after lines '2' and '3'.</p> 
-
+<p>Creating and updating branches with fmap is simple, but sometimes we will need better control over the order of execution. In the previous example, we are confident that lines '2' and '3' have been executed (updating mM6) before line '6' where mM4 takes the value of mM6 and adds 1000 to it. If lines '2' and '3' had involved websocket messages, an ajax call, or interaction with a database, line '6' would likely have been executed using the original value of mM6.</p>
+<p>Instances of MonadSeq provide a way to control the order of execution. Here is the definition of MonadSeq:</p>
+<ComponentMonadSeq />
+<p> and here are the functions that control the order of execution: </p>
+<ComponentMonadSeq2 />
+<br />
+  <button style={this.bool1 ? this.style1 : this.style2 } 
+  onClick={() => mMS1
+.ret('one')
+.bnd(refresh)
+.bnd((a) => setTimeout(function() {
+mM1.bnd(block,mMS1)
+mMS2.ret('two')
+.bnd(refresh)
+.bnd(b => { setTimeout(function() {
+mMS3.ret('three')
+.bnd(refresh)
+.bnd(c => { setTimeout(function() {
+mMS4.ret('four')
+.bnd(() => {mM1.bnd(block,mMS2).bnd(block,mMS3).bnd(() => mMS1
+        .ret('First pass complete')
+        .bnd(refresh)).bnd(() => {setTimeout(function() {
+         mMS2.ret('First')
+         .bnd(refresh)
+         .bnd(a => {setTimeout(function() {
+           mMS3.ret('Second')
+         .bnd(refresh)
+         .bnd(b => {setTimeout(function() {
+           mMS4.ret('Third')
+         .bnd(refresh)
+         .bnd(c => {setTimeout(function() {
+           mMS5.ret('Fourth')
+         .bnd(refresh)
+         .bnd(d => {setTimeout(function() {
+           mMS6.ret('Done').bnd(() => mMS1.ret('Second pass complete'))
+         .bnd(refresh)
+         },1000 )})
+         },1000 )})
+         },1000 )})
+         },1000 )})
+         },1000 )})
+         })
+.bnd(refresh)
+.bnd(d => { setTimeout(function() {
+mMS5.ret('five')
+.bnd(refresh)
+.bnd(e => { setTimeout(function() {
+mM1.bnd(release,mMS1)
+mM1.bnd(release,mMS2)
+mM1.bnd(release,mMS3)
+mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
+.bnd(refresh)
+},1000 )})
+},1000 )})
+},1000 )})
+},1000 )})
+},1000 ))
+  }
+   onMouseEnter={ () => this.cT1() }
+   onMouseLeave={ () => this.cF1() }
+        >
+ <ComponentMonadSeq3 />
+   </button>
+   <p>The second sequence is bypassed, and doesn't run until "release" frees some locked monads.</p>
 <div style={{height:500}} />
 </div>
 </div>

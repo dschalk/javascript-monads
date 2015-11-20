@@ -879,57 +879,64 @@ var ComponentMonadSeq3 = React.createClass({
       <div style={{fontSize: 22, color: '#00FFFF' }} >
         <Markdown>
         {`
-     onClick={() => mMS1
-      .ret('one')
-      .bnd(refresh)
-      .bnd((a) => setTimeout(function() {
-      mM1.bnd(block,mMS1)
-      mMS2.ret('two')
-      .bnd(refresh)
-      .bnd(b => { setTimeout(function() {
-      mMS3.ret('three')
-      .bnd(refresh)
-      .bnd(c => { setTimeout(function() {
-      mMS4.ret('four')
-      .bnd(() => {mM1.bnd(block,mMS2).bnd(block,mMS3).bnd(() => mMS1
-              .ret('First pass complete')
-              .bnd(refresh)).bnd(() => {setTimeout(function() {
-              mMS2.ret('First')
-              .bnd(refresh)
-              .bnd(a => {setTimeout(function() {
-                mMS3.ret('Second')
-              .bnd(refresh)
-              .bnd(b => {setTimeout(function() {
-                mMS4.ret('Third')
-              .bnd(refresh)
-              .bnd(c => {setTimeout(function() {
-                mMS5.ret('Fourth')
-              .bnd(refresh)
-              .bnd(d => {setTimeout(function() {
-                mMS6.ret('Done').bnd(() => mMS1.ret('Second pass complete'))    
-              .bnd(refresh)
-              },1000 )})
-              },1000 )})
-              },1000 )})
-              },1000 )})
-              },1000 )})
-              })
-      .bnd(refresh)
-      .bnd(d => { setTimeout(function() {
-      mMS5.ret('five')
-      .bnd(refresh)
-      .bnd(e => { setTimeout(function() {
-      mM1.bnd(release,mMS1)
-      mM1.bnd(release,mMS2)
-      mM1.bnd(release,mMS3)
-      mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
-      .bnd(refresh)
-      },1000 )})
-      },1000 )})
-      },1000 )})
-      },1000 )})
-      },1000 ))
-        }
+      <button style={this.bool1 ? this.style1 : this.style2 } 
+        onClick={() => mMS1
+        .ret('one')
+        .bnd(refresh)
+        .bnd((a) => setTimeout(function() {
+        mMS2.ret('two')
+        .bnd(() => {mM1.bnd(block,mMS1)
+                  .bnd(() => mMS1
+                  .ret('First branch complete')
+                  .bnd(refresh)).bnd(() => {setTimeout(function() {   
+                 mMS2.ret('First')
+                  .bnd(refresh)
+                  .bnd(a => {setTimeout(function() {
+                 mMS3.ret('Second')
+                  .bnd(refresh)
+                  .bnd(b => {setTimeout(function() {
+                 mMS4.ret('Third')
+                  .bnd(refresh)
+                  .bnd(c => {setTimeout(function() {
+                 mMS5.ret('Fourth')
+                  .bnd(refresh)
+                  .bnd(d => {setTimeout(function() {
+                 mMS6.ret('Done').bnd(() => mMS1
+                  .ret('Second branch complete'))
+                  .bnd(refresh)
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                })
+        .bnd(refresh)
+        .bnd(b => { setTimeout(function() {
+        mMS3.ret('three')
+        .bnd(refresh)
+        .bnd(c => { setTimeout(function() {
+        mMS4.ret('four')
+        .bnd(refresh)
+        .bnd(d => { setTimeout(function() {
+        mMS5.ret('five')
+        .bnd(refresh)
+        .bnd(e => { setTimeout(function() {
+        mM1.bnd(release,mMS1)
+        mM1.bnd(release,mMS2)
+        mM1.bnd(release,mMS3)
+        mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
+        .bnd(refresh)
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 ))
+          }
+           onMouseEnter={ () => this.cT1() }
+           onMouseLeave={ () => this.cF1() }
+                >
+         <ComponentMonadSeq3 />
+           </button>
         `}
         </Markdown>
       </div>
@@ -1804,64 +1811,66 @@ delay = (x,mon) => {
 <p> and here are the functions that control the order of execution: </p>
 <ComponentMonadSeq2 />
 <br />
-  <button style={this.bool1 ? this.style1 : this.style2 } 
-  onClick={() => mMS1
-.ret('one')
-.bnd(refresh)
-.bnd((a) => setTimeout(function() {
-mM1.bnd(block,mMS1)
-mMS2.ret('two')
-.bnd(refresh)
-.bnd(b => { setTimeout(function() {
-mMS3.ret('three')
-.bnd(refresh)
-.bnd(c => { setTimeout(function() {
-mMS4.ret('four')
-.bnd(() => {mM1.bnd(block,mMS2).bnd(block,mMS3).bnd(() => mMS1
-        .ret('First pass complete')
-        .bnd(refresh)).bnd(() => {setTimeout(function() {
-         mMS2.ret('First')
-         .bnd(refresh)
-         .bnd(a => {setTimeout(function() {
-           mMS3.ret('Second')
-         .bnd(refresh)
-         .bnd(b => {setTimeout(function() {
-           mMS4.ret('Third')
-         .bnd(refresh)
-         .bnd(c => {setTimeout(function() {
-           mMS5.ret('Fourth')
-         .bnd(refresh)
-         .bnd(d => {setTimeout(function() {
-           mMS6.ret('Done').bnd(() => mMS1.ret('Second pass complete'))
-         .bnd(refresh)
-         },1000 )})
-         },1000 )})
-         },1000 )})
-         },1000 )})
-         },1000 )})
-         })
-.bnd(refresh)
-.bnd(d => { setTimeout(function() {
-mMS5.ret('five')
-.bnd(refresh)
-.bnd(e => { setTimeout(function() {
-mM1.bnd(release,mMS1)
-mM1.bnd(release,mMS2)
-mM1.bnd(release,mMS3)
-mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
-.bnd(refresh)
-},1000 )})
-},1000 )})
-},1000 )})
-},1000 )})
-},1000 ))
-  }
-   onMouseEnter={ () => this.cT1() }
-   onMouseLeave={ () => this.cF1() }
-        >
- <ComponentMonadSeq3 />
-   </button>
-   <p>The second sequence is bypassed, and doesn't run until "release" frees some locked monads.</p>
+      <button style={this.bool1 ? this.style1 : this.style2 } 
+        onClick={() => mMS1
+        .ret('one')
+        .bnd(refresh)
+        .bnd((a) => setTimeout(function() {
+        mMS2.ret('two')
+        .bnd(() => {mM1.bnd(block,mMS1)
+                  .bnd(() => mMS1
+                  .ret('First branch complete')
+                  .bnd(refresh)).bnd(() => {setTimeout(function() {   
+                 mMS2.ret('First')
+                  .bnd(refresh)
+                  .bnd(a => {setTimeout(function() {
+                 mMS3.ret('Second')
+                  .bnd(refresh)
+                  .bnd(b => {setTimeout(function() {
+                 mMS4.ret('Third')
+                  .bnd(refresh)
+                  .bnd(c => {setTimeout(function() {
+                 mMS5.ret('Fourth')
+                  .bnd(refresh)
+                  .bnd(d => {setTimeout(function() {
+                 mMS6.ret('Done').bnd(() => mMS1
+                  .ret('Second branch complete'))
+                  .bnd(refresh)
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                })
+        .bnd(refresh)
+        .bnd(b => { setTimeout(function() {
+        mMS3.ret('three')
+        .bnd(refresh)
+        .bnd(c => { setTimeout(function() {
+        mMS4.ret('four')
+        .bnd(refresh)
+        .bnd(d => { setTimeout(function() {
+        mMS5.ret('five')
+        .bnd(refresh)
+        .bnd(e => { setTimeout(function() {
+        mM1.bnd(release,mMS1)
+        mM1.bnd(release,mMS2)
+        mM1.bnd(release,mMS3)
+        mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
+        .bnd(refresh)
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 ))
+          }
+           onMouseEnter={ () => this.cT1() }
+           onMouseLeave={ () => this.cF1() }
+                >
+         <ComponentMonadSeq3 />
+           </button>
+<p>The branch beginning after "mMS2.ret('two')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret('five')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin its execution chain.  </p>
+
 <div style={{height:500}} />
 </div>
 </div>

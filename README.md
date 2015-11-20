@@ -166,3 +166,162 @@ of the equation, the monad f(a) calls bnd(g). By the definition of bnd,
 f(a).bnd(g) = g(f(a).x) and the proof complete. Here are some demonstrations, 
 including demonstrations of the fmap method, and the global functions 
 fmap and bnd: http://transcendent.ninja
+
+##Flow Control With MonadSeq
+A branch of a monad tree can be forced to wait for one or more other branches to complete by using instances of MonadSeq. The class is defined as:
+
+```javascript
+class MonadSeq {
+    constructor(z,g) {
+
+      this.x = z;
+      this.id = g;
+
+      this.flag = false;
+
+      this.bnd = (func, ...args) => {
+        let self = this;
+        let fun = func;
+        (function retry(func, ...args) {
+          if (self.flag === false) {
+            console.log('Hello from bnd ', self.id, self.x, self.flag);
+            return fun(self.x, self, ...args);
+          }
+          if (self.flag === true) {
+            setTimeout( function() {
+              console.log('bnd retry', self.id, self.x, self.flag);
+              retry(fun, ...args); 
+            },200  ); 
+          }
+        })();
+        console.log('Now leaving bnd ', self.id, self.x, self.flag);
+        return this;
+      }
+
+      this.fmap = (f, mon = this, ...args) => {      
+        let self = this;
+        (function retry() {
+          if (MFLAG === false) {
+            console.log('Hello from fmap');
+            console.log(mon);
+            MFLAG = true;
+            mon.ret(f(mon.x,  ...args));
+          } else {
+            setTimeout( function() {
+              console.log('fmap retry');
+              retry(); 
+            },100  ); 
+          }
+        })();
+        MFLAG = false;
+        return mon;
+      }
+
+
+      this.ret = a => {
+        let self = this;
+        (function retry() {
+          if (self.flag === false) {
+            console.log('Hello from ret ', self.id, self.x, self.flag);
+            self.x = a;
+          } else {
+            setTimeout( function() {
+              console.log('ret retry',self.id, self.x, self.flag);
+              retry(); 
+            },100  ); 
+          }
+        })();
+        console.log('Now leaving ret ', self.id, self.x, self.flag);
+        return this;
+      }
+    }
+  };
+```
+
+The functions that lock and release instances of MonadSeq are:
+
+```Javascript
+  block = (x,mon,mon2) => {
+    mon2.flag = true;
+    console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$',mon2.id,mon2.x,mon2.flag);
+    return mon;
+  }
+
+  release = (x,mon,mon2) => {
+    mon2.flag = false;
+    console.log('***************************',mon2.id,mon2.x,mon2.flag);
+    return mon;
+  }
+```
+
+The following example is domonstrated at http://transcendent.ninja :
+
+```javascript
+  <button style={this.bool1 ? this.style1 : this.style2 } 
+  onClick={() => mMS1
+.ret('one')
+.bnd(refresh)
+.bnd((a) => setTimeout(function() {
+mMS2.ret('two')
+.bnd(() => {mM1.bnd(block,mMS1).bnd(() => mMS1
+        .ret('First pass complete')
+        .bnd(refresh)).bnd(() => {setTimeout(function() {
+         mMS2.ret('First')
+         .bnd(refresh)
+         .bnd(a => {setTimeout(function() {
+           mMS3.ret('Second')
+         .bnd(refresh)
+         .bnd(b => {setTimeout(function() {
+           mMS4.ret('Third')
+         .bnd(refresh)
+         .bnd(c => {setTimeout(function() {
+           mMS5.ret('Fourth')
+         .bnd(refresh)
+         .bnd(d => {setTimeout(function() {
+           mMS6.ret('Done').bnd(() => mMS1.ret('Second pass complete'))
+         .bnd(refresh)
+         },1000 )})
+         },1000 )})
+         },1000 )})
+         },1000 )})
+         },1000 )})
+         })
+.bnd(refresh)
+.bnd(b => { setTimeout(function() {
+mMS3.ret('three')
+.bnd(refresh)
+.bnd(c => { setTimeout(function() {
+mMS4.ret('four')
+.bnd(refresh)
+.bnd(d => { setTimeout(function() {
+mMS5.ret('five')
+.bnd(refresh)
+.bnd(e => { setTimeout(function() {
+mM1.bnd(release,mMS1)
+mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
+.bnd(refresh)
+},1000 )})
+},1000 )})
+},1000 )})
+},1000 )})
+},1000 ))
+  }
+   onMouseEnter={ () => this.cT1() }
+   onMouseLeave={ () => this.cF1() }
+        >
+ <ComponentMonadSeq3 />
+   </button>
+```
+The branch beginning after "mMS2.ret('two')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret('five')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin execution.
+
+
+
+
+
+
+
+
+
+
+
+

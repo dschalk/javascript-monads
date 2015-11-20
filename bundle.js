@@ -576,6 +576,70 @@
 	  }
 	});
 
+	var ComponentMonadSeq = _react2['default'].createClass({
+	  displayName: 'ComponentMonadSeq',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n       class MonadSeq {\n         constructor(z,g) {\n     \n           this.x = z;\n           this.id = g;\n     \n           this.flag = false;\n     \n           this.bnd = (func, ...args) => {\n             let self = this;\n             let fun = func;\n             (function retry(func, ...args) {\n               if (self.flag === false) {\n                 console.log(\'Hello from bnd \', self.id, self.x, self.flag);      \n                 return fun(self.x, self, ...args);\n               }\n               if (self.flag === true) {\n                 setTimeout( function() {\n                   console.log(\'bnd retry\', self.id, self.x, self.flag);\n                   retry(fun, ...args); \n                 },200  ); \n               }\n             })();\n             console.log(\'Now leaving bnd \', self.id, self.x, self.flag);\n             return this;\n           }\n     \n           this.fmap = (f, mon = this, ...args) => {      \n             let self = this;\n             (function retry() {\n               if (MFLAG === false) {\n                 console.log(\'Hello from fmap\');\n                 console.log(mon);\n                 MFLAG = true;\n                 mon.ret(f(mon.x,  ...args));\n               } else {\n                 setTimeout( function() {\n                   console.log(\'fmap retry\');\n                   retry(); \n                 },100  ); \n               }\n             })();\n             MFLAG = false;\n             return mon;\n           }\n     \n           this.ret = a => {\n             let self = this;\n             (function retry() {\n               if (self.flag === false) {\n                 console.log(\'Hello from ret \', self.id, self.x, self.flag);\n                 self.x = a;\n               } else {\n                 setTimeout( function() {\n                   console.log(\'ret retry\',self.id, self.x, self.flag);\n                   retry(); \n                 },100  ); \n               }\n             })();\n             console.log(\'Now leaving ret \', self.id, self.x, self.flag);\n             return this;\n           }\n         }\n       };\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentMonadSeq2 = _react2['default'].createClass({
+	  displayName: 'ComponentMonadSeq2',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      block = (x,mon,mon2) => {\n        mon2.flag = true;\n        return mon;\n      }\n    \n      release = (x,mon,mon2) => {\n        mon2.flag = false;\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentMonadSeq3 = _react2['default'].createClass({
+	  displayName: 'ComponentMonadSeq3',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      <button style={this.bool1 ? this.style1 : this.style2 } \n        onClick={() => mMS1\n        .ret(\'one\')\n        .bnd(refresh)\n        .bnd((a) => setTimeout(function() {\n        mMS2.ret(\'two\')\n        .bnd(() => {mM1.bnd(block,mMS1)\n                  .bnd(() => mMS1\n                  .ret(\'First branch complete\')\n                  .bnd(refresh)).bnd(() => {setTimeout(function() {   \n                 mMS2.ret(\'First\')\n                  .bnd(refresh)\n                  .bnd(a => {setTimeout(function() {\n                 mMS3.ret(\'Second\')\n                  .bnd(refresh)\n                  .bnd(b => {setTimeout(function() {\n                 mMS4.ret(\'Third\')\n                  .bnd(refresh)\n                  .bnd(c => {setTimeout(function() {\n                 mMS5.ret(\'Fourth\')\n                  .bnd(refresh)\n                  .bnd(d => {setTimeout(function() {\n                 mMS6.ret(\'Done\').bnd(() => mMS1\n                  .ret(\'Second branch complete\'))\n                  .bnd(refresh)\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                })\n        .bnd(refresh)\n        .bnd(b => { setTimeout(function() {\n        mMS3.ret(\'three\')\n        .bnd(refresh)\n        .bnd(c => { setTimeout(function() {\n        mMS4.ret(\'four\')\n        .bnd(refresh)\n        .bnd(d => { setTimeout(function() {\n        mMS5.ret(\'five\')\n        .bnd(refresh)\n        .bnd(e => { setTimeout(function() {\n        mM1.bnd(release,mMS1)\n        mM1.bnd(release,mMS2)\n        mM1.bnd(release,mMS3)\n        mMS6.ret([a,\' \',b,\' \',c,\' \',d,\' \',e])\n        .bnd(refresh)\n        },1000 )})\n        },1000 )})\n        },1000 )})\n        },1000 )})\n        },1000 ))\n          }\n           onMouseEnter={ () => this.cT1() }\n           onMouseLeave={ () => this.cF1() }\n                >\n         <ComponentMonadSeq3 />\n           </button>\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentDummy14 = _react2['default'].createClass({
+	  displayName: 'ComponentDummy14',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n        '
+	      )
+	    );
+	  }
+	});
+
 	var Monad = function Monad(z) {
 	  var _this = this;
 
@@ -612,12 +676,15 @@
 
 	var MFLAG = false;
 
-	var MonadSeq = function MonadSeq(z) {
+	var MonadSeq = function MonadSeq(z, g) {
 	  var _this2 = this;
 
 	  _classCallCheck(this, MonadSeq);
 
 	  this.x = z;
+	  this.id = g;
+
+	  this.flag = false;
 
 	  this.bnd = function (func) {
 	    for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
@@ -625,25 +692,30 @@
 	    }
 
 	    var self = _this2;
-	    (function retry() {
-	      if (MFLAG === false) {
-	        MFLAG = true;
-	        console.log('Hello from bnd ', MFLAG);
-	        return func.apply(undefined, [self.x, self].concat(args));
-	      } else {
+	    var fun = func;
+	    (function retry(func) {
+	      for (var _len4 = arguments.length, args = Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+	        args[_key4 - 1] = arguments[_key4];
+	      }
+
+	      if (self.flag === false) {
+	        console.log('Hello from bnd ', self.id, self.x, self.flag);
+	        return fun.apply(undefined, [self.x, self].concat(args));
+	      }
+	      if (self.flag === true) {
 	        setTimeout(function () {
-	          console.log('bnd retry');
-	          retry();
-	        }, 64);
+	          console.log('bnd retry', self.id, self.x, self.flag);
+	          retry.apply(undefined, [fun].concat(args));
+	        }, 200);
 	      }
 	    })();
-	    MFLAG = false;
+	    console.log('Now leaving bnd ', self.id, self.x, self.flag);
 	    return _this2;
 	  };
 
 	  this.fmap = function (f) {
-	    for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
-	      args[_key4 - 2] = arguments[_key4];
+	    for (var _len5 = arguments.length, args = Array(_len5 > 2 ? _len5 - 2 : 0), _key5 = 2; _key5 < _len5; _key5++) {
+	      args[_key5 - 2] = arguments[_key5];
 	    }
 
 	    var mon = arguments.length <= 1 || arguments[1] === undefined ? _this2 : arguments[1];
@@ -659,7 +731,7 @@
 	        setTimeout(function () {
 	          console.log('fmap retry');
 	          retry();
-	        }, 64);
+	        }, 100);
 	      }
 	    })();
 	    MFLAG = false;
@@ -667,7 +739,19 @@
 	  };
 
 	  this.ret = function (a) {
-	    _this2.x = a;
+	    var self = _this2;
+	    (function retry() {
+	      if (self.flag === false) {
+	        console.log('Hello from ret ', self.id, self.x, self.flag);
+	        self.x = a;
+	      } else {
+	        setTimeout(function () {
+	          console.log('ret retry', self.id, self.x, self.flag);
+	          retry();
+	        }, 100);
+	      }
+	    })();
+	    console.log('Now leaving ret ', self.id, self.x, self.flag);
 	    return _this2;
 	  };
 	};
@@ -675,8 +759,8 @@
 	;
 
 	var fmap = function fmap(f, mon) {
-	  for (var _len5 = arguments.length, args = Array(_len5 > 2 ? _len5 - 2 : 0), _key5 = 2; _key5 < _len5; _key5++) {
-	    args[_key5 - 2] = arguments[_key5];
+	  for (var _len6 = arguments.length, args = Array(_len6 > 2 ? _len6 - 2 : 0), _key6 = 2; _key6 < _len6; _key6++) {
+	    args[_key6 - 2] = arguments[_key6];
 	  }
 
 	  var v = mon.x;
@@ -689,8 +773,8 @@
 	};
 
 	var bnd = function bnd(f, mon) {
-	  for (var _len6 = arguments.length, args = Array(_len6 > 2 ? _len6 - 2 : 0), _key6 = 2; _key6 < _len6; _key6++) {
-	    args[_key6 - 2] = arguments[_key6];
+	  for (var _len7 = arguments.length, args = Array(_len7 > 2 ? _len7 - 2 : 0), _key7 = 2; _key7 < _len7; _key7++) {
+	    args[_key7 - 2] = arguments[_key7];
 	  }
 
 	  f.apply(undefined, [mon.x, mon].concat(args));
@@ -835,6 +919,11 @@
 	      return mon;
 	    };
 
+	    this.log = function (x, mon, y) {
+	      console.log(y);
+	      return mon;
+	    };
+
 	    this.fnc = function (a, b) {
 	      return a.b;
 	    };
@@ -932,6 +1021,10 @@
 	      return x * x * x;
 	    };
 
+	    this.sq = function (x) {
+	      return x * x;
+	    };
+
 	    this.du = function (x) {
 	      return x * x;
 	    };
@@ -944,6 +1037,22 @@
 	      return x;
 	    };
 
+	    this.lo = function (x) {
+	      return console.log(x);
+	    };
+
+	    this.block = function (x, mon, mon2) {
+	      mon2.flag = true;
+	      console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$', mon2.id, mon2.x, mon2.flag);
+	      return mon;
+	    };
+
+	    this.release = function (x, mon, mon2) {
+	      mon2.flag = false;
+	      console.log('***************************', mon2.id, mon2.x, mon2.flag);
+	      return mon;
+	    };
+
 	    this.test5 = function (m) {
 	      var x = m.x;
 	      m.ret(x + 3).bnd(_this3.add, 1).bnd(_this3.mMS2.ret).bnd(_this3.add, 1).bnd(_this3.doub);
@@ -953,13 +1062,14 @@
 	      _this3.mMS1.ret(3).fmap(_this3.ad, _this3.mMS2, _this3.mMS1.x).fmap(_this3.du).fmap(_this3.ad, _this3.mM1, _this3.mMS1.x).fmap(_this3.cu).fmap(_this3.id, _this3.mMS3).bnd(_this3.add, _this3.mMS2.x + 1000);
 	    };
 
-	    this.pause = function (x, mon, t) {
-	      setTimeout(function () {
-	        return mon;
-	      }, t);
+	    this.delay = function (x, mon) {
+	      return new Promise(function (resolve, reject) {
+	        setTimeout(resolve, 2000);
+	      });
 	    };
 
 	    this.render = function () {
+	      console.log(_this3.mMS1.id, _this3.mMS1.flag);
 	      var mM1 = _this3.mM1;
 	      var mM2 = _this3.mM2;
 	      var mM3 = _this3.mM3;
@@ -977,9 +1087,11 @@
 	      var mMS6 = _this3.mMS6;
 	      var mM10 = _this3.mM10;
 	      var cu = _this3.cu;
+	      var sq = _this3.sq;
 	      var ad = _this3.ad;
 	      var id = _this3.id;
 	      var du = _this3.du;
+	      var lo = _this3.lo;
 	      var bench = _this3.bench;
 	      var resBench = _this3.resBench;
 	      var refresh = _this3.refresh;
@@ -992,6 +1104,10 @@
 	      var ran = _this3.ran;
 	      var branch = _this3.branch;
 	      var test = _this3.test;
+	      var delay = _this3.delay;
+	      var log = _this3.log;
+	      var block = _this3.block;
+	      var release = _this3.release;
 	      return _react2['default'].createElement(
 	        'div',
 	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 22 } },
@@ -999,7 +1115,7 @@
 	        _react2['default'].createElement('br', null),
 	        _react2['default'].createElement(
 	          'div',
-	          { style: { width: '30%', fontSize: 22, position: 'fixed', top: 200, right: 5 } },
+	          { style: { width: '30%', fontSize: 22, position: 'fixed', top: 20, right: 5 } },
 	          _react2['default'].createElement(
 	            'span',
 	            null,
@@ -1180,6 +1296,32 @@
 	              'button',
 	              { style: _this3.style3 },
 	              mMS4.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS5: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this3.style3 },
+	              mMS5.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS6: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this3.style3 },
+	              mMS6.x
 	            ),
 	            ' '
 	          ),
@@ -1443,7 +1585,7 @@
 	            'button',
 	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
 	              onClick: function () {
-	                return mM1.bnd(ran).fmap(id, mM5).bnd(ran).bnd(function (a) {
+	                return mM1i.bnd(ran).fmap(id, mM5).bnd(ran).bnd(function (a) {
 	                  return mM6.bnd(ran).bnd(function (b) {
 	                    return mM7.bnd(ran).bnd(function (c) {
 	                      return mM8.bnd(_this3.ch, a, b, c);
@@ -1511,17 +1653,7 @@
 	            },
 	            _react2['default'].createElement(ComponentHypotenuse, null)
 	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            ' If you organizes an application with instances of Monad, please tell me about it. I am going to look into the feasibility of feeding websocket data into a monad and having it send instructions down branches in accordance with the message prefixes. The ',
-	            _react2['default'].createElement(
-	              'a',
-	              { href: 'http://schalk.net', style: { color: 'green' } },
-	              'game of Score'
-	            ),
-	            ' seems like a good candida1te.'
-	          ),
+	          _react2['default'].createElement('p', null),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
@@ -1814,7 +1946,7 @@
 	                return _this3.cF5();
 	              }
 	            },
-	            'mM4.fmap(ad,mM5,5) ',
+	            'mM4.fmap(ad0,mM5,5) ',
 	            _react2['default'].createElement('br', null),
 	            '.fmap(ad,mM6,3) ',
 	            _react2['default'].createElement('br', null),
@@ -1837,7 +1969,89 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'Creating and updating branches with fmap is simple, but sometimes we will need better control over the order of execution. In the previous example, we are confident that lines \'2\' and \'3\' have been executed (updating mM6) before line \'6\' where mM4 takes the value of mM6 and adds 1000 to it. If lines \'2\' and \'3\' had involved websocket messages, an ajax call, or interaction with a database, line \'6\' would likely have been executed using the original value of mM6. Promises could make sure line \'6\' get executed after lines \'2\' and \'3\'.'
+	            'Creating and updating branches with fmap is simple, but sometimes we will need better control over the order of execution. In the previous example, we are confident that lines \'2\' and \'3\' have been executed (updating mM6) before line \'6\' where mM4 takes the value of mM6 and adds 1000 to it. If lines \'2\' and \'3\' had involved websocket messages, an ajax call, or interaction with a database, line \'6\' would likely have been executed using the original value of mM6.'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Instances of MonadSeq provide a way to control the order of execution. Here is the definition of MonadSeq:'
+	          ),
+	          _react2['default'].createElement(ComponentMonadSeq, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            ' and here are the functions that control the order of execution: '
+	          ),
+	          _react2['default'].createElement(ComponentMonadSeq2, null),
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this3.bool1 ? _this3.style1 : _this3.style2,
+	              onClick: function () {
+	                return mMS1.ret('one').bnd(refresh).bnd(function (a) {
+	                  return setTimeout(function () {
+	                    mMS2.ret('two').bnd(function () {
+	                      mM1.bnd(block, mMS1).bnd(function () {
+	                        return mMS1.ret('First branch complete').bnd(refresh);
+	                      }).bnd(function () {
+	                        setTimeout(function () {
+	                          mMS2.ret('First').bnd(refresh).bnd(function (a) {
+	                            setTimeout(function () {
+	                              mMS3.ret('Second').bnd(refresh).bnd(function (b) {
+	                                setTimeout(function () {
+	                                  mMS4.ret('Third').bnd(refresh).bnd(function (c) {
+	                                    setTimeout(function () {
+	                                      mMS5.ret('Fourth').bnd(refresh).bnd(function (d) {
+	                                        setTimeout(function () {
+	                                          mMS6.ret('Done').bnd(function () {
+	                                            return mMS1.ret('Second branch complete');
+	                                          }).bnd(refresh);
+	                                        }, 1000);
+	                                      });
+	                                    }, 1000);
+	                                  });
+	                                }, 1000);
+	                              });
+	                            }, 1000);
+	                          });
+	                        }, 1000);
+	                      });
+	                    }).bnd(refresh).bnd(function (b) {
+	                      setTimeout(function () {
+	                        mMS3.ret('three').bnd(refresh).bnd(function (c) {
+	                          setTimeout(function () {
+	                            mMS4.ret('four').bnd(refresh).bnd(function (d) {
+	                              setTimeout(function () {
+	                                mMS5.ret('five').bnd(refresh).bnd(function (e) {
+	                                  setTimeout(function () {
+	                                    mM1.bnd(release, mMS1);
+	                                    mM1.bnd(release, mMS2);
+	                                    mM1.bnd(release, mMS3);
+	                                    mMS6.ret([a, ' ', b, ' ', c, ' ', d, ' ', e]).bnd(refresh);
+	                                  }, 1000);
+	                                });
+	                              }, 1000);
+	                            });
+	                          }, 1000);
+	                        });
+	                      }, 1000);
+	                    });
+	                  }, 1000);
+	                });
+	              },
+	              onMouseEnter: function () {
+	                return _this3.cT1();
+	              },
+	              onMouseLeave: function () {
+	                return _this3.cF1();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentMonadSeq3, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'The branch beginning after "mMS2.ret(\'two\')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret(\'five\')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin its execution chain.  '
 	          ),
 	          _react2['default'].createElement('div', { style: { height: 500 } })
 	        )
@@ -1847,8 +2061,8 @@
 	    this.M = function (a) {
 	      return new Monad(a);
 	    };
-	    this.MS = function (a) {
-	      return new MonadSeq(a);
+	    this.MS = function (a, b) {
+	      return new MonadSeq(a, b);
 	    };
 	    this.MFLAG = MFLAG;
 	    this.mM1 = this.M(0);
@@ -1861,12 +2075,12 @@
 	    this.mM8 = this.M(0);
 	    this.mM9 = this.M(0);
 	    this.mM10 = this.M(0);
-	    this.mMS1 = this.MS(0);
-	    this.mMS2 = this.MS(0);
-	    this.mMS3 = this.MS(0);
-	    this.mMS4 = this.MS(0);
-	    this.mMS5 = this.MS(0);
-	    this.mMS6 = this.MS(0);
+	    this.mMS1 = this.MS(0, 'mMS1');
+	    this.mMS2 = this.MS(0, 'mMS2');
+	    this.mMS3 = this.MS(0, 'mMS3');
+	    this.mMS4 = this.MS(0, 'mMS4');
+	    this.mMS5 = this.MS(0, 'mMS5');
+	    this.mMS6 = this.MS(0, 'mMS6');
 	    this.style2 = { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
 	      color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
 	      marginLeft: 12, fontSize: 22 };
@@ -1889,6 +2103,21 @@
 	})(_react2['default'].Component);
 
 	(0, _reactDom.render)(_react2['default'].createElement(B4, { key: 'B4' }), document.getElementById('divSix'));
+
+	// function delay(time) {
+
+	/*
+	.then( function STEP3(){
+	    console.log( "step 3 (after another 2000ms)" );
+	} )
+	.then( function STEP4(){
+	    console.log( "step 4 (next Job)" );
+	    return delay( 2000 );
+	} )
+	.then( function STEP5(){
+	    console.log( "step 5 (after another 2000ms)" );
+	} )
+	*/
 
 /***/ },
 /* 2 */

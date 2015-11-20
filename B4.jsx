@@ -1584,7 +1584,7 @@ delay = (x,mon) => {
    <p>In the next example, "fmap(id,mM5)" starts a new branch and "fmap(id,mM1" switches back to the beginning of the tree, mM1. "id" is defined as "id = x => x".  Click to see the code in action: </p>
   <button style={this.bool5 ? this.style1 : this.style2 } 
     onClick={
-      () => mM1i
+      () => mM1
       .bnd(ran)
       .fmap(id,mM5)
         .bnd(ran).bnd(a => mM6

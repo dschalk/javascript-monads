@@ -57,9 +57,11 @@
 	  value: true
 	});
 
-	var _get = function get(_x3, _x4, _x5) { var _again = true; _function: while (_again) { var object = _x3, property = _x4, receiver = _x5; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x3 = parent; _x4 = property; _x5 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x4, _x5, _x6) { var _again = true; _function: while (_again) { var object = _x4, property = _x5, receiver = _x6; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x4 = parent; _x5 = property; _x6 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
@@ -97,7 +99,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -114,7 +116,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -131,7 +133,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -148,7 +150,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -165,7 +167,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -182,7 +184,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -199,7 +201,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -216,7 +218,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -233,7 +235,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -250,7 +252,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -267,7 +269,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -284,7 +286,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -301,7 +303,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -318,7 +320,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -335,7 +337,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -352,7 +354,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -369,7 +371,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -386,7 +388,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -403,7 +405,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -420,7 +422,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -437,7 +439,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: 'burlywood' } },
+	      { style: { fontSize: 18, color: 'burlywood' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -454,7 +456,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -470,7 +472,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -486,7 +488,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -502,7 +504,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -518,7 +520,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -534,7 +536,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -550,7 +552,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -566,7 +568,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -582,11 +584,11 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n       class MonadSeq {\n         constructor(z,g) {\n     \n           this.x = z;\n           this.id = g;\n     \n           this.flag = false;\n     \n           this.bnd = (func, ...args) => {\n             let self = this;\n             let fun = func;\n             (function retry(func, ...args) {\n               if (self.flag === false) {\n                 console.log(\'Hello from bnd \', self.id, self.x, self.flag);      \n                 return fun(self.x, self, ...args);\n               }\n               if (self.flag === true) {\n                 setTimeout( function() {\n                   console.log(\'bnd retry\', self.id, self.x, self.flag);\n                   retry(fun, ...args); \n                 },200  ); \n               }\n             })();\n             console.log(\'Now leaving bnd \', self.id, self.x, self.flag);\n             return this;\n           }\n     \n           this.fmap = (f, mon = this, ...args) => {      \n             let self = this;\n             (function retry() {\n               if (MFLAG === false) {\n                 console.log(\'Hello from fmap\');\n                 console.log(mon);\n                 MFLAG = true;\n                 mon.ret(f(mon.x,  ...args));\n               } else {\n                 setTimeout( function() {\n                   console.log(\'fmap retry\');\n                   retry(); \n                 },100  ); \n               }\n             })();\n             MFLAG = false;\n             return mon;\n           }\n     \n           this.ret = a => {\n             let self = this;\n             (function retry() {\n               if (self.flag === false) {\n                 console.log(\'Hello from ret \', self.id, self.x, self.flag);\n                 self.x = a;\n               } else {\n                 setTimeout( function() {\n                   console.log(\'ret retry\',self.id, self.x, self.flag);\n                   retry(); \n                 },100  ); \n               }\n             })();\n             console.log(\'Now leaving ret \', self.id, self.x, self.flag);\n             return this;\n           }\n         }\n       };\n        '
+	        '\n       class MonadSeq {\n         constructor(z,g) {\n     \n           this.x = z;\n           this.id = g;\n     \n           this.flag = false;\n     \n           this.bnd = (func, ...args) => {\n             let self = this;\n             let fun = func;\n             (function retry(func, ...args) {\n               if (self.flag === false) {\n                 console.log(\'Hello from bnd \', self.id, self.x, self.flag);\n                 return fun(self.x, self, ...args);\n               }\n               if (self.flag === true) {\n                 setTimeout( function() {\n                   console.log(\'bnd retry\', self.id, self.x, self.flag);\n                   retry(fun, ...args); \n                 },200  ); \n               }\n             })();\n             console.log(\'Now leaving bnd \', self.id, self.x, self.flag);\n             return this;\n           }\n     \n           this.fmap = (f, mon = this, ...args) => {      \n             let self = this;\n             (function retry() {\n               if (self.flag === false) {\n                 console.log(\'Hello from fmap\', self.id, self.x, self.flag);\n                 mon.ret(f(mon.x,  ...args));\n               }\n               if (self.flag === true) {\n                 setTimeout( function() {\n                   console.log(\'fmap retry\', self.id, self.x, self.flag);\n                   retry(); \n                 },200  ); \n               }\n             })();\n             this.flag = false;\n             return mon;\n           }\n     \n     \n           this.ret = a => {\n             let self = this;\n             (function retry() {\n               if (self.flag === false) {\n                 console.log(\'Hello from ret \', self.id, self.x, self.flag);      \n                 self.x = a;\n               } else {\n                 setTimeout( function() {\n                   console.log(\'ret retry\',self.id, self.x, self.flag);\n                   retry(); \n                 },100  ); \n               }\n             })();\n             console.log(\'Now leaving ret \', self.id, self.x, self.flag);\n             return this;\n           }\n         }\n       };\n        '
 	      )
 	    );
 	  }
@@ -598,7 +600,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -614,27 +616,27 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      <button style={this.bool1 ? this.style1 : this.style2 } \n        onClick={() => mMS1\n        .ret(\'one\')\n        .bnd(refresh)\n        .bnd((a) => setTimeout(function() {\n        mMS2.ret(\'two\')\n        .bnd(() => {mM1.bnd(block,mMS1)\n                  .bnd(() => mMS1\n                  .ret(\'First branch complete\')\n                  .bnd(refresh)).bnd(() => {setTimeout(function() {   \n                 mMS2.ret(\'First\')\n                  .bnd(refresh)\n                  .bnd(a => {setTimeout(function() {\n                 mMS3.ret(\'Second\')\n                  .bnd(refresh)\n                  .bnd(b => {setTimeout(function() {\n                 mMS4.ret(\'Third\')\n                  .bnd(refresh)\n                  .bnd(c => {setTimeout(function() {\n                 mMS5.ret(\'Fourth\')\n                  .bnd(refresh)\n                  .bnd(d => {setTimeout(function() {\n                 mMS6.ret(\'Done\').bnd(() => mMS1\n                  .ret(\'Second branch complete\'))\n                  .bnd(refresh)\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                })\n        .bnd(refresh)\n        .bnd(b => { setTimeout(function() {\n        mMS3.ret(\'three\')\n        .bnd(refresh)\n        .bnd(c => { setTimeout(function() {\n        mMS4.ret(\'four\')\n        .bnd(refresh)\n        .bnd(d => { setTimeout(function() {\n        mMS5.ret(\'five\')\n        .bnd(refresh)\n        .bnd(e => { setTimeout(function() {\n        mM1.bnd(release,mMS1)\n        mM1.bnd(release,mMS2)\n        mM1.bnd(release,mMS3)\n        mMS6.ret([a,\' \',b,\' \',c,\' \',d,\' \',e])\n        .bnd(refresh)\n        },1000 )})\n        },1000 )})\n        },1000 )})\n        },1000 )})\n        },1000 ))\n          }\n           onMouseEnter={ () => this.cT1() }\n           onMouseLeave={ () => this.cF1() }\n                >\n         <ComponentMonadSeq3 />\n           </button>\n        '
+	        '\n      <button style={this.bool1 ? this.style1 : this.style2 } \n        onClick={() => mMS1\n        .ret(\'one\')\n        .bnd(refresh)\n        .bnd((a) => setTimeout(function() {\n        mMS2.ret(\'two\')\n        .bnd(() => {mM1.bnd(block,mMS1)\n                  .bnd(() => mMS1\n                  .ret(\'First branch complete\')\n                  .bnd(refresh)).bnd(() => {setTimeout(function() {   \n                 mMS2.ret(\'First\')\n                  .bnd(refresh)\n                  .bnd(a => {setTimeout(function() {\n                 mMS3.ret(\'Second\')\n                  .bnd(refresh)\n                  .bnd(b => {setTimeout(function() {\n                 mMS4.ret(\'Third\')\n                  .bnd(refresh)\n                  .bnd(c => {setTimeout(function() {\n                 mMS5.ret(\'Fourth\')\n                  .bnd(refresh)\n                  .bnd(d => {setTimeout(function() {\n                 mMS6.ret(\'Done\').bnd(() => mMS1\n                  .ret(\'Second branch complete\'))\n                  .bnd(refresh)\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                    },1000 )})\n                })\n        .bnd(refresh)\n        .bnd(b => { setTimeout(function() {\n        mMS3.ret(\'three\')\n        .bnd(refresh)\n        .bnd(c => { setTimeout(function() {\n        mMS4.ret(\'four\')\n        .bnd(refresh)\n        .bnd(d => { setTimeout(function() {\n        mMS5.ret(\'five\')\n        .bnd(refresh)\n        .bnd(e => { setTimeout(function() {\n        mM1.bnd(release,mMS1)\n        mM1.bnd(release,mMS2)\n        mM1.bnd(release,mMS3)\n        mMS6.ret([a,\' \',b,\' \',c,\' \',d,\' \',e])\n        .bnd(refresh)\n        },1000 )})\n        },1000 )})\n        },1000 )})\n        },1000 )})\n        },1000 ))\n          }\n        '
 	      )
 	    );
 	  }
 	});
 
-	var ComponentDummy14 = _react2['default'].createClass({
-	  displayName: 'ComponentDummy14',
+	var ComponentLog = _react2['default'].createClass({
+	  displayName: 'ComponentLog',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 22, color: '#00FFFF' } },
+	      { style: { fontSize: 14, color: '#00FFFF' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n      20:48:37.487 ret retry mMS1 one true bundle.js:750:12\n      20:48:37.647 bnd retry mMS1 one true bundle.js:709:12\n      20:48:37.704 ret retry mMS1 one true bundle.js:750:12\n      20:48:37.864 bnd retry mMS1 one true bundle.js:709:12\n      20:48:37.923 *************************** mMS1 one false bundle.js:1198:8\n      20:48:37.923 *************************** mMS2 two false bundle.js:1198:8\n      20:48:37.923 *************************** mMS3 three false bundle.js:1198:8\n      20:48:37.924 Hello from ret  mMS6 0 false bundle.js:746:10\n      20:48:37.924 Now leaving ret  mMS6 Array [ "one", " ", "two", " ", "three", " ", "four", " ", "five" ] false bundle.js:755:6\n      20:48:37.925 Hello from bnd  mMS6 Array [ "one", " ", "two", " ", "three", " ", "four", " ", "five" ] false bundle.js:704:10\n      20:48:37.926 mMS1 false bundle.js:1218:8\n      20:48:37.945 Now leaving bnd  mMS6 Array [ "one", " ", "two", " ", "three", " ", "four", " ", "five" ] false bundle.js:714:6\n      20:48:37.945 ret retry mMS1 one false bundle.js:750:12\n      20:48:37.946 Hello from ret  mMS1 one false bundle.js:746:10\n      20:48:38.065 bnd retry mMS1 First branch complete false bundle.js:709:12\n      20:48:38.066 Hello from bnd  mMS1 First branch complete false bundle.js:704:10\n     -->  20:48:38.066 Side chain moving forward bundle.js:1931:35  <--\n      20:48:38.067 bnd retry mMS1 First branch complete false bundle.js:709:12\n      20:48:38.067 Hello from bnd  mMS1 First branch complete false bundle.js:704:10\n      20:48:38.068 mMS1 false bundle.js:1218:8\n      20:48:38.097 bnd retry mMS1 First branch complete false bundle.js:709:12\n      20:48:38.097 Hello from bnd  mMS1 First branch complete false bundle.js:704:10\n      20:48:39.099 Hello from ret  mMS2 two false bundle.js:746:10\n      20:48:39.099 Now leaving ret  mMS2 First false bundle.js:755:6\n      20:48:39.100 Hello from bnd  mMS2 First false bundle.js:704:10\n        '
 	      )
 	    );
 	  }
@@ -722,19 +724,18 @@
 
 	    var self = _this2;
 	    (function retry() {
-	      if (MFLAG === false) {
-	        console.log('Hello from fmap');
-	        console.log(mon);
-	        MFLAG = true;
+	      if (self.flag === false) {
+	        console.log('Hello from fmap', self.id, self.x, self.flag);
 	        mon.ret(f.apply(undefined, [mon.x].concat(args)));
-	      } else {
+	      }
+	      if (self.flag === true) {
 	        setTimeout(function () {
-	          console.log('fmap retry');
+	          console.log('fmap retry', self.id, self.x, self.flag);
 	          retry();
-	        }, 100);
+	        }, 200);
 	      }
 	    })();
-	    MFLAG = false;
+	    _this2.flag = false;
 	    return mon;
 	  };
 
@@ -758,6 +759,67 @@
 
 	;
 
+	/*class MonadSeq {
+	  constructor(z,g) {
+	     this.x = z;
+	    this.id = g;
+	     this.flag = false;
+	     this.bnd = (func, ...args) => {
+	      let self = this;
+	      let fun = func;
+	      (function retry(func, ...args) {
+	        if (self.flag === false) {
+	          console.log('Hello from bnd ', self.id, self.x, self.flag);
+	          return fun(self.x, self, ...args);
+	        }
+	        if (self.flag === true) {
+	          setTimeout( function() {
+	            console.log('bnd retry', self.id, self.x, self.flag);
+	            retry(fun, ...args); 
+	          },200  ); 
+	        }
+	      })();
+	      console.log('Now leaving bnd ', self.id, self.x, self.flag);
+	      return this;
+	    }
+	     this.fmap = (f, mon = this, ...args) => {      
+	      let self = this;
+	      (function retry() {
+	        if (MFLAG === false) {
+	          console.log('Hello from fmap');
+	          console.log(mon);
+	          MFLAG = true;
+	          mon.ret(f(mon.x,  ...args));
+	        } else {
+	          setTimeout( function() {
+	            console.log('fmap retry');
+	            retry(); 
+	          },100  ); 
+	        }
+	      })();
+	      MFLAG = false;
+	      return mon;
+	    }
+	      this.ret = a => {
+	      let self = this;
+	      (function retry() {
+	        if (self.flag === false) {
+	          console.log('Hello from ret ', self.id, self.x, self.flag);
+	          self.x = a;
+	        } else {
+	          setTimeout( function() {
+	            console.log('ret retry',self.id, self.x, self.flag);
+	            retry(); 
+	          },100  ); 
+	        }
+	      })();
+	      console.log('Now leaving ret ', self.id, self.x, self.flag);
+	      return this;
+	    }
+	  }
+	};
+	*/
+
 	var fmap = function fmap(f, mon) {
 	  for (var _len6 = arguments.length, args = Array(_len6 > 2 ? _len6 - 2 : 0), _key6 = 2; _key6 < _len6; _key6++) {
 	    args[_key6 - 2] = arguments[_key6];
@@ -767,14 +829,98 @@
 	  mon.ret(f.apply(undefined, [v].concat(args)));
 	  return mon;
 	};
+	var MSt = [];
+
+	var MonadIter = function MonadIter(z, g) {
+	  var _this3 = this;
+
+	  _classCallCheck(this, MonadIter);
+
+	  this.x = z;
+	  this.id = g;
+	  this.flag = false;
+	  this.block = function () {
+	    return flag = true;
+	  };
+	  this.release = function () {
+	    _this3.flag = true;
+	    var self = _this3;
+	    for (var w in MSt) {
+	      if (w[0] === _this3.id && w[1] === 'bnd') {
+	        self.bnd.apply(self, [w[1]].concat(_toConsumableArray(w[2])));
+	        return;
+	      }
+	      if (w[0] === _this3.id && w[1] === 'fmap') {
+	        self.fmap.apply(self, [w[1]].concat(_toConsumableArray(w[2])));
+	        return;
+	      }
+	      if (w[0] === _this3.id && w[1] === 'ret') {
+	        self.ret(w[2]);
+	        return;
+	      }
+	    }
+	  };
+
+	  this.bnd = function (func) {
+	    for (var _len7 = arguments.length, args = Array(_len7 > 1 ? _len7 - 1 : 0), _key7 = 1; _key7 < _len7; _key7++) {
+	      args[_key7 - 1] = arguments[_key7];
+	    }
+
+	    var self = _this3;
+	    if (self.flag === false) {
+	      console.log('Hello from bnd ', self.id, self.x, self.flag);
+	      return func.apply(undefined, [self.x, self].concat(args));
+	    }
+	    if (self.flag === true) {
+	      MSt.push([id, 'bnd', func, args]);
+	      console.log('Now leaving bnd ', self.id, self.x, self.flag);
+	      return _this3;
+	    }
+	  };
+
+	  this.fmap = function (f) {
+	    for (var _len8 = arguments.length, args = Array(_len8 > 2 ? _len8 - 2 : 0), _key8 = 2; _key8 < _len8; _key8++) {
+	      args[_key8 - 2] = arguments[_key8];
+	    }
+
+	    var mon = arguments.length <= 1 || arguments[1] === undefined ? _this3 : arguments[1];
+
+	    var self = _this3;
+	    if (self.flag === false) {
+	      console.log('Hello from fmap', self.id, self.x, self.flag);
+	      mon.ret(f.apply(undefined, [mon.x].concat(args)));
+	      return mon;
+	    }
+	    if (self.flag === true) {
+	      MSt.push([id, 'fmap', func, args]);
+	      console.log('Now leaving fmap ', self.id, self.x, self.flag);
+	      return _this3;
+	    }
+	  };
+
+	  this.ret = function (a) {
+	    var self = _this3;
+	    if (self.flag === false) {
+	      console.log('Hello from ret', self.id, self.x, self.flag);
+	      mon.ret(f.apply(undefined, [mon.x].concat(_toConsumableArray(args))));
+	    }
+	    if (self.flag === true) {
+	      MSt.push([id, 'ret', a]);
+	      console.log('Now leaving ret ', self.id, self.x, self.flag);
+	      return _this3;
+	    }
+	    _this3.flag = false;
+	    return mon;
+	  };
+	};
 
 	var join = function join(m) {
 	  return m.x;
 	};
 
 	var bnd = function bnd(f, mon) {
-	  for (var _len7 = arguments.length, args = Array(_len7 > 2 ? _len7 - 2 : 0), _key7 = 2; _key7 < _len7; _key7++) {
-	    args[_key7 - 2] = arguments[_key7];
+	  for (var _len9 = arguments.length, args = Array(_len9 > 2 ? _len9 - 2 : 0), _key9 = 2; _key9 < _len9; _key9++) {
+	    args[_key9 - 2] = arguments[_key9];
 	  }
 
 	  f.apply(undefined, [mon.x, mon].concat(args));
@@ -785,18 +931,18 @@
 	  _inherits(B4, _React$Component);
 
 	  function B4(props) {
-	    var _this3 = this;
+	    var _this4 = this;
 
 	    _classCallCheck(this, B4);
 
 	    _get(Object.getPrototypeOf(B4.prototype), 'constructor', this).call(this, props);
 
 	    this.style3 = { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkblue', outline: 0,
-	      color: 'red', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 27 };
+	      color: 'red', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3, marginLeft: 12, fontSize: 18 };
 
 	    this.cT1 = function () {
-	      var self = _this3;
-	      _this3.bool1 = true;
+	      var self = _this4;
+	      _this4.bool1 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -804,8 +950,8 @@
 	    };
 
 	    this.cF1 = function () {
-	      var self = _this3;
-	      _this3.bool1 = false;
+	      var self = _this4;
+	      _this4.bool1 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -813,8 +959,8 @@
 	    };
 
 	    this.cT2 = function () {
-	      var self = _this3;
-	      _this3.bool2 = true;
+	      var self = _this4;
+	      _this4.bool2 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -822,8 +968,8 @@
 	    };
 
 	    this.cF2 = function () {
-	      var self = _this3;
-	      _this3.bool2 = false;
+	      var self = _this4;
+	      _this4.bool2 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -831,8 +977,8 @@
 	    };
 
 	    this.cT3 = function () {
-	      var self = _this3;
-	      _this3.bool3 = true;
+	      var self = _this4;
+	      _this4.bool3 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -840,8 +986,8 @@
 	    };
 
 	    this.cF3 = function () {
-	      var self = _this3;
-	      _this3.bool3 = false;
+	      var self = _this4;
+	      _this4.bool3 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -849,8 +995,8 @@
 	    };
 
 	    this.cT4 = function () {
-	      var self = _this3;
-	      _this3.bool4 = true;
+	      var self = _this4;
+	      _this4.bool4 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -858,8 +1004,8 @@
 	    };
 
 	    this.cF4 = function () {
-	      var self = _this3;
-	      _this3.bool4 = false;
+	      var self = _this4;
+	      _this4.bool4 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -867,8 +1013,8 @@
 	    };
 
 	    this.cT5 = function () {
-	      var self = _this3;
-	      _this3.bool5 = true;
+	      var self = _this4;
+	      _this4.bool5 = true;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -876,8 +1022,8 @@
 	    };
 
 	    this.cF5 = function () {
-	      var self = _this3;
-	      _this3.bool5 = false;
+	      var self = _this4;
+	      _this4.bool5 = false;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 8);
@@ -885,7 +1031,7 @@
 	    };
 
 	    this.refresh = function (x, mon) {
-	      _this3.forceUpdate.apply(_this3);
+	      _this4.forceUpdate.apply(_this4);
 	      return mon;
 	    };
 
@@ -948,21 +1094,21 @@
 	    };
 
 	    this.chance = function (x, mon) {
-	      var a = _this3.rand(1, 5);
-	      var b = _this3.rand(1, 5);
-	      var c = _this3.rand(1, 5);
-	      _this3.mM1.ret(a);
-	      _this3.mM2.ret(b);
-	      _this3.mM3.ret(c);
+	      var a = _this4.rand(1, 5);
+	      var b = _this4.rand(1, 5);
+	      var c = _this4.rand(1, 5);
+	      _this4.mM1.ret(a);
+	      _this4.mM2.ret(b);
+	      _this4.mM3.ret(c);
 	      if (a === b && a === c) {
-	        _this3.mM4.ret('Winner! Three of a kind');
+	        _this4.mM4.ret('Winner! Three of a kind');
 	        return mon;
 	      }
 	      if (a === b || a === c || b === c) {
-	        _this3.mM4.ret('Pair. Try for three');
+	        _this4.mM4.ret('Pair. Try for three');
 	        return mon;
 	      }
-	      _this3.mM4.ret('Zilch. Don\'t give up now.');
+	      _this4.mM4.ret('Zilch. Don\'t give up now.');
 	      return mon;
 	    };
 
@@ -983,35 +1129,35 @@
 	      var k = 1;
 	      for (k; k < 5; k += 1) {
 	        if (x === [k, k, k, k, k, k]) {
-	          _this3.mM10.ret("Jackpot!");
+	          _this4.mM10.ret("Jackpot!");
 	          return mon;
 	        }
 	      }
-	      _this3.mM10.ret("No jackpot this time");
+	      _this4.mM10.ret("No jackpot this time");
 	      return mon;
 	    };
 
 	    this.bench = function (x, mon) {
-	      var self = _this3;
+	      var self = _this4;
 	      var k = 0;
 	      var j = 0;
 	      var d1 = new Date();
 	      for (k; k < 1000000; k++) {
-	        _this3.mM1 = new Monad(k);
+	        _this4.mM1 = new Monad(k);
 	      }
 	      mon.ret(new Date() - d1);
 	      return mon;
 	    };
 
 	    this.bench2 = function () {
-	      var self = _this3;
+	      var self = _this4;
 	      var k = 0;
 	      var j = 0;
 	      var d1 = new Date();
 	      for (k; k < 1000000; k++) {
-	        _this3.mM2.ret(k);
+	        _this4.mM2.ret(k);
 	      }
-	      _this3.resBench2 = new Date() - d1;
+	      _this4.resBench2 = new Date() - d1;
 	      setTimeout(function () {
 	        self.forceUpdate();
 	      }, 12);
@@ -1055,11 +1201,11 @@
 
 	    this.test5 = function (m) {
 	      var x = m.x;
-	      m.ret(x + 3).bnd(_this3.add, 1).bnd(_this3.mMS2.ret).bnd(_this3.add, 1).bnd(_this3.doub);
+	      m.ret(x + 3).bnd(_this4.add, 1).bnd(_this4.mMS2.ret).bnd(_this4.add, 1).bnd(_this4.doub);
 	    };
 
 	    this.test6 = function () {
-	      _this3.mMS1.ret(3).fmap(_this3.ad, _this3.mMS2, _this3.mMS1.x).fmap(_this3.du).fmap(_this3.ad, _this3.mM1, _this3.mMS1.x).fmap(_this3.cu).fmap(_this3.id, _this3.mMS3).bnd(_this3.add, _this3.mMS2.x + 1000);
+	      _this4.mMS1.ret(3).fmap(_this4.ad, _this4.mMS2, _this4.mMS1.x).fmap(_this4.du).fmap(_this4.ad, _this4.mM1, _this4.mMS1.x).fmap(_this4.cu).fmap(_this4.id, _this4.mMS3).bnd(_this4.add, _this4.mMS2.x + 1000);
 	    };
 
 	    this.delay = function (x, mon) {
@@ -1069,270 +1215,59 @@
 	    };
 
 	    this.render = function () {
-	      console.log(_this3.mMS1.id, _this3.mMS1.flag);
-	      var mM1 = _this3.mM1;
-	      var mM2 = _this3.mM2;
-	      var mM3 = _this3.mM3;
-	      var mM4 = _this3.mM4;
-	      var mM5 = _this3.mM5;
-	      var mM6 = _this3.mM6;
-	      var mM7 = _this3.mM7;
-	      var mM8 = _this3.mM8;
-	      var mM9 = _this3.mM9;
-	      var mMS1 = _this3.mMS1;
-	      var mMS2 = _this3.mMS2;
-	      var mMS3 = _this3.mMS3;
-	      var mMS4 = _this3.mMS4;
-	      var mMS5 = _this3.mMS5;
-	      var mMS6 = _this3.mMS6;
-	      var mM10 = _this3.mM10;
-	      var cu = _this3.cu;
-	      var sq = _this3.sq;
-	      var ad = _this3.ad;
-	      var id = _this3.id;
-	      var du = _this3.du;
-	      var lo = _this3.lo;
-	      var bench = _this3.bench;
-	      var resBench = _this3.resBench;
-	      var refresh = _this3.refresh;
-	      var square = _this3.square;
-	      var cube = _this3.cube;
-	      var doub = _this3.doub;
-	      var tripple = _this3.tripple;
-	      var add = _this3.add;
-	      var mult = _this3.mult;
-	      var ran = _this3.ran;
-	      var branch = _this3.branch;
-	      var test = _this3.test;
-	      var delay = _this3.delay;
-	      var log = _this3.log;
-	      var block = _this3.block;
-	      var release = _this3.release;
+	      console.log(_this4.mMS1.id, _this4.mMS1.flag);
+	      var mM1 = _this4.mM1;
+	      var mM2 = _this4.mM2;
+	      var mM3 = _this4.mM3;
+	      var mM4 = _this4.mM4;
+	      var mM5 = _this4.mM5;
+	      var mM6 = _this4.mM6;
+	      var mM7 = _this4.mM7;
+	      var mM8 = _this4.mM8;
+	      var mM9 = _this4.mM9;
+	      var mMS1 = _this4.mMS1;
+	      var mMS2 = _this4.mMS2;
+	      var mMS3 = _this4.mMS3;
+	      var mMS4 = _this4.mMS4;
+	      var mMS5 = _this4.mMS5;
+	      var mMS6 = _this4.mMS6;
+	      var mM10 = _this4.mM10;
+	      var mMI1 = _this4.mMI1;
+	      var mMI2 = _this4.mMI2;
+	      var mMI3 = _this4.mMI3;
+	      var mMI4 = _this4.mMI4;
+	      var mMI5 = _this4.mMI5;
+	      var mMI6 = _this4.mMI6;
+	      var cu = _this4.cu;
+	      var sq = _this4.sq;
+	      var ad = _this4.ad;
+	      var id = _this4.id;
+	      var du = _this4.du;
+	      var lo = _this4.lo;
+	      var bench = _this4.bench;
+	      var resBench = _this4.resBench;
+	      var refresh = _this4.refresh;
+	      var square = _this4.square;
+	      var cube = _this4.cube;
+	      var doub = _this4.doub;
+	      var tripple = _this4.tripple;
+	      var add = _this4.add;
+	      var mult = _this4.mult;
+	      var ran = _this4.ran;
+	      var branch = _this4.branch;
+	      var test = _this4.test;
+	      var delay = _this4.delay;
+	      var log = _this4.log;
+	      var block = _this4.block;
+	      var release = _this4.release;
 	      return _react2['default'].createElement(
 	        'div',
-	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 22 } },
+	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 18 } },
 	        _react2['default'].createElement('br', null),
 	        _react2['default'].createElement('br', null),
 	        _react2['default'].createElement(
 	          'div',
-	          { style: { width: '30%', fontSize: 22, position: 'fixed', top: 20, right: 5 } },
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM1: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM1.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM2: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM2.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM3: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM3.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM4: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM4.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM5: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM5.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM6: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM6.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM7: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM7.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM8: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM8.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM9: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM9.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mM10: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mM10.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mMS1: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mMS1.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mMS2: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mMS2.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mMS3: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mMS3.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mMS4: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mMS4.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mMS5: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mMS5.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'span',
-	            null,
-	            ' Monad mMS6: ',
-	            _react2['default'].createElement(
-	              'button',
-	              { style: _this3.style3 },
-	              mMS6.x
-	            ),
-	            ' '
-	          ),
-	          ' ',
-	          _react2['default'].createElement('br', null)
-	        ),
-	        _react2['default'].createElement('br', null),
-	        _react2['default'].createElement('br', null),
-	        _react2['default'].createElement(
-	          'div',
-	          { style: { width: '65%', textAlign: 'left', marginLeft: 40, marginRight: 40, fontSize: 24 } },
+	          { style: { width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 24 } },
 	          _react2['default'].createElement(
 	            'h2',
 	            { style: { textAlign: 'center' } },
@@ -1362,15 +1297,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool1 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
-	                mM1.bnd(_this3.chance).bnd(refresh);
+	                mM1.bnd(_this4.chance).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT1();
+	                return _this4.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF1();
+	                return _this4.cF1();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentChanceB, null)
@@ -1382,15 +1317,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM1.ret(2).bnd(mM2.ret).bnd(square).bnd(mM3.ret).bnd(square).bnd(mM4.ret).bnd(square).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT2();
+	                return _this4.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF2();
+	                return _this4.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentRet, null)
@@ -1408,15 +1343,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool3 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM1.ret(3).bnd(add, 4).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT3();
+	                return _this4.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF3();
+	                return _this4.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentAddA, null)
@@ -1428,7 +1363,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool4 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool4 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM1.ret(3).bnd(function (x) {
 	                  return mM2.ret(2).bnd(cube).bnd(add, x).bnd(refresh);
@@ -1436,10 +1371,10 @@
 	              },
 
 	              onMouseEnter: function () {
-	                return _this3.cT4();
+	                return _this4.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF4();
+	                return _this4.cF4();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentLambdaA, null)
@@ -1456,7 +1391,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool5 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM1.ret(3).bnd(function (x) {
 	                  return mM2.ret(2).bnd(square).bnd(function (y) {
@@ -1467,10 +1402,10 @@
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT5();
+	                return _this4.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF5();
+	                return _this4.cF5();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentLambdaB, null)
@@ -1494,21 +1429,21 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool1 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM1.bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this3.ch, x, y, z).bnd(refresh);
+	                      return mM4.bnd(_this4.ch, x, y, z).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT1();
+	                return _this4.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF1();
+	                return _this4.cF1();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentChanceE, null)
@@ -1549,29 +1484,29 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM1.bnd(ran).bnd(branch, mM5.bnd(ran).bnd(function (a) {
 	                  return mM6.bnd(ran).bnd(function (b) {
 	                    return mM7.bnd(ran).bnd(function (c) {
-	                      return mM8.bnd(_this3.ch, a, b, c);
+	                      return mM8.bnd(_this4.ch, a, b, c);
 	                    });
 	                  });
 	                })).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this3.ch, x, y, z).bnd(function () {
+	                      return mM4.bnd(_this4.ch, x, y, z).bnd(function () {
 	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
-	                      }).bnd(mM10.ret).bnd(_this3.jackpot).bnd(refresh);
+	                      }).bnd(mM10.ret).bnd(_this4.jackpot).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT2();
+	                return _this4.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF2();
+	                return _this4.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentJackpotB, null)
@@ -1583,30 +1518,30 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool5 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM1.bnd(ran).fmap(id, mM5).bnd(ran).bnd(function (a) {
 	                  return mM6.bnd(ran).bnd(function (b) {
 	                    return mM7.bnd(ran).bnd(function (c) {
-	                      return mM8.bnd(_this3.ch, a, b, c);
+	                      return mM8.bnd(_this4.ch, a, b, c);
 	                    });
 	                  });
 	                }).fmap(id, mM1).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this3.ch, x, y, z).bnd(function () {
+	                      return mM4.bnd(_this4.ch, x, y, z).bnd(function () {
 	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
-	                      }).bnd(mM10.ret).bnd(_this3.jackpot).bnd(refresh);
+	                      }).bnd(mM10.ret).bnd(_this4.jackpot).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 
 	              onMouseEnter: function () {
-	                return _this3.cT5();
+	                return _this4.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF5();
+	                return _this4.cF5();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentFmap1, null)
@@ -1618,7 +1553,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool3 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM1.bnd(branch, mM5.ret(0).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(function (a) {
 	                  setTimeout(function () {
@@ -1637,18 +1572,18 @@
 	                })).bnd(ran).bnd(function (x) {
 	                  return mM2.bnd(ran).bnd(function (y) {
 	                    return mM3.bnd(ran).bnd(function (z) {
-	                      return mM4.bnd(_this3.ch, x, y, z).bnd(function () {
+	                      return mM4.bnd(_this4.ch, x, y, z).bnd(function () {
 	                        return mM9.ret([x, y, z, mM5.x, mM6.x, mM7.x]);
-	                      }).bnd(mM10.ret).bnd(_this3.jackpot).bnd(refresh);
+	                      }).bnd(mM10.ret).bnd(_this4.jackpot).bnd(refresh);
 	                    });
 	                  });
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT3();
+	                return _this4.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF3();
+	                return _this4.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentHypotenuse, null)
@@ -1663,15 +1598,15 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool4 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool4 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM1.bnd(mM1.ret).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT4();
+	                return _this4.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF4();
+	                return _this4.cF4();
 	              }
 	            },
 	            'mM1.bnd(mM1.ret)'
@@ -1680,15 +1615,15 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool5 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM2.bnd(add, 2).bnd(cube).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT5();
+	                return _this4.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF5();
+	                return _this4.cF5();
 	              }
 	            },
 	            'mM2.bnd(add, 2).bnd(cube)'
@@ -1697,17 +1632,17 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool1 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM3.bnd(function (a) {
 	                  return add(a, mM3, 2).bnd(cube);
 	                }).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT1();
+	                return _this4.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF1();
+	                return _this4.cF1();
 	              }
 	            },
 	            'mM3.bnd(a => add(a, mM3, 2).bnd(cube,mM3))'
@@ -1740,15 +1675,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM2.bnd(bench).bnd(mM3.ret).bnd(bench).bnd(mM4.ret).bnd(bench).bnd(mM5.ret).bnd(bench).bnd(mM6.ret).bnd(bench).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT2();
+	                return _this4.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF2();
+	                return _this4.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentBench3, null)
@@ -1760,7 +1695,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM2.bnd(bench).bnd(function (a) {
 	                  return mM3.bnd(bench).bnd(function (b) {
@@ -1775,10 +1710,10 @@
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT2();
+	                return _this4.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF2();
+	                return _this4.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentBench4, null)
@@ -1796,7 +1731,7 @@
 	              'span',
 	              { style: { color: 'lightblue' } },
 	              '  ',
-	              _this3.resBench2,
+	              _this4.resBench2,
 	              ' '
 	            ),
 	            ' ms'
@@ -1808,15 +1743,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool3 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
-	                _this3.bench2();
+	                _this4.bench2();
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT3();
+	                return _this4.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF3();
+	                return _this4.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(Bench2, null)
@@ -1844,15 +1779,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                bnd(add, mM1, 5).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT2();
+	                return _this4.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF2();
+	                return _this4.cF2();
 	              }
 	            },
 	            'bnd(add,mM2,5).bnd(refresh)'
@@ -1869,16 +1804,16 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool2 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                fmap(ad, mM2, 3);
 	                fmap(cu, mM2).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT2();
+	                return _this4.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF2();
+	                return _this4.cF2();
 	              }
 	            },
 	            'fmap(ad,mM2,3)',
@@ -1893,15 +1828,15 @@
 	          _react2['default'].createElement(ComponentFmap2, null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool3 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT3();
+	                return _this4.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF3();
+	                return _this4.cF3();
 	              }
 	            },
 	            'REFRESH'
@@ -1913,15 +1848,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool4 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool4 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                fmap(ad, mM3, 3).fmap(cu, mM3).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT4();
+	                return _this4.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF4();
+	                return _this4.cF4();
 	              }
 	            },
 	            'fmap(ad,mM3,3)',
@@ -1935,15 +1870,15 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool5 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool5 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM4.fmap(ad, mM5, 5).fmap(ad, mM6, 3).fmap(cu).fmap(ad, mM5, 1).fmap(cu).fmap(ad, mM4, mM6.x + 1000).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT5();
+	                return _this4.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF5();
+	                return _this4.cF5();
 	              }
 	            },
 	            'mM4.fmap(ad0,mM5,5) ',
@@ -1986,13 +1921,15 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this3.bool1 ? _this3.style1 : _this3.style2,
+	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mMS1.ret('one').bnd(refresh).bnd(function (a) {
 	                  return setTimeout(function () {
 	                    mMS2.ret('two').bnd(function () {
 	                      mM1.bnd(block, mMS1).bnd(function () {
-	                        return mMS1.ret('First branch complete').bnd(refresh);
+	                        return mMS1.bnd(function () {
+	                          return console.log('Side chain moving forward');
+	                        }).ret('First branch complete').bnd(refresh);
 	                      }).bnd(function () {
 	                        setTimeout(function () {
 	                          mMS2.ret('First').bnd(refresh).bnd(function (a) {
@@ -2040,10 +1977,10 @@
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this3.cT1();
+	                return _this4.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this3.cF1();
+	                return _this4.cF1();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentMonadSeq3, null)
@@ -2051,10 +1988,313 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'The branch beginning after "mMS2.ret(\'two\')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret(\'five\')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin its execution chain.  '
+	            'The branch beginning after "mMS2.ret(\'two\')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret(\'five\')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to proceed with its execution chain. This execution code places this command just before the final array of the first branch is printed; and, as expected, that is exactly what the log shows. '
 	          ),
-	          _react2['default'].createElement('div', { style: { height: 500 } })
-	        )
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'The command ".bnd(() => console.log( \'Side chain moving forward\'))" marks the point in the console log where the side chain began its journey down to "Done" and "Second branch complete". A segment of the Chrome console log showing "Side chain moving forward" (indicated by arrows below) is displayed below. It comes shortly after the "mM1.bnd(release,mMS1)" command which prints three lines of astericks: '
+	          ),
+	          _react2['default'].createElement(ComponentLog, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'The time of execution is 38.066 but the line in bundle.js is way down at 1931. It is clear from the log that the side chain was held in abeyance until it was released by the command "mM1.bnd(release,mMS1)". '
+	          )
+	        ),
+	        _react2['default'].createElement(
+	          'div',
+	          { style: { width: '30%', fontSize: 18, position: 'fixed', top: 20, right: 15 } },
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM1: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM1.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM2: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM2.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM3: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM3.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM4: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM4.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM5: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM5.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM6: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM6.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM7: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM7.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM8: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM8.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM9: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM9.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mM10: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mM10.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS1: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMS1.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS2: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMS2.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS3: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMS3.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS4: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMS4.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS5: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMS5.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMS6: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMS6.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMI1: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMI1.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMI2: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMI2.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMI3: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMI3.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMI4: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMI4.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMI5: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMI5.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'span',
+	            null,
+	            ' Monad mMI6: ',
+	            _react2['default'].createElement(
+	              'button',
+	              { style: _this4.style3 },
+	              mMI6.x
+	            ),
+	            ' '
+	          ),
+	          ' ',
+	          _react2['default'].createElement('br', null)
+	        ),
+	        _react2['default'].createElement('br', null),
+	        _react2['default'].createElement('br', null),
+	        _react2['default'].createElement('div', { style: { height: 300 } })
 	      );
 	    };
 
@@ -2063,6 +2303,9 @@
 	    };
 	    this.MS = function (a, b) {
 	      return new MonadSeq(a, b);
+	    };
+	    this.MI = function (a, b) {
+	      return new MonadIter(a, b);
 	    };
 	    this.MFLAG = MFLAG;
 	    this.mM1 = this.M(0);
@@ -2081,12 +2324,20 @@
 	    this.mMS4 = this.MS(0, 'mMS4');
 	    this.mMS5 = this.MS(0, 'mMS5');
 	    this.mMS6 = this.MS(0, 'mMS6');
+
+	    this.mMI1 = this.MI(0, 'mMI1');
+	    this.mMI2 = this.MI(0, 'mMI2');
+	    this.mMI3 = this.MI(0, 'mMI3');
+	    this.mMI4 = this.MI(0, 'mMI4');
+	    this.mMI5 = this.MI(0, 'mMI5');
+	    this.mMI6 = this.MI(0, 'mMI6');
+
 	    this.style2 = { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
 	      color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
-	      marginLeft: 12, fontSize: 22 };
+	      marginLeft: 12, fontSize: 18 };
 	    this.style1 = { backgroundColor: 'blue', textAlign: 'left', borderColor: 'lightblue', outline: 0,
 	      color: 'yellow', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
-	      marginLeft: 12, fontSize: 22 };
+	      marginLeft: 12, fontSize: 18 };
 	    this.bool1 = false;
 	    this.bool2 = false;
 	    this.bool3 = false;

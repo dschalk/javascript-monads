@@ -972,18 +972,22 @@ var ComponentLog = React.createClass({
             return this;
             }
     
+          this.subAr = () => {
+            let ar;
+            let id = this.id;
+            let l = MSt.length - 1;
+            for (let i = l; i > -1; i -= 1) {     
+              if (MSt[i][0] == id) {
+                 ar = MSt[i];
+                 MSt.splice(i, 1);
+               }
+            }
+            return ar;
+          }
+    
           this.release = () => {
             let self = this;
-            console.log('****************  release called');
-    
-            let s = MSt.filter(x => x[0] === self.id);
-    
-            if (s.length === 0) {
-              self.flag = false;
-              return self;
-            }
-    
-            var p = s.pop();
+            let p = this.subAr();
     
             if (p[1] === 'bnd') {
               p[2](self.x, self, ...p[3]);
@@ -1040,7 +1044,7 @@ var ComponentLog = React.createClass({
             this.flag = false;
             return this;
           }
-       }}
+        }}
         `}
         </Markdown>
       </div>
@@ -1061,7 +1065,7 @@ var ComponentIter2 = React.createClass({
       mMI2.ret('two')
       .bnd(refresh)
       .bnd(() => {mMI1.block()
-                .bnd(refresh).bnd(() => {setTimeout(function() { 
+                .bnd(() => {setTimeout(function() { 
                mMI1.bnd(refresh)
                 .ret('First branch complete')
                 .bnd(refresh)
@@ -1113,12 +1117,68 @@ var ComponentIter2 = React.createClass({
   }
 })
 
-var ComponentLog3 = React.createClass({
+var ComponentIter3 = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 18, color: '#00FFCF' }} >
         <Markdown>
         {`
+      onClick={() => {mM1.bnd(() => {setTimeout(function() {
+        mM2.ret(0).bnd(mMI1.ret).bnd(mM3.ret).bnd(mM4.ret)
+        .bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)
+        .bnd(mM9.ret).bnd(mM10.ret).bnd(mM11.ret).bnd(mM12.ret)
+        .bnd(() => mM1.ret('one')
+        .bnd(refresh)
+        .bnd((a) => {setTimeout(function() {
+        mM2.ret('two')
+        .bnd(refresh)
+        .bnd(() => {mMI1.block()
+                  .bnd(() => {setTimeout(function() { 
+                 mM7.bnd(refresh)
+                  .ret('First branch complete')
+                  .bnd(refresh)
+                  .bnd(() => {setTimeout(function() {
+                 mM8
+                  .ret('First')
+                  .bnd(refresh)
+                  .bnd(a => {setTimeout(function() {
+                 mM9.ret('Second')
+                  .bnd(refresh)
+                  .bnd(b => {setTimeout(function() {
+                 mM10.ret('Third')
+                  .bnd(refresh)
+                  .bnd(c => {setTimeout(function() {
+                 mM11.ret('Fourth')
+                  .bnd(refresh)
+                  .bnd(d => {setTimeout(function() {
+                 mM12.ret('Done')
+                  .bnd(() => mMI1.ret('Second branch complete'))     
+                  .bnd(refresh)
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})   }) 
+        mM2.bnd(b => { setTimeout(function() {
+        mM3.ret('three')
+        .bnd(refresh)
+        .bnd(c => { setTimeout(function() {
+        mM4.ret('four')
+        .bnd(refresh)
+        .bnd(d => { setTimeout(function() {
+        mM5.ret('five')
+        .bnd(refresh)
+        .bnd(e => { setTimeout(function() {
+        mM6.ret([a,' ',b,' ',c,' ',d,' ',e]);
+        mM8.bnd(refresh);
+        mMI1.release();
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )}))  
+        },1000 )}) }}
         `}
         </Markdown>
       </div>
@@ -2325,7 +2385,7 @@ delay = (x,mon) => {
            onMouseEnter={ () => this.cT1() }
            onMouseLeave={ () => this.cF1() }
                 >
-         <ComponentIter2 />
+         <ComponentIter3 />
            </button>
 
 

@@ -876,7 +876,7 @@ var ComponentMonadSeq2 = React.createClass({
 var ComponentMonadSeq3 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#00FDFF' }} >
         <Markdown>
         {`
       <button style={this.bool1 ? this.style1 : this.style2 } 
@@ -942,34 +942,196 @@ var ComponentMonadSeq3 = React.createClass({
 var ComponentLog = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 14, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#00FFCF' }} >
         <Markdown>
         {`
-      20:48:37.487 ret retry mMS1 one true bundle.js:750:12
-      20:48:37.647 bnd retry mMS1 one true bundle.js:709:12
-      20:48:37.704 ret retry mMS1 one true bundle.js:750:12
-      20:48:37.864 bnd retry mMS1 one true bundle.js:709:12
-      20:48:37.923 *************************** mMS1 one false bundle.js:1198:8
-      20:48:37.923 *************************** mMS2 two false bundle.js:1198:8
-      20:48:37.923 *************************** mMS3 three false bundle.js:1198:8
-      20:48:37.924 Hello from ret  mMS6 0 false bundle.js:746:10
-      20:48:37.924 Now leaving ret  mMS6 Array [ "one", " ", "two", " ", "three", " ", "four", " ", "five" ] false bundle.js:755:6
-      20:48:37.925 Hello from bnd  mMS6 Array [ "one", " ", "two", " ", "three", " ", "four", " ", "five" ] false bundle.js:704:10
-      20:48:37.926 mMS1 false bundle.js:1218:8
-      20:48:37.945 Now leaving bnd  mMS6 Array [ "one", " ", "two", " ", "three", " ", "four", " ", "five" ] false bundle.js:714:6
-      20:48:37.945 ret retry mMS1 one false bundle.js:750:12
-      20:48:37.946 Hello from ret  mMS1 one false bundle.js:746:10
-      20:48:38.065 bnd retry mMS1 First branch complete false bundle.js:709:12
-      20:48:38.066 Hello from bnd  mMS1 First branch complete false bundle.js:704:10
-     -->  20:48:38.066 Side chain moving forward bundle.js:1931:35  <--
-      20:48:38.067 bnd retry mMS1 First branch complete false bundle.js:709:12
-      20:48:38.067 Hello from bnd  mMS1 First branch complete false bundle.js:704:10
-      20:48:38.068 mMS1 false bundle.js:1218:8
-      20:48:38.097 bnd retry mMS1 First branch complete false bundle.js:709:12
-      20:48:38.097 Hello from bnd  mMS1 First branch complete false bundle.js:704:10
-      20:48:39.099 Hello from ret  mMS2 two false bundle.js:746:10
-      20:48:39.099 Now leaving ret  mMS2 First false bundle.js:755:6
-      20:48:39.100 Hello from bnd  mMS2 First false bundle.js:704:10
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+ var ComponentIter1 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 18, color: '#00DFCF' }} >
+        <Markdown>
+        {`
+      const MSt = [];
+    
+      class MonadIter {
+        constructor(z,g) {
+    
+          this.x = z;
+          this.id = g;
+          this.flag = false;
+    
+          this.block = () => {
+            this.flag = true;
+            return this;
+            }
+    
+          this.release = () => {
+            let self = this;
+            console.log('****************  release called');
+    
+            let s = MSt.filter(x => x[0] === self.id);
+    
+            if (s.length === 0) {
+              self.flag = false;
+              return self;
+            }
+    
+            var p = s.pop();
+    
+            if (p[1] === 'bnd') {
+              p[2](self.x, self, ...p[3]);
+              self.flag = false;
+              return self;
+            }
+    
+            if (p[1] === 'ret') {
+              self.x = p[2];
+              self.flag = false;
+              return self;
+            }
+    
+            if (p[1] === 'fmap') { 
+              p[3].ret(p[2](p[3].x, ...p[4]));
+              self.flag = false;
+              return p[3];
+            }
+         }
+    
+          this.bnd = (func, ...args) => {
+            let self = this;
+            if (self.flag === false) {
+              func(self.x, self, ...args);
+              return self;
+            }
+            if (self.flag === true) {
+              MSt.push([self.id, 'bnd', func, args]);
+              return self;
+            }
+          }
+    
+          this.fmap = (f, mon = this, ...args) => {   
+            let self = this;
+              if (self.flag === false) {
+                mon.ret(f(mon.x,  ...args));
+                return mon;
+              }
+              if (self.flag === true) {
+                MSt.push([self.id, 'fmap', f, mon, args]);
+                return self;
+              }
+          }
+    
+          this.ret = a => { 
+            let self = this;
+              if (self.flag === false) {
+                self.x = a;
+              }
+              if (self.flag === true) {
+              MSt.push([self.id, 'ret', a]);
+              return self;
+              }
+            this.flag = false;
+            return this;
+          }
+       }}
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentIter2 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 18, color: '#00FFCF' }} >
+        <Markdown>
+        {`
+      onClick={() => mMI1
+      .ret('one')
+      .bnd(refresh)
+      .bnd((a) => setTimeout(function() {
+      mMI2.ret('two')
+      .bnd(refresh)
+      .bnd(() => {mMI1.block()
+                .bnd(refresh).bnd(() => {setTimeout(function() { 
+               mMI1.bnd(refresh)
+                .ret('First branch complete')
+                .bnd(refresh)
+                .bnd(() => {setTimeout(function() {
+               mMI2
+                .ret('First')
+                .bnd(refresh)
+                .bnd(a => {setTimeout(function() {
+               mMI3.ret('Second')
+                .bnd(refresh)
+                .bnd(b => {setTimeout(function() {
+               mMI4.ret('Third')
+                .bnd(refresh)
+                .bnd(c => {setTimeout(function() {
+               mMI5.ret('Fourth')
+                .bnd(refresh)
+                .bnd(d => {setTimeout(function() {
+               mMI6.ret('Done')
+                .bnd(() => mMI1.ret('Second branch complete'))
+                .bnd(refresh)
+                  },1600 )})
+                  },1600 )})
+                  },1600 )})
+                  },1600 )})
+                  },1600 )})
+                  },1600 )})   }) 
+      mMI2.bnd(b => { setTimeout(function() {
+      mMI3.ret('three')
+      .bnd(refresh)
+      .bnd(c => { setTimeout(function() {
+      mMI4.ret('four')
+      .bnd(refresh)
+      .bnd(d => { setTimeout(function() {
+      mMI5.ret('five')
+      .bnd(refresh)
+      .bnd(e => { setTimeout(function() {
+      mMI6.ret([a,' ',b,' ',c,' ',d,' ',e]);
+      mM8.bnd(refresh);
+      mMI1.release();
+      },1600 )})
+      },1600 )})
+      },1600 )})
+      },1600 )})
+      },1600 ))}
+      `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentLog3 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 18, color: '#00FFCF' }} >
+        <Markdown>
+        {`
+        `}
+        </Markdown>
+      </div>
+    );
+  }
+})
+
+var ComponentLog4 = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 18, color: '#00FFCF' }} >
+        <Markdown>
+        {`
         `}
         </Markdown>
       </div>
@@ -999,7 +1161,12 @@ var ComponentLog = React.createClass({
       };
     }
   };
-   
+
+  var mM11 = new Monad(0);
+  var mM12 = new Monad(0);
+  
+
+
   var MFLAG = false;
 
   class MonadSeq {
@@ -1015,17 +1182,14 @@ var ComponentLog = React.createClass({
         let fun = func;
         (function retry(func, ...args) {
           if (self.flag === false) {
-            console.log('Hello from bnd ', self.id, self.x, self.flag);
             return fun(self.x, self, ...args);
           }
           if (self.flag === true) {
             setTimeout( function() {
-              console.log('bnd retry', self.id, self.x, self.flag);
               retry(fun, ...args); 
             },200  ); 
           }
         })();
-        console.log('Now leaving bnd ', self.id, self.x, self.flag);
         return this;
       }
 
@@ -1033,12 +1197,10 @@ var ComponentLog = React.createClass({
         let self = this;
         (function retry() {
           if (self.flag === false) {
-            console.log('Hello from fmap', self.id, self.x, self.flag);
             mon.ret(f(mon.x,  ...args));
           }
           if (self.flag === true) {
             setTimeout( function() {
-              console.log('fmap retry', self.id, self.x, self.flag);
               retry(); 
             },200  ); 
           }
@@ -1052,16 +1214,13 @@ var ComponentLog = React.createClass({
         let self = this;
         (function retry() {
           if (self.flag === false) {
-            console.log('Hello from ret ', self.id, self.x, self.flag);
             self.x = a;
           } else {
             setTimeout( function() {
-              console.log('ret retry',self.id, self.x, self.flag);
               retry(); 
             },100  ); 
           }
         })();
-        console.log('Now leaving ret ', self.id, self.x, self.flag);
         return this;
       }
     }
@@ -1139,7 +1298,8 @@ var ComponentLog = React.createClass({
     mon.ret(f(v, ...args));
     return mon;
   }
-  var MSt = [];
+
+  const MSt = [];
 
   class MonadIter {
     constructor(z,g) {
@@ -1147,66 +1307,83 @@ var ComponentLog = React.createClass({
       this.x = z;
       this.id = g;
       this.flag = false;
-      this.block = () => flag = true;
-      this.release = () => {
+
+      this.block = () => {
         this.flag = true;
-        let self = this;
-        for (let w in MSt){
-          if ((w[0] === this.id) && (w[1] === 'bnd')) {
-            self.bnd(w[1], ...w[2])
-            return
-          }
-          if ((w[0] === this.id) && (w[1] === 'fmap')) {
-            self.fmap(w[1], ...w[2])
-            return
-          }
-          if ((w[0] === this.id) && (w[1] === 'ret')) {
-            self.ret(w[2])
-            return
-          }
+        return this;
         }
+
+      this.subAr = () => {
+        let ar;
+        let id = this.id;
+        let l = MSt.length - 1;
+        for (let i = l; i > -1; i -= 1) {
+          if (MSt[i][0] == id) {
+             ar = MSt[i];
+             MSt.splice(i, 1);
+           }
+        }
+        return ar;
       }
+
+      this.release = () => {
+        let self = this;
+        let p = this.subAr();
+
+        if (p[1] === 'bnd') {
+          p[2](self.x, self, ...p[3]);
+          self.flag = false;
+          return self;
+        }
+
+        if (p[1] === 'ret') {
+          self.x = p[2];
+          self.flag = false;
+          return self;
+        }
+
+        if (p[1] === 'fmap') { 
+          p[3].ret(p[2](p[3].x, ...p[4]));
+          self.flag = false;
+          return p[3];
+        }
+     }
 
       this.bnd = (func, ...args) => {
         let self = this;
         if (self.flag === false) {
-          console.log('Hello from bnd ', self.id, self.x, self.flag);
-          return func(self.x, self, ...args);
+          func(self.x, self, ...args);
+          return self;
         }
         if (self.flag === true) {
-          MSt.push([id, 'bnd', func, args]);
-          console.log('Now leaving bnd ', self.id, self.x, self.flag);
-          return this;
+          MSt.push([self.id, 'bnd', func, args]);
+          return self;
         }
       }
 
-      this.fmap = (f, mon = this, ...args) => {      
+      this.fmap = (f, mon = this, ...args) => {   
         let self = this;
           if (self.flag === false) {
-            console.log('Hello from fmap', self.id, self.x, self.flag);
             mon.ret(f(mon.x,  ...args));
             return mon;
           }
           if (self.flag === true) {
-            MSt.push([id, 'fmap', func, args]);
-            console.log('Now leaving fmap ', self.id, self.x, self.flag);
-            return this;
+            MSt.push([self.id, 'fmap', f, mon, args]);
+            return self;
           }
       }
 
-      this.ret = a => {      
+      this.ret = a => { 
         let self = this;
           if (self.flag === false) {
-            console.log('Hello from ret', self.id, self.x, self.flag);
-            mon.ret(f(mon.x,  ...args));
+            self.x = a;
           }
           if (self.flag === true) {
-          MSt.push([id, 'ret', a]);
-          console.log('Now leaving ret ', self.id, self.x, self.flag);
-          return this;
+          MSt.push([self.id, 'ret', a]);
+          return self;
           }
         this.flag = false;
-        return mon;
+        return this;
       }
     }}
 
@@ -1235,6 +1412,8 @@ class B4 extends React.Component {
   this.mM8 = this.M(0);
   this.mM9 = this.M(0);
   this.mM10 = this.M(0);
+  this.mM11 = mM11;
+  this.mM12 = mM12;
   this.mMS1 = this.MS(0,'mMS1');
   this.mMS2 = this.MS(0,'mMS2');
   this.mMS3 = this.MS(0,'mMS3');
@@ -1395,8 +1574,10 @@ class B4 extends React.Component {
     return mon;
   }
 
+  lg = '';
+
   log = (x,mon,y) => {
-    console.log(y);
+    this.lg = y;
     return mon;
   }
 
@@ -1546,7 +1727,7 @@ delay = (x,mon) => {
 
 
  render = () => {
-   console.log(this.mMS1.id, this.mMS1.flag);
+   console.log('The size of MSt is ', MSt.length);
     let mM1 = this.mM1;
     let mM2 = this.mM2;
     let mM3 = this.mM3;
@@ -1589,6 +1770,7 @@ delay = (x,mon) => {
     let test = this.test;
     let delay = this.delay;
     let log = this.log;
+    let lg = this.lg;
     let block = this.block;
     let release = this.release;
     return(
@@ -2017,11 +2199,137 @@ delay = (x,mon) => {
                 >
          <ComponentMonadSeq3 />
            </button>
-<p>The branch beginning after "mMS2.ret('two')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret('five')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to proceed with its execution chain. This execution code places this command just before the final array of the first branch is printed; and, as expected, that is exactly what the log shows. </p>
-<p>
-The command ".bnd(() => console.log( 'Side chain moving forward'))" marks the point in the console log where the side chain began its journey down to "Done" and "Second branch complete". A segment of the Chrome console log showing "Side chain moving forward" (indicated by arrows below) is displayed below. It comes shortly after the "mM1.bnd(release,mMS1)" command which prints three lines of astericks: </p>
-<ComponentLog />
-<p>The time of execution is 38.066 but the line in bundle.js is way down at 1931. It is clear from the log that the side chain was held in abeyance until it was released by the command "mM1.bnd(release,mMS1)". </p>
+<p>The branch beginning after "mMS2.ret('two')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret('five')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin proceeding along its execution path.  </p>
+<p>That was the automatic method. It works, but it drains memory and processor power while blocked computations loop. It is also a potential source of memory leaks. The garbage collector would not notice a perpetually looping blocked computation that a coder forgot to release. </p> 
+<p> The class MonadIter provides exact control over branched chains without looping. Here is the code: </p>
+  <ComponentIter1 />
+<p>And here are some instances of MonadIter in action: </p>
+
+      <button style={this.bool1 ? this.style1 : this.style2 } 
+        onClick={() => mMI1
+        .ret('one')
+        .bnd(refresh)
+        .bnd((a) => setTimeout(function() {
+        mMI2.ret('two')
+        .bnd(refresh)
+        .bnd(() => {mMI1.block()
+                  .bnd(() => {setTimeout(function() { 
+                 mMI1.bnd(refresh)
+                  .ret('First branch complete')
+                  .bnd(refresh)
+                  .bnd(() => {setTimeout(function() {
+                 mMI2
+                  .ret('First')
+                  .bnd(refresh)
+                  .bnd(a => {setTimeout(function() {
+                 mMI3.ret('Second')
+                  .bnd(refresh)
+                  .bnd(b => {setTimeout(function() {
+                 mMI4.ret('Third')
+                  .bnd(refresh)
+                  .bnd(c => {setTimeout(function() {
+                 mMI5.ret('Fourth')
+                  .bnd(refresh)
+                  .bnd(d => {setTimeout(function() {
+                 mMI6.ret('Done')
+                  .bnd(() => mMI1.ret('Second branch complete'))
+                  .bnd(refresh)
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})   }) 
+        mMI2.bnd(b => { setTimeout(function() {
+        mMI3.ret('three')
+        .bnd(refresh)
+        .bnd(c => { setTimeout(function() {
+        mMI4.ret('four')
+        .bnd(refresh)
+        .bnd(d => { setTimeout(function() {
+        mMI5.ret('five')
+        .bnd(refresh)
+        .bnd(e => { setTimeout(function() {
+        mMI6.ret([a,' ',b,' ',c,' ',d,' ',e]);
+        mM8.bnd(refresh);
+        mMI1.release();
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 ))}
+           onMouseEnter={ () => this.cT1() }
+           onMouseLeave={ () => this.cF1() }
+                >
+         <ComponentIter2 />
+           </button>
+<p> The above code is wasteful in that only mMI1 needs to be an instance of MonadIter. The others could be simple monads. Here is a variation on the example using simple monads: </p>
+
+      <button style={this.bool1 ? this.style1 : this.style2 } 
+        onClick={() => {mM1.bnd(() => {setTimeout(function() {
+        mM2.ret(0).bnd(mMI1.ret).bnd(mM3.ret).bnd(mM4.ret)
+        .bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)
+        .bnd(mM9.ret).bnd(mM10.ret).bnd(mM11.ret).bnd(mM12.ret)
+        .bnd(() => mM1.ret('one')
+        .bnd(refresh)
+        .bnd((a) => {setTimeout(function() {
+        mM2.ret('two')
+        .bnd(refresh)
+        .bnd(() => {mMI1.block()
+                  .bnd(() => {setTimeout(function() { 
+                 mM7.bnd(refresh)
+                  .ret('First branch complete')
+                  .bnd(refresh)
+                  .bnd(() => {setTimeout(function() {
+                 mM8
+                  .ret('First')
+                  .bnd(refresh)
+                  .bnd(a => {setTimeout(function() {
+                 mM9.ret('Second')
+                  .bnd(refresh)
+                  .bnd(b => {setTimeout(function() {
+                 mM10.ret('Third')
+                  .bnd(refresh)
+                  .bnd(c => {setTimeout(function() {
+                 mM11.ret('Fourth')
+                  .bnd(refresh)
+                  .bnd(d => {setTimeout(function() {
+                 mM12.ret('Done')
+                  .bnd(() => mMI1.ret('Second branch complete'))
+                  .bnd(refresh)
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})   }) 
+        mM2.bnd(b => { setTimeout(function() {
+        mM3.ret('three')
+        .bnd(refresh)
+        .bnd(c => { setTimeout(function() {
+        mM4.ret('four')
+        .bnd(refresh)
+        .bnd(d => { setTimeout(function() {
+        mM5.ret('five')
+        .bnd(refresh)
+        .bnd(e => { setTimeout(function() {
+        mM6.ret([a,' ',b,' ',c,' ',d,' ',e]);
+        mM8.bnd(refresh);
+        mMI1.release();
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )}))  
+        },1000 )}) }}
+           onMouseEnter={ () => this.cT1() }
+           onMouseLeave={ () => this.cF1() }
+                >
+         <ComponentIter2 />
+           </button>
+
+
+
 
 </div>
 <div style={{ width: '30%', fontSize: 18, position: 'fixed', top: 20, right: 15}}  >
@@ -2034,7 +2342,9 @@ The command ".bnd(() => console.log( 'Side chain moving forward'))" marks the po
    <span> Monad mM7: <button  style={this.style3} >{mM7.x}</button> </span> <br />
    <span> Monad mM8: <button  style={this.style3} >{mM8.x}</button> </span> <br />
    <span> Monad mM9: <button  style={this.style3} >{mM9.x}</button> </span> <br />
-   <span> Monad mM10: <button  style={this.style3} >{mM10.x}</button> </span> <br />
+   <span> Monad mM10: <button  style={this.style3} >{(mM10).x}</button> </span> <br />
+   <span> Monad mM11: <button  style={this.style3} >{(mM11).x}</button> </span> <br />
+   <span> Monad mM12: <button  style={this.style3} >{(mM12).x}</button> </span> <br />
    <span> Monad mMS1: <button  style={this.style3} >{mMS1.x}</button> </span> <br />
    <span> Monad mMS2: <button  style={this.style3} >{mMS2.x}</button> </span> <br />
    <span> Monad mMS3: <button  style={this.style3} >{mMS3.x}</button> </span> <br />
@@ -2047,6 +2357,8 @@ The command ".bnd(() => console.log( 'Side chain moving forward'))" marks the po
    <span> Monad mMI4: <button  style={this.style3} >{mMI4.x}</button> </span> <br />
    <span> Monad mMI5: <button  style={this.style3} >{mMI5.x}</button> </span> <br />
    <span> Monad mMI6: <button  style={this.style3} >{mMI6.x}</button> </span> <br />
+   <span style={this.style3} >{lg} </span> <br />
+
 </div>
       <br /><br /> 
 <div style={{height: 300}} />

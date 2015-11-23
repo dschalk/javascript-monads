@@ -254,71 +254,265 @@ The functions that lock and release instances of MonadSeq are:
   }
 ```
 
-The following example is domonstrated at http://transcendent.ninja :
+The following examples are domonstrated at http://transcendent.ninja :
 
 ```javascript
-  <button style={this.bool1 ? this.style1 : this.style2 } 
-  onClick={() => mMS1
-.ret('one')
-.bnd(refresh)
-.bnd((a) => setTimeout(function() {
-mMS2.ret('two')
-.bnd(() => {mM1.bnd(block,mMS1).bnd(() => mMS1
-        .ret('First pass complete')
-        .bnd(refresh)).bnd(() => {setTimeout(function() {
-         mMS2.ret('First')
-         .bnd(refresh)
-         .bnd(a => {setTimeout(function() {
-           mMS3.ret('Second')
-         .bnd(refresh)
-         .bnd(b => {setTimeout(function() {
-           mMS4.ret('Third')
-         .bnd(refresh)
-         .bnd(c => {setTimeout(function() {
-           mMS5.ret('Fourth')
-         .bnd(refresh)
-         .bnd(d => {setTimeout(function() {
-           mMS6.ret('Done').bnd(() => mMS1.ret('Second pass complete'))
-         .bnd(refresh)
-         },1000 )})
-         },1000 )})
-         },1000 )})
-         },1000 )})
-         },1000 )})
-         })
-.bnd(refresh)
-.bnd(b => { setTimeout(function() {
-mMS3.ret('three')
-.bnd(refresh)
-.bnd(c => { setTimeout(function() {
-mMS4.ret('four')
-.bnd(refresh)
-.bnd(d => { setTimeout(function() {
-mMS5.ret('five')
-.bnd(refresh)
-.bnd(e => { setTimeout(function() {
-mM1.bnd(release,mMS1)
-mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
-.bnd(refresh)
-},1000 )})
-},1000 )})
-},1000 )})
-},1000 )})
-},1000 ))
-  }
-   onMouseEnter={ () => this.cT1() }
-   onMouseLeave={ () => this.cF1() }
-        >
- <ComponentMonadSeq3 />
-   </button>
+onClick={() => mMS1
+    .ret('one')
+    .bnd(refresh)
+    .bnd((a) => setTimeout(function() {
+    mMS2.ret('two')
+    .bnd(() => {mM1.bnd(block,mMS1).bnd(() => mMS1
+            .ret('First pass complete')
+            .bnd(refresh)).bnd(() => {setTimeout(function() {
+             mMS2.ret('First')
+             .bnd(refresh)
+             .bnd(a => {setTimeout(function() {
+               mMS3.ret('Second')
+             .bnd(refresh)
+             .bnd(b => {setTimeout(function() {
+               mMS4.ret('Third')
+             .bnd(refresh)
+             .bnd(c => {setTimeout(function() {
+               mMS5.ret('Fourth')
+             .bnd(refresh)
+             .bnd(d => {setTimeout(function() {
+               mMS6.ret('Done').bnd(() => mMS1.ret('Second pass complete'))
+             .bnd(refresh)
+             },1000 )})
+             },1000 )})
+             },1000 )})
+             },1000 )})
+             },1000 )})
+             })
+    .bnd(refresh)
+    .bnd(b => { setTimeout(function() {
+    mMS3.ret('three')
+    .bnd(refresh)
+    .bnd(c => { setTimeout(function() {
+    mMS4.ret('four')
+    .bnd(refresh)
+    .bnd(d => { setTimeout(function() {
+    mMS5.ret('five')
+    .bnd(refresh)
+    .bnd(e => { setTimeout(function() {
+    mM1.bnd(release,mMS1)
+    mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
+    .bnd(refresh)
+    },1000 )})
+    },1000 )})
+    },1000 )})
+    },1000 )})
+    },1000 ))}
 ```
 The branch beginning after "mMS2.ret('two')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret('five')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin execution.
 
+```javascript
+      const MSt = [];
+    
+      class MonadIter {
+        constructor(z,g) {
+    
+          this.x = z;
+          this.id = g;
+          this.flag = false;
+    
+          this.block = () => {
+            this.flag = true;
+            return this;
+            }
+    
+          this.subAr = () => {
+            let ar;
+            let id = this.id;
+            let l = MSt.length - 1;
+            for (let i = l; i > -1; i -= 1) {     
+              if (MSt[i][0] == id) {
+                 ar = MSt[i];
+                 MSt.splice(i, 1);
+               }
+            }
+            return ar;
+          }
+    
+          this.release = () => {
+            let self = this;
+            let p = this.subAr();
+    
+            if (p[1] === 'bnd') {
+              p[2](self.x, self, ...p[3]);
+              self.flag = false;
+              return self;
+            }
+    
+            if (p[1] === 'ret') {
+              self.x = p[2];
+              self.flag = false;
+              return self;
+            }
+    
+            if (p[1] === 'fmap') { 
+              p[3].ret(p[2](p[3].x, ...p[4]));
+              self.flag = false;
+              return p[3];
+            }
+         }
+    
+          this.bnd = (func, ...args) => {
+            let self = this;
+            if (self.flag === false) {
+              func(self.x, self, ...args);
+              return self;
+            }
+            if (self.flag === true) {
+              MSt.push([self.id, 'bnd', func, args]);
+              return self;
+            }
+          }
+    
+          this.fmap = (f, mon = this, ...args) => {   
+            let self = this;
+              if (self.flag === false) {
+                mon.ret(f(mon.x,  ...args));
+                return mon;
+              }
+              if (self.flag === true) {
+                MSt.push([self.id, 'fmap', f, mon, args]);
+                return self;
+              }
+          }
+    
+          this.ret = a => { 
+            let self = this;
+              if (self.flag === false) {
+                self.x = a;
+              }
+              if (self.flag === true) {
+              MSt.push([self.id, 'ret', a]);
+              return self;
+              }
+            this.flag = false;
+            return this;
+          }
+        }}
+```
 
+```javascript
+        onClick={() => mMI1
+        .ret('one')
+        .bnd(refresh)
+        .bnd((a) => setTimeout(function() {
+        mMI2.ret('two')
+        .bnd(refresh)
+        .bnd(() => {mMI1.block()
+                  .bnd(() => {setTimeout(function() { 
+                 mMI1.bnd(refresh)
+                  .ret('First branch complete')
+                  .bnd(refresh)
+                  .bnd(() => {setTimeout(function() {
+                 mMI2
+                  .ret('First')
+                  .bnd(refresh)
+                  .bnd(a => {setTimeout(function() {
+                 mMI3.ret('Second')
+                  .bnd(refresh)
+                  .bnd(b => {setTimeout(function() {
+                 mMI4.ret('Third')
+                  .bnd(refresh)
+                  .bnd(c => {setTimeout(function() {
+                 mMI5.ret('Fourth')
+                  .bnd(refresh)
+                  .bnd(d => {setTimeout(function() {
+                 mMI6.ret('Done')
+                  .bnd(() => mMI1.ret('Second branch complete'))
+                  .bnd(refresh)
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})   }) 
+        mMI2.bnd(b => { setTimeout(function() {
+        mMI3.ret('three')
+        .bnd(refresh)
+        .bnd(c => { setTimeout(function() {
+        mMI4.ret('four')
+        .bnd(refresh)
+        .bnd(d => { setTimeout(function() {
+        mMI5.ret('five')
+        .bnd(refresh)
+        .bnd(e => { setTimeout(function() {
+        mMI6.ret([a,' ',b,' ',c,' ',d,' ',e]);
+        mM8.bnd(refresh);
+        mMI1.release();
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 ))}
+```
 
+The above code is wasteful in that only mMI1 needs to be an instance of MonadIter. The others could be simple monads. Here is a variation on the example using simple monads: 
 
-
-
+```javascript
+      <button style={this.bool1 ? this.style1 : this.style2 } 
+        onClick={() => {mM1.bnd(() => {setTimeout(function() {
+        mM2.ret(0).bnd(mMI1.ret).bnd(mM3.ret).bnd(mM4.ret)
+        .bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)
+        .bnd(mM9.ret).bnd(mM10.ret).bnd(mM11.ret).bnd(mM12.ret)
+        .bnd(() => mM1.ret('one')
+        .bnd(refresh)
+        .bnd((a) => {setTimeout(function() {
+        mM2.ret('two')
+        .bnd(refresh)
+        .bnd(() => {mMI1.block()
+                  .bnd(() => {setTimeout(function() { 
+                 mM7.bnd(refresh)
+                  .ret('First branch complete')
+                  .bnd(refresh)
+                  .bnd(() => {setTimeout(function() {
+                 mM8
+                  .ret('First')
+                  .bnd(refresh)
+                  .bnd(a => {setTimeout(function() {
+                 mM9.ret('Second')
+                  .bnd(refresh)
+                  .bnd(b => {setTimeout(function() {
+                 mM10.ret('Third')
+                  .bnd(refresh)
+                  .bnd(c => {setTimeout(function() {
+                 mM11.ret('Fourth')
+                  .bnd(refresh)
+                  .bnd(d => {setTimeout(function() {
+                 mM12.ret('Done')
+                  .bnd(() => mMI1.ret('Second branch complete'))
+                  .bnd(refresh)
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})   }) 
+        mM2.bnd(b => { setTimeout(function() {
+        mM3.ret('three')
+        .bnd(refresh)
+        .bnd(c => { setTimeout(function() {
+        mM4.ret('four')
+        .bnd(refresh)
+        .bnd(d => { setTimeout(function() {
+        mM5.ret('five')
+        .bnd(refresh)
+        .bnd(e => { setTimeout(function() {
+        mM6.ret([a,' ',b,' ',c,' ',d,' ',e]);
+        mM8.bnd(refresh);
+        mMI1.release();
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )}))  
+        },1000 )}) }}
+```
 
 
 

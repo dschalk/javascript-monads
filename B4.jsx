@@ -976,7 +976,7 @@ var ComponentLog = React.createClass({
             let ar;
             let id = this.id;
             let l = MSt.length - 1;
-            for (let i = l; i > -1; i -= 1) {     
+            for (let i = l; i > -1; i -= 1) {
               if (MSt[i][0] == id) {
                  ar = MSt[i];
                  MSt.splice(i, 1);
@@ -1015,7 +1015,7 @@ var ComponentLog = React.createClass({
               return self;
             }
             if (self.flag === true) {
-              MSt.push([self.id, 'bnd', func, args]);
+              MSt.push([self.id, 'bnd', func, args]);      
               return self;
             }
           }

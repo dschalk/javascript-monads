@@ -306,6 +306,9 @@ onClick={() => mMS1
     },1000 ))}
 ```
 The branch beginning after "mMS2.ret('two')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret('five')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin execution.
+That was the automatic method. It works, but it drains memory and processor power while blocked computations loop. It is also a potential source of memory leaks. The garbage collector would not notice a perpetually looping blocked computation that a coder forgot to release. </p> 
+
+The class MonadIter provides exact control over branched chains without looping. Here is the code:
 
 ```javascript
       const MSt = [];
@@ -396,6 +399,7 @@ The branch beginning after "mMS2.ret('two')" is bypassed (because of the command
           }
         }}
 ```
+And here are some instances of MonadIter in action:
 
 ```javascript
         onClick={() => mMI1
@@ -513,7 +517,7 @@ The above code is wasteful in that only mMI1 needs to be an instance of MonadIte
         },1000 )}))  
         },1000 )}) }}
 ```
-
+To see try out these examples, go to http://transcendent.ninja .
 
 
 

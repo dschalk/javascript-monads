@@ -399,7 +399,15 @@ The class MonadIter provides exact control over branched chains without looping.
           }
         }}
 ```
-And here are some instances of MonadIter in action:
+"subAr() fails if a monad 'm' calls its methods after 'm.block()'. That is because subsequent calls push excess arrays into MSt. The overhead of running through accumulated arrays belonging to m isn't worth the benefit, which is actually nil. The form that works is:
+
+```javascript
+        .bnd(() => {mMI1.block()
+                  .bnd(() => {chain of method calls ...
+```
+That puts only one nested array in the MSt array, and that sub-array is removed when subAr is called in m.release().
+
+Here are are some instances of MonadIter in action:
 
 ```javascript
         onClick={() => mMI1

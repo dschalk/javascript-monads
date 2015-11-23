@@ -1186,12 +1186,14 @@ var ComponentIter3 = React.createClass({
   }
 })
 
-var ComponentLog4 = React.createClass({
+var ComponentBlock = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 18, color: '#00FFCF' }} >
         <Markdown>
         {`
+      .bnd(() => {mMI1.block()
+                .bnd(() => {chain of method calls ...     
         `}
         </Markdown>
       </div>
@@ -2263,7 +2265,11 @@ delay = (x,mon) => {
 <p>That was the automatic method. It works, but it drains memory and processor power while blocked computations loop. It is also a potential source of memory leaks. The garbage collector would not notice a perpetually looping blocked computation that a coder forgot to release. </p> 
 <p> The class MonadIter provides exact control over branched chains without looping. Here is the code: </p>
   <ComponentIter1 />
-<p>And here are some instances of MonadIter in action: </p>
+<p>subAr() fails if a monad 'm' calls its methods after 'm.block()'. That is because subsequent calls push excess arrays into MSt. The overhead of running through accumulated arrays belonging to m isn't worth the benefit, which is actually nil. The form that works is:
+<ComponentBlock />
+That puts only one nested array in the MSt array, and that sub-array is removed when subAr is called in m.release(). </p>
+
+<p>Here are are some instances of MonadIter in action: </p>
 
       <button style={this.bool1 ? this.style1 : this.style2 } 
         onClick={() => mMI1
@@ -2387,9 +2393,6 @@ delay = (x,mon) => {
                 >
          <ComponentIter3 />
            </button>
-
-
-
 
 </div>
 <div style={{ width: '30%', fontSize: 18, position: 'fixed', top: 20, right: 15}}  >

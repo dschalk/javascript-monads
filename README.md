@@ -525,6 +525,116 @@ The above code is wasteful in that only mMI1 needs to be an instance of MonadIte
         },1000 )}))  
         },1000 )}) }}
 ```
+Next we use mMI1.block() to pause execution of the side branch, but we remove mMI1 from the code and place it under the NEXT button.  
+
+```javascript
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+        onClick={() => {mM1.bnd(() => {setTimeout(function() {
+        mM2.ret(0).bnd(mMI1.ret).bnd(mM3.ret).bnd(mM4.ret)
+        .bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)
+        .bnd(mM9.ret).bnd(mM10.ret).bnd(mM11.ret).bnd(mM12.ret)
+        .bnd(() => mM1.ret('one')
+        .bnd(refresh)
+        .bnd((a) => {setTimeout(function() {
+        mM2.ret('two')
+        .bnd(refresh)
+        .bnd(() => {mMI1.block()
+                  .bnd(() => {setTimeout(function() { 
+                 mM7.bnd(refresh)
+                  .ret('First branch complete')
+                  .bnd(refresh)
+                  .bnd(() => {setTimeout(function() {
+                 mM8
+                  .ret('First')
+                  .bnd(refresh)
+                  .bnd(a => {setTimeout(function() {
+                 mM9.ret('Second')
+                  .bnd(refresh)
+                  .bnd(b => {setTimeout(function() {
+                 mM10.ret('Third')
+                  .bnd(refresh)
+                  .bnd(c => {setTimeout(function() {
+                 mM11.ret('Fourth')
+                  .bnd(refresh)
+                  .bnd(d => {setTimeout(function() {
+                 mM12.ret('Done')
+                  .bnd(() => mMI1.ret('Second branch complete'))
+                  .bnd(refresh)
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },1000 )})
+                    },100 )})   }) 
+        mM2.bnd(b => { setTimeout(function() {
+        mM3.ret('three')
+        .bnd(refresh)
+        .bnd(c => { setTimeout(function() {
+        mM4.ret('four')
+        .bnd(refresh)
+        .bnd(d => { setTimeout(function() {
+        mM5.ret('five')
+        .bnd(refresh)
+        .bnd(e => { setTimeout(function() {
+        mM6.ret([a,' ',b,' ',c,' ',d,' ',e]);
+        mM8.bnd(refresh);
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )})
+        },1000 )}))  
+        },1000 )}) }}
+           onMouseEnter={ () => this.cT2() }
+           onMouseLeave={ () => this.cF2() }
+                >
+    Run part then wait
+           </button>
+```
+And here's the NEXT button:
+
+```javascrpt
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+        onClick={() => {
+           mMI1.release()  
+         }} 
+           onMouseEnter={ () => this.cT2() }
+           onMouseLeave={ () => this.cF2() }
+                >
+                NEXT
+           </button>
+<p>Click the button below to start iterating through a sequence of commands.  </p>
+
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+        onClick={() => {
+        mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret)
+        .bnd(() => mM1.ret('Click the mMI2.release() button to proceed')
+        .bnd(refresh)
+        .bnd(() => mMI2.block()
+        .bnd(() => mM2.ret('Click it again.').bnd(refresh)
+        .bnd(() => mMI2.block()
+        .bnd(() => mM3.ret('Keep going').bnd(refresh)
+        .bnd(() => mMI2.block()
+        .bnd(() => mM4.ret('One more').bnd(refresh)
+        .bnd(() => mMI2.block()
+        .bnd(() => mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(refresh)
+         )))))))))       }} 
+           onMouseEnter={ () => this.cT2() }
+           onMouseLeave={ () => this.cF2() }
+                >
+                <ComponentNEXT1 />
+           </button>
+           
+<p>Now click the next button four times to journey through the sequence. </p>
+      <button style={this.bool2 ? this.style1 : this.style2 } 
+        onClick={() => {
+           mMI2.release()  
+         }} 
+           onMouseEnter={ () => this.cT2() }
+           onMouseLeave={ () => this.cF2() }
+                >
+                <ComponentNEXT2 />
+           </button>
+```
 To see try out these examples, go to http://transcendent.ninja .
 
 

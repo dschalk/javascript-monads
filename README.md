@@ -568,6 +568,8 @@ Next we use mMI1.block() to pause execution of the side branch, but we remove mM
     Run part then wait
            </button>
 ```
+
+```javascript
       <button style={this.bool2 ? this.style1 : this.style2 } 
         onClick={() => {
            mMI1.release()  
@@ -598,8 +600,10 @@ Next we use mMI1.block() to pause execution of the side branch, but we remove mM
                 >
                 <ComponentNEXT1 />
            </button>
-           
-<p>Now click the next button four times to journey through the sequence. </p>
+```           
+Now click the next button four times to journey through the sequence.
+
+```javascript
       <button style={this.bool2 ? this.style1 : this.style2 } 
         onClick={() => {
            mMI2.release()  
@@ -609,9 +613,7 @@ Next we use mMI1.block() to pause execution of the side branch, but we remove mM
                 >
                 <ComponentNEXT2 />
            </button>
-
-
-
+```
 
 To see try out these examples, go to http://transcendent.ninja .
 

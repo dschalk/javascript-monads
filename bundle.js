@@ -652,7 +652,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      const MSt = [];\n    \n      class MonadIter {\n        constructor(z,g) {\n    \n          this.x = z;\n          this.id = g;\n          this.flag = false;\n    \n          this.block = () => {\n            this.flag = true;\n            return this;\n            }\n    \n          this.subAr = () => {\n            let ar;\n            let id = this.id;\n            let l = MSt.length - 1;\n            for (let i = l; i > -1; i -= 1) {\n              if (MSt[i][0] == id) {\n                 ar = MSt[i];\n                 MSt.splice(i, 1);\n               }\n            }\n            return ar;\n          }\n    \n          this.release = () => {\n            let self = this;\n            let p = this.subAr();\n    \n            if (p[1] === \'bnd\') {\n              p[2](self.x, self, ...p[3]);\n              self.flag = false;\n              return self;\n            }\n    \n            if (p[1] === \'ret\') {\n              self.x = p[2];\n              self.flag = false;\n              return self;\n            }\n    \n            if (p[1] === \'fmap\') { \n              p[3].ret(p[2](p[3].x, ...p[4]));\n              self.flag = false;\n              return p[3];\n            }\n         }\n    \n          this.bnd = (func, ...args) => {\n            let self = this;\n            if (self.flag === false) {\n              func(self.x, self, ...args);\n              return self;\n            }\n            if (self.flag === true) {\n              MSt.push([self.id, \'bnd\', func, args]);      \n              return self;\n            }\n          }\n    \n          this.fmap = (f, mon = this, ...args) => {   \n            let self = this;\n              if (self.flag === false) {\n                mon.ret(f(mon.x,  ...args));\n                return mon;\n              }\n              if (self.flag === true) {\n                MSt.push([self.id, \'fmap\', f, mon, args]);\n                return self;\n              }\n          }\n    \n          this.ret = a => { \n            let self = this;\n              if (self.flag === false) {\n                self.x = a;\n              }\n              if (self.flag === true) {\n              MSt.push([self.id, \'ret\', a]);\n              return self;\n              }\n            this.flag = false;\n            return this;\n          }\n        }}\n        '
+	        '\n       class MonadIter {\n         constructor(z,g) {\n     \n           this.x = z;\n           this.id = g;\n           this.flag = false;\n           this.p = [];\n     \n           this.block = () => {\n             this.flag = true;\n             return this;\n             }\n     \n           this.release = () => {\n             let self = this;\n             let p = this.p;\n     \n             if (p[1] === \'bnd\') {\n               p[2](self.x, self, ...p[3]);\n               self.flag = false;\n               return self;\n             }\n     \n             if (p[1] === \'ret\') {\n               self.x = p[2];\n               self.flag = false;\n               return self;\n             }\n     \n             if (p[1] === \'fmap\') { \n               p[3].ret(p[2](p[3].x, ...p[4]));      \n               self.flag = false;\n               return p[3];\n             }\n          }\n     \n           this.bnd = (func, ...args) => {\n             let self = this;\n             if (self.flag === false) {\n               func(self.x, self, ...args);\n               return self;\n             }\n             if (self.flag === true) {\n               p = [self.id, \'bnd\', func, args];\n               return self;\n             }\n           }\n     \n           this.fmap = (f, mon = this, ...args) => {   \n             let self = this;\n               if (self.flag === false) {\n                 mon.ret(f(mon.x,  ...args));\n                 return mon;\n               }\n               if (self.flag === true) {\n                 self.p = [self.id, \'fmap\', f, mon, args];\n                 return self;\n               }\n           }\n     \n           this.ret = a => { \n             let self = this;\n               if (self.flag === false) {\n                 self.x = a;\n               }\n               if (self.flag === true) {\n               p = [self.id, \'ret\', a];\n               return self;\n               }\n             this.flag = false;\n             return this;\n           }\n         }}\n        '
 	      )
 	    );
 	  }
@@ -953,8 +953,6 @@
 	  return mon;
 	};
 
-	var MSt = [];
-
 	var MonadIter = function MonadIter(z, g) {
 	  var _this3 = this;
 
@@ -963,28 +961,16 @@
 	  this.x = z;
 	  this.id = g;
 	  this.flag = false;
+	  this.p = [];
 
 	  this.block = function () {
 	    _this3.flag = true;
 	    return _this3;
 	  };
 
-	  this.subAr = function () {
-	    var ar = undefined;
-	    var id = _this3.id;
-	    var l = MSt.length - 1;
-	    for (var i = l; i > -1; i -= 1) {
-	      if (MSt[i][0] == id) {
-	        ar = MSt[i];
-	        MSt.splice(i, 1);
-	      }
-	    }
-	    return ar;
-	  };
-
 	  this.release = function () {
 	    var self = _this3;
-	    var p = _this3.subAr();
+	    var p = _this3.p;
 
 	    if (p[1] === 'bnd') {
 	      p[2].apply(p, [self.x, self].concat(_toConsumableArray(p[3])));
@@ -1016,7 +1002,7 @@
 	      return self;
 	    }
 	    if (self.flag === true) {
-	      MSt.push([self.id, 'bnd', func, args]);
+	      p = [self.id, 'bnd', func, args];
 	      return self;
 	    }
 	  };
@@ -1034,7 +1020,7 @@
 	      return mon;
 	    }
 	    if (self.flag === true) {
-	      MSt.push([self.id, 'fmap', f, mon, args]);
+	      self.p = [self.id, 'fmap', f, mon, args];
 	      return self;
 	    }
 	  };
@@ -1045,7 +1031,7 @@
 	      self.x = a;
 	    }
 	    if (self.flag === true) {
-	      MSt.push([self.id, 'ret', a]);
+	      p = [self.id, 'ret', a];
 	      return self;
 	    }
 	    _this3.flag = false;

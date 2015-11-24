@@ -652,7 +652,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      const MSt = [];\n    \n      class MonadIter {\n        constructor(z,g) {\n    \n          this.x = z;\n          this.id = g;\n          this.flag = false;\n    \n          this.block = () => {\n            this.flag = true;\n            return this;\n            }\n    \n          this.subAr = () => {\n            let ar;\n            let id = this.id;\n            let l = MSt.length - 1;\n            for (let i = l; i > -1; i -= 1) {     \n              if (MSt[i][0] == id) {\n                 ar = MSt[i];\n                 MSt.splice(i, 1);\n               }\n            }\n            return ar;\n          }\n    \n          this.release = () => {\n            let self = this;\n            let p = this.subAr();\n    \n            if (p[1] === \'bnd\') {\n              p[2](self.x, self, ...p[3]);\n              self.flag = false;\n              return self;\n            }\n    \n            if (p[1] === \'ret\') {\n              self.x = p[2];\n              self.flag = false;\n              return self;\n            }\n    \n            if (p[1] === \'fmap\') { \n              p[3].ret(p[2](p[3].x, ...p[4]));\n              self.flag = false;\n              return p[3];\n            }\n         }\n    \n          this.bnd = (func, ...args) => {\n            let self = this;\n            if (self.flag === false) {\n              func(self.x, self, ...args);\n              return self;\n            }\n            if (self.flag === true) {\n              MSt.push([self.id, \'bnd\', func, args]);\n              return self;\n            }\n          }\n    \n          this.fmap = (f, mon = this, ...args) => {   \n            let self = this;\n              if (self.flag === false) {\n                mon.ret(f(mon.x,  ...args));\n                return mon;\n              }\n              if (self.flag === true) {\n                MSt.push([self.id, \'fmap\', f, mon, args]);\n                return self;\n              }\n          }\n    \n          this.ret = a => { \n            let self = this;\n              if (self.flag === false) {\n                self.x = a;\n              }\n              if (self.flag === true) {\n              MSt.push([self.id, \'ret\', a]);\n              return self;\n              }\n            this.flag = false;\n            return this;\n          }\n        }}\n        '
+	        '\n      const MSt = [];\n    \n      class MonadIter {\n        constructor(z,g) {\n    \n          this.x = z;\n          this.id = g;\n          this.flag = false;\n    \n          this.block = () => {\n            this.flag = true;\n            return this;\n            }\n    \n          this.subAr = () => {\n            let ar;\n            let id = this.id;\n            let l = MSt.length - 1;\n            for (let i = l; i > -1; i -= 1) {\n              if (MSt[i][0] == id) {\n                 ar = MSt[i];\n                 MSt.splice(i, 1);\n               }\n            }\n            return ar;\n          }\n    \n          this.release = () => {\n            let self = this;\n            let p = this.subAr();\n    \n            if (p[1] === \'bnd\') {\n              p[2](self.x, self, ...p[3]);\n              self.flag = false;\n              return self;\n            }\n    \n            if (p[1] === \'ret\') {\n              self.x = p[2];\n              self.flag = false;\n              return self;\n            }\n    \n            if (p[1] === \'fmap\') { \n              p[3].ret(p[2](p[3].x, ...p[4]));\n              self.flag = false;\n              return p[3];\n            }\n         }\n    \n          this.bnd = (func, ...args) => {\n            let self = this;\n            if (self.flag === false) {\n              func(self.x, self, ...args);\n              return self;\n            }\n            if (self.flag === true) {\n              MSt.push([self.id, \'bnd\', func, args]);      \n              return self;\n            }\n          }\n    \n          this.fmap = (f, mon = this, ...args) => {   \n            let self = this;\n              if (self.flag === false) {\n                mon.ret(f(mon.x,  ...args));\n                return mon;\n              }\n              if (self.flag === true) {\n                MSt.push([self.id, \'fmap\', f, mon, args]);\n                return self;\n              }\n          }\n    \n          this.ret = a => { \n            let self = this;\n              if (self.flag === false) {\n                self.x = a;\n              }\n              if (self.flag === true) {\n              MSt.push([self.id, \'ret\', a]);\n              return self;\n              }\n            this.flag = false;\n            return this;\n          }\n        }}\n        '
 	      )
 	    );
 	  }
@@ -690,8 +690,8 @@
 	  }
 	});
 
-	var ComponentLog4 = _react2['default'].createClass({
-	  displayName: 'ComponentLog4',
+	var ComponentBlock = _react2['default'].createClass({
+	  displayName: 'ComponentBlock',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -700,7 +700,71 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n      .bnd(() => {mMI1.block()\n                .bnd(() => {chain of method calls ...     \n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentNEXT1 = _react2['default'].createClass({
+	  displayName: 'ComponentNEXT1',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      onClick={() => {\n      mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret)\n      .bnd(() => mM1.ret(\'Click the mMI2.release() button to proceed\')     \n      .bnd(refresh)\n      .bnd(() => mMI2.block()\n      .bnd(() => mM2.ret(\'Click it again.\').bnd(refresh)\n      .bnd(() => mMI2.block()\n      .bnd(() => mM3.ret(\'Keep going\').bnd(refresh)\n      .bnd(() => mMI2.block()\n      .bnd(() => mM4.ret(\'One more\').bnd(refresh)\n      .bnd(() => mMI2.block()\n      .bnd(() => mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret)\n      .bnd(mM4.ret).bnd(refresh)\n       )))))))))       }} \n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentNEXT2 = _react2['default'].createClass({
+	  displayName: 'ComponentNEXT2',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      onClick={() => {\n         mMI2.release()       \n       }} \n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentBlank_4 = _react2['default'].createClass({
+	  displayName: 'ComponentBlank_4',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      .bnd(() => {mMI1.block()\n                .bnd(() => {chain of method calls ...     \n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentBlank_4 = _react2['default'].createClass({
+	  displayName: 'ComponentBlank_4',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      .bnd(() => {mMI1.block()\n                .bnd(() => {chain of method calls ...     \n        '
 	      )
 	    );
 	  }
@@ -2082,7 +2146,14 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'And here are some instances of MonadIter in action: '
+	            'subAr() fails if a monad \'m\' calls its methods after \'m.block()\'. That is because subsequent calls push excess arrays into MSt. The overhead of running through accumulated arrays belonging to m isn\'t worth the benefit, which is actually nil. The form that works is:',
+	            _react2['default'].createElement(ComponentBlock, null),
+	            'That puts only one nested array in the MSt array, and that sub-array is removed when subAr is called in m.release(). '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Here are are some instances of MonadIter in action: '
 	          ),
 	          _react2['default'].createElement(
 	            'button',
@@ -2190,7 +2261,7 @@
 	                                    });
 	                                  }, 1000);
 	                                });
-	                              }, 1000);
+	                              }, 100);
 	                            });
 	                          });
 	                          mM2.bnd(function (b) {
@@ -2215,7 +2286,7 @@
 	                        }, 1000);
 	                      });
 	                    });
-	                  }, 1000);
+	                  }, 100);
 	                });
 	              },
 	              onMouseEnter: function () {
@@ -2226,6 +2297,165 @@
 	              }
 	            },
 	            _react2['default'].createElement(ComponentIter3, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Next we use mMI1.block() to pause execution of the side branch, but we remove mMI1 from the code and place it under the NEXT button.  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mM1.bnd(function () {
+	                  setTimeout(function () {
+	                    mM2.ret(0).bnd(mMI1.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(mM11.ret).bnd(mM12.ret).bnd(function () {
+	                      return mM1.ret('one').bnd(refresh).bnd(function (a) {
+	                        setTimeout(function () {
+	                          mM2.ret('two').bnd(refresh).bnd(function () {
+	                            mMI1.block().bnd(function () {
+	                              setTimeout(function () {
+	                                mM7.bnd(refresh).ret('First branch complete').bnd(refresh).bnd(function () {
+	                                  setTimeout(function () {
+	                                    mM8.ret('First').bnd(refresh).bnd(function (a) {
+	                                      setTimeout(function () {
+	                                        mM9.ret('Second').bnd(refresh).bnd(function (b) {
+	                                          setTimeout(function () {
+	                                            mM10.ret('Third').bnd(refresh).bnd(function (c) {
+	                                              setTimeout(function () {
+	                                                mM11.ret('Fourth').bnd(refresh).bnd(function (d) {
+	                                                  setTimeout(function () {
+	                                                    mM12.ret('Done').bnd(function () {
+	                                                      return mMI1.ret('Second branch complete');
+	                                                    }).bnd(refresh);
+	                                                  }, 1000);
+	                                                });
+	                                              }, 1000);
+	                                            });
+	                                          }, 1000);
+	                                        });
+	                                      }, 1000);
+	                                    });
+	                                  }, 1000);
+	                                });
+	                              }, 100);
+	                            });
+	                          });
+	                          mM2.bnd(function (b) {
+	                            setTimeout(function () {
+	                              mM3.ret('three').bnd(refresh).bnd(function (c) {
+	                                setTimeout(function () {
+	                                  mM4.ret('four').bnd(refresh).bnd(function (d) {
+	                                    setTimeout(function () {
+	                                      mM5.ret('five').bnd(refresh).bnd(function (e) {
+	                                        setTimeout(function () {
+	                                          mM6.ret([a, ' ', b, ' ', c, ' ', d, ' ', e]);
+	                                          mM8.bnd(refresh);
+	                                        }, 1000);
+	                                      });
+	                                    }, 1000);
+	                                  });
+	                                }, 1000);
+	                              });
+	                            }, 1000);
+	                          });
+	                        }, 1000);
+	                      });
+	                    });
+	                  }, 1000);
+	                });
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF2();
+	              }
+	            },
+	            'Run part then wait'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mMI1.release();
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF2();
+	              }
+	            },
+	            'NEXT'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Click the button below to start iterating through a sequence of commands.  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(function () {
+	                  return mM1.ret('Click the mMI2.release() button to proceed').bnd(refresh).bnd(function () {
+	                    return mMI2.block().bnd(function () {
+	                      return mM2.ret('Click it again.').bnd(refresh).bnd(function () {
+	                        return mMI2.block().bnd(function () {
+	                          return mM3.ret('Keep going').bnd(refresh).bnd(function () {
+	                            return mMI2.block().bnd(function () {
+	                              return mM4.ret('One more').bnd(refresh).bnd(function () {
+	                                return mMI2.block().bnd(function () {
+	                                  return mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(refresh);
+	                                });
+	                              });
+	                            });
+	                          });
+	                        });
+	                      });
+	                    });
+	                  });
+	                });
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF2();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentNEXT1, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Now click the next button four times to journey through the sequence. '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mMI2.release();
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF2();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentNEXT2, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '  '
 	          )
 	        ),
 	        _react2['default'].createElement(

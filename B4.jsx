@@ -1463,7 +1463,7 @@ var ComponentBlank_4 = React.createClass({
           return self;
         }
         if (self.flag === true) {
-          p = [self.id, 'bnd', func, args];
+          self.p = [self.id, 'bnd', func, args];
           return self;
         }
       }
@@ -1486,7 +1486,7 @@ var ComponentBlank_4 = React.createClass({
             self.x = a;
           }
           if (self.flag === true) {
-          p = [self.id, 'ret', a];
+          self.p = [self.id, 'ret', a];
           return self;
           }
         this.flag = false;
@@ -1834,7 +1834,6 @@ delay = (x,mon) => {
 
 
  render = () => {
-   console.log('The size of MSt is ', MSt.length);
     let mM1 = this.mM1;
     let mM2 = this.mM2;
     let mM3 = this.mM3;
@@ -2310,10 +2309,6 @@ delay = (x,mon) => {
 <p>That was the automatic method. It works, but it drains memory and processor power while blocked computations loop. It is also a potential source of memory leaks. The garbage collector would not notice a perpetually looping blocked computation that a coder forgot to release. </p> 
 <p> The class MonadIter provides exact control over branched chains without looping. Here is the code: </p>
   <ComponentIter1 />
-<p>subAr() fails if a monad 'm' calls its methods after 'm.block()'. That is because subsequent calls push excess arrays into MSt. The overhead of running through accumulated arrays belonging to m isn't worth the benefit, which is actually nil. The form that works is:
-<ComponentBlock />
-That puts only one nested array in the MSt array, and that sub-array is removed when subAr is called in m.release(). </p>
-
 <p>Here are are some instances of MonadIter in action: </p>
 
       <button style={this.bool1 ? this.style1 : this.style2 } 

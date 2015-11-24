@@ -1002,7 +1002,7 @@
 	      return self;
 	    }
 	    if (self.flag === true) {
-	      p = [self.id, 'bnd', func, args];
+	      self.p = [self.id, 'bnd', func, args];
 	      return self;
 	    }
 	  };
@@ -1031,7 +1031,7 @@
 	      self.x = a;
 	    }
 	    if (self.flag === true) {
-	      p = [self.id, 'ret', a];
+	      self.p = [self.id, 'ret', a];
 	      return self;
 	    }
 	    _this3.flag = false;
@@ -1342,7 +1342,6 @@
 	    };
 
 	    this.render = function () {
-	      console.log('The size of MSt is ', MSt.length);
 	      var mM1 = _this4.mM1;
 	      var mM2 = _this4.mM2;
 	      var mM3 = _this4.mM3;
@@ -2129,13 +2128,6 @@
 	            ' The class MonadIter provides exact control over branched chains without looping. Here is the code: '
 	          ),
 	          _react2['default'].createElement(ComponentIter1, null),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'subAr() fails if a monad \'m\' calls its methods after \'m.block()\'. That is because subsequent calls push excess arrays into MSt. The overhead of running through accumulated arrays belonging to m isn\'t worth the benefit, which is actually nil. The form that works is:',
-	            _react2['default'].createElement(ComponentBlock, null),
-	            'That puts only one nested array in the MSt array, and that sub-array is removed when subAr is called in m.release(). '
-	          ),
 	          _react2['default'].createElement(
 	            'p',
 	            null,

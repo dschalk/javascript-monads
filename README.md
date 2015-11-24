@@ -311,102 +311,80 @@ That was the automatic method. It works, but it drains memory and processor powe
 The class MonadIter provides exact control over branched chains without looping. Here is the code:
 
 ```javascript
-      const MSt = [];
-    
-      class MonadIter {
-        constructor(z,g) {
-    
-          this.x = z;
-          this.id = g;
-          this.flag = false;
-    
-          this.block = () => {
-            this.flag = true;
-            return this;
-            }
-    
-          this.subAr = () => {
-            let ar;
-            let id = this.id;
-            let l = MSt.length - 1;
-            for (let i = l; i > -1; i -= 1) {     
-              if (MSt[i][0] == id) {
-                 ar = MSt[i];
-                 MSt.splice(i, 1);
-               }
-            }
-            return ar;
-          }
-    
-          this.release = () => {
-            let self = this;
-            let p = this.subAr();
-    
-            if (p[1] === 'bnd') {
-              p[2](self.x, self, ...p[3]);
-              self.flag = false;
-              return self;
-            }
-    
-            if (p[1] === 'ret') {
-              self.x = p[2];
-              self.flag = false;
-              return self;
-            }
-    
-            if (p[1] === 'fmap') { 
-              p[3].ret(p[2](p[3].x, ...p[4]));
-              self.flag = false;
-              return p[3];
-            }
-         }
-    
-          this.bnd = (func, ...args) => {
-            let self = this;
-            if (self.flag === false) {
-              func(self.x, self, ...args);
-              return self;
-            }
-            if (self.flag === true) {
-              MSt.push([self.id, 'bnd', func, args]);
-              return self;
-            }
-          }
-    
-          this.fmap = (f, mon = this, ...args) => {   
-            let self = this;
-              if (self.flag === false) {
-                mon.ret(f(mon.x,  ...args));
-                return mon;
-              }
-              if (self.flag === true) {
-                MSt.push([self.id, 'fmap', f, mon, args]);
-                return self;
-              }
-          }
-    
-          this.ret = a => { 
-            let self = this;
-              if (self.flag === false) {
-                self.x = a;
-              }
-              if (self.flag === true) {
-              MSt.push([self.id, 'ret', a]);
-              return self;
-              }
-            this.flag = false;
-            return this;
-          }
-        }}
-```
-"subAr() fails if a monad 'm' calls its methods after 'm.block()'. That is because subsequent calls push excess arrays into MSt. The overhead of running through accumulated arrays belonging to m isn't worth the benefit, which is actually nil. The form that works is:
+  class MonadIter {
+    constructor(z,g) {
 
-```javascript
-        .bnd(() => {mMI1.block()
-                  .bnd(() => {chain of method calls ...
-```
-That puts only one nested array in the MSt array, and that sub-array is removed when subAr is called in m.release().
+      this.x = z;
+      this.id = g;
+      this.flag = false;
+      this.p = [];
 
+      this.block = () => {
+        this.flag = true;
+        return this;
+        }
+
+      this.release = () => {
+        let self = this;
+        let p = this.p;
+
+        if (p[1] === 'bnd') {
+          p[2](self.x, self, ...p[3]);
+          self.flag = false;
+          return self;
+        }
+
+        if (p[1] === 'ret') {
+          self.x = p[2];
+          self.flag = false;
+          return self;
+        }
+
+        if (p[1] === 'fmap') { 
+          p[3].ret(p[2](p[3].x, ...p[4]));
+          self.flag = false;
+          return p[3];
+        }
+     }
+
+      this.bnd = (func, ...args) => {
+        let self = this;
+        if (self.flag === false) {
+          func(self.x, self, ...args);
+          return self;
+        }
+        if (self.flag === true) {
+          p = [self.id, 'bnd', func, args];
+          return self;
+        }
+      }
+
+      this.fmap = (f, mon = this, ...args) => {   
+        let self = this;
+          if (self.flag === false) {
+            mon.ret(f(mon.x,  ...args));
+            return mon;
+          }
+          if (self.flag === true) {
+            self.p = [self.id, 'fmap', f, mon, args];
+            return self;
+          }
+      }
+
+      this.ret = a => { 
+        let self = this;
+          if (self.flag === false) {
+            self.x = a;
+          }
+          if (self.flag === true) {
+          p = [self.id, 'ret', a];
+          return self;
+          }
+        this.flag = false;
+        return this;
+      }
+    }}
+```
 Here are are some instances of MonadIter in action:
 
 ```javascript
@@ -590,9 +568,6 @@ Next we use mMI1.block() to pause execution of the side branch, but we remove mM
     Run part then wait
            </button>
 ```
-And here's the NEXT button:
-
-```javascrpt
       <button style={this.bool2 ? this.style1 : this.style2 } 
         onClick={() => {
            mMI1.release()  
@@ -634,7 +609,10 @@ And here's the NEXT button:
                 >
                 <ComponentNEXT2 />
            </button>
-```
+
+
+
+
 To see try out these examples, go to http://transcendent.ninja .
 
 

@@ -354,7 +354,7 @@ The class MonadIter provides exact control over branched chains without looping.
           return self;
         }
         if (self.flag === true) {
-          p = [self.id, 'bnd', func, args];
+          self.p = [self.id, 'bnd', func, args];
           return self;
         }
       }
@@ -377,7 +377,7 @@ The class MonadIter provides exact control over branched chains without looping.
             self.x = a;
           }
           if (self.flag === true) {
-          p = [self.id, 'ret', a];
+          self.p = [self.id, 'ret', a];
           return self;
           }
         this.flag = false;

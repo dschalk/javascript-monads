@@ -738,8 +738,8 @@
 	  }
 	});
 
-	var ComponentBlank_4 = _react2['default'].createClass({
-	  displayName: 'ComponentBlank_4',
+	var ComponentBox = _react2['default'].createClass({
+	  displayName: 'ComponentBox',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -748,14 +748,14 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      .bnd(() => {mMI1.block()\n                .bnd(() => {chain of method calls ...     \n        '
+	        '\n      <input style={{height: 25, backgroundColor: \'#d8d17d\'}}  \n        onChange={e => {mM8.ret(e.target.value).bnd(refresh) }}    \n      />\n        '
 	      )
 	    );
 	  }
 	});
 
-	var ComponentBlank_4 = _react2['default'].createClass({
-	  displayName: 'ComponentBlank_4',
+	var ComponentBox2 = _react2['default'].createClass({
+	  displayName: 'ComponentBox2',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -764,7 +764,87 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      .bnd(() => {mMI1.block()\n                .bnd(() => {chain of method calls ...     \n        '
+	        '\n      <input style={{height: 25, backgroundColor: \'#d8d17d\'}}   \n         onKeyDown={(e) => {\n           let v = e.target.value;\n           if (v == \'\' || v == mM9.x) {\n             return\n           } else {\n             if( e.keyCode == 13 ) {\n               mM9.ret(v).bnd(refresh);\n             }\n           }\n         }}\n      />\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentFRP1 = _react2['default'].createClass({
+	  displayName: 'ComponentFRP1',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#FFAAAA' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n       {mM8.x} + {mM9.x} = {1.0 * mM8.x + 1.0 *  mM9.x}     \n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentFRP2 = _react2['default'].createClass({
+	  displayName: 'ComponentFRP2',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#FFAAAA' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n       {mM8.x} + {mM9.x} = {mM8.x + mM9.x}     \n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentDum2 = _react2['default'].createClass({
+	  displayName: 'ComponentDum2',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentDum3 = _react2['default'].createClass({
+	  displayName: 'ComponentDum3',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentDum4 = _react2['default'].createClass({
+	  displayName: 'ComponentDum4',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n        '
 	      )
 	    );
 	  }
@@ -1341,7 +1421,12 @@
 	      });
 	    };
 
+	    this.increment = function () {
+	      _this4.VAL = _this4.VAL + 1;
+	    };
+
 	    this.render = function () {
+	      _this4.increment();
 	      var mM1 = _this4.mM1;
 	      var mM2 = _this4.mM2;
 	      var mM3 = _this4.mM3;
@@ -1387,6 +1472,7 @@
 	      var lg = _this4.lg;
 	      var block = _this4.block;
 	      var release = _this4.release;
+	      var VAL = _this4.VAL;
 	      return _react2['default'].createElement(
 	        'div',
 	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 18 } },
@@ -1394,7 +1480,7 @@
 	        _react2['default'].createElement('br', null),
 	        _react2['default'].createElement(
 	          'div',
-	          { style: { width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 24 } },
+	          { style: { width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 20 } },
 	          _react2['default'].createElement(
 	            'h2',
 	            { style: { textAlign: 'center' } },
@@ -2431,9 +2517,102 @@
 	            _react2['default'].createElement(ComponentNEXT2, null)
 	          ),
 	          _react2['default'].createElement(
+	            'h2',
+	            null,
+	            'Reactive Monads'
+	          ),
+	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            '  '
+	            'The monads defined in this project are reactive by default. There is no need to define event listeners, change handlers, etc. The essentials are already built in.  '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            ' The display on the right shows the current values of m.x for the listed monads \'m\'. When the examples cause changes to m.x, the display immediately shows the new value.  '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Making an instantaneously responsive text box requires very little code. Here it is:  '
+	          ),
+	          _react2['default'].createElement(ComponentBox, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Making a text box that updates when the ENTER key is pressed requires some extra lines '
+	          ),
+	          _react2['default'].createElement(ComponentBox2, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Some functional reactive programming (FRP) demonstrations show streams of numbers merging into computations. When a number is changed, the computation immediately updates, like in a spreadsheet application. If you put numbers in the boxes below, the sum will immediately update. This is a React application, so the following code does the trick:  '
+	          ),
+	          _react2['default'].createElement(ComponentFRP1, null),
+	          _react2['default'].createElement(
+	            'span',
+	            { style: { color: '#AAFFAA' } },
+	            mM8.x,
+	            ' + ',
+	            mM9.x,
+	            ' = ',
+	            1.0 * mM8.x + 1.0 * mM9.x,
+	            ' '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'A simpler variation concatenates numbers and text. If you put a space after the first word, the two words won\'t run together.  '
+	          ),
+	          _react2['default'].createElement(ComponentFRP2, null),
+	          _react2['default'].createElement(
+	            'span',
+	            { style: { color: '#AAFFAA' } },
+	            mM8.x,
+	            ' + ',
+	            mM9.x,
+	            ' = ',
+	            mM8.x + mM9.x,
+	            ' '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'Here is the instantly updating text box: '
+	          ),
+	          _react2['default'].createElement('input', { autoFocus: true, style: { height: 25, backgroundColor: '#d8d17d' },
+	            onChange: function (e) {
+	              mM8.ret(e.target.value).bnd(refresh);
+	            }
+	          }),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'And here is the box that updates when you press ENTER: '
+	          ),
+	          _react2['default'].createElement('input', { style: { height: 25, backgroundColor: '#d8d17d' },
+	            onKeyDown: function (e) {
+	              var v = e.target.value;
+	              if (v == '' || v == mM9.x) {
+	                return;
+	              } else {
+	                if (e.keyCode == 13) {
+	                  mM9.ret(v).bnd(refresh);
+	                }
+	              }
+	            }
+	          }),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'When the text in the box is the same as the current value, render() is not executed. The counter below increments on each render, verifying this resource-saving feature. '
+	          ),
+	          'DOM render number ',
+	          VAL,
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'ES5 versions of the three monad constructors can be obtained from NPM by entering "npm install reactive-monads". When it is this easy to code reactive applications, it seems reasonable to call these monads "reactive". Monads are eminently functional, so I guess this could be called an FRP project, although that is just one feature of the primary purpose. That purpose is controlling the flow of application execution in ways that are simple, transparent, maintainable, undrstandable, and easy to analyze and debug. By transparent, I mean there is no code hidden under the hood, inaccessible to developers. That goes hand in hand with "understandable". To understand why your application does something, look at the definitions of the monad classes and the functions you are using with bnd, fmap, and ret. To study the behavior of a monad, say \'m\', you can put the line "console.log(m)" in render (before return) and the console log will display the m\'s state on every render. In this demonstration, I put the values of the monads in the right column. I might do the same while developing an application, then remove the right column before releasing it. '
 	          )
 	        ),
 	        _react2['default'].createElement(
@@ -2818,6 +2997,7 @@
 	    };
 	    this.resBench = 888;
 	    this.resBench2 = 888;
+	    this.VAL = 0;
 	  }
 
 	  return B4;

@@ -16,6 +16,7 @@
     "json-loader": "0.5.3",
     "react": "0.14.0",
     "react-dom": "0.14.0",
+    "react-native-web": "0.0.9",
     "react-remarkable": "latest",
     "webpack": "1.12.2"
   },

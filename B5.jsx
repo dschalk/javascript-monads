@@ -1,9 +1,9 @@
 'use strict'
 import React from 'react';
 import {render} from 'react-dom';
+import {StyleSheet, Text, TextInput} from 'react-native-web';
 var Markdown = require('react-remarkable');
 export {B4};
-
 
 var ComponentBlank = React.createClass({
   render: function() {
@@ -1231,14 +1231,15 @@ var ComponentNEXT2 = React.createClass({
   }
 })
 
-var ComponentBox = React.createClass({
+var ComponentBlank_4 = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 18, color: '#00FFCF' }} >
         <Markdown>
         {`
-      <input style={{height: 25, backgroundColor: '#d8d17d'}}  
-        onChange={e => {mM8.ret(e.target.value).bnd(refresh) }}    
+      <TextInput
+        style={{height: 25, borderColor: 'gray', borderWidth: 3, color: burlywood}}     
+        onChangeText={(text) => mM1.ret(text).bnd(refresh)    }
       />
         `}
         </Markdown>
@@ -1247,102 +1248,20 @@ var ComponentBox = React.createClass({
   }
 })
 
-var ComponentBox2 = React.createClass({
+var ComponentBlank_4 = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 18, color: '#00FFCF' }} >
         <Markdown>
         {`
-      <input style={{height: 25, backgroundColor: '#d8d17d'}}   
-         onKeyDown={(e) => {
-           let v = e.target.value;
-           if (v == '' || v == mM9.x) {
-             return
-           } else {
-             if( e.keyCode == 13 ) {
-               mM9.ret(v).bnd(refresh);
-             }
-           }
-         }}
-      />
+      .bnd(() => {mMI1.block()
+                .bnd(() => {chain of method calls ...     
         `}
         </Markdown>
       </div>
     );
   }
 })
-
-var ComponentFRP1 = React.createClass({
-  render: function() {
-    return (
-      <div style={{fontSize: 18, color: '#FFAAAA' }} >
-        <Markdown>
-        {`
-       {mM8.x} + {mM9.x} = {1.0 * mM8.x + 1.0 *  mM9.x}     
-        `}
-        </Markdown>
-      </div>
-    );
-  }
-})
-
-var ComponentFRP2 = React.createClass({
-  render: function() {
-    return (
-      <div style={{fontSize: 18, color: '#FFAAAA' }} >
-        <Markdown>
-        {`
-       {mM8.x} + {mM9.x} = {mM8.x + mM9.x}     
-        `}
-        </Markdown>
-      </div>
-    );
-  }
-})
-
-var ComponentDum2 = React.createClass({
-  render: function() {
-    return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
-        <Markdown>
-        {`
-        `}
-        </Markdown>
-      </div>
-    );
-  }
-})
-
-var ComponentDum3 = React.createClass({
-  render: function() {
-    return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
-        <Markdown>
-        {`
-        `}
-        </Markdown>
-      </div>
-    );
-  }
-})
-
-var ComponentDum4 = React.createClass({
-  render: function() {
-    return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
-        <Markdown>
-        {`
-        `}
-        </Markdown>
-      </div>
-    );
-  }
-})
-
-
-
-
-
 
 
   class Monad {
@@ -1635,7 +1554,6 @@ class B4 extends React.Component {
   }
   this.resBench = 888;
   this.resBench2 = 888;
-  this.VAL = 0;
 }
 
   style3 = {backgroundColor: '#000', textAlign: 'left', borderColor: 'darkblue', outline: 0,
@@ -1917,12 +1835,8 @@ delay = (x,mon) => {
 } )
 */
 
-increment = () => {
-  this.VAL = this.VAL + 1;
-}
 
  render = () => {
-    this.increment();
     let mM1 = this.mM1;
     let mM2 = this.mM2;
     let mM3 = this.mM3;
@@ -1968,12 +1882,11 @@ increment = () => {
     let lg = this.lg;
     let block = this.block;
     let release = this.release;
-    let VAL = this.VAL;
     return(
       <div style={{ backgroundColor: '#000', height: '100%' , width: '100%', color: '#FFE4C4', fontSize: 18 }}>
         <br /><br />
 
-<div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 20 }} >
+<div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 24 }} >
 <h2 style={{textAlign: 'center'}} >Javascript Monads</h2>
 <p>The monads in this demonstration are instances of the following class: </p>
 <ComponentMonad />
@@ -2629,50 +2542,16 @@ increment = () => {
            </button>
 <h2>Reactive Monads</h2>
 <p>The monads defined in this project are reactive by default. There is no need to define event listeners, change handlers, etc. The essentials are already built in.  </p>
-<p> The display on the right shows the current values of m.x for the listed monads 'm'. When the examples cause changes to m.x, the display immediately shows the new value.  </p>
+<p> The display on the right shows the current values of m.x for all monads 'm' listed. When the examples change m.x, the display immediately shows the change. Start entering characters in the text box below, and watch mM10 change accordingly. </p>
 
-<p>Making an instantaneously responsive text box requires very little code. Here it is:  </p>
+
+  <TextInput
+    style={{height: 25, borderColor: 'gray', borderWidth: 3, color: burlywood}}
+    onChangeText={(text) => mM1.ret(text).bnd(refresh)    }
+  />
+
+<p> Here is the code for the text box:  </p>
 <ComponentBox />
-<p>Making a text box that updates when the ENTER key is pressed requires some extra lines </p>
-<ComponentBox2 />
-
-<p>Some functional reactive programming (FRP) demonstrations show streams of numbers merging into computations. When a number is changed, the computation immediately updates, like in a spreadsheet application. If you put numbers in the boxes below, the sum will immediately update. This is a React application, so the following code does the trick:  </p>
-
-<ComponentFRP1 />
-
-<span style={{color: '#AAFFAA'}} >{mM8.x} + {mM9.x} = {1.0 * mM8.x + 1.0 *  mM9.x} </span>
-
-<p>A simpler variation concatenates numbers and text. If you put a space after the first word, the two words won't run together.  </p>
-
-<ComponentFRP2 />
-
-<span style={{color: '#AAFFAA'}} >{mM8.x} + {mM9.x} = {mM8.x + mM9.x} </span>
-
-<p>Here is the instantly updating text box: </p>
-
-<input autoFocus style={{height: 25, backgroundColor: '#d8d17d'}}  
-onChange={e => {mM8.ret(e.target.value).bnd(refresh) }}
-/>
-
-<p>And here is the box that updates when you press ENTER: </p>
-
-<input style={{height: 25, backgroundColor: '#d8d17d'}}  
-   onKeyDown={(e) => {
-     let v = e.target.value;
-     if (v == '' || v == mM9.x) {
-       return
-     } else {
-       if( e.keyCode == 13 ) {
-         mM9.ret(v).bnd(refresh);
-       }
-     }
-   }}
-/>
-
-<p>When the text in the box is the same as the current value, render() is not executed. The counter below increments on each render, verifying this resource-saving feature. </p>
-DOM render number {VAL}
-
-<p>ES5 versions of the three monad constructors can be obtained from NPM by entering "npm install reactive-monads". When it is this easy to code reactive applications, it seems reasonable to call these monads "reactive". Monads are eminently functional, so I guess this could be called an FRP project, although that is just one feature of the primary purpose. That purpose is controlling the flow of application execution in ways that are simple, transparent, maintainable, undrstandable, and easy to analyze and debug. By transparent, I mean there is no code hidden under the hood, inaccessible to developers. That goes hand in hand with "understandable". To understand why your application does something, look at the definitions of the monad classes and the functions you are using with bnd, fmap, and ret. To study the behavior of a monad, say 'm', you can put the line "console.log(m)" in render (before return) and the console log will display the m's state on every render. In this demonstration, I put the values of the monads in the right column. I might do the same while developing an application, then remove the right column before releasing it. </p>
 
 </div>
 <div style={{ width: '30%', fontSize: 18, position: 'fixed', top: 20, right: 15}}  >

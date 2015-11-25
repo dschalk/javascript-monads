@@ -2639,13 +2639,11 @@ increment = () => {
 <p>Some functional reactive programming (FRP) demonstrations show streams of numbers merging into computations. When a number is changed, the computation immediately updates, like in a spreadsheet application. If you put numbers in the boxes below, the sum will immediately update. This is a React application, so the following code does the trick:  </p>
 
 <ComponentFRP1 />
-
 <span style={{color: '#AAFFAA'}} >{mM8.x} + {mM9.x} = {1.0 * mM8.x + 1.0 *  mM9.x} </span>
 
 <p>A simpler variation concatenates numbers and text. If you put a space after the first word, the two words won't run together.  </p>
 
 <ComponentFRP2 />
-
 <span style={{color: '#AAFFAA'}} >{mM8.x} + {mM9.x} = {mM8.x + mM9.x} </span>
 
 <p>Here is the instantly updating text box: </p>

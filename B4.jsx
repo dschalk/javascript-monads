@@ -1328,12 +1328,13 @@ var ComponentCompute2 = React.createClass({
   }
 })
 
-var ComponentDum3 = React.createClass({
+var ComponentCompute3 = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 18, color: '#00FFCF' }} >
         <Markdown>
         {`
+ onClick={() => {mM2.ret(mM1.bnd(() => {return [mM1, mM2, mM3]})).fmap(x => x.map(a => a.ret(888).x)) }} 
         `}
         </Markdown>
       </div>
@@ -2713,6 +2714,15 @@ DOM render number {VAL}
                 RE-SET
            </button>
 
+           <p>The next example illustrates the possibilities for using .bnd and .fmap with anonymous functions. The display on the right won't adequately reflect this, but mM2.x will become [888,888,888], not 888888888. </p>
+      <button style={this.bool4 ? this.style1 : this.style2 } 
+        onClick={() => {mM2.ret(mM1.bnd(() => {return [mM1, mM2, mM3]})).fmap(x => x.map(a => a.ret(888).x)).bnd(refresh) }}
+           onMouseEnter={ () => this.cT4() }
+           onMouseLeave={ () => this.cF4() }
+                >
+                <ComponentCompute3 />
+           </button>
+
 
 
 
@@ -2723,30 +2733,30 @@ DOM render number {VAL}
 
 </div>
 <div style={{ width: '30%', fontSize: 18, position: 'fixed', top: 20, right: 15}}  >
-   <span> Monad mM1: <button  style={this.style3} >{mM1.x}</button> </span> <br />
-   <span> Monad mM2: <button  style={this.style3} >{mM2.x}</button> </span> <br />
-   <span> Monad mM3: <button  style={this.style3} >{mM3.x}</button> </span> <br />
-   <span> Monad mM4: <button  style={this.style3} >{mM4.x}</button> </span> <br />
-   <span> Monad mM5: <button  style={this.style3} >{mM5.x}</button> </span> <br />
-   <span> Monad mM6: <button  style={this.style3} >{mM6.x}</button> </span> <br />
-   <span> Monad mM7: <button  style={this.style3} >{mM7.x}</button> </span> <br />
-   <span> Monad mM8: <button  style={this.style3} >{mM8.x}</button> </span> <br />
-   <span> Monad mM9: <button  style={this.style3} >{mM9.x}</button> </span> <br />
-   <span> Monad mM10: <button  style={this.style3} >{(mM10).x}</button> </span> <br />
-   <span> Monad mM11: <button  style={this.style3} >{(mM11).x}</button> </span> <br />
-   <span> Monad mM12: <button  style={this.style3} >{(mM12).x}</button> </span> <br />
-   <span> Monad mMS1: <button  style={this.style3} >{mMS1.x}</button> </span> <br />
-   <span> Monad mMS2: <button  style={this.style3} >{mMS2.x}</button> </span> <br />
-   <span> Monad mMS3: <button  style={this.style3} >{mMS3.x}</button> </span> <br />
-   <span> Monad mMS4: <button  style={this.style3} >{mMS4.x}</button> </span> <br />
-   <span> Monad mMS5: <button  style={this.style3} >{mMS5.x}</button> </span> <br />
-   <span> Monad mMS6: <button  style={this.style3} >{mMS6.x}</button> </span> <br />
-   <span> Monad mMI1: <button  style={this.style3} >{mMI1.x}</button> </span> <br />
-   <span> Monad mMI2: <button  style={this.style3} >{mMI2.x}</button> </span> <br />
-   <span> Monad mMI3: <button  style={this.style3} >{mMI3.x}</button> </span> <br />
-   <span> Monad mMI4: <button  style={this.style3} >{mMI4.x}</button> </span> <br />
-   <span> Monad mMI5: <button  style={this.style3} >{mMI5.x}</button> </span> <br />
-   <span> Monad mMI6: <button  style={this.style3} >{mMI6.x}</button> </span> <br />
+   <span> Monad mM1.x: <button  style={this.style3} >{mM1.x}</button> </span> <br />
+   <span> Monad mM2.x: <button  style={this.style3} >{mM2.x}</button> </span> <br />
+   <span> Monad mM3.x: <button  style={this.style3} >{mM3.x}</button> </span> <br />
+   <span> Monad mM4.x: <button  style={this.style3} >{mM4.x}</button> </span> <br />
+   <span> Monad mM5.x: <button  style={this.style3} >{mM5.x}</button> </span> <br />
+   <span> Monad mM6.x: <button  style={this.style3} >{mM6.x}</button> </span> <br />
+   <span> Monad mM7.x: <button  style={this.style3} >{mM7.x}</button> </span> <br />
+   <span> Monad mM8.x: <button  style={this.style3} >{mM8.x}</button> </span> <br />
+   <span> Monad mM9.x: <button  style={this.style3} >{mM9.x}</button> </span> <br />
+   <span> Monad mM10.x: <button  style={this.style3} >{(mM10).x}</button> </span> <br />
+   <span> Monad mM11.x: <button  style={this.style3} >{(mM11).x}</button> </span> <br />
+   <span> Monad mM12.x: <button  style={this.style3} >{(mM12).x}</button> </span> <br />
+   <span> Monad mMS1.x: <button  style={this.style3} >{mMS1.x}</button> </span> <br />
+   <span> Monad mMS2.x: <button  style={this.style3} >{mMS2.x}</button> </span> <br />
+   <span> Monad mMS3.x: <button  style={this.style3} >{mMS3.x}</button> </span> <br />
+   <span> Monad mMS4.x: <button  style={this.style3} >{mMS4.x}</button> </span> <br />
+   <span> Monad mMS5.x: <button  style={this.style3} >{mMS5.x}</button> </span> <br />
+   <span> Monad mMS6.x: <button  style={this.style3} >{mMS6.x}</button> </span> <br />
+   <span> Monad mMI1.x: <button  style={this.style3} >{mMI1.x}</button> </span> <br />
+   <span> Monad mMI2.x: <button  style={this.style3} >{mMI2.x}</button> </span> <br />
+   <span> Monad mMI3.x: <button  style={this.style3} >{mMI3.x}</button> </span> <br />
+   <span> Monad mMI4.x: <button  style={this.style3} >{mMI4.x}</button> </span> <br />
+   <span> Monad mMI5.x: <button  style={this.style3} >{mMI5.x}</button> </span> <br />
+   <span> Monad mMI6.x: <button  style={this.style3} >{mMI6.x}</button> </span> <br />
    <span style={this.style3} >{lg} </span> <br />
 
 </div>

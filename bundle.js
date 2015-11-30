@@ -834,8 +834,8 @@
 	  }
 	});
 
-	var ComponentDum3 = _react2['default'].createClass({
-	  displayName: 'ComponentDum3',
+	var ComponentCompute3 = _react2['default'].createClass({
+	  displayName: 'ComponentCompute3',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -844,7 +844,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n onClick={() => {mM2.ret(mM1.bnd(() => {return [mM1, mM2, mM3]})).fmap(x => x.map(a => a.ret(888).x)) }} \n        '
 	      )
 	    );
 	  }
@@ -2698,6 +2698,32 @@
 	              }
 	            },
 	            'RE-SET'
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'The next example illustrates the possibilities for using .bnd and .fmap with anonymous functions. The display on the right won\'t adequately reflect this, but mM2.x will become [888,888,888], not 888888888. '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool4 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mM2.ret(mM1.bnd(function () {
+	                  return [mM1, mM2, mM3];
+	                })).fmap(function (x) {
+	                  return x.map(function (a) {
+	                    return a.ret(888).x;
+	                  });
+	                }).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT4();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF4();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentCompute3, null)
 	          )
 	        ),
 	        _react2['default'].createElement(
@@ -2706,7 +2732,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM1: ',
+	            ' Monad mM1.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2719,7 +2745,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM2: ',
+	            ' Monad mM2.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2732,7 +2758,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM3: ',
+	            ' Monad mM3.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2745,7 +2771,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM4: ',
+	            ' Monad mM4.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2758,7 +2784,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM5: ',
+	            ' Monad mM5.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2771,7 +2797,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM6: ',
+	            ' Monad mM6.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2784,7 +2810,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM7: ',
+	            ' Monad mM7.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2797,7 +2823,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM8: ',
+	            ' Monad mM8.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2810,7 +2836,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM9: ',
+	            ' Monad mM9.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2823,7 +2849,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM10: ',
+	            ' Monad mM10.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2836,7 +2862,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM11: ',
+	            ' Monad mM11.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2849,7 +2875,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mM12: ',
+	            ' Monad mM12.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2862,7 +2888,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMS1: ',
+	            ' Monad mMS1.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2875,7 +2901,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMS2: ',
+	            ' Monad mMS2.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2888,7 +2914,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMS3: ',
+	            ' Monad mMS3.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2901,7 +2927,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMS4: ',
+	            ' Monad mMS4.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2914,7 +2940,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMS5: ',
+	            ' Monad mMS5.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2927,7 +2953,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMS6: ',
+	            ' Monad mMS6.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2940,7 +2966,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMI1: ',
+	            ' Monad mMI1.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2953,7 +2979,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMI2: ',
+	            ' Monad mMI2.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2966,7 +2992,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMI3: ',
+	            ' Monad mMI3.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2979,7 +3005,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMI4: ',
+	            ' Monad mMI4.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -2992,7 +3018,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMI5: ',
+	            ' Monad mMI5.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },
@@ -3005,7 +3031,7 @@
 	          _react2['default'].createElement(
 	            'span',
 	            null,
-	            ' Monad mMI6: ',
+	            ' Monad mMI6.x: ',
 	            _react2['default'].createElement(
 	              'button',
 	              { style: _this4.style3 },

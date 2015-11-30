@@ -802,8 +802,8 @@
 	  }
 	});
 
-	var ComponentDum2 = _react2['default'].createClass({
-	  displayName: 'ComponentDum2',
+	var ComponentCompute = _react2['default'].createClass({
+	  displayName: 'ComponentCompute',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -812,7 +812,23 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n onClick={() => {mM2.ret(mM1.ret(3).bnd((x => (x+x + x*x*x) - 32*x))) }} \n        '
+	      )
+	    );
+	  }
+	});
+
+	var ComponentCompute2 = _react2['default'].createClass({
+	  displayName: 'ComponentCompute2',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n onClick={() => {mM1.ret(3).fmap((x => (x+x + x*x*x) - 32*x)) }} \n        '
 	      )
 	    );
 	  }
@@ -2612,7 +2628,76 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'ES5 versions of the three monad constructors can be obtained from NPM by entering "npm install reactive-monads". When it is this easy to code reactive applications, it seems reasonable to call these monads "reactive". Monads are eminently functional, so I guess this could be called an FRP project, although that is just one feature of the primary purpose. That purpose is controlling the flow of application execution in ways that are simple, transparent, maintainable, undrstandable, and easy to analyze and debug. By transparent, I mean there is no code hidden under the hood, inaccessible to developers. That goes hand in hand with "understandable". To understand why your application does something, look at the definitions of the monad classes and the functions you are using with bnd, fmap, and ret. To study the behavior of a monad, say \'m\', you can put the line "console.log(m)" in render (before return) and the console log will display the m\'s state on every render. In this demonstration, I put the values of the monads in the right column. I might do the same while developing an application, then remove the right column before releasing it. '
+	            ' These monads aren\'t inherently reactive. The instantaneous updates of the browser page is accomplished by the use (or should I say "misuse") of React.This presentation isn\'t about React, which is just a convenience for displaying monad values. In some applications, it might be advantageous to make the monads into React components, or perhaps include them in the React state object. That would be for another day. '
+	          ),
+	          _react2['default'].createElement(
+	            'h2',
+	            null,
+	            ' Ordinary Functions '
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'm.fmap(func), where m is a monad and func is an ordinary mathematical function, returns the monad m with value func(v), where v is the original value of m. But m.bnd(func) returns the number func(val) where val is the value of m, both before and after the operation. Here is an example that places the value of a computation in mM2. '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mM2.ret(mM1.ret(3).bnd(function (x) {
+	                  return x + x + x * x * x - 32 * x;
+	                })).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT1();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF1();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentCompute, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'As expected, the computation did not change the value of mM1. It returned the number -63, which became the value of mM2. The method bnd has two distinct uses. It can return monads for sequences of computations, or it can return simple values. If mM1 had used its fmap method instead of bnd, the computation would have returned mM1 with the value -63. The next example demonstrates this.  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mM1.ret(3).fmap(function (x) {
+	                  return x + x + x * x * x - 32 * x;
+	                }).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT2();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF2();
+	              }
+	            },
+	            _react2['default'].createElement(ComponentCompute2, null)
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '  '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mM1.ret(0).bnd(mM2.ret).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT3();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF3();
+	              }
+	            },
+	            'RE-SET'
 	          )
 	        ),
 	        _react2['default'].createElement(

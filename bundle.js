@@ -409,11 +409,26 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      this.bnd = (func, ...args) => {\n        return func(this.x, this, ...args);    \n      };\n        '
+	        '\n      let bnd = (f, mon, ...args) => {\n        return f(mon.x, mon, ...args);     \n      }\n        '
 	      )
 	    );
 	  }
+	});
 
+	var ComponentFmap = _react2['default'].createClass({
+	  displayName: 'ComponentFmap',
+
+	  render: function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      _react2['default'].createElement(
+	        Markdown,
+	        null,
+	        '\n      let fmap = (f, mon, ...args) => {     \n        mon.ret( f(mon.x, ...args));\n        return mon;\n      }\n        '
+	      )
+	    );
+	  }
 	});
 
 	var ComponentAdd = _react2['default'].createClass({
@@ -514,8 +529,8 @@
 	  }
 	});
 
-	var ComponentFmap = _react2['default'].createClass({
-	  displayName: 'ComponentFmap',
+	var ComponentFmapBnd = _react2['default'].createClass({
+	  displayName: 'ComponentFmapBnd',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -524,7 +539,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n      let fmap = (f,mon, ...args) => {    \n        let v = mon.x;\n        mon.ret(f(v, ...args));\n        return mon;\n      }\n    \n      let bnd = (f,mon, ...args) => {\n        f(mon.x,mon, ...args);\n        return mon;\n      }\n        '
+	        '\n      let fmap = (f, mon, ...args) => {    \n        let v = mon.x;\n        mon.ret(f(v, ...args));\n        return mon;\n      }\n    \n      let bnd = (f, mon, ...args) => {\n        return f(mon.x, mon, ...args);\n      }\n        '
 	      )
 	    );
 	  }
@@ -850,8 +865,8 @@
 	  }
 	});
 
-	var ComponentDum4 = _react2['default'].createClass({
-	  displayName: 'ComponentDum4',
+	var ComponentFmap3 = _react2['default'].createClass({
+	  displayName: 'ComponentFmap3',
 
 	  render: function render() {
 	    return _react2['default'].createElement(
@@ -860,7 +875,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\n        '
+	        '\n      onClick={() => {\n        fmap(x => x * 0, mM2);\n        fmap(x => x + 3, mM2);\n        fmap(cu,mM2).bnd(refresh);     \n        } \n      }\n        '
 	      )
 	    );
 	  }
@@ -1993,9 +2008,15 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'This repository also provides bnd and fmap functions similar to the bnd and fmap monad methods. They are defined as follows: '
+	            'Some functional purists, and perhaps others, prefer to use functions over using methods bound to objects (monads in this case). This repository provides stand-alone bnd and fmap functions similar to the bnd and fmap monad methods. Instead of extracting the value of the monad that calls bnd, the stand-lone bnd() function must be provided with a monad from which to extract a value. bnd and fmap are defined as follows: '
 	          ),
-	          _react2['default'].createElement(ComponentFmap, null),
+	          _react2['default'].createElement(ComponentFmapBnd, null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            'cu, ad, and add are defined as follows: '
+	          ),
+	          _react2['default'].createElement(ComponentFmap2, null),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
@@ -2008,18 +2029,18 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool4 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
-	                bnd(add, mM1, 5).bnd(refresh);
+	                bnd(add, mM1, 5).bnd(cube).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT2();
+	                return _this4.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF2();
+	                return _this4.cF4();
 	              }
 	            },
-	            'bnd(add, mM1, 5).bnd(refresh)'
+	            'bnd(add, mM1, 5).bnd(cube).bnd(refresh)'
 	          ),
 	          _react2['default'].createElement(
 	            'p',
@@ -2029,43 +2050,45 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            ' Next, we run the fmap function twice. '
+	            ' Next, we run the fmap function three separate times. '
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool5 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
-	                fmap(ad, mM2, 3);
+	                fmap(function (x) {
+	                  return x * 0;
+	                }, mM2);
+	                fmap(function (x) {
+	                  return x + 3;
+	                }, mM2);
 	                fmap(cu, mM2).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT2();
+	                return _this4.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF2();
+	                return _this4.cF5();
 	              }
 	            },
-	            'fmap(ad,mM2,3)',
-	            _react2['default'].createElement('br', null),
-	            'fmap(cu,mM2).bnd(refresh);'
+	            _react2['default'].createElement(ComponentFmap3, null)
 	          ),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'cu, ad, and add are defined as follows: '
+	            '    '
 	          ),
-	          _react2['default'].createElement(ComponentFmap2, null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT3();
+	                return _this4.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF3();
+	                return _this4.cF1();
 	              }
 	            },
 	            'REFRESH'
@@ -2076,158 +2099,14 @@
 	            '   '
 	          ),
 	          _react2['default'].createElement(
-	            'button',
-	            { style: _this4.bool4 ? _this4.style1 : _this4.style2,
-	              onClick: function () {
-	                fmap(ad, mM3, 3).fmap(cu, mM3).bnd(refresh);
-	              },
-	              onMouseEnter: function () {
-	                return _this4.cT4();
-	              },
-	              onMouseLeave: function () {
-	                return _this4.cF4();
-	              }
-	            },
-	            'fmap(ad,mM3,3)',
-	            _react2['default'].createElement('br', null),
-	            '.fmap(cu).bnd(refresh);'
+	            'h2',
+	            null,
+	            ' MonadIter - Control the Order of Execution '
 	          ),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'The only difference is the addition of a dot in front of the second call to fmap, and since the fmap method uses the calling method\'s value by default, we were able to write ".fmap(cu)" instead of ".fmap(cu,mM3)". Here is another example: '
-	          ),
-	          _react2['default'].createElement(
-	            'button',
-	            { style: _this4.bool5 ? _this4.style1 : _this4.style2,
-	              onClick: function () {
-	                mM4.fmap(ad, mM5, 5).fmap(ad, mM6, 3).fmap(cu).fmap(ad, mM5, 1).fmap(cu).fmap(ad, mM4, mM6.x + 1000).bnd(refresh);
-	              },
-	              onMouseEnter: function () {
-	                return _this4.cT5();
-	              },
-	              onMouseLeave: function () {
-	                return _this4.cF5();
-	              }
-	            },
-	            'mM4.fmap(ad0,mM5,5) ',
-	            _react2['default'].createElement('br', null),
-	            '.fmap(ad,mM6,3) ',
-	            _react2['default'].createElement('br', null),
-	            '.fmap(cu) ',
-	            _react2['default'].createElement('br', null),
-	            '.fmap(ad,mM5,1) ',
-	            _react2['default'].createElement('br', null),
-	            '.fmap(cu) ',
-	            _react2['default'].createElement('br', null),
-	            '.fmap(ad,mM4,(mM6.x + 1000)) ',
-	            _react2['default'].createElement('br', null),
-	            '.bnd(refresh) ',
-	            _react2['default'].createElement('br', null)
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'mM4 gets the ball rolling by adding 5 to the value of mM5. At that point, mM5 takes control and mM4 remains abaandoned until the end of the chain where it it takes the value of mM6 (mM6.x) and adds 1000. In the second line, control is handed over to mM6 which gets its value increased by 3 and then cubed in line \'3\'. In line 4, mM5\'s value is incremented by 1 and cubed. Finally, mM4 gets mM6\'s value and inceases it by 1000. '
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'Creating and updating branches with fmap is simple, but sometimes we will need better control over the order of execution. In the previous example, we are confident that lines \'2\' and \'3\' have been executed (updating mM6) before line \'6\' where mM4 takes the value of mM6 and adds 1000 to it. If lines \'2\' and \'3\' had involved websocket messages, an ajax call, or interaction with a database, line \'6\' would likely have been executed using the original value of mM6.'
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'Instances of MonadSeq provide a way to control the order of execution. Here is the definition of MonadSeq:'
-	          ),
-	          _react2['default'].createElement(ComponentMonadSeq, null),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            ' and here are the functions that control the order of execution: '
-	          ),
-	          _react2['default'].createElement(ComponentMonadSeq2, null),
-	          _react2['default'].createElement('br', null),
-	          _react2['default'].createElement(
-	            'button',
-	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
-	              onClick: function () {
-	                return mMS1.ret('one').bnd(refresh).bnd(function (a) {
-	                  return setTimeout(function () {
-	                    mMS2.ret('two').bnd(function () {
-	                      mM1.bnd(block, mMS1).bnd(function () {
-	                        return mMS1.bnd(function () {
-	                          return console.log('Side chain moving forward');
-	                        }).ret('First branch complete').bnd(refresh);
-	                      }).bnd(function () {
-	                        setTimeout(function () {
-	                          mMS2.ret('First').bnd(refresh).bnd(function (a) {
-	                            setTimeout(function () {
-	                              mMS3.ret('Second').bnd(refresh).bnd(function (b) {
-	                                setTimeout(function () {
-	                                  mMS4.ret('Third').bnd(refresh).bnd(function (c) {
-	                                    setTimeout(function () {
-	                                      mMS5.ret('Fourth').bnd(refresh).bnd(function (d) {
-	                                        setTimeout(function () {
-	                                          mMS6.ret('Done').bnd(function () {
-	                                            return mMS1.ret('Second branch complete');
-	                                          }).bnd(refresh);
-	                                        }, 1000);
-	                                      });
-	                                    }, 1000);
-	                                  });
-	                                }, 1000);
-	                              });
-	                            }, 1000);
-	                          });
-	                        }, 1000);
-	                      });
-	                    }).bnd(refresh).bnd(function (b) {
-	                      setTimeout(function () {
-	                        mMS3.ret('three').bnd(refresh).bnd(function (c) {
-	                          setTimeout(function () {
-	                            mMS4.ret('four').bnd(refresh).bnd(function (d) {
-	                              setTimeout(function () {
-	                                mMS5.ret('five').bnd(refresh).bnd(function (e) {
-	                                  setTimeout(function () {
-	                                    mM1.bnd(release, mMS1);
-	                                    mM1.bnd(release, mMS2);
-	                                    mM1.bnd(release, mMS3);
-	                                    mMS6.ret([a, ' ', b, ' ', c, ' ', d, ' ', e]).bnd(refresh);
-	                                  }, 1000);
-	                                });
-	                              }, 1000);
-	                            });
-	                          }, 1000);
-	                        });
-	                      }, 1000);
-	                    });
-	                  }, 1000);
-	                });
-	              },
-	              onMouseEnter: function () {
-	                return _this4.cT1();
-	              },
-	              onMouseLeave: function () {
-	                return _this4.cF1();
-	              }
-	            },
-	            _react2['default'].createElement(ComponentMonadSeq3, null)
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'The branch beginning after "mMS2.ret(\'two\')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret(\'five\')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin proceeding along its execution path.  '
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'That was the automatic method. It works, but it drains memory and processor power while blocked computations loop. It is also a potential source of memory leaks. The garbage collector would not notice a perpetually looping blocked computation that a coder forgot to release. '
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            ' The class MonadIter provides exact control over branched chains without looping. Here is the code: '
+	            ' The class MonadIter provides exact control over sequencing and timing of monad actions. And as one of the examples shows, MonadIter provides a way to iterate one step at a time through a sequence of monad actions. Here is the code: '
 	          ),
 	          _react2['default'].createElement(ComponentIter1, null),
 	          _react2['default'].createElement(
@@ -2237,7 +2116,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mMI1.ret('one').bnd(refresh).bnd(function (a) {
 	                  return setTimeout(function () {
@@ -2293,10 +2172,10 @@
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT1();
+	                return _this4.cT2();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF1();
+	                return _this4.cF2();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentIter2, null)
@@ -2308,7 +2187,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM1.bnd(function () {
 	                  setTimeout(function () {
@@ -2370,10 +2249,10 @@
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT1();
+	                return _this4.cT3();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF1();
+	                return _this4.cF3();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentIter3, null)
@@ -2385,7 +2264,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool4 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM1.bnd(function () {
 	                  setTimeout(function () {
@@ -2466,10 +2345,10 @@
 	                mMI1.release();
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT2();
+	                return _this4.cT4();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF2();
+	                return _this4.cF4();
 	              }
 	            },
 	            'NEXT'
@@ -2481,7 +2360,7 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool5 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(function () {
 	                  return mM1.ret('Click the mMI2.release() button to proceed').bnd(refresh).bnd(function () {
@@ -2504,10 +2383,10 @@
 	                });
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT2();
+	                return _this4.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF2();
+	                return _this4.cF5();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentNEXT1, null)
@@ -2519,33 +2398,18 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mMI2.release();
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT2();
+	                return _this4.cT1();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF2();
+	                return _this4.cF1();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentNEXT2, null)
-	          ),
-	          _react2['default'].createElement(
-	            'h2',
-	            null,
-	            'Reactive Monads'
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'The monads defined in this project are reactive by default. There is no need to define event listeners, change handlers, etc. The essentials are already built in.  '
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            ' The display on the right shows the current values of m.x for the listed monads \'m\'. When the examples cause changes to m.x, the display immediately shows the new value.  '
 	          ),
 	          _react2['default'].createElement(
 	            'p',
@@ -2628,7 +2492,7 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            ' These monads aren\'t inherently reactive. The instantaneous updates of the browser page is accomplished by the use (or should I say "misuse") of React.This presentation isn\'t about React, which is just a convenience for displaying monad values. In some applications, it might be advantageous to make the monads into React components, or perhaps include them in the React state object. That would be for another day. '
+	            ' These monads aren\'t inherently reactive. The instantaneous updates of the browser page is accomplished by the use (or should I say "misuse") of React.This presentation isn\'t about React, which is just a convenience for displaying monad values. In some applications, it might be advantageous to make the monads into React components, or perhaps include them in the React state object. That would be for another day. For now, I use React.forceUpdate() whenever I want to refresh the browser display, and keep the monads outside of the React re-render mechanism. '
 	          ),
 	          _react2['default'].createElement(
 	            'h2',
@@ -2642,17 +2506,17 @@
 	          ),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool5 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                mM2.ret(mM1.ret(3).bnd(function (x) {
 	                  return x + x + x * x * x - 32 * x;
 	                })).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
-	                return _this4.cT1();
+	                return _this4.cT5();
 	              },
 	              onMouseLeave: function () {
-	                return _this4.cF1();
+	                return _this4.cF5();
 	              }
 	            },
 	            _react2['default'].createElement(ComponentCompute, null)

@@ -481,15 +481,31 @@ var ComponentBnd = React.createClass({
       <div style={{fontSize: 18, color: '#00FFFF' }} >
         <Markdown>
         {`
-      this.bnd = (func, ...args) => {
-        return func(this.x, this, ...args);    
-      };
+      let bnd = (f, mon, ...args) => {
+        return f(mon.x, mon, ...args);     
+      }
         `}
         </Markdown>
       </div>
     );
   }
+});
 
+var ComponentFmap = React.createClass({
+  render: function() {
+    return (
+      <div style={{fontSize: 18, color: '#00FFFF' }} >
+        <Markdown>
+        {`
+      let fmap = (f, mon, ...args) => {     
+        mon.ret( f(mon.x, ...args));
+        return mon;
+      }
+        `}
+        </Markdown>
+      </div>
+    );
+  }
 });
 
 var ComponentAdd = React.createClass({
@@ -679,21 +695,20 @@ var ComponentAdd = React.createClass({
   }
 });
 
-var ComponentFmap = React.createClass({
+var ComponentFmapBnd = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 18, color: '#00FFFF' }} >
         <Markdown>
         {`
-      let fmap = (f,mon, ...args) => {    
+      let fmap = (f, mon, ...args) => {    
         let v = mon.x;
         mon.ret(f(v, ...args));
         return mon;
       }
     
-      let bnd = (f,mon, ...args) => {
-        f(mon.x,mon, ...args);
-        return mon;
+      let bnd = (f, mon, ...args) => {
+        return f(mon.x, mon, ...args);
       }
         `}
         </Markdown>
@@ -1342,12 +1357,18 @@ var ComponentCompute3 = React.createClass({
   }
 })
 
-var ComponentDum4 = React.createClass({
+var ComponentFmap3 = React.createClass({
   render: function() {
     return (
       <div style={{fontSize: 18, color: '#00FFCF' }} >
         <Markdown>
         {`
+      onClick={() => {
+        fmap(x => x * 0, mM2);
+        fmap(x => x + 3, mM2);
+        fmap(cu,mM2).bnd(refresh);     
+        } 
+      }
         `}
         </Markdown>
       </div>
@@ -2274,150 +2295,52 @@ increment = () => {
         <Bench2 />
       </button>
 <p>On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn't significantly affect performance in applications involving monad chaining without loops. Besides, loops would ordinarily work on values, and not the monads where the values would eventually be incorporated. Chrome on my machine is more loaded with features down than Firefox, so not much can be learned from the comparrison. It is interesting that Firefox computed subsequent runs much faster than the first.</p>
-<p>This repository also provides bnd and fmap functions similar to the bnd and fmap monad methods. They are defined as follows: </p>
-<ComponentFmap />
+<p>Some functional purists, and perhaps others, prefer to use functions over using methods bound to objects (monads in this case). This repository provides stand-alone bnd and fmap functions similar to the bnd and fmap monad methods. Instead of extracting the value of the monad that calls bnd, the stand-lone bnd() function must be provided with a monad from which to extract a value. bnd and fmap are defined as follows: </p>
+<ComponentFmapBnd />
+<p>cu, ad, and add are defined as follows: </p>
+<ComponentFmap2 />
 <p>Here is bnd in action:</p>
 
 <p>  </p>
-      <button style={this.bool2 ? this.style1 : this.style2 } 
-   onClick={() => {bnd(add,mM1,5).bnd(refresh) }}  
-   onMouseEnter={ () => this.cT2() }
-   onMouseLeave={ () => this.cF2() }
+      <button style={this.bool4 ? this.style1 : this.style2 } 
+   onClick={() => {bnd(add,mM1,5).bnd(cube).bnd(refresh) }}  
+   onMouseEnter={ () => this.cT4() }
+   onMouseLeave={ () => this.cF4() }
         >
-   bnd(add, mM1, 5).bnd(refresh)  
+   bnd(add, mM1, 5).bnd(cube).bnd(refresh)  
       </button>
       <p>   </p>
-<p> Next, we run the fmap function twice. </p>
-      <button style={this.bool2 ? this.style1 : this.style2 } 
+<p> Next, we run the fmap function three separate times. </p>
+      <button style={this.bool5 ? this.style1 : this.style2 } 
    onClick={() => {
-     fmap(ad,mM2,3)
+     fmap(x => x * 0, mM2);
+     fmap(x => x + 3, mM2);
      fmap(cu,mM2).bnd(refresh);
-        } }
-   onMouseEnter={ () => this.cT2() }
-   onMouseLeave={ () => this.cF2() }
+     } 
+   }
+   onMouseEnter={ () => this.cT5() }
+   onMouseLeave={ () => this.cF5() }
         >
-     fmap(ad,mM2,3)<br />
-     fmap(cu,mM2).bnd(refresh);
+        <ComponentFmap3 />
       </button>
-<p>cu, ad, and add are defined as follows: </p>
-<ComponentFmap2 />
-      <button style={this.bool3 ? this.style1 : this.style2 } 
+      <p>    </p>
+      <button style={this.bool1 ? this.style1 : this.style2 } 
    onClick={() => {
      mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh)
         } }
-   onMouseEnter={ () => this.cT3() }
-   onMouseLeave={ () => this.cF3() }
+   onMouseEnter={ () => this.cT1() }
+   onMouseLeave={ () => this.cF1() }
         >
         REFRESH
       </button>
 
 <p>   </p>
-      <button style={this.bool4 ? this.style1 : this.style2 } 
-   onClick={() => {
-     fmap(ad,mM3,3)
-     .fmap(cu,mM3).bnd(refresh);
-        } }
-   onMouseEnter={ () => this.cT4() }
-   onMouseLeave={ () => this.cF4() }
-        >
-     fmap(ad,mM3,3)<br />
-     .fmap(cu).bnd(refresh);
-      </button>
-<p>The only difference is the addition of a dot in front of the second call to fmap, and since the fmap method uses the calling method's value by default, we were able to write ".fmap(cu)" instead of ".fmap(cu,mM3)". Here is another example: </p>
-      <button style={this.bool5 ? this.style1 : this.style2 } 
-   onClick={() => {
-     mM4.fmap(ad,mM5,5)
-     .fmap(ad,mM6,3)
-     .fmap(cu)
-     .fmap(ad,mM5,1)
-     .fmap(cu)
-     .fmap(ad,mM4,(mM6.x + 1000))
-     .bnd(refresh)
-        } }
-   onMouseEnter={ () => this.cT5() }
-   onMouseLeave={ () => this.cF5() }
-        >
-     mM4.fmap(ad0,mM5,5) <br />
-     .fmap(ad,mM6,3) <br />
-     .fmap(cu) <br />
-     .fmap(ad,mM5,1) <br />
-     .fmap(cu) <br />
-     .fmap(ad,mM4,(mM6.x + 1000)) <br />
-     .bnd(refresh) <br />
-      </button>
-<p>mM4 gets the ball rolling by adding 5 to the value of mM5. At that point, mM5 takes control and mM4 remains abaandoned until the end of the chain where it it takes the value of mM6 (mM6.x) and adds 1000. In the second line, control is handed over to mM6 which gets its value increased by 3 and then cubed in line '3'. In line 4, mM5's value is incremented by 1 and cubed. Finally, mM4 gets mM6's value and inceases it by 1000. </p>
-<p>Creating and updating branches with fmap is simple, but sometimes we will need better control over the order of execution. In the previous example, we are confident that lines '2' and '3' have been executed (updating mM6) before line '6' where mM4 takes the value of mM6 and adds 1000 to it. If lines '2' and '3' had involved websocket messages, an ajax call, or interaction with a database, line '6' would likely have been executed using the original value of mM6.</p>
-<p>Instances of MonadSeq provide a way to control the order of execution. Here is the definition of MonadSeq:</p>
-<ComponentMonadSeq />
-<p> and here are the functions that control the order of execution: </p>
-<ComponentMonadSeq2 />
-<br />
-      <button style={this.bool1 ? this.style1 : this.style2 } 
-        onClick={() => mMS1
-        .ret('one')
-        .bnd(refresh)
-        .bnd((a) => setTimeout(function() {
-        mMS2.ret('two')
-        .bnd(() => {mM1.bnd(block,mMS1)
-                  .bnd(() => mMS1
-                  .bnd(() => console.log( 'Side chain moving forward'))
-                  .ret('First branch complete')
-                  .bnd(refresh)).bnd(() => {setTimeout(function() {   
-                 mMS2.ret('First')
-                  .bnd(refresh)
-                  .bnd(a => {setTimeout(function() {
-                 mMS3.ret('Second')
-                  .bnd(refresh)
-                  .bnd(b => {setTimeout(function() {
-                 mMS4.ret('Third')
-                  .bnd(refresh)
-                  .bnd(c => {setTimeout(function() {
-                 mMS5.ret('Fourth')
-                  .bnd(refresh)
-                  .bnd(d => {setTimeout(function() {
-                 mMS6.ret('Done').bnd(() => mMS1
-                  .ret('Second branch complete'))
-                  .bnd(refresh)
-                    },1000 )})
-                    },1000 )})
-                    },1000 )})
-                    },1000 )})
-                    },1000 )})
-                })
-        .bnd(refresh)
-        .bnd(b => { setTimeout(function() {
-        mMS3.ret('three')
-        .bnd(refresh)
-        .bnd(c => { setTimeout(function() {
-        mMS4.ret('four')
-        .bnd(refresh)
-        .bnd(d => { setTimeout(function() {
-        mMS5.ret('five')
-        .bnd(refresh)
-        .bnd(e => { setTimeout(function() {
-        mM1.bnd(release,mMS1)
-        mM1.bnd(release,mMS2)
-        mM1.bnd(release,mMS3)
-        mMS6.ret([a,' ',b,' ',c,' ',d,' ',e])
-        .bnd(refresh)
-        },1000 )})
-        },1000 )})
-        },1000 )})
-        },1000 )})
-        },1000 ))
-          }
-           onMouseEnter={ () => this.cT1() }
-           onMouseLeave={ () => this.cF1() }
-                >
-         <ComponentMonadSeq3 />
-           </button>
-<p>The branch beginning after "mMS2.ret('two')" is bypassed (because of the command "mM1.bnd(block,mMS1") until after "mMS5.ret('five')", where the command "mM1.bnd(release,mMS1)" releases monad mMS1, thereby allowing the side branch to begin proceeding along its execution path.  </p>
-<p>That was the automatic method. It works, but it drains memory and processor power while blocked computations loop. It is also a potential source of memory leaks. The garbage collector would not notice a perpetually looping blocked computation that a coder forgot to release. </p> 
-<p> The class MonadIter provides exact control over branched chains without looping. Here is the code: </p>
+<h2> MonadIter - Control the Order of Execution </h2>
+<p> The class MonadIter provides exact control over sequencing and timing of monad actions. And as one of the examples shows, MonadIter provides a way to iterate one step at a time through a sequence of monad actions. Here is the code: </p>
   <ComponentIter1 />
 <p>Here are are some instances of MonadIter in action: </p>
 
-      <button style={this.bool1 ? this.style1 : this.style2 } 
+      <button style={this.bool2 ? this.style1 : this.style2 } 
         onClick={() => mMI1
         .ret('one')
         .bnd(refresh)
@@ -2470,14 +2393,14 @@ increment = () => {
         },1000 )})
         },1000 )})
         },1000 ))}
-           onMouseEnter={ () => this.cT1() }
-           onMouseLeave={ () => this.cF1() }
+           onMouseEnter={ () => this.cT2() }
+           onMouseLeave={ () => this.cF2() }
                 >
          <ComponentIter2 />
            </button>
 <p> The above code is wasteful in that only mMI1 needs to be an instance of MonadIter. The others could be simple monads. Here is a variation on the example using simple monads: </p>
 
-      <button style={this.bool1 ? this.style1 : this.style2 } 
+      <button style={this.bool3 ? this.style1 : this.style2 } 
         onClick={() => {mM1.bnd(() => {setTimeout(function() {
         mM2.ret(0).bnd(mMI1.ret).bnd(mM3.ret).bnd(mM4.ret)
         .bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)
@@ -2534,13 +2457,13 @@ increment = () => {
         },1000 )})
         },1000 )}))  
         },100 )}) }}
-           onMouseEnter={ () => this.cT1() }
-           onMouseLeave={ () => this.cF1() }
+           onMouseEnter={ () => this.cT3() }
+           onMouseLeave={ () => this.cF3() }
                 >
          <ComponentIter3 />
            </button>
 <p>Next we use mMI1.block() to pause execution of the side branch, but we remove mMI1 from the code and place it under the NEXT button.  </p>
-      <button style={this.bool2 ? this.style1 : this.style2 } 
+      <button style={this.bool4 ? this.style1 : this.style2 } 
         onClick={() => {mM1.bnd(() => {setTimeout(function() {
         mM2.ret(0).bnd(mMI1.ret).bnd(mM3.ret).bnd(mM4.ret)
         .bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret)
@@ -2606,14 +2529,14 @@ increment = () => {
         onClick={() => {
            mMI1.release()  
          }} 
-           onMouseEnter={ () => this.cT2() }
-           onMouseLeave={ () => this.cF2() }
+           onMouseEnter={ () => this.cT4() }
+           onMouseLeave={ () => this.cF4() }
                 >
                 NEXT
            </button>
 <p>Click the button below to start iterating through a sequence of commands.  </p>
 
-      <button style={this.bool2 ? this.style1 : this.style2 } 
+      <button style={this.bool5 ? this.style1 : this.style2 } 
         onClick={() => {
         mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret)
         .bnd(() => mM1.ret('Click the mMI2.release() button to proceed')
@@ -2627,25 +2550,22 @@ increment = () => {
         .bnd(() => mMI2.block()
         .bnd(() => mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(refresh)
          )))))))))       }} 
-           onMouseEnter={ () => this.cT2() }
-           onMouseLeave={ () => this.cF2() }
+           onMouseEnter={ () => this.cT5() }
+           onMouseLeave={ () => this.cF5() }
                 >
                 <ComponentNEXT1 />
            </button>
            
 <p>Now click the next button four times to journey through the sequence. </p>
-      <button style={this.bool2 ? this.style1 : this.style2 } 
+      <button style={this.bool1 ? this.style1 : this.style2 } 
         onClick={() => {
            mMI2.release()  
          }} 
-           onMouseEnter={ () => this.cT2() }
-           onMouseLeave={ () => this.cF2() }
+           onMouseEnter={ () => this.cT1() }
+           onMouseLeave={ () => this.cF1() }
                 >
                 <ComponentNEXT2 />
            </button>
-<h2>Reactive Monads</h2>
-<p>The monads defined in this project are reactive by default. There is no need to define event listeners, change handlers, etc. The essentials are already built in.  </p>
-<p> The display on the right shows the current values of m.x for the listed monads 'm'. When the examples cause changes to m.x, the display immediately shows the new value.  </p>
 
 <p>Making an instantaneously responsive text box requires very little code. Here it is:  </p>
 <ComponentBox />
@@ -2685,14 +2605,15 @@ onChange={e => {mM8.ret(e.target.value).bnd(refresh) }}
 
 <p>When the text in the box is the same as the current value, render() is not executed. The counter below increments on each render, verifying this resource-saving feature. </p>
 DOM render number {VAL}
-<p> These monads aren't inherently reactive. The instantaneous updates of the browser page is accomplished by the use (or should I say "misuse") of React.This presentation isn't about React, which is just a convenience for displaying monad values. In some applications, it might be advantageous to make the monads into React components, or perhaps include them in the React state object. That would be for another day. </p>
+<p> These monads aren't inherently reactive. The instantaneous updates of the browser page is accomplished by the use (or should I say "misuse") of React.This presentation isn't about React, which is just a convenience for displaying monad values. In some applications, it might be advantageous to make the monads into React components, or perhaps include them in the React state object. That would be for another day. For now, I use React.forceUpdate() whenever I want to refresh the browser display, and keep the monads outside of the React re-render mechanism. </p>
+  
    <h2> Ordinary Functions </h2>
 <p>m.fmap(func), where m is a monad and func is an ordinary mathematical function, returns the monad m with value func(v), where v is the original value of m. But m.bnd(func) returns the number func(val) where val is the value of m, both before and after the operation. Here is an example that places the value of a computation in mM2. </p>
 
-      <button style={this.bool1 ? this.style1 : this.style2 } 
+      <button style={this.bool5 ? this.style1 : this.style2 } 
         onClick={() => {mM2.ret(mM1.ret(3).bnd((x => (x+x + x*x*x) - 32*x))).bnd(refresh) }}
-           onMouseEnter={ () => this.cT1() }
-           onMouseLeave={ () => this.cF1() }
+           onMouseEnter={ () => this.cT5() }
+           onMouseLeave={ () => this.cF5() }
                 >
                 <ComponentCompute />
            </button>

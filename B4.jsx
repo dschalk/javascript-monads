@@ -2284,7 +2284,7 @@ increment = () => {
    onMouseEnter={ () => this.cT2() }
    onMouseLeave={ () => this.cF2() }
         >
-   bnd(add,mM2,5).bnd(refresh)  
+   bnd(add, mM1, 5).bnd(refresh)  
       </button>
       <p>   </p>
 <p> Next, we run the fmap function twice. </p>
@@ -2707,7 +2707,7 @@ DOM render number {VAL}
            </button>
 <p>  </p>
       <button style={this.bool3 ? this.style1 : this.style2 } 
-        onClick={() => {mM1.ret(0).bnd(mM2.ret).bnd(refresh) }}
+        onClick={() => {mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(refresh) }}
            onMouseEnter={ () => this.cT3() }
            onMouseLeave={ () => this.cF3() }
                 >

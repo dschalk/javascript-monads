@@ -2019,7 +2019,7 @@
 	                return _this4.cF2();
 	              }
 	            },
-	            'bnd(add,mM2,5).bnd(refresh)'
+	            'bnd(add, mM1, 5).bnd(refresh)'
 	          ),
 	          _react2['default'].createElement(
 	            'p',
@@ -2688,7 +2688,7 @@
 	            'button',
 	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
-	                mM1.ret(0).bnd(mM2.ret).bnd(refresh);
+	                mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(refresh);
 	              },
 	              onMouseEnter: function () {
 	                return _this4.cT3();

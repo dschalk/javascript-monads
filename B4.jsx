@@ -2012,7 +2012,7 @@ increment = () => {
 
 <div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 20 }} >
 <h2 style={{textAlign: 'center'}} >Javascript Monads</h2>
-<p>The monads in this demonstration are instances of the following class: </p>
+<p>The monads in the first part of this demonstration are instances of the following class: </p>
 <ComponentMonad />
 <p>Monads can be instantiated with entities of any Javascript type, and the type of a monad's value can change. I won't go into detail about the category of monads. Its morphisms are accomplished by the monad methods "bnd" and "ret" in combination with functions such as those presented below. I'll only demonstrate, without formal proof, that "ret" is the left and right identity, and that the commutative property holds for chains of 'bnd' computations; i.e., the order of evaluation of monads in a chain does not affect the final result.</p>
 <p> First, let's see how these monads work. Trivially, they can provide a format for organizing code, as the following example demonstates. Here's the function "chance":</p>

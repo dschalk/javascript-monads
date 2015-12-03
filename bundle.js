@@ -1506,7 +1506,7 @@
 	      var VAL = _this4.VAL;
 	      return _react2['default'].createElement(
 	        'div',
-	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 18 } },
+	        { style: { backgroundColor: '#000', height: '100%', width: '100%', color: '#FFE4C4', fontSize: 18, marginTop: 20 } },
 	        _react2['default'].createElement('br', null),
 	        _react2['default'].createElement('br', null),
 	        _react2['default'].createElement(

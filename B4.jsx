@@ -2007,7 +2007,7 @@ increment = () => {
     let release = this.release;
     let VAL = this.VAL;
     return(
-      <div style={{ backgroundColor: '#000', height: '100%' , width: '100%', color: '#FFE4C4', fontSize: 18 }}>
+      <div style={{ backgroundColor: '#000', height: '100%' , width: '100%', color: '#FFE4C4', fontSize: 18, marginTop: 20 }}>
         <br /><br />
 
 <div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 20 }} >

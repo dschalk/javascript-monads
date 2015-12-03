@@ -2653,7 +2653,8 @@ DOM render number {VAL}
 
 
 </div>
-<div style={{ width: '30%', fontSize: 18, position: 'fixed', top: 20, right: 15}}  >
+<div style={{ width: '30%', fontSize: 18, position: 'fixed', top: 0, right: 15}}  >
+   <div style={{height: 40}} />
    <span> Monad mM1.x: <button  style={this.style3} >{mM1.x}</button> </span> <br />
    <span> Monad mM2.x: <button  style={this.style3} >{mM2.x}</button> </span> <br />
    <span> Monad mM3.x: <button  style={this.style3} >{mM3.x}</button> </span> <br />

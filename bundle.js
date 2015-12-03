@@ -1520,7 +1520,7 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'The monads in this demonstration are instances of the following class: '
+	            'The monads in the first part of this demonstration are instances of the following class: '
 	          ),
 	          _react2['default'].createElement(ComponentMonad, null),
 	          _react2['default'].createElement(

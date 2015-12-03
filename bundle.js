@@ -2592,7 +2592,8 @@
 	        ),
 	        _react2['default'].createElement(
 	          'div',
-	          { style: { width: '30%', fontSize: 18, position: 'fixed', top: 20, right: 15 } },
+	          { style: { width: '30%', fontSize: 18, position: 'fixed', top: 0, right: 15 } },
+	          _react2['default'].createElement('div', { style: { height: 40 } }),
 	          _react2['default'].createElement(
 	            'span',
 	            null,

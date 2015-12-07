@@ -22,7 +22,7 @@ var ComponentBlank = React.createClass({
 var ComponentMonad = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       class Monad {
@@ -57,7 +57,7 @@ var ComponentMonad = React.createClass({
 var ComponentChanceA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
 			chance = (x,mon) => {
@@ -89,7 +89,7 @@ var ComponentChanceA = React.createClass({
 var ComponentChanceB = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
 onClick={() => {mM1
@@ -106,7 +106,7 @@ onClick={() => {mM1
 var ComponentRet = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
 		 onClick={() => {mM1	
@@ -129,7 +129,7 @@ var ComponentRet = React.createClass({
 var ComponentMorphismsA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
 			refresh = (x,mon) => {
@@ -177,7 +177,7 @@ var ComponentMorphismsA = React.createClass({
 var ComponentAddA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
 onClick={() => {mM1.ret(3).bnd(add,4).bnd(refresh)  }}
@@ -192,7 +192,7 @@ onClick={() => {mM1.ret(3).bnd(add,4).bnd(refresh)  }}
 var ComponentLambdaA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
 			onClick={() => mM1
@@ -212,7 +212,7 @@ var ComponentLambdaA = React.createClass({
 var ComponentLambdaB = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => {mM1
@@ -238,7 +238,7 @@ var ComponentLambdaB = React.createClass({
 var ComponentLambdaC = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
 			onClick={() => {mM1
@@ -258,7 +258,7 @@ var ComponentLambdaC = React.createClass({
 var ComponentLambdaD = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
 			onClick={() => mM1
@@ -278,7 +278,7 @@ var ComponentLambdaD = React.createClass({
 var ComponentRandom = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       ran = (x,mon) => {
@@ -296,7 +296,7 @@ var ComponentRandom = React.createClass({
 var ComponentChanceD = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       ch = (x,mon,a,b,c) => {
@@ -322,7 +322,7 @@ var ComponentChanceD = React.createClass({
 var ComponentChanceE = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
     onClick={() => mM1
@@ -345,7 +345,7 @@ var ComponentChanceE = React.createClass({
 var ComponentBranchA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
        branch = (x,mon,a) => {     
@@ -362,7 +362,7 @@ var ComponentBranchA = React.createClass({
 var ComponentJackpotA = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
        jackpot = (x,mon) => {
@@ -387,7 +387,7 @@ var ComponentJackpotA = React.createClass({
 var ComponentJackpotB = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => mM1
@@ -422,7 +422,7 @@ var ComponentJackpotB = React.createClass({
 var ComponentHypotenuse = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => mM1
@@ -460,7 +460,7 @@ var ComponentHypotenuse = React.createClass({
 var ComponentCube = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
        cube = (x,mon) => {     
@@ -478,7 +478,7 @@ var ComponentCube = React.createClass({
 var ComponentBnd = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       let bnd = (f, mon, ...args) => {
@@ -494,7 +494,7 @@ var ComponentBnd = React.createClass({
 var ComponentFmap = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       let fmap = (f, mon, ...args) => {     
@@ -511,7 +511,7 @@ var ComponentFmap = React.createClass({
 var ComponentAdd = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       add = (x,mon,y) => {    
@@ -532,9 +532,6 @@ var ComponentDiscussion = React.createClass({
       <div style={{fontSize: 18, color: 'burlywood' }} >
         <Markdown>
         {`
-Some Observations About Monads
-----------------------
-
   First, I want to point out that I haven't proven that these creations are monads in the Category Theory sense. The functions mapping values to monads can have all sorts of side effects, so I would begin a proof by looking only at the functions that do nothing other than map values to monads. I don't plan to go down that road any time soon, but  I will show that "ret" is the left and right identity on monads, and that the order of evaluation of segments in chains does not affect the result. Those are the Haskell monad laws, and it is reassuring to see that they apply here. 
 
   The Monad constructor will accept a value of any type and of any degree of
@@ -597,7 +594,7 @@ demonstrations:
 var Bench1 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       bench = (x,mon) => {
@@ -621,7 +618,7 @@ var Bench1 = React.createClass({
 var Bench2 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       bench2 = () => {
@@ -646,7 +643,7 @@ var Bench2 = React.createClass({
 var ComponentFmap1 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={
@@ -681,7 +678,7 @@ var ComponentFmap1 = React.createClass({
 var ComponentAdd = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       add = (x,mon,y) => {    
@@ -698,7 +695,7 @@ var ComponentAdd = React.createClass({
 var ComponentFmapBnd = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       let fmap = (f, mon, ...args) => {    
@@ -720,7 +717,7 @@ var ComponentFmapBnd = React.createClass({
 var ComponentFmap2 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       cu = x => x*x*x;
@@ -741,7 +738,7 @@ var ComponentFmap2 = React.createClass({
 var ComponentBench3 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => {mM2
@@ -766,7 +763,7 @@ var ComponentBench3 = React.createClass({
 var ComponentBench4 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => {mM2
@@ -793,7 +790,7 @@ var ComponentBench4 = React.createClass({
 var ComponentMonadSeq = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
        class MonadSeq {
@@ -870,7 +867,7 @@ var ComponentMonadSeq = React.createClass({
 var ComponentMonadSeq2 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFFF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       block = (x,mon,mon2) => {
@@ -958,7 +955,7 @@ var ComponentMonadSeq3 = React.createClass({
 var ComponentLog = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
         `}
@@ -971,7 +968,7 @@ var ComponentLog = React.createClass({
  var ComponentIter1 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00DFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
        class MonadIter {
@@ -1057,7 +1054,7 @@ var ComponentLog = React.createClass({
 var ComponentIter2 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => mMI1
@@ -1122,7 +1119,7 @@ var ComponentIter2 = React.createClass({
 var ComponentIter3 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => {mM1.bnd(() => {setTimeout(function() {
@@ -1191,7 +1188,7 @@ var ComponentIter3 = React.createClass({
 var ComponentBlock = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       .bnd(() => {mMI1.block()
@@ -1206,7 +1203,7 @@ var ComponentBlock = React.createClass({
 var ComponentNEXT1 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => {
@@ -1233,7 +1230,7 @@ var ComponentNEXT1 = React.createClass({
 var ComponentNEXT2 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => {
@@ -1249,7 +1246,7 @@ var ComponentNEXT2 = React.createClass({
 var ComponentBox = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       <input style={{height: 25, backgroundColor: '#d8d17d'}}  
@@ -1265,7 +1262,7 @@ var ComponentBox = React.createClass({
 var ComponentBox2 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       <input style={{height: 25, backgroundColor: '#d8d17d'}}   
@@ -1318,7 +1315,7 @@ var ComponentFRP2 = React.createClass({
 var ComponentCompute = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
  onClick={() => {mM2.ret(mM1.ret(3).bnd((x => (x+x + x*x*x) - 32*x))) }} 
@@ -1332,7 +1329,7 @@ var ComponentCompute = React.createClass({
 var ComponentCompute2 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
  onClick={() => {mM1.ret(3).fmap((x => (x+x + x*x*x) - 32*x)) }} 
@@ -1346,7 +1343,7 @@ var ComponentCompute2 = React.createClass({
 var ComponentCompute3 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
  onClick={() => {mM2.ret(mM1.bnd(() => {return [mM1, mM2, mM3]})).fmap(x => x.map(a => a.ret(888).x)) }} 
@@ -1360,7 +1357,7 @@ var ComponentCompute3 = React.createClass({
 var ComponentFmap3 = React.createClass({
   render: function() {
     return (
-      <div style={{fontSize: 18, color: '#00FFCF' }} >
+      <div style={{fontSize: 18, color: '#CCFDCB' }} >
         <Markdown>
         {`
       onClick={() => {
@@ -1375,12 +1372,6 @@ var ComponentFmap3 = React.createClass({
     );
   }
 })
-
-
-
-
-
-
 
   class Monad {
     constructor(z) {
@@ -1406,8 +1397,6 @@ var ComponentFmap3 = React.createClass({
 
   var mM11 = new Monad(0);
   var mM12 = new Monad(0);
-  
-
 
   var MFLAG = false;
 
@@ -1468,73 +1457,6 @@ var ComponentFmap3 = React.createClass({
     }
   };
     
-  /*class MonadSeq {
-    constructor(z,g) {
-
-      this.x = z;
-      this.id = g;
-
-      this.flag = false;
-
-      this.bnd = (func, ...args) => {
-        let self = this;
-        let fun = func;
-        (function retry(func, ...args) {
-          if (self.flag === false) {
-            console.log('Hello from bnd ', self.id, self.x, self.flag);
-            return fun(self.x, self, ...args);
-          }
-          if (self.flag === true) {
-            setTimeout( function() {
-              console.log('bnd retry', self.id, self.x, self.flag);
-              retry(fun, ...args); 
-            },200  ); 
-          }
-        })();
-        console.log('Now leaving bnd ', self.id, self.x, self.flag);
-        return this;
-      }
-
-      this.fmap = (f, mon = this, ...args) => {      
-        let self = this;
-        (function retry() {
-          if (MFLAG === false) {
-            console.log('Hello from fmap');
-            console.log(mon);
-            MFLAG = true;
-            mon.ret(f(mon.x,  ...args));
-          } else {
-            setTimeout( function() {
-              console.log('fmap retry');
-              retry(); 
-            },100  ); 
-          }
-        })();
-        MFLAG = false;
-        return mon;
-      }
-
-
-      this.ret = a => {
-        let self = this;
-        (function retry() {
-          if (self.flag === false) {
-            console.log('Hello from ret ', self.id, self.x, self.flag);
-            self.x = a;
-          } else {
-            setTimeout( function() {
-              console.log('ret retry',self.id, self.x, self.flag);
-              retry(); 
-            },100  ); 
-          }
-        })();
-        console.log('Now leaving ret ', self.id, self.x, self.flag);
-        return this;
-      }
-    }
-  };
-*/
-
   let fmap = (f,mon, ...args) => {
     let v = mon.x;
     mon.ret(f(v, ...args));
@@ -1657,7 +1579,7 @@ class B4 extends React.Component {
   this.mMI6 = this.MI(0,'mMI6');
 
   this.style2 = {backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
-  color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
+  color: '#CCFDCB', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
   marginLeft: 12, fontSize: 18 };
   this.style1 = {backgroundColor: 'blue', textAlign: 'left', borderColor: 'lightblue', outline: 0,
   color: 'yellow', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
@@ -1875,32 +1797,6 @@ class B4 extends React.Component {
     return mon;
   }
 
-  bench = (x,mon) => {
-    let self = this;
-    let k = 0;
-    let j = 0;
-    let d1 = new Date();
-    for (k; k<1000000; k++) {
-      this.mM1 = new Monad(k);
-    }
-    mon.ret((new Date()) - d1);
-    return mon;
-  }
-
-  bench2 = () => {
-    let self = this;
-    let k = 0;
-    let j = 0;
-    let d1 = new Date();
-    for (k; k<1000000; k++) {
-      this.mM2.ret(k);
-    }
-    this.resBench2 = ((new Date()) - d1);
-    setTimeout( function() {
-      self.forceUpdate();
-    },12 )
-  }
-
   cu = x => x*x*x;
   sq = x => x*x;
   du = x => x*x;
@@ -1931,28 +1827,11 @@ class B4 extends React.Component {
     .fmap(this.cu).fmap(this.id,this.mMS3).bnd(this.add,this.mMS2.x + 1000);
   }
 
-// function delay(time) {
 delay = (x,mon) => {
     return new Promise( function(resolve,reject){
         setTimeout( resolve, 2000 );
     } );
 }
-
-
-
-
-/*
-.then( function STEP3(){
-    console.log( "step 3 (after another 2000ms)" );
-} )
-.then( function STEP4(){
-    console.log( "step 4 (next Job)" );
-    return delay( 2000 );
-} )
-.then( function STEP5(){
-    console.log( "step 5 (after another 2000ms)" );
-} )
-*/
 
 increment = () => {
   this.VAL = this.VAL + 1;
@@ -2011,7 +1890,7 @@ increment = () => {
         <br /><br />
 
 <div style={{ width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 20 }} >
-<h2 style={{textAlign: 'center'}} >Javascript Monads</h2>
+<h1 style={{textAlign: 'center', color: '#ffba66'}} >Javascript Monads</h1>
 <p>The monads in the first part of this demonstration are instances of the following class: </p>
 <ComponentMonad />
 <p>Monads can be instantiated with entities of any Javascript type, and the type of a monad's value can change. I won't go into detail about the category of monads. Its morphisms are accomplished by the monad methods "bnd" and "ret" in combination with functions such as those presented below. I'll only demonstrate, without formal proof, that "ret" is the left and right identity, and that the commutative property holds for chains of 'bnd' computations; i.e., the order of evaluation of monads in a chain does not affect the final result.</p>
@@ -2028,7 +1907,7 @@ increment = () => {
         >
    <ComponentChanceB />
       </button>
-  <p>From the definition of primitive monads, you can see that the monad which calls "ret" is the return value of "ret". Next, we demonstrate this by chaining calls to "ret" and "square" in order to provide succeeding squares of the number "2" to the four display monads.</p>
+  <p>From the definition of primitive monads, you can see that the monad which calls "ret" is the return value of "ret". Next, we demonstrate this by chaining calls to "ret" and "square". The results are placed in mM2, mM3, and mM4 and shown on the right.</p>
 
       <button style={this.bool2 ? this.style1 : this.style2 } 
    onClick={() => {mM1.ret(2)
@@ -2210,6 +2089,8 @@ increment = () => {
    <p></p>
    
    <p> Is this fun, or what? </p>
+<h2 style={{textAlign: 'center', color: '#ffba66A'}} >Some Observations About Monads</h2>
+
    <ComponentDiscussion />
 <br />
   <button style={this.bool4 ? this.style1 : this.style2 } 
@@ -2230,71 +2111,17 @@ increment = () => {
    </button>
 
 <br /><br />
-  <button style={this.bool1 ? this.style1 : this.style2 } 
+  <button style={this.bool3 ? this.style1 : this.style2 } 
     onClick={() => mM3.bnd(a => add(a, mM3, 2).bnd(cube)).bnd(refresh) }
-   onMouseEnter={ () => this.cT1() }
-   onMouseLeave={ () => this.cF1() }
+   onMouseEnter={ () => this.cT3() }
+   onMouseLeave={ () => this.cF3() }
         >
     mM3.bnd(a => add(a, mM3, 2).bnd(cube,mM3)) 
    </button>
 
 <p>When add was an argument of bnd, it was provided with the calling monad's value and "this", which was the calling monad. Since bnd didn't provide these arguments, we did. add is defined as a function of three arguments. Notice we didn't have to specify the value of a. bnd saw to it that mM3's value was assigned to a. The point is that the order of evaluation of links in a monad chain does not matter. In the example, we called bnd on f and used the result to call bnd on g, then we called bnd on the composit function and got the same answer, as expected.</p>
 
-<p>  </p>
-<h2>Comparing Elapsed Times For Changing Monad Values</h2>
-<p>Next, we compare the time it takes to create one million new monads with the time it takes to update the value of a monad a million times. Here is the first function we use, called "bench":  </p>
-<Bench1 />
-<p>Click below to run bench five times. The results in microseconds appear on the right after several seconds.  </p>
-      <button style={this.bool2 ? this.style1 : this.style2 } 
-   onClick={() => {mM2
-        .bnd(bench)
-        .bnd(mM3.ret)
-        .bnd(bench)
-        .bnd(mM4.ret)
-        .bnd(bench)
-        .bnd(mM5.ret)
-        .bnd(bench)
-        .bnd(mM6.ret)
-        .bnd(bench)
-        .bnd(refresh)
-    } }
-   onMouseEnter={ () => this.cT2() }
-   onMouseLeave={ () => this.cF2() }
-        >
-        <ComponentBench3 />
-      </button>
-<p>Each subsequent call to bench waited for the previous call to finish. There was no need for promises or iterators. Next, we will run bench five times again only this time we also compute the average. The average will be in monad mM7.   </p>
-      <button style={this.bool2 ? this.style1 : this.style2 } 
-   onClick={() => {mM2
-    .bnd(bench)
-    .bnd(a => mM3
-      .bnd(bench)
-      .bnd(b => mM4
-        .bnd(bench)
-        .bnd(c => mM5
-          .bnd(bench)
-          .bnd(d => mM6
-            .bnd(bench)
-            .bnd(e => mM7
-              .ret((a+b+c+d+e)/5)
-              .bnd(refresh) ))))) 
-   }}
-   onMouseEnter={ () => this.cT2() }
-   onMouseLeave={ () => this.cF2() }
-        >
-         <ComponentBench4 />
-      </button>
-<p>  </p>
-<h2 >Re-use a monad 1,000,000 times:<span style={{color: 'lightblue' }} >  {this.resBench2} </span> ms</h2>
-<p>  </p>
-      <button style={this.bool3 ? this.style1 : this.style2 } 
-   onClick={() => {this.bench2()}  }
-   onMouseEnter={ () => this.cT3() }
-   onMouseLeave={ () => this.cF3() }
-        >
-        <Bench2 />
-      </button>
-<p>On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn't significantly affect performance in applications involving monad chaining without loops. Besides, loops would ordinarily work on values, and not the monads where the values would eventually be incorporated. Chrome on my machine is more loaded with features down than Firefox, so not much can be learned from the comparrison. It is interesting that Firefox computed subsequent runs much faster than the first.</p>
+
 <p>Some functional purists, and perhaps others, prefer to use functions over using methods bound to objects (monads in this case). This repository provides stand-alone bnd and fmap functions similar to the bnd and fmap monad methods. Instead of extracting the value of the monad that calls bnd, the stand-lone bnd() function must be provided with a monad from which to extract a value. bnd and fmap are defined as follows: </p>
 <ComponentFmapBnd />
 <p>cu, ad, and add are defined as follows: </p>
@@ -2335,7 +2162,7 @@ increment = () => {
       </button>
 
 <p>   </p>
-<h2> MonadIter - Control the Order of Execution </h2>
+<h2 style={{textAlign: 'center', color: '#ffba66A'}} >MonadIter - Control the Order of Execution</h2>
 <p> The class MonadIter provides exact control over sequencing and timing of monad actions. And as one of the examples shows, MonadIter provides a way to iterate one step at a time through a sequence of monad actions. Here is the code: </p>
   <ComponentIter1 />
 <p>Here are are some instances of MonadIter in action: </p>
@@ -2607,7 +2434,7 @@ onChange={e => {mM8.ret(e.target.value).bnd(refresh) }}
 DOM render number {VAL}
 <p> These monads aren't inherently reactive. The instantaneous updates of the browser page is accomplished by the use (or should I say "misuse") of React.This presentation isn't about React, which is just a convenience for displaying monad values. In some applications, it might be advantageous to make the monads into React components, or perhaps include them in the React state object. That would be for another day. For now, I use React.forceUpdate() whenever I want to refresh the browser display, and keep the monads outside of the React re-render mechanism. </p>
   
-   <h2> Ordinary Functions </h2>
+<h2 style={{textAlign: 'center', color: '#ffba66'}} >Ordinary Functions</h2>
 <p>m.fmap(func), where m is a monad and func is an ordinary mathematical function, returns the monad m with value func(v), where v is the original value of m. But m.bnd(func) returns the number func(val) where val is the value of m, both before and after the operation. Here is an example that places the value of a computation in mM2. </p>
 
       <button style={this.bool5 ? this.style1 : this.style2 } 
@@ -2680,6 +2507,16 @@ DOM render number {VAL}
    <span> Monad mMI5.x: <button  style={this.style3} >{mMI5.x}</button> </span> <br />
    <span> Monad mMI6.x: <button  style={this.style3} >{mMI6.x}</button> </span> <br />
    <span style={this.style3} >{lg} </span> <br />
+      <p>    </p>
+      <button style={this.bool1 ? this.style1 : this.style2 } 
+   onClick={() => {
+     mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh)
+        } }
+   onMouseEnter={ () => this.cT1() }
+   onMouseLeave={ () => this.cF1() }
+        >
+        REFRESH
+      </button>
 
 </div>
       <br /><br /> 

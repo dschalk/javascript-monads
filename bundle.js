@@ -99,7 +99,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -116,7 +116,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -133,7 +133,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -150,7 +150,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -167,7 +167,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -184,7 +184,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -201,7 +201,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -218,7 +218,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -235,7 +235,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -252,7 +252,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -269,7 +269,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -286,7 +286,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -303,7 +303,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -320,7 +320,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -337,7 +337,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -354,7 +354,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -371,7 +371,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -388,7 +388,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -405,7 +405,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -421,7 +421,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -437,7 +437,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -458,7 +458,7 @@
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
-	        '\nSome Observations About Monads\n----------------------\n\n  First, I want to point out that I haven\'t proven that these creations are monads in the Category Theory sense. The functions mapping values to monads can have all sorts of side effects, so I would begin a proof by looking only at the functions that do nothing other than map values to monads. I don\'t plan to go down that road any time soon, but  I will show that "ret" is the left and right identity on monads, and that the order of evaluation of segments in chains does not affect the result. Those are the Haskell monad laws, and it is reassuring to see that they apply here. \n\n  The Monad constructor will accept a value of any type and of any degree of\ncomplexity. Monad instances can exchange their values for any other\nvalues, most simply by using the ret method. We will be looking at functions of the form (v,m) => { ... ; return mon; }, where v can be any Javascript value and m can be any monad. These work as stand-alone functions, and they also work as arguments for the monad method \'bnd\', which ignores v and m, substituting its value and itsself for them. \n\n\nExamples:\n\ncube is defined as \n\ncube = (x,mon) => {\n  mon.ret(x\\*x\\*x);\n  return mon;\n};\n\nIt maps x -> x\\*x\\*x -> m, where m has the new value x\\*x\\*x. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). cube takes two argumens, so cube(this.x, this, x, mon  ...args) is, for all practical purposes, the same thing as cube(this.x, this). Therefore, when cube is called with bnd, the calling monad\'s value gets cubed if it is a number and becomes \'NAN\' otherwise.\n\nadd is defined as:\n\nadd = (x,mon,y) => {\n  mon.ret(x + y);\n  return mon;\n}\n\nIt takes two values, x and y, and a monad mon as asarguments, returning \nm with a value of x + y. By the definition of bnd, monad.bnd(add,7) = add(monad.x, monad, 7), which returns m with a\nnew value of m.x + y.\n\nHere are some facts about these monads:\n\n(1) By the definition of ret, we know that for any monad m and value v,\nm.ret(v) maps v to m, giving m the value v. Since m.ret maps values to\nmonads, m.ret is a valid argument for its own or any other monad\'s bnd\nmethod. \n\n(2) m.bnd(m.ret) = m Proof: By definition, m.bnd(m.ret) = m.ret(m.x,\nthis ...args). Since bnd uses only the first argument, the equation is\nequivalent to m.bnd(m.ret) = m.ret(m.x). By definition, m.ret(m.x)\nassigns the value m.x to m and returns m. But m.x already was the value\nof m, So m.bnd(m.ret) returns m unchanged, which is what we set out to\nprove.\n\n(3) m.bnd(f).bnd(g) = m.bnd(a => f(a).bnd(g)), where a is the original value of m.\nWe can prove this by showing that both sides of the equation return g(f(a).x). f is not supplied with any supplemental arguments, so\nm.bnd(f) = f(m.x) = f(a). Now we have m.bnd(f).bnd(g) = (f(a)).bnd(g) By\nthe definition of bnd, (f(a)).bnd(g) = g(f(a).x) since bnd had only one\nargument. This completes the first half of the proof. In the right side\nof the equation, the monad f(a) calls bnd(g). By the definition of bnd,\nf(a).bnd(g) = g(f(a).x) and the proof complete. Here are a couple of\ndemonstrations:\n        '
+	        '\n  First, I want to point out that I haven\'t proven that these creations are monads in the Category Theory sense. The functions mapping values to monads can have all sorts of side effects, so I would begin a proof by looking only at the functions that do nothing other than map values to monads. I don\'t plan to go down that road any time soon, but  I will show that "ret" is the left and right identity on monads, and that the order of evaluation of segments in chains does not affect the result. Those are the Haskell monad laws, and it is reassuring to see that they apply here. \n\n  The Monad constructor will accept a value of any type and of any degree of\ncomplexity. Monad instances can exchange their values for any other\nvalues, most simply by using the ret method. We will be looking at functions of the form (v,m) => { ... ; return mon; }, where v can be any Javascript value and m can be any monad. These work as stand-alone functions, and they also work as arguments for the monad method \'bnd\', which ignores v and m, substituting its value and itsself for them. \n\n\nExamples:\n\ncube is defined as \n\ncube = (x,mon) => {\n  mon.ret(x\\*x\\*x);\n  return mon;\n};\n\nIt maps x -> x\\*x\\*x -> m, where m has the new value x\\*x\\*x. When used with bnd on some monad m, m.bnd(cube) returns cube(this.x, this, x, mon  ...args). cube takes two argumens, so cube(this.x, this, x, mon  ...args) is, for all practical purposes, the same thing as cube(this.x, this). Therefore, when cube is called with bnd, the calling monad\'s value gets cubed if it is a number and becomes \'NAN\' otherwise.\n\nadd is defined as:\n\nadd = (x,mon,y) => {\n  mon.ret(x + y);\n  return mon;\n}\n\nIt takes two values, x and y, and a monad mon as asarguments, returning \nm with a value of x + y. By the definition of bnd, monad.bnd(add,7) = add(monad.x, monad, 7), which returns m with a\nnew value of m.x + y.\n\nHere are some facts about these monads:\n\n(1) By the definition of ret, we know that for any monad m and value v,\nm.ret(v) maps v to m, giving m the value v. Since m.ret maps values to\nmonads, m.ret is a valid argument for its own or any other monad\'s bnd\nmethod. \n\n(2) m.bnd(m.ret) = m Proof: By definition, m.bnd(m.ret) = m.ret(m.x,\nthis ...args). Since bnd uses only the first argument, the equation is\nequivalent to m.bnd(m.ret) = m.ret(m.x). By definition, m.ret(m.x)\nassigns the value m.x to m and returns m. But m.x already was the value\nof m, So m.bnd(m.ret) returns m unchanged, which is what we set out to\nprove.\n\n(3) m.bnd(f).bnd(g) = m.bnd(a => f(a).bnd(g)), where a is the original value of m.\nWe can prove this by showing that both sides of the equation return g(f(a).x). f is not supplied with any supplemental arguments, so\nm.bnd(f) = f(m.x) = f(a). Now we have m.bnd(f).bnd(g) = (f(a)).bnd(g) By\nthe definition of bnd, (f(a)).bnd(g) = g(f(a).x) since bnd had only one\nargument. This completes the first half of the proof. In the right side\nof the equation, the monad f(a) calls bnd(g). By the definition of bnd,\nf(a).bnd(g) = g(f(a).x) and the proof complete. Here are a couple of\ndemonstrations:\n        '
 	      )
 	    );
 	  }
@@ -471,7 +471,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -487,7 +487,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -503,7 +503,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -519,7 +519,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -535,7 +535,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -551,7 +551,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -567,7 +567,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -583,7 +583,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -599,7 +599,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -615,7 +615,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFFF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -647,7 +647,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -663,7 +663,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00DFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -679,7 +679,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -695,7 +695,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -711,7 +711,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -727,7 +727,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -743,7 +743,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -759,7 +759,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -775,7 +775,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -823,7 +823,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -839,7 +839,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -855,7 +855,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -871,7 +871,7 @@
 	  render: function render() {
 	    return _react2['default'].createElement(
 	      'div',
-	      { style: { fontSize: 18, color: '#00FFCF' } },
+	      { style: { fontSize: 18, color: '#CCFDCB' } },
 	      _react2['default'].createElement(
 	        Markdown,
 	        null,
@@ -992,67 +992,6 @@
 	};
 
 	;
-
-	/*class MonadSeq {
-	  constructor(z,g) {
-	     this.x = z;
-	    this.id = g;
-	     this.flag = false;
-	     this.bnd = (func, ...args) => {
-	      let self = this;
-	      let fun = func;
-	      (function retry(func, ...args) {
-	        if (self.flag === false) {
-	          console.log('Hello from bnd ', self.id, self.x, self.flag);
-	          return fun(self.x, self, ...args);
-	        }
-	        if (self.flag === true) {
-	          setTimeout( function() {
-	            console.log('bnd retry', self.id, self.x, self.flag);
-	            retry(fun, ...args); 
-	          },200  ); 
-	        }
-	      })();
-	      console.log('Now leaving bnd ', self.id, self.x, self.flag);
-	      return this;
-	    }
-	     this.fmap = (f, mon = this, ...args) => {      
-	      let self = this;
-	      (function retry() {
-	        if (MFLAG === false) {
-	          console.log('Hello from fmap');
-	          console.log(mon);
-	          MFLAG = true;
-	          mon.ret(f(mon.x,  ...args));
-	        } else {
-	          setTimeout( function() {
-	            console.log('fmap retry');
-	            retry(); 
-	          },100  ); 
-	        }
-	      })();
-	      MFLAG = false;
-	      return mon;
-	    }
-	      this.ret = a => {
-	      let self = this;
-	      (function retry() {
-	        if (self.flag === false) {
-	          console.log('Hello from ret ', self.id, self.x, self.flag);
-	          self.x = a;
-	        } else {
-	          setTimeout( function() {
-	            console.log('ret retry',self.id, self.x, self.flag);
-	            retry(); 
-	          },100  ); 
-	        }
-	      })();
-	      console.log('Now leaving ret ', self.id, self.x, self.flag);
-	      return this;
-	    }
-	  }
-	};
-	*/
 
 	var fmap = function fmap(f, mon) {
 	  for (var _len6 = arguments.length, args = Array(_len6 > 2 ? _len6 - 2 : 0), _key6 = 2; _key6 < _len6; _key6++) {
@@ -1375,32 +1314,6 @@
 	      return mon;
 	    };
 
-	    this.bench = function (x, mon) {
-	      var self = _this4;
-	      var k = 0;
-	      var j = 0;
-	      var d1 = new Date();
-	      for (k; k < 1000000; k++) {
-	        _this4.mM1 = new Monad(k);
-	      }
-	      mon.ret(new Date() - d1);
-	      return mon;
-	    };
-
-	    this.bench2 = function () {
-	      var self = _this4;
-	      var k = 0;
-	      var j = 0;
-	      var d1 = new Date();
-	      for (k; k < 1000000; k++) {
-	        _this4.mM2.ret(k);
-	      }
-	      _this4.resBench2 = new Date() - d1;
-	      setTimeout(function () {
-	        self.forceUpdate();
-	      }, 12);
-	    };
-
 	    this.cu = function (x) {
 	      return x * x * x;
 	    };
@@ -1513,8 +1426,8 @@
 	          'div',
 	          { style: { width: '65%', textAlign: 'left', marginLeft: 40, marginRight: '17%', fontSize: 20 } },
 	          _react2['default'].createElement(
-	            'h2',
-	            { style: { textAlign: 'center' } },
+	            'h1',
+	            { style: { textAlign: 'center', color: '#ffba66' } },
 	            'Javascript Monads'
 	          ),
 	          _react2['default'].createElement(
@@ -1557,7 +1470,7 @@
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'From the definition of primitive monads, you can see that the monad which calls "ret" is the return value of "ret". Next, we demonstrate this by chaining calls to "ret" and "square" in order to provide succeeding squares of the number "2" to the four display monads.'
+	            'From the definition of primitive monads, you can see that the monad which calls "ret" is the return value of "ret". Next, we demonstrate this by chaining calls to "ret" and "square". The results are placed in mM2, mM3, and mM4 and shown on the right.'
 	          ),
 	          _react2['default'].createElement(
 	            'button',
@@ -1838,6 +1751,11 @@
 	            null,
 	            ' Is this fun, or what? '
 	          ),
+	          _react2['default'].createElement(
+	            'h2',
+	            { style: { textAlign: 'center', color: '#ffba66A' } },
+	            'Some Observations About Monads'
+	          ),
 	          _react2['default'].createElement(ComponentDiscussion, null),
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
@@ -1876,120 +1794,11 @@
 	          _react2['default'].createElement('br', null),
 	          _react2['default'].createElement(
 	            'button',
-	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
+	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
 	              onClick: function () {
 	                return mM3.bnd(function (a) {
 	                  return add(a, mM3, 2).bnd(cube);
 	                }).bnd(refresh);
-	              },
-	              onMouseEnter: function () {
-	                return _this4.cT1();
-	              },
-	              onMouseLeave: function () {
-	                return _this4.cF1();
-	              }
-	            },
-	            'mM3.bnd(a => add(a, mM3, 2).bnd(cube,mM3))'
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'When add was an argument of bnd, it was provided with the calling monad\'s value and "this", which was the calling monad. Since bnd didn\'t provide these arguments, we did. add is defined as a function of three arguments. Notice we didn\'t have to specify the value of a. bnd saw to it that mM3\'s value was assigned to a. The point is that the order of evaluation of links in a monad chain does not matter. In the example, we called bnd on f and used the result to call bnd on g, then we called bnd on the composit function and got the same answer, as expected.'
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            '  '
-	          ),
-	          _react2['default'].createElement(
-	            'h2',
-	            null,
-	            'Comparing Elapsed Times For Changing Monad Values'
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'Next, we compare the time it takes to create one million new monads with the time it takes to update the value of a monad a million times. Here is the first function we use, called "bench":  '
-	          ),
-	          _react2['default'].createElement(Bench1, null),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'Click below to run bench five times. The results in microseconds appear on the right after several seconds.  '
-	          ),
-	          _react2['default'].createElement(
-	            'button',
-	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
-	              onClick: function () {
-	                mM2.bnd(bench).bnd(mM3.ret).bnd(bench).bnd(mM4.ret).bnd(bench).bnd(mM5.ret).bnd(bench).bnd(mM6.ret).bnd(bench).bnd(refresh);
-	              },
-	              onMouseEnter: function () {
-	                return _this4.cT2();
-	              },
-	              onMouseLeave: function () {
-	                return _this4.cF2();
-	              }
-	            },
-	            _react2['default'].createElement(ComponentBench3, null)
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            'Each subsequent call to bench waited for the previous call to finish. There was no need for promises or iterators. Next, we will run bench five times again only this time we also compute the average. The average will be in monad mM7.   '
-	          ),
-	          _react2['default'].createElement(
-	            'button',
-	            { style: _this4.bool2 ? _this4.style1 : _this4.style2,
-	              onClick: function () {
-	                mM2.bnd(bench).bnd(function (a) {
-	                  return mM3.bnd(bench).bnd(function (b) {
-	                    return mM4.bnd(bench).bnd(function (c) {
-	                      return mM5.bnd(bench).bnd(function (d) {
-	                        return mM6.bnd(bench).bnd(function (e) {
-	                          return mM7.ret((a + b + c + d + e) / 5).bnd(refresh);
-	                        });
-	                      });
-	                    });
-	                  });
-	                });
-	              },
-	              onMouseEnter: function () {
-	                return _this4.cT2();
-	              },
-	              onMouseLeave: function () {
-	                return _this4.cF2();
-	              }
-	            },
-	            _react2['default'].createElement(ComponentBench4, null)
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            '  '
-	          ),
-	          _react2['default'].createElement(
-	            'h2',
-	            null,
-	            'Re-use a monad 1,000,000 times:',
-	            _react2['default'].createElement(
-	              'span',
-	              { style: { color: 'lightblue' } },
-	              '  ',
-	              _this4.resBench2,
-	              ' '
-	            ),
-	            ' ms'
-	          ),
-	          _react2['default'].createElement(
-	            'p',
-	            null,
-	            '  '
-	          ),
-	          _react2['default'].createElement(
-	            'button',
-	            { style: _this4.bool3 ? _this4.style1 : _this4.style2,
-	              onClick: function () {
-	                _this4.bench2();
 	              },
 	              onMouseEnter: function () {
 	                return _this4.cT3();
@@ -1998,12 +1807,12 @@
 	                return _this4.cF3();
 	              }
 	            },
-	            _react2['default'].createElement(Bench2, null)
+	            'mM3.bnd(a => add(a, mM3, 2).bnd(cube,mM3))'
 	          ),
 	          _react2['default'].createElement(
 	            'p',
 	            null,
-	            'On my Ubuntu 14.04 desktop machine, Firefox outperformed Chrome and Opera. After doing 1,000,000 updates using mM2.ret once or twice, it consistently finished in less than 2 milliseconds. The first time took 4 milliseconds. Firefox consistently created a million new instances in under 200 milliseconds. Typical times for Chrome were 680 and 14 ms for new instances and updates respectively. For Opera, it was 700 and 15. Since the times are so miniscule, choosing one or the other wouldn\'t significantly affect performance in applications involving monad chaining without loops. Besides, loops would ordinarily work on values, and not the monads where the values would eventually be incorporated. Chrome on my machine is more loaded with features down than Firefox, so not much can be learned from the comparrison. It is interesting that Firefox computed subsequent runs much faster than the first.'
+	            'When add was an argument of bnd, it was provided with the calling monad\'s value and "this", which was the calling monad. Since bnd didn\'t provide these arguments, we did. add is defined as a function of three arguments. Notice we didn\'t have to specify the value of a. bnd saw to it that mM3\'s value was assigned to a. The point is that the order of evaluation of links in a monad chain does not matter. In the example, we called bnd on f and used the result to call bnd on g, then we called bnd on the composit function and got the same answer, as expected.'
 	          ),
 	          _react2['default'].createElement(
 	            'p',
@@ -2100,8 +1909,8 @@
 	          ),
 	          _react2['default'].createElement(
 	            'h2',
-	            null,
-	            ' MonadIter - Control the Order of Execution '
+	            { style: { textAlign: 'center', color: '#ffba66A' } },
+	            'MonadIter - Control the Order of Execution'
 	          ),
 	          _react2['default'].createElement(
 	            'p',
@@ -2496,8 +2305,8 @@
 	          ),
 	          _react2['default'].createElement(
 	            'h2',
-	            null,
-	            ' Ordinary Functions '
+	            { style: { textAlign: 'center', color: '#ffba66' } },
+	            'Ordinary Functions'
 	          ),
 	          _react2['default'].createElement(
 	            'p',
@@ -2913,7 +2722,27 @@
 	            ' '
 	          ),
 	          ' ',
-	          _react2['default'].createElement('br', null)
+	          _react2['default'].createElement('br', null),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            '    '
+	          ),
+	          _react2['default'].createElement(
+	            'button',
+	            { style: _this4.bool1 ? _this4.style1 : _this4.style2,
+	              onClick: function () {
+	                mM1.ret(0).bnd(mM2.ret).bnd(mM3.ret).bnd(mM4.ret).bnd(mM5.ret).bnd(mM6.ret).bnd(mM7.ret).bnd(mM8.ret).bnd(mM9.ret).bnd(mM10.ret).bnd(refresh);
+	              },
+	              onMouseEnter: function () {
+	                return _this4.cT1();
+	              },
+	              onMouseLeave: function () {
+	                return _this4.cF1();
+	              }
+	            },
+	            'REFRESH'
+	          )
 	        ),
 	        _react2['default'].createElement('br', null),
 	        _react2['default'].createElement('br', null),
@@ -2958,7 +2787,7 @@
 	    this.mMI6 = this.MI(0, 'mMI6');
 
 	    this.style2 = { backgroundColor: '#000', textAlign: 'left', borderColor: 'darkred', outline: 0,
-	      color: 'burlywood', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
+	      color: '#CCFDCB', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
 	      marginLeft: 12, fontSize: 18 };
 	    this.style1 = { backgroundColor: 'blue', textAlign: 'left', borderColor: 'lightblue', outline: 0,
 	      color: 'yellow', borderRadius: 10, paddingTop: 1.1, paddingBottom: 0.9, marginRight: 3,
@@ -2980,21 +2809,6 @@
 	})(_react2['default'].Component);
 
 	(0, _reactDom.render)(_react2['default'].createElement(B4, { key: 'B4' }), document.getElementById('divSix'));
-
-	// function delay(time) {
-
-	/*
-	.then( function STEP3(){
-	    console.log( "step 3 (after another 2000ms)" );
-	} )
-	.then( function STEP4(){
-	    console.log( "step 4 (next Job)" );
-	    return delay( 2000 );
-	} )
-	.then( function STEP5(){
-	    console.log( "step 5 (after another 2000ms)" );
-	} )
-	*/
 
 /***/ },
 /* 2 */

@@ -4,7 +4,7 @@ Originally, I used the excellent Mobservable package to make the browser interfa
 
 Now I don't bother with React. It is probably a good fit for a large enterprise like Facebook, but for my little demonstrations it is overkill. This project has converted over to [snabbdom](https://github.com/paldepind/snabbdom). 
 
-This repo is, to a large extent, a first draft of "Fun With Monads", which is the first installment in the "Javascript Monads" series. You can see how it works at [http://schalk.net:4002](schalk.net:4002). The code is at [https://github.com/dschalk/fun-with-monads](https://github.com/dschalk/fun-with-monads). I suggest that you leave this site and go to [Fun With Monads](schalk.net:4002)
+This repo is, to a large extent, a first draft of "Fun With Monads", which is the first installment in the "Javascript Monads" series. You can see how it works at [http://schalk.net:4002](http://schalk.net:4002). The code is at [https://github.com/dschalk/fun-with-monads](https://github.com/dschalk/fun-with-monads). I suggest that you leave this site and go to [Fun With Monads](http://schalk.net:4002)
 
 The code pertaining to monads, along with explanations and running examples, can be found at [http://transcendent.ninja](http://transcendent.ninja). Here is the class that generates the monad instances:
 ```Javascript

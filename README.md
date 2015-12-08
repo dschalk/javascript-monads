@@ -2,7 +2,9 @@
 
 Originally, I used the excellent Mobservable package to make the browser interface instantly reflect changes in the values of the monads. Since I don't work at Facebook, where I would cause consternation for "setting a bad example" and/or failing to follow guidelines, I am free to use "forceUpdate()" at the end of monadic computations, thereby providing a fluent user interface with minimal overhead. I don't bother with the state object, nor do I define props. 
 
-Now I don't bother with React. It is probably a good fit for a large enterprise like Facebook, but for my little demonstrations it is overkill. This project has converted over to [snabbdom](https://github.com/paldepind/snabbdom). This repo is, to a large extent, a first draft of "Fun With Monads", which is the first installment in the "Javascript Monads" series. You can see how it works at [http://schalk.net:4002](schalk.net:4002). The code is at [https://github.com/dschalk/fun-with-monads](https://github.com/dschalk/fun-with-monads). I suggest that you leave this site and go to [Fun With Monads](schalk.net:4002)
+Now I don't bother with React. It is probably a good fit for a large enterprise like Facebook, but for my little demonstrations it is overkill. This project has converted over to [snabbdom](https://github.com/paldepind/snabbdom). 
+
+This repo is, to a large extent, a first draft of "Fun With Monads", which is the first installment in the "Javascript Monads" series. You can see how it works at [http://schalk.net:4002](schalk.net:4002). The code is at [https://github.com/dschalk/fun-with-monads](https://github.com/dschalk/fun-with-monads). I suggest that you leave this site and go to [Fun With Monads](schalk.net:4002)
 
 The code pertaining to monads, along with explanations and running examples, can be found at [http://transcendent.ninja](http://transcendent.ninja). Here is the class that generates the monad instances:
 ```Javascript

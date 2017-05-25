@@ -1,5 +1,10 @@
 #Javascript Monads
 
+This site is being actively developed and maintained at [monads for functional javascript]( https://github.com/dschalk/monads-for-functional-javascript) but the real deal is at the [online demonstration](http://schalk.net:3055). I'm still using the Haskell server, but the front-end is now a Cycle.js application. I hope you will visit the demonstrations and tell me what you think. 
+
+I am looking at getting more mutable state into streams. The application is a functional reactive dream come true, but it is still pretty rough around the edges.
+
+
 Originally, I used the excellent Mobservable package to make the browser interface instantly reflect changes in the values of the monads. Since I don't work at Facebook, where I would cause consternation for "setting a bad example" and/or failing to follow guidelines, I am free to use "forceUpdate()" at the end of monadic computations, thereby providing a fluent user interface with minimal overhead. I don't bother with the state object, nor do I define props. 
 
 Now I don't bother with React. It is probably a good fit for a large enterprise like Facebook, but for my little demonstrations it is overkill. This project has converted over to [snabbdom](https://github.com/paldepind/snabbdom). 
